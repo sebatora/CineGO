@@ -1,60 +1,71 @@
-.detailContainer{
-  display: block;
+.detailContainer {
+  display: flex;
   margin: 1rem auto;
-  width: 50vw;
+  width: 90vw;
   padding: 1%;
   border-radius: 15px;
   border: 2px solid var(--color-3);
-  text-align: center;
-  font-size: 1rem;
   align-items: center;
-  justify-content: center;
-  background-color: var(--color-2);
-  color: var(--color-1);
 }
 
-
-
-.detailContainer h2{
-  text-transform: uppercase;
-  font-size: 1.5rem;
-  font-weight: 800;
+.leftContainer {
+  margin: 1rem auto;
+  margin-right: auto;
+  width: 98vw;
+  padding: 1%;
+  display: block;
 }
 
-h3{
-  font-size: 1.1rem;
-  font-style: italic;
-  font-weight: 600;
-  margin: 1% auto;
+.leftContainer img {
+  width: 275px;
+  height: 400px;
 }
 
-.detailimage{
-  width: 100%;
+.leftContainer h3 {
+  border: 1px solid var(--color-1);
+  top: 0;
+  left: 0;
+  padding: 5px;
+  margin: 0;
 }
 
-.detailImage img{
-  width: 60%;
-  height: auto;
-  margin: auto;
+.leftContainer h5 {
+  margin-top: 0.25em;
+  margin-bottom: 0.25em;
 }
 
-.detailData{
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  margin: 1%;
+.rightContainer {
+  margin-left: auto;
+  margin: 1rem auto;
+  padding: 1%;
+  display: block;
 }
 
-@media (max-width: 620px) {
-  .detailData{
-    display: flex;
-    flex-direction: column;
-  }
+.rightContainer img {
+  width: 600px;
+  height: 400px;
 }
 
-.detailData h2{
-  text-transform: uppercase;
-  font-size: 1.3rem;
-  font-weight: 800;
+.boton {
+  position: sticky;
+  bottom: 8%;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  margin-left: 1rem;
+  border-radius: 5rem;
+  width: 5rem;
+  height: 2.2rem;
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+  overflow: hidden;
+  transition: 300ms;
 }
 
+.boton:hover {
+  cursor: pointer;
+  transform: scale(1.1) translate(-50%, 50%);
+  background-color: black;
+  color: white;
+  box-shadow: 0 0 1rem black, 0 0 4rem black, 0 0 8rem black;
+}
