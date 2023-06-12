@@ -4,6 +4,7 @@ const cors = require("cors");
 
 // Routes
 const userRouter = require("./routes/user.routes.js");
+const movieRouter = require("./routes/movie.routes.js");
 
 const app = express();
 
@@ -13,6 +14,7 @@ app.use(cors());
 app.use(morgan("dev"));
 
 // Routes
-app.use("/", userRouter);
+app.use("/movies", movieRouter);
+app.use("/auth", userRouter);
 
 module.exports = app;
