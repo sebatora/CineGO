@@ -1,69 +1,67 @@
-p{
-  margin: 2% auto;
-  padding: 0;
-}
+/* About.module.css */
 
-.aboutContainer{
-  display: block;
-  margin: 1rem auto;
-  width: 50vw;
-  padding: 1%;
-  border-radius: 15px;
-  border: 2px solid var(--color-3);
+.about {
   text-align: center;
-  font-size: 1rem;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--color-2);
-  color: var(--color-1);
 }
 
-@media (max-width: 450px) {
-  .aboutContainer{
-    width: 80vw;
-  }
+.h1 {
+  color: #656060;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.aboutImg{
-  text-align: center;
-  margin: auto;
-}
-
-img{
-  border-radius: 10px;
-  width: 80%;
-  max-width: 350px;
-}
-
-.aboutInfo{
-  width: 90%;
-  margin: auto;
-  border-radius: 10px;
-  font-size: larger;
-  font-weight: 600;
-}
-
-.aboutTech p{
-  display: flex;
-  width: 100%;
-}
-
-.aboutTech img {
-  width: 12%;
-  margin: 0 1%;
-}
-
-.aboutContact p{
-  display: flex;
-  width: 50%;
+.descrip {
   margin: 0 auto;
+  margin-bottom: 30px;
+  font-size: large;
+  max-width: 900px; /* Ajusta este valor según tus necesidades */
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
-.aboutContact img {
-  width: 2rem;
-  margin: 0 1%;
+.members {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
-.aboutContact a {
-text-decoration: none;
+.member {
+  width: 290px;
+  padding: 20px;
+  margin: 10px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-image: url('../../assets/fondoClaroAbout.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.member img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.member h2 {
+  font-size: 20px;
+  font-family: cursive;
+  margin-bottom: 1px;
+  margin-top: -1px;
+}
+
+.member p {
+  font-size: 14px;
+  color: #777;
+  font-family: cursive;
+  margin-bottom: 10px;
+}
+
+.socialLinks a {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.socialLinks img {
+  width: 25px;
+  height: 25px;
 }
