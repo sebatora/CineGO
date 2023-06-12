@@ -1,15 +1,11 @@
 const router = require("express").Router();
 
-router.get("/", (req, res) => {
-  res.send("Muestra todas las peliculas");
-});
+const { getAllMovies, getMovieById, getAllGenres } = require("../controllers/movie.controller");
 
-router.get("/detail/:id", (req, res) => {
-  res.send("Muestra detalles de cada pelicula");
-});
+router.get("/", getAllMovies);
 
-router.get("/genres", (req, res) => {
-  res.send("Muestra los generos");
-});
+router.get("/details/:id", getMovieById);
+
+router.get("/genres", getAllGenres);
 
 module.exports = router;
