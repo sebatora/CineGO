@@ -3,6 +3,7 @@ import Landing from './components/Landing/Landing';
 import About from './components/About/About';
 import Detail from './components/Detail/Detail';
 import CinePlus from './components/cinePlus/cinePlus';
+import Navbar from './components/Navbar/Navbar';
 import { Route, Routes, useLocation } from "react-router-dom";
 import axios from 'axios';
 axios.defaults.baseURL = "http://localhost:3001"
@@ -11,6 +12,8 @@ function App() {
 
   return (
     <div className="App">
+
+      <Navbar />
 
       <Routes>
         <Route exact path="/" element={<Landing />} />
@@ -21,6 +24,7 @@ function App() {
 
         <Route path="/cinePlus" element={<CinePlus />} />
 
+        <Route path="/login" element={<CinePlus />} /> // NO EXISTE COMPONENTE AUN
 
       </Routes>
     </div>
