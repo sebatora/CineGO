@@ -1,0 +1,42 @@
+.container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1px; /* Ajusta el valor según tu preferencia */
+  }
+  
+  .item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .rectangle {
+    background-color: #D9D9D9;
+    margin: 30% 20% 20% 20%;
+    border-radius: 15px;
+    padding: 8%;
+    height: 500px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .rectangle li {
+    margin-bottom: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .rectangle ul {
+    margin-bottom: 5px; 
+  }
+  
+  .heading {
+    text-align: center;
+  }
+  
+  .button {
+    margin-top: 25px;
+    background-color: #FFBE0B;
+    border-radius: 8px;
+  }
+  
+  
