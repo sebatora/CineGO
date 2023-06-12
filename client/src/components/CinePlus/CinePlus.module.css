@@ -1,16 +1,16 @@
-.container {
+.CinePlusContainer {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 1px; /* Ajusta el valor según tu preferencia */
   }
   
-  .item {
+  .CinePlusitem {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
   }
   
-  .rectangle {
+  .CinePlusrectangle {
     background-color: #D9D9D9;
     margin: 30% 20% 20% 20%;
     border-radius: 15px;
@@ -21,19 +21,19 @@
     flex-direction: column;
   }
 
-  .rectangle li {
+  .CinePlusrectangle li {
     margin-bottom: 10px;
     font-family: Arial, Helvetica, sans-serif;
   }
-  .rectangle ul {
+  .CinePlusrectangle ul {
     margin-bottom: 5px; 
   }
   
-  .heading {
+  .CinePlusheading {
     text-align: center;
   }
   
-  .button {
+  .CinePlusbutton {
     margin-top: 25px;
     background-color: #FFBE0B;
     border-radius: 8px;
