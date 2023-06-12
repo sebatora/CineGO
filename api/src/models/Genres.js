@@ -1,10 +1,10 @@
 const { DataTypes } = require("sequelize")
 
-module.export = (sequelize) => {
+module.exports = (sequelize) => {
 //Definimos modelo
     sequelize.define("Genres", {
         id: {
-          type: DataTypes.NUMBER,
+          type: DataTypes.INTEGER,
           allowNull: false,
           primaryKey: true
         },
