@@ -1,0 +1,69 @@
+p{
+  margin: 2% auto;
+  padding: 0;
+}
+
+.aboutContainer{
+  display: block;
+  margin: 1rem auto;
+  width: 50vw;
+  padding: 1%;
+  border-radius: 15px;
+  border: 2px solid var(--color-3);
+  text-align: center;
+  font-size: 1rem;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-2);
+  color: var(--color-1);
+}
+
+@media (max-width: 450px) {
+  .aboutContainer{
+    width: 80vw;
+  }
+}
+
+.aboutImg{
+  text-align: center;
+  margin: auto;
+}
+
+img{
+  border-radius: 10px;
+  width: 80%;
+  max-width: 350px;
+}
+
+.aboutInfo{
+  width: 90%;
+  margin: auto;
+  border-radius: 10px;
+  font-size: larger;
+  font-weight: 600;
+}
+
+.aboutTech p{
+  display: flex;
+  width: 100%;
+}
+
+.aboutTech img {
+  width: 12%;
+  margin: 0 1%;
+}
+
+.aboutContact p{
+  display: flex;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.aboutContact img {
+  width: 2rem;
+  margin: 0 1%;
+}
+
+.aboutContact a {
+text-decoration: none;
+}
