@@ -33,6 +33,7 @@ const getAllGenres = async (req, res) => {
 	}
 }
 
+
 module.exports = {
 	getAllMovies,
 	getMovieById,
