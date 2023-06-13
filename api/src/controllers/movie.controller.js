@@ -57,6 +57,8 @@ const getAllGenres = async (req, res) => {
 	}
 }
 
+<<<<<<< HEAD
+=======
 const postMovie = async () => {
 	try {
 		const { title, description, image, genres, release_date } = req.body;
@@ -73,6 +75,7 @@ const postMovie = async () => {
 		return res.status(500).json({ error: error.message });
 	}
 }
+>>>>>>> developer
 
 module.exports = {
 	getAllMovies,
