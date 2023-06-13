@@ -1,7 +1,6 @@
 const routerGenre = require("express").Router();
-const handlerGenre = require("../handlers/handlerGenre");
+const handlerGetAllGenres = require("../handlers/handlerGetAllGenres.js");
 
-routerGenre.get("/", handlerGenre );
-
+routerGenre.get("/", handlerGetAllGenres);
 
 module.exports = routerGenre;

@@ -20,9 +20,30 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    release_date: {
+    actors: {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    director: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    duration: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    trailer: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    clasification: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    onBillBoard: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: true,
+    }
   }, { timestamps: false })
 }

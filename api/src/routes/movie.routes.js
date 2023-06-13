@@ -1,17 +1,15 @@
 const router = require("express").Router();
-const handlerMoviePost = require("../handlers/handlerMoviePost");
-const {
-  getAllMovies,
-  getMovieById,
-} = require("../controllers/movie.controller");
+const handlerPostMovie = require("../handlers/handlerPostMovie");
+const handlerGetAllMovies = require("../handlers/handlerGetAllMovies");
+const handlerGetMovieById = require("../handlers/handlerGetMovieById");
 
 // Trae todas las peliculas
-router.get("/", getAllMovies);
+router.get("/", handlerGetAllMovies);
 
 // Trae el detalle de la pelicula
-router.get("/details/:id", getMovieById);
+router.get("/details/:id", handlerGetMovieById);
 
 // Ruta para crear usuario subir peliculas
-router.post("/create", handlerMoviePost);
+router.post("/create", handlerPostMovie);
 
 module.exports = router;
