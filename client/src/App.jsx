@@ -6,6 +6,7 @@ import CinePlus from './components/cinePlus/cinePlus';
 import Navbar from './components/Navbar/Navbar';
 import { Route, Routes } from "react-router-dom";
 import axios from 'axios';
+import Footer from './components/Footer/Footer';
 axios.defaults.baseURL = "http://localhost:3001"
 
 function App() {
@@ -27,6 +28,8 @@ function App() {
         <Route path="/login" element={<Login />} />
 
       </Routes>
+
+      <Footer />
     </div>
   )
 }

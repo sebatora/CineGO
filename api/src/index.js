@@ -7,7 +7,7 @@ async function main(){
 		await sequelize.sync({ force: true });
 		console.log("Database synchronized successfully.");
 	
-		const PORT = process.env.PORT || 3000;
+		const PORT = process.env.PORT || 3001;
 		app.listen(PORT, () => {
 			console.log(`Server running on port ${PORT}`);
 		});
