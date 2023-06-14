@@ -3,8 +3,9 @@ import Carousel from "../Carousel/Carousel";
 import img1 from "../../assets/cinego_blanco.png";
 import img2 from "../../assets/cinego_negro.png";
 import img3 from "../../assets/cineLogo.png";
+import MoviesContainer from "../MoviesContainer/MoviesContainer";
 
-function Landing() {
+function Home() {
   const images = [
     img1,
     img2,
@@ -13,10 +14,10 @@ function Landing() {
   ];
   return (
     <div>
-      SOY EL LANDING
       <Carousel images={images} />
+      <MoviesContainer/>
     </div>
   );
 }
 
-export default Landing;
+export default Home;
