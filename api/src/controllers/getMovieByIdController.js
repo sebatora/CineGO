@@ -1,8 +1,17 @@
-const { Movie } = require("../db");
+const { Movie, Genre } = require("../db");
 
 const getMovieById = async (id) => {
   if (!id) throw new Error("Faltan datos para la busqueda (id)");
-  let movie = await Movie.findByPk(id);
+    const movie = await Movie.findOne({
+      where: {id},
+      include: {
+      model: Genre,
+      attributes: ["name"],
+      through: {
+        attributes: [],
+      },
+    },
+  });
   if (movie === null) {
     return `No se encontro ninguna pelicula con el ID ${id}`;
   } else {

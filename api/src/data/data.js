@@ -9,6 +9,7 @@ const dataAllMovies = [
     "release_date": "2023-05-17",
     "trailer": "https://www.youtube.com/watch?v=FDhvbIqTQwI",
     "clasification": "+13",
+    "genre": ["Accion"]
   },
   {
     "title": "John Wick 4",
