@@ -4,7 +4,8 @@ import About from './components/About/About';
 import Detail from './components/Detail/Detail';
 import CinePlus from './components/cinePlus/cinePlus';
 import Navbar from './components/Navbar/Navbar';
-import { Route, Routes, useLocation } from "react-router-dom";
+import Login from './components/Forms/Login';
+import { Route, Routes } from "react-router-dom";
 import axios from 'axios';
 import Footer from './components/Footer/Footer';
 axios.defaults.baseURL = "http://localhost:3001"
@@ -25,7 +26,7 @@ function App() {
 
         <Route path="/cinePlus" element={<CinePlus />} />
 
-        <Route path="/login" element={<CinePlus />} /> // NO EXISTE COMPONENTE AUN
+        <Route path="/login" element={<Login />} />
 
       </Routes>
 
