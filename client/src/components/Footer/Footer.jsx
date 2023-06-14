@@ -24,14 +24,14 @@ function Footer() {
           <div className={style.terms}>
             <p>Tecnologías utilizadas</p>
             <div className={style.iconContainer}>
-                <FontAwesomeIcon icon={faReact} className={style.icon} />
-                <FontAwesomeIcon icon={faNodeJs} className={style.icon} />
-                <FontAwesomeIcon icon={faHtml5} className={style.icon} />
-                <FontAwesomeIcon icon={faCss3Alt} className={style.icon} />
-                <FontAwesomeIcon icon={faJs} className={style.icon} />
-                <FontAwesomeIcon icon={faGitAlt} className={style.icon}/>
-                <FontAwesomeIcon icon={faGithub} className={style.icon}/>
-                <FontAwesomeIcon icon={faTrello} className={style.icon}/>
+                <a href="https://es.react.dev"><FontAwesomeIcon icon={faReact} className={style.icon} /> </a>
+                <a href="https://nodejs.org/es"><FontAwesomeIcon icon={faNodeJs} className={style.icon} /> </a>
+                <a href="https://developer.mozilla.org/es/docs/Web/HTML"><FontAwesomeIcon icon={faHtml5} className={style.icon} /> </a>
+                <a href="https://developer.mozilla.org/es/docs/Web/CSS"><FontAwesomeIcon icon={faCss3Alt} className={style.icon} /> </a>
+                <a href="https://developer.mozilla.org/es/docs/Web/JavaScript"><FontAwesomeIcon icon={faJs} className={style.icon} /> </a>
+                <a href="https://git-scm.com"><FontAwesomeIcon icon={faGitAlt} className={style.icon}/> </a>
+                <a href="https://github.com"><FontAwesomeIcon icon={faGithub} className={style.icon}/> </a>
+                <a href="https://trello.com"><FontAwesomeIcon icon={faTrello} className={style.icon}/> </a>
             </div>
           </div>
         </div>

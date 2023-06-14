@@ -15,13 +15,13 @@
   justify-content: space-between;
   max-width: 1200px;
   margin: auto;
-  margin-top: 100px;
+  margin-top: 20px;
 }
 
 .box__footer {
   display: flex;
   flex-direction: column;
-  padding: 40px;
+  padding: 15px;
 }
 
 .box__footer .logo img {
@@ -37,6 +37,12 @@
   font-size: 18px;
 }
 
+.box__footer .terms p {
+    display: block;
+    margin-block-start: 1px;
+    margin-block-end: 1px;
+}
+
 .box__footer h2 {
   margin-bottom: 30px;
   color: #343434;
@@ -47,6 +53,7 @@
   margin-top: 10px;
   color: #7a7a7a;
   font-weight: 600;
+  text-decoration: none;
 }
 
 .box__footer a:hover {
@@ -79,7 +86,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 10px;
+  margin-top: 5px;
 }
 
 .icon {
