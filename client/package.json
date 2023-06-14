@@ -19,6 +19,7 @@
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@mui/icons-material": "^5.11.16",
     "@mui/material": "^5.13.5",
+    "aos": "^3.0.0-beta.6",
     "axios": "^1.4.0",
     "framer-motion": "^10.12.16",
     "react": "^18.2.0",

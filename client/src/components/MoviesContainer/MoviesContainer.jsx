@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import style from "./MoviesContainer.module.css";
 import MovieCard from "../MovieCard/MovieCard";
 
+
 function MoviesContainer() {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -14,7 +15,7 @@ function MoviesContainer() {
         setMovies(response.data);
         setLoading(false);
       } catch (error) {
-        alert(error)
+        alert(error);
       }
     };
 
@@ -29,6 +30,7 @@ function MoviesContainer() {
         <div className={style.containerCardMovie}>
           {movies.map(({ id, title, description, image, release_date }) => (
             <MovieCard
+        
               key={id}
               id={id}
               title={title}
