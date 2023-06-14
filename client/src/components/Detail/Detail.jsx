@@ -6,6 +6,7 @@ function Detail() {
     <div className={style.container}>
       <div className={style.row}>
         <div className={style.infoBox}>
+          {/* <img src="https://img.freepik.com/vector-gratis/mancha-acuarela-abstracta-colorida_1035-18218.jpg?w=2000" alt="fondo" className={style.imagenFondo}></img> */}
           <h2 className={style.name}>
             <strong>Spiderman a través del universo</strong>
           </h2>
@@ -18,7 +19,7 @@ function Detail() {
           <iframe width="560" height="315" src="https://www.youtube.com/embed/oBmazlyP220" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
         <div className={style.movieInfo}>
-          <figure>
+          <figure className={style.figure}>
             <img src="https://pics.filmaffinity.com/Spider_Man_Cruzando_el_Multiverso-611174657-large.jpg" alt="image" className={style.movieImage} />
           </figure>
           <ul>
