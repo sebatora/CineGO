@@ -3,9 +3,9 @@ const morgan = require("morgan");
 const cors = require("cors");
 
 // Routes
-const movieRouter = require("./routes/movie.routes.js");
-const usersRouter = require("./routes/user.routes.js");
-const genreRouter = require("./routes/genre.routes.js");
+const routerMovie = require("./routes/movie.routes.js");
+const routerUser = require("./routes/user.routes.js");
+const routerGenre = require("./routes/genre.routes.js");
 
 const app = express();
 
@@ -15,9 +15,9 @@ app.use(cors());
 app.use(morgan("dev"));
 
 // Routes
-app.use("/movies", movieRouter);
-app.use("/users", usersRouter);
-app.use("/genre", genreRouter);
+app.use("/movies", routerMovie);
+app.use("/users", routerUser);
+app.use("/genres", routerGenre);
 
 
 module.exports = app;

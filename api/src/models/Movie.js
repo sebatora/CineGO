@@ -32,6 +32,10 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
+    release_date: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     trailer: {
       type: DataTypes.STRING,
       allowNull: false,
