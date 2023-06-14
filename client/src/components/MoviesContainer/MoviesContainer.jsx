@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import style from "./MoviesContainer.module.css";
 import MovieCard from "../MovieCard/MovieCard";
-
+import Spinner from "../Spinner/Spinner";
 
 function MoviesContainer() {
   const [movies, setMovies] = useState([]);
@@ -25,12 +25,11 @@ function MoviesContainer() {
   return (
     <div className={style.containerMovies}>
       {loading ? (
-        <p>Cargando</p>
+        <Spinner />
       ) : (
         <div className={style.containerCardMovie}>
           {movies.map(({ id, title, description, image, release_date }) => (
             <MovieCard
-        
               key={id}
               id={id}
               title={title}
