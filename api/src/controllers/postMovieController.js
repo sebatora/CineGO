@@ -1,7 +1,7 @@
 const { Movie, Genre } = require("../db.js");
 
-const postMovie = async (title, description, image, actors, director, duration, release_date, trailer, clasification, genre) => {
-  if (!title || !description || !image || !actors || !director || !duration || !release_date || !trailer || !clasification || !genre) throw Error("Faltan datos");
+const postMovie = async (title, description, image, actors, director, duration, release_date, trailer, clasification, genres) => {
+  if (!title || !description || !image || !actors || !director || !duration || !release_date || !trailer || !clasification || !genres.length) throw Error("Faltan datos");
   
   const movieExists = await Movie.findOne({ where: { title } });
   if (movieExists) throw Error("Ya existe una pelicula con este nombre");
@@ -18,11 +18,10 @@ const postMovie = async (title, description, image, actors, director, duration, 
     clasification,
   });
 
-  let filmGenre = await Genre.findAll({
-    where: { name: genre }
-  })
+  const genreNames = genres.map(genre => genre.name);
+  const movieGenres = await Genre.findAll({ where: { name: genreNames } });
 
-  newMovie.addGenres(filmGenre)
+  await newMovie.addGenres(movieGenres);
 
   return newMovie;
 };
