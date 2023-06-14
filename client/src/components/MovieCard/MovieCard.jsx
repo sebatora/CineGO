@@ -1,13 +1,14 @@
 import React from "react";
 import style from "./MovieCard.module.css";
+import { Link } from "react-router-dom";
 
-function MovieCard({ id, title, description, image, release_date }) {
+function MovieCard({ id, title, image }) {
   return (
     <div className={style.containerMovie}>
-      {/*       <h2>Película: {title}</h2>
-      <h2>Descripción: {description}</h2>
-      <h2>Fecha: {release_date}</h2> */}
-      <img className={style.img} src={image} />
+      <Link to={`/detail/${id}`}>
+        <img className={style.img} src={image} />
+        <h2>{title}</h2>
+      </Link>
     </div>
   );
 }
