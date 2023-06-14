@@ -1,8 +1,8 @@
 import React from "react";
 import Carousel from "../Carousel/Carousel";
-import img1 from "../../assets/cinego_blanco.png";
-import img2 from "../../assets/cinego_negro.png";
-import img3 from "../../assets/cineLogo.png";
+import img1 from "../../assets/carousel_1.webp";
+import img2 from "../../assets/carousel_2.webp";
+import img3 from "../../assets/carousel_3.webp";
 import MoviesContainer from "../MoviesContainer/MoviesContainer";
 
 function Home() {
