@@ -7,7 +7,6 @@ function MoviesContainer() {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  console.log(movies);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -15,7 +14,7 @@ function MoviesContainer() {
         setMovies(response.data);
         setLoading(false);
       } catch (error) {
-        console.error("Error al obtener los datos:", error);
+        alert(error)
       }
     };
 
