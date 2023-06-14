@@ -1,25 +1,41 @@
 import React from "react";
-import style from './Detail.module.css'
+import style from './Detail.module.css';
 
 function Detail() {
   return (
-    <div className={style.detailContainer}>
-      <div className={style.leftContainer}>
-        <img src="https://pics.filmaffinity.com/Spider_Man_Cruzando_el_Multiverso-611174657-large.jpg" alt="Ilustracion" />
-        <h3 className={style.textWrapper}> +13 </h3>
-        <div>
-          <h5> Gender: Animacion </h5>
-          <h5> Duration: 140 min</h5>
-          <h5> Actors: </h5>
-          <h5> Director: Joaquim Dos Santos, Justin K. Thompson, Kemp Powers </h5>
+    <div className={style.container}>
+      <div className={style.row}>
+        <div className={`${style.box} ${style.infoBox}`}>
+          <h2 className={style.name}>
+            <strong>Spiderman a través del universo</strong>
+          </h2>
+          <p className={style.description}>
+            Después de reunirse con Gwen Stacy, Spider-Man, el amigable vecino de Brooklyn, es transportado a través del Multiverso, donde se encuentra con un equipo de Spider-Gente encargado de proteger su existencia. Pero cuando los héroes difieren acerca de cómo manejar una nueva amenaza, Miles se enfrenta a los otros Spiders y debe redefinir lo que significa ser un héroe para poder salvar a las personas que más ama.
+          </p>
+          <div className={style.buttonContainer}>
+            <button className={style.button} type="submit">¡Comprar entradas!</button>
+          </div>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/oBmazlyP220" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
-      </div>
-      <div className={style.rightContainer}>
-        <img src="https://i.ytimg.com/vi/yEYuRScVB8c/hqdefault.jpg" alt="Video trailer" />
-        <h5>Después de reunirse con Gwen Stacy, Spider-Man, el amigable vecino de Brooklyn, es transportado a través del Multiverso, donde se encuentra con un equipo de Spider-Gente encargado de proteger su existencia. Pero cuando los héroes difieren acerca de cómo manejar una nueva amenaza, Miles se enfrenta a las otros Spiders y debe redefinir lo que significa ser un héroe para poder salvar a las personas que más ama.</h5>
-      </div>
-      <div>
-        <button className={style.boton} type="submit">Comprar entradas!</button>
+        <div className={`${style.box} ${style.movieInfo}`}>
+          <figure>
+            <img src="https://pics.filmaffinity.com/Spider_Man_Cruzando_el_Multiverso-611174657-large.jpg" alt="image" className={style.movieImage} />
+          </figure>
+          <ul>
+            <li>
+              <strong>Título Original:  </strong>  Spiderman a través del universo
+            </li>
+            <li>
+              <strong>Género:  </strong>   Animación
+            </li>
+            <li>
+              <strong>Director:  </strong>   Joaquim Dos Santos, Justin K. Thompson, Kemp Powers
+            </li>
+            <li>
+              <strong>Duración:  </strong>   144 minutos
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   );
