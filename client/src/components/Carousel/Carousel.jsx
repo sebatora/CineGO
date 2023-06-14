@@ -9,7 +9,7 @@ const Carousel = ({ images }) => {
       setCurrentImageIndex((prevIndex) =>
         prevIndex === images.length - 1 ? 0 : prevIndex + 1
       );
-    }, 3000);
+    }, 4000);
 
     return () => clearInterval(interval);
   }, [images]);
@@ -32,7 +32,7 @@ const Carousel = ({ images }) => {
           />
         ))}
       </div>
-      <div className={style.indexButtons}>
+      <div className={style.containerButtons}>
         {images.map((_, index) => (
           <button
             key={index}
