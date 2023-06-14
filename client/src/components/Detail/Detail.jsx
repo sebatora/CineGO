@@ -5,7 +5,7 @@ function Detail() {
   return (
     <div className={style.container}>
       <div className={style.row}>
-        <div className={`${style.box} ${style.infoBox}`}>
+        <div className={style.infoBox}>
           <h2 className={style.name}>
             <strong>Spiderman a través del universo</strong>
           </h2>
@@ -17,7 +17,7 @@ function Detail() {
           </div>
           <iframe width="560" height="315" src="https://www.youtube.com/embed/oBmazlyP220" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
-        <div className={`${style.box} ${style.movieInfo}`}>
+        <div className={style.movieInfo}>
           <figure>
             <img src="https://pics.filmaffinity.com/Spider_Man_Cruzando_el_Multiverso-611174657-large.jpg" alt="image" className={style.movieImage} />
           </figure>
