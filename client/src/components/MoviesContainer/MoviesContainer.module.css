@@ -1,0 +1,12 @@
+.containerMovies{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    margin: 0 auto;
+}
+
+.containerCardMovie{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}

@@ -4,25 +4,21 @@ const { DataTypes } = require("sequelize");
 module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define(
-    "Users",
+    "user",
     {
       id: {
-        type: DataTypes.UUID,
-        defaultValue: DataTypes.UUIDV4,
-        allowNull: false,
+        type: DataTypes.INTEGER,
         primaryKey: true,
+        allowNull: false,
+        autoIncrement:true,
       },
-      name: {
+      firstName: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      age: {
+      lastName: {
         type: DataTypes.STRING,
         allowNull: false,
-      },
-      image: {
-        type: DataTypes.STRING,
-        defaultValue: "https://cdn-icons-png.flaticon.com/512/666/666201.png",
       },
       email: {
         type: DataTypes.STRING,
@@ -32,11 +28,9 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      city: {
+      image: {
         type: DataTypes.STRING,
-      },
-      province: {
-        type: DataTypes.STRING,
+        defaultValue: "https://cdn-icons-png.flaticon.com/512/666/666201.png",
       },
     },
     { timestamps: false }

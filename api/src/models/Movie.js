@@ -13,7 +13,7 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     description: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false, 
     },
     image: {
@@ -30,6 +30,10 @@ module.exports = (sequelize) => {
     },
     duration: {
       type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    release_date: {
+      type: DataTypes.STRING,
       allowNull: false,
     },
     trailer: {

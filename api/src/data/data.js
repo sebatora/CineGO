@@ -1,127 +1,199 @@
 const dataAllMovies = [
   {
-		"title": "Fast X",
-    "description": "Over many missions and against impossible odds, Dom Toretto and his family have outsmarted, out-nerved and outdriven every foe in their path. Now, they confront the most lethal opponent they've ever faced: A terrifying threat emerging from the shadows of the past who's fueled by blood revenge, and who is determined to shatter this family and destroy everything—and everyone—that Dom loves, forever.",
+    "title": "Rápidos y Furiosos X",
+    "description": "Durante numerosas misiones más que imposibles, Dom Toretto y su familia han sido capaces de ser más listos, de tener más valor y de ir más rápido que cualquier enemigo que se cruzara con ellos. Pero ahora tendrán que enfrentarse al oponente más letal que jamás hayan conocido: un terrible peligro que resurge del pasado, que se mueve por una sangrienta sed de venganza y que está dispuesto a destrozar a la familia y destruir para siempre todo lo que a Dom le importa.",
     "image": "https://image.tmdb.org/t/p/original/fiVW06jE7z9YnO4trhaMEdclSiC.jpg",
-    "release_date": "2023-05-17"
+    "actors": "Vin Diesel, Michelle Rodriguez, Tyrese Gibson, Ludacris, John Cena, Jason Momoa, Jason Statham",
+    "director": "Louis Leterrier",
+    "duration": 141,
+    "release_date": "2023-05-17",
+    "trailer": "https://www.youtube.com/watch?v=FDhvbIqTQwI",
+    "clasification": "+13",
+    "genre": ["Accion"]
   },
   {
-		"title": "The Super Mario Bros. Movie",
-    "description": "While working underground to fix a water main, Brooklyn plumbers—and brothers—Mario and Luigi are transported down a mysterious pipe and wander into a magical new world. But when the brothers are separated, Mario embarks on an epic quest to find Luigi.",
+    "title": "John Wick 4",
+    "description": "John Wick descubre un camino para derrotar a la Alta Mesa. Pero para poder ganar su libertad, Wick deberá enfrentarse a un nuevo rival con poderosas alianzas en todo el mundo, capaz de convertir a viejos amigos en enemigos.",
+    "image": "https://image.tmdb.org/t/p/original/vZloFAK7NmvMGKE7VkF5UHaz0I.jpg",
+    "actors": "Keanu Reeves, Donnie Yen, Ian McShane, Laurence FishBurne, Rina Sawyama, Lance Reddick, Clancy Brown",
+    "director": "Chad Stahelski",
+    "duration": 169,
+    "release_date": "2023-03-22",
+    "trailer": "https://www.youtube.com/watch?v=qEVUtrk8_B4",
+    "clasification": "+13",
+  },
+  {
+    "title": "Súper Mario Bros. La película",
+    "description": "Mientras trabajan en una avería subterránea, los fontaneros de Brooklyn, Mario y su hermano Luigi, viajan por una misteriosa tubería hasta un nuevo mundo mágico. Pero, cuando los hermanos se separan, Mario deberá emprender una épica misión para encontrar a Luigi.",
     "image": "https://image.tmdb.org/t/p/original/qNBAXBIQlnOThrVvA6mA2B5ggV6.jpg",
-    "release_date": "2023-04-05"
+    "actors": "Chris Pratt, Charlie Day, Anya Taylor-Joy, Jack Black, Seth Rogen",
+    "director": "Aaron Horvath",
+    "duration": 92,
+    "release_date": "2023-04-05",
+    "trailer": "https://www.youtube.com/watch?v=SvJwEiy2Wok",
+    "clasification": "ATP",
   },
   {
-		"title": "Spider-Man: Across the Spider-Verse",
-    "description": "After reuniting with Gwen Stacy, Brooklyn’s full-time, friendly neighborhood Spider-Man is catapulted across the Multiverse, where he encounters the Spider Society, a team of Spider-People charged with protecting the Multiverse’s very existence. But when the heroes clash on how to handle a new threat, Miles finds himself pitted against the other Spiders and must set out on his own to save those he loves most.",
-    "image": "https://image.tmdb.org/t/p/original/8Vt6mWEReuy4Of61Lnj5Xj704m8.jpg",
-    "release_date": "2023-05-31"
-  },
-  {
-		"title": "Hypnotic",
-    "description": "A detective becomes entangled in a mystery involving his missing daughter and a secret government program while investigating a string of reality-bending crimes.",
+    "title": "Hypnotic",
+    "description": "Un detective se ve envuelto en un misterio en el que está involucrada su hija desaparecida y un programa secreto del gobierno mientras investiga una serie de atracos de alto nivel.",
     "image": "https://image.tmdb.org/t/p/original/3IhGkkalwXguTlceGSl8XUJZOVI.jpg",
-    "release_date": "2023-05-11"
+    "actors": "Ben Affleck, Alice Braga, J. D. Pardo, Dayo Okeniyi, Jeff Fahey, Jackie Earle Haley",
+    "director": "Robert Rodriguez",
+    "duration": 92,
+    "release_date": "2023-05-11",
+    "trailer": "https://www.youtube.com/watch?v=N-qn4h-amyY",
+    "clasification": "+13",
   },
   {
-		"title": "Transformers: Rise of the Beasts",
-    "description": "When a new threat capable of destroying the entire planet emerges, Optimus Prime and the Autobots must team up with a powerful faction known as the Maximals. With the fate of humanity hanging in the balance, humans Noah and Elena will do whatever it takes to help the Transformers as they engage in the ultimate battle to save Earth.",
+    "title": "Spider-Man: Cruzando el Multiverso",
+    "description": "Miles Morales regresa para una aventura épica que transportará al amigable vecino de Brooklyn Spider-Man a través del Multiverso para unir fuerzas con Gwen Stacy y un nuevo equipo de Spider-People, y enfrentarse así a un villano mucho más poderoso que cualquier cosa que hayan conocido antes.",
+    "image": "https://image.tmdb.org/t/p/original/8Vt6mWEReuy4Of61Lnj5Xj704m8.jpg",
+    "actors": "Shameik Moore, Hailee Steinfeld, Brian Tyree Henry, Luna Lauren Velez, Jake Johnson",
+    "director": "Kemp Powers",
+    "duration": 136,
+    "release_date": "2023-05-31",
+    "trailer": "https://www.youtube.com/watch?v=b3_1cyJRaQ8",
+    "clasification": "ATP",
+  },
+  {
+    "title": "Transformers: El despertar de las bestias",
+    "description": "La batalla en la Tierra ya no es solo entre Autobots y Decepticons... Maximals, Predacons y Terrorcons se unen a Transformers: Rise of the Beasts.",
     "image": "https://image.tmdb.org/t/p/original/gPbM0MK8CP8A174rmUwGsADNYKD.jpg",
-    "release_date": "2023-06-06"
+    "actors": "Anthony Ramos, Dominique Fishback, Peter Cullen, Ron Perlman, Peter Dinklage, Michelle Yeoh, Pete Davidson",
+    "director": "Steven Caple Jr.",
+    "duration": 127,
+    "release_date": "2023-06-06",
+    "trailer": "https://www.youtube.com/watch?v=v0d0id78XdE",
+    "clasification": "ATP",
   },
   {
-		"title": "The Black Demon",
-    "description": "Oilman Paul Sturges' idyllic family vacation turns into a nightmare when they encounter a ferocious megalodon shark that will stop at nothing to protect its territory. Stranded and under constant attack, Paul and his family must somehow find a way to get his family back to shore alive before it strikes again in this epic battle between humans and nature.",
-    "image": "https://image.tmdb.org/t/p/original/uiFcFIjig0YwyNmhoxkxtAAVIL2.jpg",
-    "release_date": "2023-04-26"
+    "title": "Avatar: El sentido del agua",
+    "description": "Ambientada más de una década después de los acontecimientos de la primera película, 'Avatar: The Way of Water' empieza contando la historia de la familia Sully (Jake, Neytiri y sus hijos), los problemas que los persiguen, lo que tienen que hacer para mantenerse a salvo, las batallas que libran para seguir con vida y las tragedias que sufren.",
+    "image": "https://image.tmdb.org/t/p/original/t6HIqrRAclMCA60NsSmeqe9RmNV.jpg",
+    "actors": "Sam Worthington, Zoe Saldaña, Sigourney Weaver, Stephen Lang, Kate Winslet, Cliff Curtis, Joel David Moore",
+    "director": "James Cameron",
+    "duration": 192,
+    "release_date": "2022-12-14",
+    "trailer": "https://www.youtube.com/watch?v=FSyWAxUg3Go",
+    "clasification": "ATP",
   },
   {
-		"title": "The Little Mermaid",
-    "description": "The youngest of King Triton’s daughters, and the most defiant, Ariel longs to find out more about the world beyond the sea, and while visiting the surface, falls for the dashing Prince Eric. With mermaids forbidden to interact with humans, Ariel makes a deal with the evil sea witch, Ursula, which gives her a chance to experience life on land, but ultimately places her life – and her father’s crown – in jeopardy.",
-    "image": "https://image.tmdb.org/t/p/original/ym1dxyOk4jFcSl4Q2zmRrA5BEEN.jpg",
-    "release_date": "2023-05-18"
-  },
-  {
-		"title": "Evil Dead Rise",
-    "description": "Three siblings find an ancient vinyl that gives birth to bloodthirsty demons that run amok in a Los Angeles apartment building and thrusts them into a primal battle for survival as they face the most nightmarish version of family imaginable.\"",
-    "image": "https://image.tmdb.org/t/p/original/5ik4ATKmNtmJU6AYD0bLm56BCVM.jpg",
-    "release_date": "2023-04-12"
-  },
-  {
-		"title": "Guardians of the Galaxy Vol. 3",
-    "description": "Peter Quill, still reeling from the loss of Gamora, must rally his team around him to defend the universe along with protecting one of their own. A mission that, if not completed successfully, could quite possibly lead to the end of the Guardians as we know them.",
+    "title": "Guardianes de la Galaxia: Volumen 3",
+    "description": "Star-Lord, todavía recuperándose de la pérdida de Gamora, debe reunir a su equipo para defender el universo junto con la protección de uno de los suyos. Una misión que, si no se completa, podría llevar al final de los Guardianes tal como los conocemos.",
     "image": "https://image.tmdb.org/t/p/original/r2J02Z2OpNTctfOSN1Ydgii51I3.jpg",
-    "release_date": "2023-05-03"
+    "actors": "Chris Pratt, Zoe Saldaña, Dave Bautista, Karen Gillan, Pom Klementieff, Vin Diesel, Bradley Cooper",
+    "director": "James Gunn",
+    "duration": 149,
+    "release_date": "2023-05-03",
+    "trailer": "https://www.youtube.com/watch?v=9SfnkovRye8",
+    "clasification": "ATP",
   },
   {
-		"title": "Sisu",
-    "description": "Deep in the wilderness of Lapland, Aatami Korpi is searching for gold but after he stumbles upon Nazi patrol, a breathtaking and gold-hungry chase through the destroyed and mined Lapland wilderness begins.",
-    "image": "https://image.tmdb.org/t/p/original/ygO9lowFMXWymATCrhoQXd6gCEh.jpg",
-    "release_date": "2023-01-27"
-  },
-  {
-		"title": "The Pope's Exorcist",
-    "description": "Father Gabriele Amorth, Chief Exorcist of the Vatican, investigates a young boy's terrifying possession and ends up uncovering a centuries-old conspiracy the Vatican has desperately tried to keep hidden.",
+    "title": "El exorcista del papa",
+    "description": "Película sobre Gabriele Amorth, un sacerdote que ejerció como exorcista principal del Vaticano, realizando más de cien mil exorcismos a lo largo de su vida. Amorth escribió dos libros de memorias donde detalló sus experiencias luchando contra Satanás.",
     "image": "https://image.tmdb.org/t/p/original/gNPqcv1tAifbN7PRNgqpzY8sEJZ.jpg",
-    "release_date": "2023-04-05"
+    "actors": "Russell Crowe, Daniel Zovatto, Alex Essoe, Franco Nero, Peter DeSouza-Feighoney, Laurel Marsden, Cornell John",
+    "director": "Julius Avery",
+    "duration": 103,
+    "release_date": "2023-04-05",
+    "trailer": "https://www.youtube.com/watch?v=a-Cx7IE04sA",
+    "clasification": "+16",
+},
+  {
+    "title": "Día de la Madre",
+    "description": "Nina, una secreta ex agente de operaciones especiales de la OTAN, debe usar todas sus habilidades letales para salvar a su hijo que ha sido secuestrado por gángsters despiadados. Encontrar a Max es una doble oportunidad para ella. Una oportunidad para una nueva sensación de adrenalina y la posibilidad de volver a la vida para su hijo, a quien debió haber tenido más.",
+    "image": "https://image.tmdb.org/t/p/original/wws9Z90DdZ7D0n3gdzFSZ6cntJi.jpg",
+    "actors": "Agnieszka Grochowska, Adrian Delikta, Dariusz Chojnacki, Paulina Chruściel, Paweł Koślik, Arkadiusz Brykalski",
+    "director": "Mateusz Rakowicz",
+    "duration": 94,
+    "release_date": "2023-05-24",
+    "trailer": "https://www.youtube.com/watch?v=JGSyCa9dXCc",
+    "clasification": "+13",
   },
   {
-		"title": "Project Wolf Hunting",
-    "description": "While under heavily armed guard, the dangerous convicts aboard a cargo ship unite in a coordinated escape attempt that soon escalates into a bloody, all-out riot. But as the fugitives continue their brutal campaign of terror, they soon discover that not even the most vicious among them is safe from the horror they unknowingly unleashed from the darkness below deck.",
-    "image": "https://image.tmdb.org/t/p/original/dniWicB6fa7NvpGbguxWlNPMc5f.jpg",
-    "release_date": "2022-09-21"
+    "title": "Ant-Man y la Avispa: Quantumanía",
+    "description": "La pareja de superhéroes Scott Lang y Hope van Dyne regresa para continuar sus aventuras como Ant-Man y la Avispa. Los dos, junto a los padres de Hope, Hank Pym y Janet van Dyne y la hija de Scott, Cassie Lang, se dedican a explorar el Mundo Cuántico, interactuando con nuevas y extrañas criaturas y embarcándose en una aventura que les llevará más allá de los límites de lo que creían posible.",
+    "image": "https://image.tmdb.org/t/p/original/qnqGbB22YJ7dSs4o6M7exTpNxPz.jpg",
+    "actors": "Paul Rudd, Evangeline Lilly, Jonathan Majors, Kathryn Newton, Michelle Pfeiffer, Michael Douglas, Corey Stoll, Bill Murray, William Jackson Harper",
+    "director": "Peyton Reed",
+    "duration": 125,
+    "release_date": "2023-02-15",
+    "trailer": "https://www.youtube.com/watch?v=BaLJ044I2HI",
+    "clasification": "ATP",
   },
   {
-		"title": "To Catch a Killer",
-    "description": "Baltimore. New Year's Eve. A talented but troubled police officer is recruited by the FBI's chief investigator to help profile and track down a mass murderer.",
-    "image": "https://image.tmdb.org/t/p/original/mFp3l4lZg1NSEsyxKrdi0rNK8r1.jpg",
-    "release_date": "2023-04-06"
+    "title": "Sangre y oro",
+    "description": "La pareja de superhéroes Scott Lang y Hope van Dyne regresa para continuar sus aventuras como Ant-Man y la Avispa. Los dos, junto a los padres de Hope, Hank Pym y Janet van Dyne y la hija de Scott, Cassie Lang, se dedican a explorar el Mundo Cuántico, interactuando con nuevas y extrañas criaturas y embarcándose en una aventura que les llevará más allá de los límites de lo que creían posible.",
+    "image": "https://image.tmdb.org/t/p/original/xayG1dbIjJkmvimekx6TNrMOXmA.jpg",
+    "actors": "Robert Maaser, Jördis Triebel, Marie Hacke, Alexander Scheer, Roy McCrerey, Stephan Grossmann, Florian Schmidtke",
+    "director": "Peter Thorwarth",
+    "duration": 98,
+    "release_date": "2023-04-21",
+    "trailer": "https://www.youtube.com/watch?v=KPnADs2iQzY",
+    "clasification": "+13",
   },
-  {
-		"title": "Guy Ritchie's The Covenant",
-    "description": "During the war in Afghanistan, a local interpreter risks his own life to carry an injured sergeant across miles of grueling terrain.",
-    "image": "https://image.tmdb.org/t/p/original/jZy73aPYrwwhuc37ALgnJUCaTnK.jpg",
-    "release_date": "2023-04-19"
-  },
-  {
-		"title": "The Mother",
-    "description": "A deadly female assassin comes out of hiding to protect the daughter that she gave up years before, while on the run from dangerous men.",
-    "image": "https://image.tmdb.org/t/p/original/vnRthEZz16Q9VWcP5homkHxyHoy.jpg",
-    "release_date": "2023-05-04"
-  },
-  {
-		"title": "Snag",
-    "description": "An Australian lone wolf's quiet existence is shattered when he learns that the woman he once loved and thought was dead is alive and held captive by ruthless gangsters. Now, to take on this dangerous criminal organization, he must seek out allies and storm into a world of violence to rescue the love of his life in this gritty, modern day violent fairytale.",
-    "image": "https://image.tmdb.org/t/p/original/nhj4Q39qMSk6X5Ly9j9Yqyjrg5A.jpg",
-    "release_date": "2023-04-28"
-  },
-  {
-		"title": "The Wandering Earth II",
-    "description": "A prequel to The Wandering Earth.",
-    "image": "https://image.tmdb.org/t/p/original/pR858ihc6Ls9xohpdRJVjV787ml.jpg",
-    "release_date": "2023-01-22"
-  },
-  {
-		"title": "Sword Art Online the Movie -Progressive- Scherzo of Deep Night",
-    "description": "Over a month has passed since 10,000 users were trapped inside the \"Sword Art Online\" world. Asuna, who cleared the first floor of the floating iron castle of Aincrad, joined up with Kirito and continued her journey to reach the top floor. With the support of female Information Broker Argo, clearing the floors seemed to be progressing smoothly, but conflict erupts between two major guilds who should be working together – the top player groups ALS (the Aincrad Liberation Squad) and DKB (the Dragon Knights Brigade). And meanwhile, behind the scenes exists a mysterious figure pulling the strings…",
-    "image": "https://image.tmdb.org/t/p/original/2lEyzOq6ILNgBpLLpTRckQhbNNt.jpg",
-    "release_date": "2022-10-22"
-  },
-  {
-		"title": "Ride On",
-    "description": "The once beautiful, now down-and-out Dragon Tiger martial artist Lao Luo lives with his beloved horse, Red Rabbit. Due to a debt dispute involving Red Rabbit, he is faced with the crisis of \"father-son separation\". In desperation, Lao Luo asks his daughter Bao and her boyfriend Naihua, who have misunderstood him for years, for help. On the road of self-help of three people and one horse, they make a lot of jokes and gradually get closer to each other.",
-    "image": "https://image.tmdb.org/t/p/original/ukFo9pwVJ5mzTgmFCanYsYC4roF.jpg",
-    "release_date": "2023-04-07"
-  },
-  {
-		"title": "Scream VI",
-    "description": "Following the latest Ghostface killings, the four survivors leave Woodsboro behind and start a fresh chapter.",
-    "image": "https://image.tmdb.org/t/p/original/wDWwtvkRRlgTiUr6TyLSMX8FCuZ.jpg",
-    "release_date": "2023-03-08"
+]
+
+const dataAllGenres = [  
+  {    
+    "name": "Acción"  
+  },  
+  {    
+    "name": "Aventura"  
+  },  
+  {    
+    "name": "Animación"  
+  },  
+  {    
+    "name": "Comedia"  
+  },  
+  {    
+    "name": "Crimen"  
+  },  
+  {    
+    "name": "Documental"  
+  },  
+  {    
+    "name": "Drama"  
+  },  
+  {    
+    "name": "Familia"  
+  },  
+  {    
+    "name": "Fantasía"  
+  },  
+  {    
+    "name": "Historia"  
+  },  
+  {    
+    "name": "Terror"  
+  },  
+  {    
+    "name": "Música"  
+  },  
+  {    
+    "name": "Misterio"  
+  },  
+  {    
+    "name": "Romance"  
+  },  
+  {    
+    "name": "Ciencia ficción"  
+  },  
+  {    
+    "name": "Película de TV"  
+  },  
+  {    
+    "name": "Suspense"  
+  },  
+  {    
+    "name": "Guerra"  
+  },  
+  {    
+    "name": "Western"  
   }
 ]
 
-const dataAllGenres = [];
 
 module.exports = {
   dataAllMovies,
