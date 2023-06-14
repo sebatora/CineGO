@@ -1,5 +1,7 @@
 require("dotenv").config();
 const app = require("./app.js");
+const postBulkGenres = require("./controllers/postBulkGenresController.js");
+const postBulkMovies = require("./controllers/postBulkMoviesController.js");
 const { sequelize } = require("./db.js");
 
 async function main(){
@@ -11,6 +13,10 @@ async function main(){
 		app.listen(PORT, () => {
 			console.log(`Server running on port ${PORT}`);
 		});
+
+		// SE EJECTAN LAS FUNCIONES PARA QUE CREE AUTOMATICAMENTE LAS TABLAS AL INICIAR EL SERVER
+		postBulkGenres();
+		postBulkMovies();
 	} catch (error) {
 		console.error("Error synchronizing database:", error);
 	}
