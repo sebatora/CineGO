@@ -1,10 +1,10 @@
-const handlerOrderAscending = require("../handlers/handlerOrderAscending");
-const handlerOrderDescending = require("../handlers/handlerOrderDescending copy");
+const handlerFilterMovies = require('../handlers/handlerFilterMovies');
 
 const routerOrder = require("express").Router();
 
 // Trae todas las peliculas por orden
-routerOrder.get("/sortascending", handlerOrderAscending);
-routerOrder.get("/sortdescending", handlerOrderDescending);
+routerOrder.get("/", handlerFilterMovies);
+// routerOrder.get("/sortdescending", handlerOrderDescending);
+
 
 module.exports = routerOrder;
