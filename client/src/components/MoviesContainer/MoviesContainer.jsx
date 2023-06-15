@@ -1,8 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import style from "./MoviesContainer.module.css";
 import MovieCard from "../MovieCard/MovieCard";
 import Spinner from "../Spinner/Spinner";
-import Filter from "../Filter/Filter";
 
 function MoviesContainer() {
   const [movies, setMovies] = useState([]);
@@ -11,7 +11,7 @@ function MoviesContainer() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("/movies");
+        const response = await axios.get("http://localhost:3001/movies");
         setMovies(response.data);
         setLoading(false);
       } catch (error) {
@@ -23,12 +23,11 @@ function MoviesContainer() {
   }, []);
 
   return (
-    <div className="MoviesContainer">
-      <Filter movies={movies} />
+    <div className={style.containerMovies}>
       {loading ? (
         <Spinner />
       ) : (
-        <div className="w-full flex flex-wrap justify-center">
+        <div className={style.containerCardMovie}>
           {movies.map(({ id, title, description, image, release_date }) => (
             <MovieCard
               key={id}
