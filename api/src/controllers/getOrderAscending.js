@@ -1,9 +1,8 @@
-const getAllMovies = require("./getAllMoviesController");
-
-const getOrderAscending = async () => {
+const getOrderAscending = async (filteredCopy) => {
   try {
-    const allMovies= await getAllMovies()
-    const order = allMovies.sort((a, b) => a.release_date.localeCompare(b.release_date));
+    const order = filteredCopy.sort((a, b) =>
+      a.release_date.localeCompare(b.release_date)
+    );
     return order;
   } catch (error) {
     throw new Error("Error al obtener los generos");

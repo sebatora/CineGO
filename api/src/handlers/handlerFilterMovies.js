@@ -1,3 +1,4 @@
+const getAllMovies = require("../controllers/getAllMoviesController");
 const getOrderAZ = require("../controllers/getOrderAZ");
 const getOrderAscending = require("../controllers/getOrderAscending");
 const getOrderDescending = require("../controllers/getOrderDescending");
@@ -7,20 +8,22 @@ const handlerFilterMovies = async (req, res) => {
   const { order, filterGenre, filterClasification } = req.body;
 
   try {
-    let filtered = null;
+    let filtered = await getAllMovies();
 
     if (order) {
       if (order === "antiguo") {
-        filtered = await getOrderAscending();
+        const filteredCopy = filtered;
+        filtered = await getOrderAscending(filteredCopy);
       } else if (order === "reciente") {
-        filtered = await getOrderDescending();
+        const filteredCopy = filtered;
+        filtered = await getOrderDescending(filteredCopy);
       } else if (order === "ascendente") {
-        filtered = await getOrderAZ();
+        const filteredCopy = filtered;
+        filtered = await getOrderAZ(filteredCopy);
       } else if (order === "descendente") {
-        filtered = await getOrderZA();
+        const filteredCopy = filtered;
+        filtered = await getOrderZA(filteredCopy);
       }
-
-      return res.status(200).json(filtered);
     }
     // if(filterGenre){
     //      console.log("hay generos")
