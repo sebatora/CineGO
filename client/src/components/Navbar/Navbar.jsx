@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import cinego_blanco from "../../assets/cinego_blanco.png"
 import cinego_negro from "../../assets/cinego_negro.png"
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import SearchBar from "../SearchBar/SearchBar";
 
 function Navbar() {
 
@@ -26,6 +27,8 @@ function Navbar() {
         <Link to="/about" className={style.navLink}>
           About
         </Link>
+
+        <SearchBar/>
 
         <Link to="/login" className={style.navLink}>
           <AccountCircleIcon sx={{ fontSize: 25 }} />

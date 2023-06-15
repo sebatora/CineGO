@@ -10,6 +10,7 @@
 
 .navLinkContainer{
   margin: 1%;
+  display: flex;
 }
 
 .navLogo{

@@ -1,25 +1,61 @@
-import React from "react";
-import style from './Detail.module.css'
+import React, { useEffect} from "react";
+import style from './Detail.module.css';
+import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { cleanDetail, getMovieById } from "../../redux/actions";
 
 function Detail() {
+
+  const dispatch = useDispatch();
+  const { id } = useParams();
+  const { title, description, image, actors, director, duration, trailer, clasification, genres } = useSelector(state => state.movieById);
+
+  useEffect(() => {
+    dispatch(getMovieById(id));
+    return () => dispatch(cleanDetail())
+
+  }, [id]);
+
+
   return (
-    <div className={style.detailContainer}>
-      <div className={style.leftContainer}>
-        <img src="https://pics.filmaffinity.com/Spider_Man_Cruzando_el_Multiverso-611174657-large.jpg" alt="Ilustracion" />
-        <h3 className={style.textWrapper}> +13 </h3>
-        <div>
-          <h5> Gender: Animacion </h5>
-          <h5> Duration: 140 min</h5>
-          <h5> Actors: </h5>
-          <h5> Director: Joaquim Dos Santos, Justin K. Thompson, Kemp Powers </h5>
+    <div className={style.container}>
+      <div className={style.row}>
+        <div className={style.infoBox}>
+          {/* <img src="https://img.freepik.com/vector-gratis/mancha-acuarela-abstracta-colorida_1035-18218.jpg?w=2000" alt="fondo" className={style.imagenFondo}></img> */}
+          <h2 className={style.name}>
+            <strong>{title}</strong>
+          </h2>
+          <p className={style.description}> {description} </p>
+          <div className={style.buttonContainer}>
+            <button className={style.button} type="submit">¡Comprar entradas!</button>
+          </div>
+          <iframe width="560" height="315" src={trailer} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
         </div>
-      </div>
-      <div className={style.rightContainer}>
-        <img src="https://i.ytimg.com/vi/yEYuRScVB8c/hqdefault.jpg" alt="Video trailer" />
-        <h5>Después de reunirse con Gwen Stacy, Spider-Man, el amigable vecino de Brooklyn, es transportado a través del Multiverso, donde se encuentra con un equipo de Spider-Gente encargado de proteger su existencia. Pero cuando los héroes difieren acerca de cómo manejar una nueva amenaza, Miles se enfrenta a las otros Spiders y debe redefinir lo que significa ser un héroe para poder salvar a las personas que más ama.</h5>
-      </div>
-      <div>
-        <button className={style.boton} type="submit">Comprar entradas!</button>
+        <div className={style.movieInfo}>
+          <figure className={style.figure}>
+            <img src={image} alt={title} className={style.movieImage} />
+          </figure>
+          <ul>
+            <li>
+              <strong>Título Original:  </strong>  {title}
+            </li>
+            <li>
+              <strong>Género:  </strong> {genres?.map(genre => genre.name).join(', ')}
+            </li>
+            <li>
+              <strong>Director:  </strong>   {director}
+            </li>
+            <li>
+              <strong>Actores:  </strong>   {actors}
+            <li>
+              <strong>Clasificación:  </strong>  {clasification}
+            </li>
+            </li>
+            <li>
+              <strong>Duración:  </strong>   {duration} min
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   );

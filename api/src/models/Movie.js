@@ -13,7 +13,7 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     description: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false, 
     },
     image: {
@@ -32,6 +32,10 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
+    release_date: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     trailer: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -44,6 +48,6 @@ module.exports = (sequelize) => {
       type: DataTypes.BOOLEAN,
       allowNull: false,
       defaultValue: true,
-    }
+    },
   }, { timestamps: false })
 }

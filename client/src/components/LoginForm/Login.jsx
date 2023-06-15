@@ -3,7 +3,9 @@ import { useForm } from "react-hook-form";
 import style from "./login.module.css";
 import { Link, useNavigate } from "react-router-dom";
 
-const Login = () => {
+
+function Login() {
+
   const { register, handleSubmit, formState: { errors } } = useForm();
   const navigate = useNavigate();
 
@@ -30,11 +32,13 @@ const Login = () => {
 
       <input className={style.input} type="password" placeholder="Contraseña" {...register("password", { required: true })} />
       {errors.password && <p className={style.p}>La contraseña es requerida</p>}
+
       <button className={style.button} type="submit">Entrar</button>
     </form>
     <div>
     <h1 className={style.h1segundo}>¿No tenés cuenta?</h1>
     <Link to={`/createUser`} className={style.linkButton}>
+
         <button type="submit" className={style.button} >Crear cuenta</button>
     </Link>
       </div>
