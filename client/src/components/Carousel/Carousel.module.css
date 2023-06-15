@@ -35,11 +35,17 @@
 
 .containerInfo {
   position: relative;
-  width: 90%;
+  width: 1280px;
   height: 90%;
   margin: 0 auto;
   background-color: rgb(223, 216, 216);
   border-radius: 5px;
+}
+
+@media (max-width: 1280px){
+  .containerInfo {
+    width: 100%
+  }
 }
 
 .carouselImage {
