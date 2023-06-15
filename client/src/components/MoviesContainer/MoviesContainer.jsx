@@ -4,10 +4,13 @@ import style from "./MoviesContainer.module.css";
 import MovieCard from "../MovieCard/MovieCard";
 import Spinner from "../Spinner/Spinner";
 
+import { useSelector } from "react-redux";
+
 function MoviesContainer() {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  const { allMovies } = useSelector(state => state)
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -21,14 +24,14 @@ function MoviesContainer() {
 
     fetchData();
   }, []);
-
+const Movies = allMovies? allMovies: movies;
   return (
     <div className={style.containerMovies}>
       {loading ? (
         <Spinner />
       ) : (
         <div className={style.containerCardMovie}>
-          {movies.map(({ id, title, description, image, release_date }) => (
+          {Movies.map(({ id, title, description, image, release_date }) => (
             <MovieCard
               key={id}
               id={id}
