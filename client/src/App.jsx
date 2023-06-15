@@ -8,6 +8,7 @@ import Login from "./components/Forms/Login";
 import { Route, Routes } from "react-router-dom";
 import axios from "axios";
 import Footer from "./components/Footer/Footer";
+import Error404 from "./components/Error404/Error404";
 axios.defaults.baseURL = "http://localhost:3001";
 
 function App() {
@@ -25,6 +26,8 @@ function App() {
         <Route path="/cinePlus" element={<CinePlus />} />
 
         <Route path="/login" element={<Login />} />
+
+        <Route path="*" element={<Error404/> } /> //Esta ruta tiene que estar renderizada SI o SI al final
       </Routes>
 
       <Footer />
