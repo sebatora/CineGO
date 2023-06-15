@@ -1,0 +1,92 @@
+
+  
+  .form {
+    width: 400px;
+    
+  }
+  
+  .h1 {
+    font-weight: 100;
+    color: white;
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgb(79, 98, 148);
+    margin-bottom: 20px;
+  }
+  
+  .p {
+    color: #bf1650;
+  }
+  
+  .p::before {
+    display: inline;
+    content: "⚠ ";
+  }
+
+  .inputWrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .label {
+    color: white;
+    margin-bottom: 5px;
+  }
+  
+  
+  .input {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    border-radius: 4px;
+    border: none;
+    font-size: 14px;
+    padding: 10px 20px;
+  }
+
+  .selectInput {
+  border: none;
+}
+
+  
+  .button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #4f6294;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  @media (min-width: 768px) {
+    .containerForm {
+      flex-direction: row;
+    }
+  
+    .form {
+      width: 800px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+  
+    .inputWrapper {
+      width: 48%;
+    }
+  }
+  
+  .button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #4f6294;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
