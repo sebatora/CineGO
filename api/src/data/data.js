@@ -7,7 +7,7 @@ const dataAllMovies = [
     "director": "Louis Leterrier",
     "duration": 141,
     "release_date": "2023-05-17",
-    "trailer": "https://www.youtube.com/watch?v=FDhvbIqTQwI",
+    "trailer": "https://www.youtube.com/embed/FDhvbIqTQwI",
     "clasification": "+13",
     "genres": ["Acción", "Crimen", "Suspense"]
   },
@@ -19,7 +19,7 @@ const dataAllMovies = [
     "director": "Chad Stahelski",
     "duration": 169,
     "release_date": "2023-03-22",
-    "trailer": "https://www.youtube.com/watch?v=qEVUtrk8_B4",
+    "trailer": "https://www.youtube.com/embed/qEVUtrk8_B4",
     "clasification": "+13",
     "genres": ["Acción", "Suspense", "Crimen"]
   },
@@ -31,7 +31,7 @@ const dataAllMovies = [
     "director": "Aaron Horvath",
     "duration": 92,
     "release_date": "2023-04-05",
-    "trailer": "https://www.youtube.com/watch?v=SvJwEiy2Wok",
+    "trailer": "https://www.youtube.com/embed/SvJwEiy2Wok",
     "clasification": "ATP",
     "genres": ["Animación", "Familia", "Aventura", "Fantasía", "Comedia"]
   },
@@ -43,7 +43,7 @@ const dataAllMovies = [
     "director": "Robert Rodriguez",
     "duration": 92,
     "release_date": "2023-05-11",
-    "trailer": "https://www.youtube.com/watch?v=N-qn4h-amyY",
+    "trailer": "https://www.youtube.com/embed/N-qn4h-amyY",
     "clasification": "+13",
     "genres": ["Misterio", "Suspense", "Ciencia ficción"]
   },
@@ -55,7 +55,7 @@ const dataAllMovies = [
     "director": "Kemp Powers",
     "duration": 136,
     "release_date": "2023-05-31",
-    "trailer": "https://www.youtube.com/watch?v=b3_1cyJRaQ8",
+    "trailer": "https://www.youtube.com/embed/b3_1cyJRaQ8",
     "clasification": "ATP",
     "genres": ["Acción", "Aventura", "Animación", "Ciencia ficción"]
   },
@@ -67,7 +67,7 @@ const dataAllMovies = [
     "director": "Steven Caple Jr.",
     "duration": 127,
     "release_date": "2023-06-06",
-    "trailer": "https://www.youtube.com/watch?v=v0d0id78XdE",
+    "trailer": "https://www.youtube.com/embed/v0d0id78XdE",
     "clasification": "ATP",
     "genres": ["Acción", "Aventura", "Ciencia ficción"]
   },
@@ -79,7 +79,7 @@ const dataAllMovies = [
     "director": "James Cameron",
     "duration": 192,
     "release_date": "2022-12-14",
-    "trailer": "https://www.youtube.com/watch?v=FSyWAxUg3Go",
+    "trailer": "https://www.youtube.com/embed/FSyWAxUg3Go",
     "clasification": "ATP",
     "genres": ["Ciencia ficción", "Aventura", "Acción"]
   },
@@ -91,7 +91,7 @@ const dataAllMovies = [
     "director": "James Gunn",
     "duration": 149,
     "release_date": "2023-05-03",
-    "trailer": "https://www.youtube.com/watch?v=9SfnkovRye8",
+    "trailer": "https://www.youtube.com/embed/9SfnkovRye8",
     "clasification": "ATP",
     "genres": ["Ciencia ficción", "Aventura", "Acción"]
   },
@@ -103,7 +103,7 @@ const dataAllMovies = [
     "director": "Julius Avery",
     "duration": 103,
     "release_date": "2023-04-05",
-    "trailer": "https://www.youtube.com/watch?v=a-Cx7IE04sA",
+    "trailer": "https://www.youtube.com/embed/a-Cx7IE04sA",
     "clasification": "+16",
     "genres": ["Terror", "Suspense"]
 },
@@ -115,7 +115,7 @@ const dataAllMovies = [
     "director": "Mateusz Rakowicz",
     "duration": 94,
     "release_date": "2023-05-24",
-    "trailer": "https://www.youtube.com/watch?v=JGSyCa9dXCc",
+    "trailer": "https://www.youtube.com/embed/JGSyCa9dXCc",
     "clasification": "+13",
     "genres": ["Suspense", "Drama", "Acción"]
   },
@@ -127,7 +127,7 @@ const dataAllMovies = [
     "director": "Peyton Reed",
     "duration": 125,
     "release_date": "2023-02-15",
-    "trailer": "https://www.youtube.com/watch?v=BaLJ044I2HI",
+    "trailer": "https://www.youtube.com/embed/BaLJ044I2HI",
     "clasification": "ATP",
     "genres": ["Acción", "Aventura", "Ciencia ficción"]
   },
@@ -139,7 +139,7 @@ const dataAllMovies = [
     "director": "Peter Thorwarth",
     "duration": 98,
     "release_date": "2023-04-21",
-    "trailer": "https://www.youtube.com/watch?v=KPnADs2iQzY",
+    "trailer": "https://www.youtube.com/embed/KPnADs2iQzY",
     "clasification": "+13",
     "genres": ["Acción", "Drama", "Bélica"]
   },

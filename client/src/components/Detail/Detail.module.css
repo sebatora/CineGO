@@ -1,7 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400&display=swap');
 
 .container {
-  width: 100%;
+  width: 80%;
+  height: 100%;
+  position: relative;
+  margin: 0 auto;
 }
 
 .row {
@@ -10,6 +13,7 @@
 }
 
 .infoBox {
+  width: 60%;
   position: relative;
   flex: 1;
   display: flex;
@@ -25,11 +29,12 @@
 } */
 
 .infoBox iframe{
-  width: 800px;
-  height: 415px;
+  width: 650px;
+  height: 315px;
 }
 
 .movieInfo {
+  width: 60%;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -37,6 +42,8 @@
   padding-left: 50px;
   max-width: 30%;
   margin-top: 40px;
+  justify-content: center;
+  align-items: center;
 }
 
 .name {
@@ -55,6 +62,7 @@
 
 .movieImage {
   width: 85%;
+  margin: 5px;
 }
 
 .movieInfo ul {
@@ -94,5 +102,8 @@
 }
 
 .figure{
-  margin: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
