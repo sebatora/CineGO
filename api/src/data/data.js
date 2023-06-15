@@ -9,7 +9,7 @@ const dataAllMovies = [
     "release_date": "2023-05-17",
     "trailer": "https://www.youtube.com/watch?v=FDhvbIqTQwI",
     "clasification": "+13",
-    "genre": ["Accion"]
+    "genres": ["Acción", "Crimen", "Suspense"]
   },
   {
     "title": "John Wick 4",
@@ -21,6 +21,7 @@ const dataAllMovies = [
     "release_date": "2023-03-22",
     "trailer": "https://www.youtube.com/watch?v=qEVUtrk8_B4",
     "clasification": "+13",
+    "genres": ["Acción", "Suspense", "Crimen"]
   },
   {
     "title": "Súper Mario Bros. La película",
@@ -32,6 +33,7 @@ const dataAllMovies = [
     "release_date": "2023-04-05",
     "trailer": "https://www.youtube.com/watch?v=SvJwEiy2Wok",
     "clasification": "ATP",
+    "genres": ["Animación", "Familia", "Aventura", "Fantasía", "Comedia"]
   },
   {
     "title": "Hypnotic",
@@ -43,6 +45,7 @@ const dataAllMovies = [
     "release_date": "2023-05-11",
     "trailer": "https://www.youtube.com/watch?v=N-qn4h-amyY",
     "clasification": "+13",
+    "genres": ["Misterio", "Suspense", "Ciencia ficción"]
   },
   {
     "title": "Spider-Man: Cruzando el Multiverso",
@@ -54,6 +57,7 @@ const dataAllMovies = [
     "release_date": "2023-05-31",
     "trailer": "https://www.youtube.com/watch?v=b3_1cyJRaQ8",
     "clasification": "ATP",
+    "genres": ["Acción", "Aventura", "Animación", "Ciencia ficción"]
   },
   {
     "title": "Transformers: El despertar de las bestias",
@@ -65,6 +69,7 @@ const dataAllMovies = [
     "release_date": "2023-06-06",
     "trailer": "https://www.youtube.com/watch?v=v0d0id78XdE",
     "clasification": "ATP",
+    "genres": ["Acción", "Aventura", "Ciencia ficción"]
   },
   {
     "title": "Avatar: El sentido del agua",
@@ -76,6 +81,7 @@ const dataAllMovies = [
     "release_date": "2022-12-14",
     "trailer": "https://www.youtube.com/watch?v=FSyWAxUg3Go",
     "clasification": "ATP",
+    "genres": ["Ciencia ficción", "Aventura", "Acción"]
   },
   {
     "title": "Guardianes de la Galaxia: Volumen 3",
@@ -87,6 +93,7 @@ const dataAllMovies = [
     "release_date": "2023-05-03",
     "trailer": "https://www.youtube.com/watch?v=9SfnkovRye8",
     "clasification": "ATP",
+    "genres": ["Ciencia ficción", "Aventura", "Acción"]
   },
   {
     "title": "El exorcista del papa",
@@ -98,6 +105,7 @@ const dataAllMovies = [
     "release_date": "2023-04-05",
     "trailer": "https://www.youtube.com/watch?v=a-Cx7IE04sA",
     "clasification": "+16",
+    "genres": ["Terror", "Suspense"]
 },
   {
     "title": "Día de la Madre",
@@ -109,6 +117,7 @@ const dataAllMovies = [
     "release_date": "2023-05-24",
     "trailer": "https://www.youtube.com/watch?v=JGSyCa9dXCc",
     "clasification": "+13",
+    "genres": ["Suspense", "Drama", "Acción"]
   },
   {
     "title": "Ant-Man y la Avispa: Quantumanía",
@@ -120,6 +129,7 @@ const dataAllMovies = [
     "release_date": "2023-02-15",
     "trailer": "https://www.youtube.com/watch?v=BaLJ044I2HI",
     "clasification": "ATP",
+    "genres": ["Acción", "Aventura", "Ciencia ficción"]
   },
   {
     "title": "Sangre y oro",
@@ -131,6 +141,7 @@ const dataAllMovies = [
     "release_date": "2023-04-21",
     "trailer": "https://www.youtube.com/watch?v=KPnADs2iQzY",
     "clasification": "+13",
+    "genres": ["Acción", "Drama", "Bélica"]
   },
 ]
 
