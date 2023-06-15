@@ -4,7 +4,7 @@ import About from "./components/About/About";
 import Detail from "./components/Detail/Detail";
 import CinePlus from "./components/cinePlus/cinePlus";
 import Navbar from "./components/Navbar/Navbar";
-import Login from "./components/Forms/Login";
+import Login from "./components/LoginForm/Login";
 import { Route, Routes } from "react-router-dom";
 import axios from "axios";
 import Footer from "./components/Footer/Footer";
