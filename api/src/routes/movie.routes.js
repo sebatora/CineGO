@@ -3,7 +3,7 @@ const handlerPostMovie = require("../handlers/handlerPostMovie");
 const handlerGetAllMovies = require("../handlers/handlerGetAllMovies");
 const handlerGetMovieById = require("../handlers/handlerGetMovieById");
 const handlerPostBulkMovies = require("../handlers/handlerPostBulkMovies");
-const handlerFilterMovies = require("../handlers/handlerFilterMovies");
+
 
 // Trae todas las peliculas
 routerMovie.get("/", handlerGetAllMovies);
