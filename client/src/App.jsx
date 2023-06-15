@@ -5,6 +5,7 @@ import Detail from './components/Detail/Detail';
 import CinePlus from './components/cinePlus/cinePlus';
 import Navbar from './components/Navbar/Navbar';
 import Login from './components/Forms/Login';
+import CreateUser from './components/Forms/CreateUser';
 import { Route, Routes } from "react-router-dom";
 import axios from 'axios';
 import Footer from './components/Footer/Footer';
@@ -27,6 +28,8 @@ function App() {
         <Route path="/cinePlus" element={<CinePlus />} />
 
         <Route path="/login" element={<Login />} />
+
+        <Route path="/CreateUser" element={<CreateUser />} />
 
       </Routes>
 
