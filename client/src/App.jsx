@@ -5,7 +5,7 @@ import Detail from "./components/Detail/Detail";
 import CinePlus from "./components/cinePlus/cinePlus";
 import Navbar from "./components/Navbar/Navbar";
 import Login from "./components/LoginForm/Login";
-import CreateUser from './components/Forms/CreateUser';
+import CreateUser from './components/CreateUserForm/CreateUser';
 
 import { Route, Routes } from "react-router-dom";
 import axios from "axios";
