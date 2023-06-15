@@ -36,7 +36,7 @@
   padding-right: 50px;
   padding-left: 50px;
   max-width: 30%;
-  margin-top: 35px;
+  margin-top: 40px;
 }
 
 .name {
@@ -54,7 +54,7 @@
 }
 
 .movieImage {
-  width: 100%;
+  width: 85%;
 }
 
 .movieInfo ul {
@@ -90,6 +90,7 @@
   display: inline-block;
   font-size: 16px;
   cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .figure{
