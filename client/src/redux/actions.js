@@ -6,7 +6,7 @@ import axios from "axios";
 export const getMovies = () => {  
   return async (dispatch) => {
     try {
-      const { data } = await axios.get(`http://localhost:3001/movies`)
+      const { data } = await axios.get(`/movies`)
       return dispatch({ type: GET_MOVIES, payload: data });
     }
     catch (error) {
@@ -32,7 +32,7 @@ export const getMovieById = (id) => {
 export const getMoviesByName = (name) => {  
   return async (dispatch) => {
     try {
-      const { data } = await axios.get(`http://localhost:3001/movies?title=${name}`)
+      const { data } = await axios.get(`/movies?title=${name}`)
       return dispatch({ type: GET_MOVIES_BY_TITLE, payload: data });
     }
     catch (error) {
