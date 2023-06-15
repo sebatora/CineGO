@@ -1,4 +1,4 @@
-import { GET_MOVIES, GET_MOVIE_BY_ID, GET_MOVIES_BY_TITLE, CLEAN_DETAIL, GET_GENRES, POST_MOVIE, DELETE_MOVIE, FILTER_GENRE, FILTER_CLASIFICATION, ORDER_ALPHABETIC, ORDER_DATE } from "./action-type";
+import { GET_MOVIES, GET_MOVIE_BY_ID, GET_MOVIES_BY_TITLE, CLEAN_DETAIL, GET_GENRES, POST_MOVIE, DELETE_MOVIE, FILTER_ORDER } from "./action-type";
 
 const initialState = {
   allMovies: [], 
@@ -58,6 +58,13 @@ const rootReducer = (state = initialState, {type, payload}) => {
         ...state,
       };
     };
+
+    case FILTER_ORDER: {
+      return {
+        ...state,
+        allMovies: payload,
+      }
+    }
 
     default:
       return { ...state }

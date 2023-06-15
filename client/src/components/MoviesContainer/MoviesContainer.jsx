@@ -5,18 +5,19 @@ import Spinner from "../Spinner/Spinner";
 
 
 import { useDispatch, useSelector } from "react-redux";
-import { getMovies } from "../../redux/actions";
+import { getGenres, getMovies } from "../../redux/actions";
 import Filter from "../Filter/Filter";
 
 function MoviesContainer() {
 
   const [loading, setLoading] = useState(true);
-  const { allMovies } = useSelector((state) => state);
+  const allMovies = useSelector((state) => state.allMovies);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getMovies());
+    dispatch(getGenres())
     setLoading(false)
   }, [dispatch]);
 

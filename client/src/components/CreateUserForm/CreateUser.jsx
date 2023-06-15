@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import style from "./login.module.css";
+import style from "./CreateUser.module.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Select from "react-select";
@@ -24,7 +24,6 @@ const CreateUser = () => {
   }; 
   
   const onSubmit = (data) => {
-    console.log(data);
     // Aquí puedes realizar la lógica para enviar los datos del formulario
   };
 
