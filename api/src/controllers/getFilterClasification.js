@@ -1,14 +1,13 @@
-const getAllMovies = require("./getAllMoviesController");
-
-const getFilterClasification = async (clasification) => {
+const getFilterClasification = async (filteredCopy, filterClasification) => {
   try {
-    const allMovies = await getAllMovies();
-    const filteredMovies = allMovies.filter(movie => movie.clasification === clasification);
-    
-    return filteredMovies 
+    const filteredMovies = filteredCopy.filter(
+      (movie) => movie.clasification === filterClasification
+    );
+
+    return filteredMovies;
   } catch (error) {
-    throw new Error ("Error")
+    throw new Error("Error");
   }
 };
 
-module.export = getFilterClasification;
+module.exports = getFilterClasification;
