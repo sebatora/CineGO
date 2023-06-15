@@ -1,6 +1,7 @@
 const getOrderAscending = require("../controllers/getOrderAscending");
 
 const handlerOrderAscending = async (req, res) => {
+
   try {
     const order = await getOrderAscending();
     res.status(200).json(order);
