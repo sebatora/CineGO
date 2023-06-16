@@ -27,19 +27,21 @@ function Login() {
     <div className={style.containerForm}>
     <form className={style.form} onSubmit={handleSubmit(onSubmit)}>
       <h1 className={style.h1} >Ingresa a tu cuenta</h1>
+
+      <label htmlFor="" className={style.label}>Usuario:</label>
       <input className={style.input} type="text" placeholder="Usuario" {...register("username", { required: true })} />
       {errors.username && <p className={style.p}>El nombre de usuario es requerido</p>}
 
+      <label htmlFor="" className={style.label}>Contraseña:</label>
       <input className={style.input} type="password" placeholder="Contraseña" {...register("password", { required: true })} />
       {errors.password && <p className={style.p}>La contraseña es requerida</p>}
 
       <button className={style.button} type="submit">Entrar</button>
     </form>
     <div>
-    <h1 className={style.h1segundo}>¿No tenés cuenta?</h1>
+    <h1 className={style.h1}>¿No tenés cuenta?</h1>
     <Link to={`/createUser`} className={style.linkButton}>
-
-        <button type="submit" className={style.button} >Crear cuenta</button>
+        <button type="submit" className={style.button}>Crear cuenta</button>
     </Link>
       </div>
     </div>
