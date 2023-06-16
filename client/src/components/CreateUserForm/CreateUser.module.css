@@ -1,17 +1,74 @@
+.containerForm {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 1px;
+  height: 100vh;
+  background: #2F2F2B;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+}
 
-  
   .form {
-    width: 400px;
-    
+    width: 600px;
+    margin-left: 80px;
   }
   
   .h1 {
+    margin-top: 20%;
     font-weight: 100;
     color: white;
     text-align: center;
-    padding-bottom: 10px;
+    padding-bottom: 30px;
     border-bottom: 1px solid rgb(79, 98, 148);
     margin-bottom: 20px;
+  }
+  
+
+ .button {
+    display: block;
+    width: 50%;
+    height: 60px;
+    padding: 10px;
+    background-color: #4f6294;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+
+  .button[type="submit"],
+  .input[type="submit"] {
+    background: #415A77;
+    color: white;
+    text-transform: uppercase;
+    border: none;
+    padding: 20px;
+    font-size: 16px;
+    font-weight: 100;
+    letter-spacing: 10px;
+    margin: 20px;
+  }
+  
+  .button[type="submit"]:hover,
+  .input[type="submit"]:hover {
+    background: #3105a1c2;
+  }
+  
+  .button[type="submit"]:active,
+  .input[type="submit"]:active {
+    transition: 0.3s all;
+    transform: translateY(3px);
+    border: 1px solid transparent;
+    opacity: 0.8;
+    
+  }
+  
+  .button[type="submit"],
+  .input[type="submit"] {
+    appearance: none;
+    -webkit-appearance: none;
   }
   
   .p {
@@ -29,38 +86,35 @@
   }
   
   .label {
+    line-height: 2;
+    text-align: left;
+    display: block;
     color: white;
+    font-size: 20px;
+    font-weight: 200;
     margin-bottom: 5px;
   }
-  
   
   .input {
     display: block;
     box-sizing: border-box;
     width: 100%;
     border-radius: 4px;
-    border: none;
     font-size: 14px;
     padding: 10px 20px;
+    border-radius: 1em;
   }
 
   .selectInput {
   border: none;
+  font-size: 14px;
+  border-radius: 1em;
 }
 
-  
-  .button {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    background-color: #4f6294;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-size: 14px;
-    cursor: pointer;
-  }
-  
+hr {
+  margin-top: -50px;
+}
+
   @media (min-width: 768px) {
     .containerForm {
       flex-direction: row;
@@ -77,16 +131,3 @@
       width: 48%;
     }
   }
-  
-  .button {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    background-color: #4f6294;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-size: 14px;
-    cursor: pointer;
-  }
-  

@@ -31,13 +31,11 @@ const CreateUser = () => {
     <div className={style.containerForm}>
       <form className={style.form} onSubmit={handleSubmit(onSubmit)}>
         <h1 className={style.h1}>Registrate y crea una cuenta nueva</h1>
-
         <div className={style.inputWrapper}>
           <label className={style.label}>Nombre:</label>
           <input className={style.input} type="text" placeholder="Nombre" {...register("nombre", { required: true })} />
           {errors.nombre && <p className={style.p}>Campo requerido</p>}
         </div>
-
         <div className={style.inputWrapper}>
           <label className={style.label}>Apellido:</label>
           <input className={style.input} type="text" placeholder="Apellido" {...register("apellido", { required: true })} />
