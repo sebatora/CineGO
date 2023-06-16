@@ -3,10 +3,11 @@ const handlerGetAllUsers = require("../handlers/handlerGetAllUsers");
 const handlerGetUserById = require("../handlers/handlerGetUserById");
 const handlerPostUser = require("../handlers/handlerPostUser");
 const handlerPutUserData = require("../handlers/handlerPutUserData");
+const handlerUserValidation = require("../handlers/handlerUserValidation");
 
 //Ruta para traer todos los usuarios
 routerUser.get("/", handlerGetAllUsers);
-
+routerUser.get("/login", handlerUserValidation);
 //Ruta para traer al usuario por ID
 routerUser.get("/:id", handlerGetUserById);
 
