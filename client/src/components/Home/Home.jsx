@@ -13,7 +13,7 @@ function Home() {
     // Agrega más imágenes aquí
   ];
   return (
-    <div className="Home">
+    <div className="w-full mt-28 flex flex-col items-center">
       <Carousel images={images} />
       <MoviesContainer/>
     </div>

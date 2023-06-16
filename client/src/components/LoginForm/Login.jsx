@@ -24,7 +24,7 @@ function Login() {
   };
 
   return (
-    <div className={style.containerForm}>
+    <div className="w-full h-screen grid grid-cols-2 gap-4 mt-20">
     <form className={style.form} onSubmit={handleSubmit(onSubmit)}>
       <h1 className={style.h1} >Ingresa a tu cuenta</h1>
 

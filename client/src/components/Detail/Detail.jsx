@@ -13,12 +13,10 @@ function Detail() {
   useEffect(() => {
     dispatch(getMovieById(id));
     return () => dispatch(cleanDetail())
-
   }, [id]);
 
-
   return (
-    <div className={style.container}>
+    <div className="w-4/5 h-full relative mt-36">
       <div className={style.row}>
         <div className={style.movieInfo}>
           <figure className={style.figure}>
@@ -46,7 +44,6 @@ function Detail() {
           </ul>
         </div>
         <div className={style.infoBox}>
-          {/* <img src="https://img.freepik.com/vector-gratis/mancha-acuarela-abstracta-colorida_1035-18218.jpg?w=2000" alt="fondo" className={style.imagenFondo}></img> */}
           <h2 className={style.name}>
             <strong>{title}</strong>
           </h2>

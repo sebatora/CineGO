@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import style from "./Carousel.module.css";
 
 const Carousel = ({ images }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -19,7 +18,7 @@ const Carousel = ({ images }) => {
   };
 
   return (
-    <div className="Carousel">
+    <div className="w-3/4 h-96 relative overflow-hidden flex flex-col items-center mb-10">
       <div className="w-11/12 h-11/12 rounded-md">
         {images.map((image, index) => (
           <img
@@ -37,7 +36,7 @@ const Carousel = ({ images }) => {
           <button
             key={index}
             onClick={() => handleIndexClick(index)}
-            className={`w-6 h-6 rounded-full bg-white border-none m-0 5px cursor-pointer opacity-60 transition-all duration-300 ease-in-out ${
+            className={`w-6 h-6 rounded-full bg-white border-none m-0 cursor-pointer opacity-60 transition-all duration-300 ease-in-out ${
               index === currentImageIndex ? "opacity-100" : ""
             }`}
           />
