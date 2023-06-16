@@ -19,8 +19,8 @@ const putUserSubscriptionController = async (userId, cinePlus) => {
 
     
 
-    return "ok";
+    return "Cambio correcto del estado de suscripción";
      
- };
+};
 
 module.exports = putUserSubscriptionController;
