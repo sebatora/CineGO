@@ -13,7 +13,7 @@ function Home() {
     // Agrega más imágenes aquí
   ];
   return (
-    <div>
+    <div className="Home">
       <Carousel images={images} />
       <MoviesContainer/>
     </div>
