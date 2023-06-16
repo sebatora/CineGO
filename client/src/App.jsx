@@ -10,11 +10,9 @@ import Home from "./components/Home/Home";
 import Login from "./components/LoginForm/Login";
 import Navbar from "./components/Navbar/Navbar";
 import CinePlus from "./components/cinePlus/cinePlus";
-
 import Error404 from "./components/Error404/Error404";
 import Footer from "./components/Footer/Footer";
 import Profile from "./view/Profile/Profile";
-axios.defaults.baseURL = "http://localhost:3001";
 
 function App() {
   return (
