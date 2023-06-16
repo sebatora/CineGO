@@ -1,10 +1,11 @@
-import { GET_MOVIES, GET_MOVIE_BY_ID, GET_MOVIES_BY_TITLE, CLEAN_DETAIL, GET_GENRES, POST_MOVIE, DELETE_MOVIE, FILTER_ORDER, POST_USER } from "./action-type";
+import { GET_MOVIES, GET_MOVIE_BY_ID, GET_MOVIES_BY_TITLE, CLEAN_DETAIL, GET_GENRES, POST_MOVIE, DELETE_MOVIE, FILTER_ORDER, POST_USER, LOGIN_USER } from "./action-type";
 
 const initialState = {
   allMovies: [], 
   allMoviesCopy: [],
   movieById: {},
-  allGenres: []
+  allGenres: [],
+  userData: {}
 };
 
 const rootReducer = (state = initialState, {type, payload}) => {
@@ -69,6 +70,14 @@ const rootReducer = (state = initialState, {type, payload}) => {
     case POST_USER: {
       return {
         ...state,
+      };
+    };
+
+    
+    case LOGIN_USER: {
+      return {
+        ...state,
+        userData: payload,
       };
     };
 
