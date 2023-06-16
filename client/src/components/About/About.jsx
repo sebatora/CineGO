@@ -107,7 +107,7 @@ const About = () => {
   ));
 
   return (
-    <div className={style.about}>
+    <div className="w-full mt-20 text-center">
       <h1 className={style.h1}>QUIENES SOMOS</h1>
       <p className={style.descrip}>
       Somos un grupo de estudiantes en la etapa final del bootcamp de Henry, un programa intensivo de desarrollo de software. Nuestro equipo está comprometido en aplicar los conocimientos y habilidades adquiridas a lo largo del bootcamp para desarrollar una aplicación innovadora. Nos enfocamos en crear soluciones prácticas y eficientes que aborden las necesidades de los usuarios. Estamos emocionados de trabajar juntos y poner en práctica todo nuestro aprendizaje para ofrecer un producto sobresaliente en el mundo de la tecnología.

@@ -13,7 +13,7 @@ axios.defaults.baseURL = "http://localhost:3001";
 
 function App() {
   return (
-    <div className="App">
+    <div className="w-full min-w-[1280px] h-full min-h-screen bg-white dark:bg-black flex flex-col">
       <Navbar />
 
       <Routes>

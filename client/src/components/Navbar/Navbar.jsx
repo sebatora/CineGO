@@ -17,7 +17,7 @@ function Navbar() {
 		setTheme(newTheme);
 	}
   return (
-    <nav className="Navbar">
+    <nav className="w-full h-20 fixed flex justify-between items-center bg-white dark:bg-black z-10 shadow-md dark:shadow-white/50">
       <div className="w-full ml-4">
         <Link to="/">
           {theme === "dark" ? (

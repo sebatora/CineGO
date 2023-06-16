@@ -52,8 +52,8 @@ const Filter = () => {
 	}
 
 	return (
-		<div className="w-full ml-28">
-			<button className="bg-white rounded-md px-4 ml-10" onClick={() => setActive(true)}>Filter</button>
+		<div className="w-full flex">
+			<button className="bg-transparent rounded-lg border border-black dark:border-white px-4 ml-10 dark:text-white" onClick={() => setActive(true)}>Filter</button>
 			
 			<div className={`fixed inset-0 m-48 overflow-hidden bg-black z-10 ${active ? "flex" : "hidden"}`}>
 				<button className="bg-red-500 absolute right-0 rounded-full px-2 m-2" onClick={() => setActive(false)}>X</button>

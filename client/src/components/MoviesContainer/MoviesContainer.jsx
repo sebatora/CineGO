@@ -24,7 +24,7 @@ function MoviesContainer() {
       {loading ? (
         <Spinner />
       ) : (
-        <div className="MoviesContainer">
+        <div className="w-3/4">
           <div className="w-full flex">
             <Filter />
             <SearchBar />
