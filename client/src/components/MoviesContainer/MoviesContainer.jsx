@@ -33,6 +33,7 @@ function MoviesContainer() {
           <div className="w-full flex flex-wrap justify-center">
             {allMovies.map(({ id, title, description, image, release_date }) => (
               <MovieCard
+                key={id}
                 id={id}
                 title={title}
                 description={description}

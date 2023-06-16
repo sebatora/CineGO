@@ -7,6 +7,7 @@ const routerMovie = require("./routes/movie.routes.js");
 const routerUser = require("./routes/user.routes.js");
 const routerGenre = require("./routes/genre.routes.js");
 const routerOrder = require("./routes/order.routes.js");
+const routerCandy = require("./routes/candy.routes.js")
 
 const app = express();
 
@@ -19,7 +20,8 @@ app.use(morgan("dev"));
 app.use("/movies", routerMovie);
 app.use("/users", routerUser);
 app.use("/genres", routerGenre);
-app.use("/order",routerOrder)
+app.use("/order", routerOrder);
+app.use("/candy", routerCandy)
 
 
 
