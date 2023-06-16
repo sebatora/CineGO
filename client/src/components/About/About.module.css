@@ -2,15 +2,13 @@
 
 .h1 {
   color: #656060;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .descrip {
   margin: 0 auto;
   margin-bottom: 30px;
-  font-size: large;
-  max-width: 900px; /* Ajusta este valor según tus necesidades */
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  max-width: 80%;
+  text-align: justify;
 }
 
 .members {
@@ -20,8 +18,9 @@
 }
 
 .member {
-  width: 290px;
-  padding: 20px;
+  width: 100%;
+  max-width: 350px;
+  padding: 30px;
   margin: 10px;
   background-color: #f9f9f9;
   border-radius: 5px;
@@ -29,18 +28,21 @@
   background-image: url('../../assets/fondoClaroAbout.jpg');
   background-size: cover;
   background-position: center;
+  align-content: center;
 }
 
 .member img {
-  width: 120px;
-  height: 120px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  width: 135px;
+  height: 135px;
   border-radius: 50%;
   margin-bottom: 10px;
 }
 
 .member h2 {
-  font-size: 20px;
-  font-family: cursive;
+  font-size: 25px;
   margin-bottom: 1px;
   margin-top: -1px;
 }
@@ -48,8 +50,13 @@
 .member p {
   font-size: 14px;
   color: #777;
-  font-family: cursive;
   margin-bottom: 10px;
+}
+
+.socialLinks {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .socialLinks a {
@@ -58,6 +65,34 @@
 }
 
 .socialLinks img {
-  width: 25px;
-  height: 25px;
+  margin-top: 10px;
+  margin-left: 10px;
+  width: 30px;
+  height: 30px;
+}
+
+/* Media queries */
+
+@media (max-width: 768px) {
+  .members {
+    justify-content: space-between;
+  }
+
+  .member {
+    flex: 10 0 20%; /* Cambiamos el ancho a un porcentaje para que se ajuste a la pantalla */
+    max-width: 60%;
+  }
+}
+
+@media (max-width: 480px) {
+  .members {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .member {
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin-bottom: 20px;
+  }
 }
