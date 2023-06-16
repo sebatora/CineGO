@@ -1,4 +1,4 @@
-import { GET_MOVIES, GET_MOVIE_BY_ID, GET_MOVIES_BY_TITLE, CLEAN_DETAIL, GET_GENRES, POST_MOVIE, DELETE_MOVIE, FILTER_ORDER } from "./action-type";
+import { GET_MOVIES, GET_MOVIE_BY_ID, GET_MOVIES_BY_TITLE, CLEAN_DETAIL, GET_GENRES, POST_MOVIE, DELETE_MOVIE, FILTER_ORDER, POST_USER } from "./action-type";
 
 import axios from "axios";
 
@@ -85,5 +85,18 @@ export const filterOrder = (info) => {
   return async (dispatch) => {
     const { data } = await axios.post(`/order`, info)
     return dispatch({ type: FILTER_ORDER, payload: data });
+  };
+};
+
+// Crea un nuevo usuario
+export const postUser = (newUser) => {  
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.post(`/users`, newUser)
+      return dispatch({ type: POST_USER, payload: data });
+    }
+    catch (error) {
+      return error.message;
+    }
   };
 };
