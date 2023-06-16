@@ -1,4 +1,8 @@
-import "./App.css";
+import { Route, Routes } from "react-router-dom";
+import axios from "axios";
+axios.defaults.baseURL = "http://localhost:3001";
+
+// Components
 import Home from "./components/Home/Home"
 import About from "./components/About/About";
 import Detail from "./components/Detail/Detail";
@@ -6,12 +10,9 @@ import CinePlus from "./components/cinePlus/cinePlus";
 import Navbar from "./components/Navbar/Navbar";
 import Login from "./components/LoginForm/Login";
 import CreateUser from './components/CreateUserForm/CreateUser';
-
-import { Route, Routes } from "react-router-dom";
-import axios from "axios";
 import Footer from "./components/Footer/Footer";
 import Error404 from "./components/Error404/Error404";
-axios.defaults.baseURL = "http://localhost:3001";
+import Profile from "./components/Profile/Profile";
 
 function App() {
   return (
@@ -30,6 +31,8 @@ function App() {
         <Route path="/login" element={<Login />} />
           
         <Route path="/CreateUser" element={<CreateUser />} />
+
+        <Route path="/profile" element={<Profile />} />
 
         <Route path="*" element={<Error404/> } /> //Esta ruta tiene que estar renderizada SI o SI al final
 
