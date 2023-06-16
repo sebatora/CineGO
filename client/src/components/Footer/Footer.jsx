@@ -14,6 +14,9 @@ library.add(faFacebookSquare, faTwitterSquare, faLinkedin, faInstagramSquare, fa
 function Footer() {
   return (
     <footer className={style.footer}>
+      <div className={style.box__copyright}>
+        <hr />
+      </div>
       <div className={style.container__footer}>
         <div className={style.box__footer}>
           <div className={style.logo}>

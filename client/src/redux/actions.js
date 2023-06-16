@@ -1,4 +1,4 @@
-import { GET_MOVIES, GET_MOVIE_BY_ID, GET_MOVIES_BY_TITLE, CLEAN_DETAIL, GET_GENRES, POST_MOVIE, DELETE_MOVIE, FILTER_GENRE, FILTER_CLASIFICATION, ORDER_ALPHABETIC, ORDER_DATE } from "./action-type";
+import { GET_MOVIES, GET_MOVIE_BY_ID, GET_MOVIES_BY_TITLE, CLEAN_DETAIL, GET_GENRES, POST_MOVIE, DELETE_MOVIE, FILTER_ORDER } from "./action-type";
 
 import axios from "axios";
 
@@ -80,22 +80,10 @@ export const deleteMovie = (id) => {
   };
 };
 
-// Filtra por genero
-export const filterGenre = (temp) => {
-  return { type: FILTER_GENRE, payload: temp };
-};
-
-// Filtra por clasificacion
-export const filterClasification = (origin) => {
-  return { type: FILTER_CLASIFICATION, payload: origin };
-};
-
-// Ordena alfabeticamente
-export const orderAlphabetic = (order) => {
-  return { type: ORDER_ALPHABETIC, payload: order };
-};
-
-// Ordena por fecha de lanzamiento
-export const orderDate = (order) => {
-  return { type: ORDER_DATE, payload: order };
+// Filtra y ordena
+export const filterOrder = (info) => {
+  return async (dispatch) => {
+    const { data } = await axios.post(`/order`, info)
+    return dispatch({ type: FILTER_ORDER, payload: data });
+  };
 };

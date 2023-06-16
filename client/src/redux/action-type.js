@@ -6,7 +6,5 @@ export const GET_GENRES = "GET_GENRES";
 export const POST_MOVIE = "POST_MOVIE";
 export const DELETE_MOVIE = "DELETE_MOVIE";
 
-export const FILTER_GENRE = "FILTER_GENRE";
-export const FILTER_CLASIFICATION = "FILTER_CLASIFICATION";
-export const ORDER_ALPHABETIC = "ORDER_ALPHABETIC";
-export const ORDER_DATE = "ORDER_DATE";
+export const FILTER_ORDER = "FILTER_ORDER";
+
