@@ -2,6 +2,7 @@ import React from "react";
 import style from "./About.module.css";
 import iconoIn from '../../assets/Linkedin.png';
 import iconoGit from '../../assets/github.png';
+import iconoCv from '../../assets/iconCv.png';
 
 const About = () => {
   const teamMembers = [
@@ -13,7 +14,8 @@ const About = () => {
       linkedinUrl: "https://www.linkedin.com/in/andrea-soledad-buldorini-462690113/",
       githubUrl: "https://github.com/abuldori",
       linkedinIcon: iconoIn,
-      githubIcon: iconoGit
+      githubIcon: iconoGit,
+      iconoCv: iconoCv,
     },
     {
       name: "Sebastian Toranzo",
@@ -23,7 +25,8 @@ const About = () => {
       linkedinUrl: "https://www.linkedin.com/in/sebatora/",
       githubUrl: "https://github.com/sebatora",
       linkedinIcon: iconoIn,
-      githubIcon: iconoGit
+      githubIcon: iconoGit,
+      iconoCv: iconoCv,
     },
     {
       name: "Camila Manita",
@@ -33,7 +36,8 @@ const About = () => {
       linkedinUrl: "https://www.linkedin.com/in/camila-manita/",
       githubUrl: "https://github.com/CamilaManita",
       linkedinIcon: iconoIn,
-      githubIcon: iconoGit
+      githubIcon: iconoGit,
+      iconoCv: iconoCv,
     },
     {
       name: "Mauricio Monzón",
@@ -43,7 +47,8 @@ const About = () => {
       linkedinUrl: "https://www.linkedin.com/in/mauricio-monzon/",
       githubUrl: "https://github.com/majomon",
       linkedinIcon: iconoIn,
-      githubIcon: iconoGit
+      githubIcon: iconoGit,
+      iconoCv: iconoCv,
     },
     {
       name: "Franco Bogado",
@@ -53,7 +58,8 @@ const About = () => {
       linkedinUrl: "https://www.linkedin.com/in/franco-bogado-a5b18216a/",
       githubUrl: "https://github.com/FrancoNat",
       linkedinIcon: iconoIn,
-      githubIcon: iconoGit
+      githubIcon: iconoGit,
+      iconoCv: iconoCv,
     },
     {
       name: "Percy Huanca",
@@ -63,7 +69,8 @@ const About = () => {
       linkedinUrl: "https://www.linkedin.com/in/percydh673002/",
       githubUrl: "https://github.com/PercyH67",
       linkedinIcon: iconoIn,
-      githubIcon: iconoGit
+      githubIcon: iconoGit,
+      iconoCv: iconoCv,
     },
     {
       name: "Jorge Daza Vega",
@@ -73,7 +80,8 @@ const About = () => {
       linkedinUrl: "https://www.linkedin.com/in/jorge-daza-vega-35904b177/",
       githubUrl: "https://github.com/GeorgeDaz",
       linkedinIcon: iconoIn,
-      githubIcon: iconoGit
+      githubIcon: iconoGit,
+      iconoCv: iconoCv,
     },
     {
       name: "Matías Medina",
@@ -83,7 +91,8 @@ const About = () => {
       linkedinUrl: "https://www.linkedin.com/in/mat%C3%ADas-medina-844181242/",
       githubUrl: "https://github.com/MatiasMedina02",
       linkedinIcon: iconoIn,
-      githubIcon: iconoGit
+      githubIcon: iconoGit,
+      iconoCv: iconoCv,
     }
     
   ];
@@ -93,8 +102,12 @@ const About = () => {
   const teamMemberCards = shuffledTeamMembers.map((member) => (
     <div key={member.name} className={style.member}>
       <img src={member.photoUrl} alt={member.name} />
-      <h2>{member.name}</h2>
-      <p>{member.description}</p>
+      <div class="member">
+      <h2 class="text-2xl mb-1 mt-n1 dark:text-black">{member.name}</h2>
+      </div>
+      <div class="member">
+      <p class="text-sm text-gray-500 mb-4 dark:text-black">{member.description}</p>
+      </div>  
       <div className={style.socialLinks}>
         <a href={member.linkedinUrl} target="_blank">
           <img src={member.linkedinIcon} alt="LinkedIn" />
@@ -102,6 +115,10 @@ const About = () => {
         <a href={member.githubUrl} target="_blank">
           <img src={member.githubIcon} alt="Github" />
         </a>
+        <a href={member} target="_blank">
+          <img src={member.iconoCv} alt="curriculum vitae" />
+        </a>
+         
       </div>
     </div>
   ));
