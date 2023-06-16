@@ -23,6 +23,9 @@
     border-bottom: 1px solid rgb(79, 98, 148);
     margin-bottom: 20px;
   }
+  .success{
+    color: beige;
+  }
   
 
  .button {
@@ -72,7 +75,7 @@
   }
   
   .p {
-    color: #bf1650;
+    color: #db1057;
   }
   
   .p::before {

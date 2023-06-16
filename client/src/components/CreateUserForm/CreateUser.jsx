@@ -1,30 +1,38 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import style from "./CreateUser.module.css";
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import Select from "react-select";
-import { registerLocale } from "react-datepicker";
-
+import { postUser } from '../../redux/actions';
 
 const CreateUser = () => {
+  const [errorMessage, setErrorMessage] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
+  
   const {
     register,
     handleSubmit,
     formState: { errors },
-    setValue
+    reset,
+    watch
   } = useForm();
-  
-  const es = registerLocale();
-  const [selectedDate, setSelectedDate] = useState(null);
 
-  const handleDateChange = (date) => {
-    setSelectedDate(date);
-    setValue("date", date)
-  }; 
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const onSubmit = async (data) => {
   
-  const onSubmit = (data) => {
-    // Aquí puedes realizar la lógica para enviar los datos del formulario
+      const response = await dispatch(postUser(data));
+      console.log("response", response);
+      if (response.payload) {
+        setSuccessMessage(response.payload);
+        reset();
+        navigate("/login")
+      } else {
+        setErrorMessage("El email ya tiene una cuenta");
+        setSuccessMessage("");
+      }
   };
 
   return (
@@ -33,13 +41,13 @@ const CreateUser = () => {
         <h1 className={style.h1}>Registrate y crea una cuenta nueva</h1>
         <div className={style.inputWrapper}>
           <label className={style.label}>Nombre:</label>
-          <input className={style.input} type="text" placeholder="Nombre" {...register("nombre", { required: true })} />
-          {errors.nombre && <p className={style.p}>Campo requerido</p>}
+          <input className={style.input} type="text" placeholder="Nombre" {...register("firstName", { required: true })} />
+          {errors.firstName && <p className={style.p}>Campo requerido</p>}
         </div>
         <div className={style.inputWrapper}>
           <label className={style.label}>Apellido:</label>
-          <input className={style.input} type="text" placeholder="Apellido" {...register("apellido", { required: true })} />
-          {errors.apellido && <p className={style.p}>Campo requerido</p>}
+          <input className={style.input} type="text" placeholder="Apellido" {...register("lastName", { required: true })} />
+          {errors.lastName && <p className={style.p}>Campo requerido</p>}
         </div>
 
         <div className={style.inputWrapper}>
@@ -51,55 +59,43 @@ const CreateUser = () => {
 
         <div className={style.inputWrapper}>
           <label className={style.label}>Contraseña:</label>
-          <input className={style.input} type="password" placeholder="Contraseña" {...register("contraseña", { required: true })} />
-          {errors.contraseña && <p className={style.p}>Campo requerido</p>}
+          <input
+            className={style.input}
+            type="password"
+            placeholder="Contraseña"
+            {...register("password", { required: true })}
+          />
+          {errors.password && <p className={style.p}>Campo requerido</p>}
         </div>
 
         <div className={style.inputWrapper}>
           <label className={style.label}>Confirmar Contraseña:</label>
-          <input className={style.input} type="password" placeholder="Confirmar Contraseña" {...register("confirmarContraseña", { required: true })} />
-          {errors.confirmarContraseña && <p className={style.p}>Campo requerido</p>}
-        </div>
-
-        <div className={style.inputWrapper}>
-          <label className={style.label}>Fecha de nacimiento</label>
-          <DatePicker
+          <input
             className={style.input}
-            type="date"
-            placeholderText="dd/mm/aaaa"
-            dateFormat="dd/MM/yyyy"
-            locale="es"
-            selected={selectedDate}
-            onChange={handleDateChange}
-            {...register("date", { required: true })}
+            type="password"
+            placeholder="Confirmar Contraseña"
+            {...register("confirmarContraseña", {
+              required: true,
+              validate: (value) =>
+                value === watch("password") || "Las contraseñas no coinciden"
+            })}
           />
-          {errors.date && <p className={style.p}>Campo requerido</p>}
-        </div>
-
-        <div className={style.inputWrapper}>
-          <label className={style.label}>Género:</label>
-          <Select
-            className={style.selectInput}
-            placeholder="Género"
-            options={[
-              { value: "femenino", label: "Femenino" },
-              { value: "masculino", label: "Masculino" },
-              { value: "otro", label: "Otro" },
-              { value: "prefieroNoEspecificar", label: "Prefiero no especificar" },
-            ]}
-            {...register("género", { required: true })}
-          />
-          {errors.género && <p className={style.p}>Campo requerido</p>}
+          {errors.confirmarContraseña && (
+            <p className={style.p}>{errors.confirmarContraseña.message}</p>
+          )}
         </div>
 
         <button className={style.button} type="submit">
           Registrarse
-        </button>  
+        </button>
+        {successMessage && <p className={style.success}>{successMessage}</p>}
+        {errorMessage && <p className={style.error}>{errorMessage}</p>}
       </form>
     </div>
   );
 };
 
 export default CreateUser;
+
 
 
