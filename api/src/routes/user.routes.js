@@ -3,6 +3,7 @@ const handlerGetAllUsers = require("../handlers/handlerGetAllUsers");
 const handlerGetUserById = require("../handlers/handlerGetUserById");
 const handlerPostUser = require("../handlers/handlerPostUser");
 const handlerPutUserData = require("../handlers/handlerPutUserData");
+const handlerPutUserSubscription = require("../handlers/handlerPutUserSubscription")
 
 //Ruta para traer todos los usuarios
 routerUser.get("/", handlerGetAllUsers);
@@ -15,5 +16,9 @@ routerUser.put("/", handlerPutUserData);
 
 //Ruta para crear usuarios
 routerUser.post("/", handlerPostUser);
+
+// Ruta para actualizar suspcripción
+routerUser.put("/subscription", handlerPutUserSubscription);
+
 
 module.exports = routerUser;
