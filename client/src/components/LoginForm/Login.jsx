@@ -4,7 +4,7 @@ import style from "./login.module.css";
 import { Link, useNavigate } from "react-router-dom";
 
 
-function Login() {
+const Login = () => {
 
   const { register, handleSubmit, formState: { errors } } = useForm();
   const navigate = useNavigate();
