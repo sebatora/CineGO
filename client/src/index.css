@@ -11,7 +11,7 @@ html, body {
 @tailwind utilities;
 
 
-/* @layer base {
+@layer base {
 	html {
 		box-sizing: border-box
 	}
@@ -42,9 +42,21 @@ html, body {
 
 @layer components {
 	.App {
-		@apply w-full h-full min-h-screen bg-white dark:bg-black flex flex-col;
+		@apply w-full min-w-[1280px] h-full min-h-screen bg-white dark:bg-black flex flex-col;
 	}
-	.MoviesCards {
+	.Navbar {
+		@apply w-full h-20 fixed flex justify-between items-center bg-white dark:bg-black z-10 shadow-md;
+	}
+	.Home {
+		@apply w-full mt-28 flex flex-col items-center;
+	}
+	.Carousel{
+		@apply w-3/4 h-96 relative overflow-hidden flex flex-col items-center mb-10;
+	}
+	.SearchBar {
+		@apply w-full flex;
+	}
+	.MoviesContainer {
 		@apply w-full;
 	}
-} */
+}

@@ -19,26 +19,26 @@ const Carousel = ({ images }) => {
   };
 
   return (
-    <div className={style.carouselContainer}>
-      <div className={style.containerInfo}>
+    <div className="Carousel">
+      <div className="w-11/12 h-11/12 rounded-md">
         {images.map((image, index) => (
           <img
             key={index}
             src={image}
             alt={`Image ${index + 1}`}
-            className={`${style.carouselImage} ${
-              index === currentImageIndex ? style.active : ""
+            className={`absolute top-0 left-0 opac w-full h-full opacity-0 transition-opacity duration-500 ease-in-out ${
+              index === currentImageIndex ? "opacity-100" : ""
             }`}
           />
         ))}
       </div>
-      <div className={style.containerButtons}>
+      <div className="absolute bottom-2 flex justify-center space-x-4">
         {images.map((_, index) => (
           <button
             key={index}
             onClick={() => handleIndexClick(index)}
-            className={`${style.indexButton} ${
-              index === currentImageIndex ? style.active : ""
+            className={`w-6 h-6 rounded-full bg-white border-none m-0 5px cursor-pointer opacity-60 transition-all duration-300 ease-in-out ${
+              index === currentImageIndex ? "opacity-100" : ""
             }`}
           />
         ))}

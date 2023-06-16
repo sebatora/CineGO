@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
-import style from "./MoviesContainer.module.css";
 import MovieCard from "../MovieCard/MovieCard";
 import Spinner from "../Spinner/Spinner";
-
 
 import { useDispatch, useSelector } from "react-redux";
 import { getMovies } from "../../redux/actions";
 import Filter from "../Filter/Filter";
+import SearchBar from "../SearchBar/SearchBar";
 
 function MoviesContainer() {
 
@@ -21,16 +20,18 @@ function MoviesContainer() {
   }, [dispatch]);
 
   return (
-    <div className={style.containerMovies}>
+    <>
       {loading ? (
         <Spinner />
       ) : (
-        <div>
-          <Filter />
-          <div className={style.containerCardMovie}>
+        <div className="MoviesContainer">
+          <div className="w-full flex">
+            <Filter />
+            <SearchBar />
+          </div>
+          <div className="w-full flex flex-wrap justify-center">
             {allMovies.map(({ id, title, description, image, release_date }) => (
               <MovieCard
-                key={id}
                 id={id}
                 title={title}
                 description={description}
@@ -41,7 +42,7 @@ function MoviesContainer() {
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 }
 
