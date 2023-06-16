@@ -1,16 +1,17 @@
 import "./App.css";
-import Home from "./components/Home/Home"
 import About from "./components/About/About";
+import CreateUser from "./components/CreateUserForm/CreateUser";
 import Detail from "./components/Detail/Detail";
-import CinePlus from "./components/cinePlus/cinePlus";
-import Navbar from "./components/Navbar/Navbar";
+import Home from "./components/Home/Home";
 import Login from "./components/LoginForm/Login";
-import CreateUser from './components/CreateUserForm/CreateUser';
+import Navbar from "./components/Navbar/Navbar";
+import CinePlus from "./components/cinePlus/cinePlus";
 
-import { Route, Routes } from "react-router-dom";
 import axios from "axios";
-import Footer from "./components/Footer/Footer";
+import { Route, Routes } from "react-router-dom";
 import Error404 from "./components/Error404/Error404";
+import Footer from "./components/Footer/Footer";
+import User from "./view/User/User";
 axios.defaults.baseURL = "http://localhost:3001";
 
 function App() {
@@ -20,19 +21,14 @@ function App() {
 
       <Routes>
         <Route exact path="/" element={<Home />} />
-
         <Route path="/detail/:id" element={<Detail />} />
-
         <Route path="/about" element={<About />} />
-
         <Route path="/cinePlus" element={<CinePlus />} />
-
         <Route path="/login" element={<Login />} />
-          
         <Route path="/CreateUser" element={<CreateUser />} />
-
-        <Route path="*" element={<Error404/> } /> //Esta ruta tiene que estar renderizada SI o SI al final
-
+        <Route path="/user" element={<User />} />
+        <Route path="*" element={<Error404 />} /> //Esta ruta tiene que estar
+        renderizada SI o SI al final
       </Routes>
 
       <Footer />
