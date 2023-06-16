@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getGenres, getMovies } from "../../redux/actions";
 
-function UserInfo() {
+function ProfileInfo() {
   const dispatch = useDispatch();
 
   return (
@@ -54,4 +54,4 @@ function UserInfo() {
   );
 }
 
-export default UserInfo;
+export default ProfileInfo;

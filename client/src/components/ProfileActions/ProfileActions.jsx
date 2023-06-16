@@ -1,6 +1,6 @@
 import React from "react";
 
-function UserActions() {
+function ProfileActions() {
   return (
     <div>
       <h2>Acciones</h2>
@@ -16,4 +16,4 @@ function UserActions() {
   );
 }
 
-export default UserActions;
+export default ProfileActions;
