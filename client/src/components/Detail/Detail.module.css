@@ -13,17 +13,6 @@
   padding-right: 15px;
   padding-left: 15px;
 }
-/* 
-.imagenFondo{
-  width: 100%;
-  position: absolute;
-  z-index: -1;
-} */
-
-.infoBox iframe{
-  width: 650px;
-  height: 315px;
-}
 
 .movieInfo {
   width: 60%;
@@ -49,7 +38,6 @@
   font-size: 16px;
   margin-bottom: 20px;
   font-family: 'Montserrat', sans-serif;
-  font-size: 20px;
 }
 
 .movieImage {
@@ -73,25 +61,6 @@
   font-family: 'Montserrat', sans-serif;
 }
 
-.buttonContainer {
-  margin-top: 10px;
-  margin-bottom: 25px;
-  display: flex;
-  justify-content: center;
-}
-
-.button {
-  background-color: #f44336;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  cursor: pointer;
-  font-family: 'Montserrat', sans-serif;
-}
 
 .figure{
   width: 100%;
