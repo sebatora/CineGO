@@ -12,16 +12,7 @@ import { faFacebookSquare, faTwitterSquare, faLinkedin, faInstagramSquare, faGit
 library.add(faFacebookSquare, faTwitterSquare, faLinkedin, faInstagramSquare, faGithub, faReact, faNodeJs, faHtml5, faCss3Alt, faJs, faGitAlt, faTrello);
 
 
-function Footer() {
-
-  const theme = localStorage.getItem("color-theme");
-  useEffect(() => {
-    const theme = localStorage.getItem("color-theme");
-    document.documentElement.classList.toggle("dark", theme === "dark");
-    localStorage.setItem("color-theme", theme);
-  }, [theme]);
-
-
+function Footer({ theme }) {
   return (
     <footer className="w-full py-16 ">
       <div className="text-center px-40">
