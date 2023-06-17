@@ -18,9 +18,12 @@ const getPutMoviesController = async (movieId, newData) => {
    movie.release_date = newData.release_date || movie.release_date;
    movie.trailer = newData.trailer || movie.trailer;
    movie.clasification = newData.clasification|| movie.clasification;
+    
+   await movie.save()
+
    
+   return "La película fue actualizada con éxito";
    
- return "Película actualizada exitosamente";
 };
 
 module.exports = getPutMoviesController;
