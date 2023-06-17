@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 
 function Error404() {
   return (
-    <main className={style.container}>
+    <main className="bg-${modoOscuro ? 'gray' : 'white'} text-black flex items-center justify-center h-screen overflow-hidden">
       <article className={style.content}>
-        <p>Damnit stranger,</p>
-        <p>You got lost in the <strong>404</strong> galaxy.</p>
+        <p className='text-base mt-0 mb-6 leading-tight tracking-wide text-gray-600 dark:text-gray-600'>Damnit stranger,</p>
+        <p className='text-base mt-0 mb-0.6 leading-tight tracking-wide text-gray-600 dark:text-gray-600'>You got lost in the <strong>404</strong> galaxy.</p>
         <p>
           <Link to="/">
             <button>Go back to earth.</button>
