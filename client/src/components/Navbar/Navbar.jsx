@@ -10,16 +10,10 @@ const options = [
   {name:"Sobre Nosotros", to: "/about"},
 ]
 
-function Navbar() {
-  const [theme, setTheme] = useState(localStorage.getItem("color-theme") || "light");
+function Navbar({ theme, setTheme }) {
   const [activeModal, setActiveModal] = useState(false);
   const [activeMenu, setActiveMenu] = useState(false);
   const navigate = useNavigate();
-
-	useEffect(() => {
-		document.documentElement.classList.toggle("dark", theme === "dark");
-		localStorage.setItem("color-theme", theme);
-	}, [theme]);
 
 	const toggleTheme = () => {
 		const newTheme = theme === "light" ? "dark" : "light";

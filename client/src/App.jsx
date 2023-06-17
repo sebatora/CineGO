@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { Route, Routes } from "react-router-dom";
 axios.defaults.baseURL = "http://localhost:3001";
@@ -15,9 +16,16 @@ import Footer from "./components/Footer/Footer";
 import Profile from "./view/Profile/Profile";
 
 function App() {
+  const [theme, setTheme] = useState(localStorage.getItem("color-theme") || "light");
+
+  useEffect(() => {
+		document.documentElement.classList.toggle("dark", theme === "dark");
+		localStorage.setItem("color-theme", theme);
+	}, [theme]);
+
   return (
     <div className="w-full min-w-[1280px] h-full min-h-screen bg-white dark:bg-black flex flex-col">
-      <Navbar />
+      <Navbar theme={theme} setTheme={setTheme} />
 
       <Routes>
         <Route exact path="/" element={<Home />} />
@@ -31,7 +39,7 @@ function App() {
         renderizada SI o SI al final
       </Routes>
 
-      <Footer />
+      <Footer theme={theme} />
     </div>
   );
 }
