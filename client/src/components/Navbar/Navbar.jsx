@@ -5,9 +5,9 @@ import cinego_negro from "../../assets/cinego_negro.png"
 import ModalProfile from "../ModalProfile/ModalProfile";
 
 const options = [
-  {name:"CinePlus", to: "/cineplus"},
-  {name:"Candy", to: "/candy"},
-  {name:"Sobre Nosotros", to: "/about"},
+  { name: "CinePlus", to: "/cineplus" },
+  { name: "Candy", to: "/candy" },
+  { name: "Sobre Nosotros", to: "/about" },
 ]
 
 function Navbar({ theme, setTheme }) {
@@ -15,10 +15,10 @@ function Navbar({ theme, setTheme }) {
   const [activeMenu, setActiveMenu] = useState(false);
   const navigate = useNavigate();
 
-	const toggleTheme = () => {
-		const newTheme = theme === "light" ? "dark" : "light";
-		setTheme(newTheme);
-	}
+  const toggleTheme = () => {
+    const newTheme = theme === "light" ? "dark" : "light";
+    setTheme(newTheme);
+  }
   return (
     <nav className="w-full h-20 fixed flex justify-between items-center bg-white dark:bg-black z-10 shadow-md dark:shadow-white/50">
       <div className="w-full lg:ml-4 order-1">
@@ -60,13 +60,13 @@ function Navbar({ theme, setTheme }) {
 
       <div className="w-20 lg:w-full h-full flex justify-end mr-8 mt-2 order-2">
         <div className="mx-4 flex justify-center">
-        {/* <button onClick={() => setActiveModal(!activeModal)}> */}
-        <button onClick={() => navigate("/login")}>
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" className="w-6 h-6 stroke-black dark:stroke-white">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
-          </svg>
-        </button>
-        {activeModal && (
+          <button onClick={() => setActiveModal(!activeModal)}>
+            {/* <button onClick={() => navigate("/login")}> */}
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" className="w-6 h-6 stroke-black dark:stroke-white">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+          </button>
+          {activeModal && (
             <ModalProfile activeModal={activeModal} setActiveModal={setActiveModal} />
           )}
         </div>
