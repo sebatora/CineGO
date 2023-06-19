@@ -9,21 +9,30 @@ import { loginUser } from "../../redux/actions";
 
 const Login = () => {
   const userData = useSelector(state => state.userData);
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const { register, handleSubmit, formState: { errors }, reset } = useForm();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  console.log(userData);
+
 
   const email = "example@example.com";
   const password = "password123";
 
   const onSubmit = (data) => {
-    if (data.username !== email || data.password !== password) {
-      alert("Correo electrónico o contraseña incorrecto");
-    } else {
+    try {
       dispatch(loginUser(data));
+      console.log(userData);
+      reset();
+      navigate("/");
+    } catch (error) {
+      alert(error.response.data.error);
     }
+    // if (data.username !== email || data.password !== password) {
+    //   alert("Correo electrónico o contraseña incorrecto");
+    // } else {
+    //   dispatch(loginUser(data));
+    // }
   };
+
 
   const handleLoginGoogle = async () => {
     try {
@@ -35,18 +44,19 @@ const Login = () => {
     }
   }
 
-  useEffect(() => {
-    if(userData.email){
-      navigate("/");
-      alert("Inicio de sesión exitoso");
-    }
-    const auth = getAuth();
-    onAuthStateChanged(auth, user => {
-      if(user && user.accessToken){
-        navigate("/")
-      }
-    })
-  }, []);
+  // useEffect(() => {
+  //   if (userData.email) {
+  //     navigate("/");
+  //     alert("Inicio de sesión exitoso");
+  //   }
+  //   const auth = getAuth();
+  //   onAuthStateChanged(auth, user => {
+  //     if (user && user.accessToken) {
+  //       navigate("/")
+  //     }
+  //   })
+  // }, []);
+
 
   // const handleLoginGoogle = async () => {
   //   try {
@@ -69,8 +79,8 @@ const Login = () => {
         <h1 className={style.h1} >Ingresa a tu cuenta</h1>
 
         <label htmlFor="" className={style.label}>Usuario:</label>
-        <input className={style.input} type="text" placeholder="Usuario" {...register("username", { required: true })} />
-        {errors.username && <p className={style.p}>El nombre de usuario es requerido</p>}
+        <input className={style.input} type="text" placeholder="Usuario" {...register("email", { required: true })} />
+        {errors.email && <p className={style.p}>El nombre de usuario es requerido</p>}
 
         <label htmlFor="" className={style.label}>Contraseña:</label>
         <input className={style.input} type="password" placeholder="Contraseña" {...register("password", { required: true })} />
@@ -79,14 +89,14 @@ const Login = () => {
         <button className={style.button} type="submit">Entrar</button>
       </form>
       <div>
-      <h1 className={style.h1}>¿No tenés cuenta?</h1>
-      <Link to={`/createUser`} className={style.linkButton}>
-        <button type="submit" className={style.button}>Crear cuenta</button>
-      </Link>
-      <button className="bg-orange-600 p-3 rounded-2xl" onClick={handleLoginGoogle}>Google</button>
+        <h1 className={style.h1}>¿No tenés cuenta?</h1>
+        <Link to={`/createUser`} className={style.linkButton}>
+          <button type="submit" className={style.button}>Crear cuenta</button>
+        </Link>
+        <button className="bg-orange-600 p-3 rounded-2xl" onClick={handleLoginGoogle}>Google</button>
       </div>
     </div>
-    
+
   );
 }
 
