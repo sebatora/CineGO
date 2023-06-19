@@ -42,18 +42,19 @@ const Login = () => {
 
   return (
     <div className="w-full h-full flex justify-center p-20">
+      <button type="button" className="bg-gray-300 absolute left-0 top-0 m-6 p-3 rounded-lg" onClick={() => navigate("/")}>Volver</button>
       <form className="w-[500px] flex flex-col justify-center items-center p-10 border border-black dark:border-white rounded" onSubmit={handleSubmit(onSubmit)}>
         <h1>Ingresa a tu cuenta</h1>
 
         <div className="flex flex-col mt-6">
           <label className="mb-2" htmlFor="email">Email:</label>
-          <input className="border p-2 rounded-lg w-96" type="text" placeholder="Enter your email..." {...register("email", { required: "El email del usuario es requerido" })} />
+          <input className="border border-black p-2 rounded-lg w-96" type="text" placeholder="Enter your email..." {...register("email", { required: "El email del usuario es requerido" })} />
           {errors.email && <span className="text-red-600 dark:text-red-600">{errors.email.message}</span>}
         </div>
 
         <div className="flex flex-col my-6">
           <label className="mb-2" htmlFor="password">Contraseña:</label>
-          <input className="border p-2 rounded-lg w-96" type="password" placeholder="Enter your password..." {...register("password", { required: "La contraseña es requerida" })} />
+          <input className="border border-black p-2 rounded-lg w-96" type="password" placeholder="Enter your password..." {...register("password", { required: "La contraseña es requerida" })} />
           {errors.password && <span className="text-red-600 dark:text-red-600">{errors.password.message}</span>}
         </div>
 
