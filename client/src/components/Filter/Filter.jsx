@@ -74,7 +74,7 @@ const Filter = () => {
 				</select>
 				<button className="bg-green-600 absolute bottom-4 right-1/2 rounded-sm p-2" onClick={handleFilter}>Filtrar</button>
 			</div>
-			<button className="bg-white rounded-md px-4 ml-10" onClick={handleReset}>RESET</button>
+			<button className="bg-transparent rounded-lg border border-black dark:border-white px-4 ml-10 dark:text-white" onClick={handleReset}>RESET</button>
 		</div>
 	)
 }

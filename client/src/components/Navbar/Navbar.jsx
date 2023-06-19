@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import cinego_blanco from "../../assets/cinego_blanco.png"
 import cinego_negro from "../../assets/cinego_negro.png"
 import ModalProfile from "../ModalProfile/ModalProfile";
+import { useSelector } from "react-redux";
 
 const options = [
   { name: "CinePlus", to: "/cineplus" },
@@ -11,9 +12,10 @@ const options = [
 ]
 
 function Navbar({ theme, setTheme }) {
+  const userData = useSelector(state => state.userData);
+  console.log(userData);
   const [activeModal, setActiveModal] = useState(false);
   const [activeMenu, setActiveMenu] = useState(false);
-  const navigate = useNavigate();
 
   const toggleTheme = () => {
     const newTheme = theme === "light" ? "dark" : "light";
@@ -36,7 +38,6 @@ function Navbar({ theme, setTheme }) {
         {options.map((option, index) => (
           <Link className="hover:opacity-80" key={index} to={option.to}>
             <h4>{option.name}</h4>
-            <p></p>
           </Link>
         ))}
       </div>
@@ -58,14 +59,18 @@ function Navbar({ theme, setTheme }) {
         )}
       </div>
 
-      <div className="w-20 lg:w-full h-full flex justify-end mr-8 mt-2 order-2">
+      <div className="w-20 lg:w-full h-full flex justify-end items-center mr-8 mt-2 order-2">
         <div className="mx-4 flex justify-center">
-          <button onClick={() => setActiveModal(!activeModal)}>
-            {/* <button onClick={() => navigate("/login")}> */}
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" className="w-6 h-6 stroke-black dark:stroke-white">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
-            </svg>
-          </button>
+          {!userData.email ? (
+            <Link to="/login">
+              <h4>Sign In</h4>
+            </Link>
+          ) : (
+            <button className="bg-white rounded-full p-1" onClick={() => setActiveModal(!activeModal)}>
+              <img className="w-6" src={userData.image} alt={userData.email} />
+            </button>
+          )}
+          
           {activeModal && (
             <ModalProfile activeModal={activeModal} setActiveModal={setActiveModal} />
           )}
