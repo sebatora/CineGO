@@ -102,11 +102,11 @@ const About = () => {
   const teamMemberCards = shuffledTeamMembers.map((member) => (
     <div key={member.name} className={style.member}>
       <img src={member.photoUrl} alt={member.name} />
-      <div class="member">
-      <h2 class="text-2xl mb-1 mt-n1 dark:text-black">{member.name}</h2>
+      <div className="member">
+      <h2 className="text-2xl mb-1 mt-n1 dark:text-black">{member.name}</h2>
       </div>
-      <div class="member">
-      <p class="text-sm text-gray-500 mb-4 dark:text-black">{member.description}</p>
+      <div className="member">
+      <p className="text-sm text-gray-500 mb-4 dark:text-black">{member.description}</p>
       </div>  
       <div className={style.socialLinks}>
         <a href={member.linkedinUrl} target="_blank">
@@ -118,7 +118,6 @@ const About = () => {
         <a href={member} target="_blank">
           <img src={member.iconoCv} alt="curriculum vitae" />
         </a>
-         
       </div>
     </div>
   ));

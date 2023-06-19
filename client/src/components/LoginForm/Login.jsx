@@ -1,36 +1,32 @@
-import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import style from "./login.module.css";
-import { Link, redirect, useNavigate } from "react-router-dom";
-import { app } from "../../firebase/firebaseConfig";
-import { GoogleAuthProvider, getAuth, getRedirectResult, signInWithRedirect, signInWithPopup, onAuthStateChanged } from "firebase/auth";
-import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { GoogleAuthProvider, getAuth, signInWithRedirect } from "firebase/auth";
+import { useDispatch } from "react-redux";
 import { loginUser } from "../../redux/actions";
+import LogoGoogle from "../../assets/google_logo.png";
 
 const Login = () => {
-  const userData = useSelector(state => state.userData);
-  const { register, handleSubmit, formState: { errors }, reset } = useForm();
+  const { register, handleSubmit, formState: { errors }, reset } = useForm({
+    defaultValues: {
+      email: "",
+      password: ""
+    }
+  });
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-
-  const email = "example@example.com";
-  const password = "password123";
+  // const email = "example@example.com";
+  // const password = "password123";
 
   const onSubmit = (data) => {
     try {
       dispatch(loginUser(data));
-      console.log(userData);
       reset();
       navigate("/");
+      alert("Inicio de sesión exitoso");
     } catch (error) {
-      alert(error.response.data.error);
+      console.log(error);
     }
-    // if (data.username !== email || data.password !== password) {
-    //   alert("Correo electrónico o contraseña incorrecto");
-    // } else {
-    //   dispatch(loginUser(data));
-    // }
   };
 
 
@@ -44,57 +40,35 @@ const Login = () => {
     }
   }
 
-  // useEffect(() => {
-  //   if (userData.email) {
-  //     navigate("/");
-  //     alert("Inicio de sesión exitoso");
-  //   }
-  //   const auth = getAuth();
-  //   onAuthStateChanged(auth, user => {
-  //     if (user && user.accessToken) {
-  //       navigate("/")
-  //     }
-  //   })
-  // }, []);
-
-
-  // const handleLoginGoogle = async () => {
-  //   try {
-  //     const result = await signInWithPopup(auth, provider);
-  //     const credential = GoogleAuthProvider.credentialFromResult(result);
-  //     console.log(result);
-  //     window.close();
-  //   } catch (error) {
-  //     if (error.code === 'auth/popup-closed-by-user') {
-  //       console.log('La ventana emergente fue cerrada por el usuario');
-  //     } else {
-  //       console.error(error);
-  //     }
-  //   }
-  // }
-
   return (
-    <div className="w-full h-screen grid grid-cols-2 gap-4">
-      <form className={style.form} onSubmit={handleSubmit(onSubmit)}>
-        <h1 className={style.h1} >Ingresa a tu cuenta</h1>
+    <div className="w-full h-full flex justify-center p-20">
+      <form className="w-[500px] flex flex-col justify-center items-center p-10 border border-black dark:border-white rounded" onSubmit={handleSubmit(onSubmit)}>
+        <h1>Ingresa a tu cuenta</h1>
 
-        <label htmlFor="" className={style.label}>Usuario:</label>
-        <input className={style.input} type="text" placeholder="Usuario" {...register("email", { required: true })} />
-        {errors.email && <p className={style.p}>El nombre de usuario es requerido</p>}
+        <div className="flex flex-col mt-6">
+          <label className="mb-2" htmlFor="email">Email:</label>
+          <input className="border p-2 rounded-lg w-96" type="text" placeholder="Enter your email..." {...register("email", { required: "El email del usuario es requerido" })} />
+          {errors.email && <span className="text-red-600 dark:text-red-600">{errors.email.message}</span>}
+        </div>
 
-        <label htmlFor="" className={style.label}>Contraseña:</label>
-        <input className={style.input} type="password" placeholder="Contraseña" {...register("password", { required: true })} />
-        {errors.password && <p className={style.p}>La contraseña es requerida</p>}
+        <div className="flex flex-col my-6">
+          <label className="mb-2" htmlFor="password">Contraseña:</label>
+          <input className="border p-2 rounded-lg w-96" type="password" placeholder="Enter your password..." {...register("password", { required: "La contraseña es requerida" })} />
+          {errors.password && <span className="text-red-600 dark:text-red-600">{errors.password.message}</span>}
+        </div>
 
-        <button className={style.button} type="submit">Entrar</button>
+        <button className="bg-green-600 py-3 px-10 rounded-lg text-white font-semibold" type="submit">Iniciar Sesión</button>
+        <div className="w-full mt-4 flex flex-col">
+          <h3 className="mb-2">¿No tenés cuenta?</h3>
+          <Link to="/createUser">
+            <button type="button" className="bg-gray-500 rounded-lg p-3">Crear cuenta</button>
+          </Link>
+          <button type="button" className="w-60 flex justify-center items-center text-white font-bold bg-blue-600 mt-4 p-2 rounded-xl" onClick={handleLoginGoogle}>
+            <img className="w-10" src={LogoGoogle} alt="Logo Google" />
+            Sign up with Google
+          </button>
+        </div>
       </form>
-      <div>
-        <h1 className={style.h1}>¿No tenés cuenta?</h1>
-        <Link to={`/createUser`} className={style.linkButton}>
-          <button type="submit" className={style.button}>Crear cuenta</button>
-        </Link>
-        <button className="bg-orange-600 p-3 rounded-2xl" onClick={handleLoginGoogle}>Google</button>
-      </div>
     </div>
 
   );
