@@ -22,13 +22,13 @@
 .black {
   color: white;
   background-color: black;
-  border: 1px solid gold;
+  border: 5px solid gold;
   font-size: 100px;
 }
 
 .gold {
   color: black;
   background-color: gold;
-  border: 1px solid black;
+  border: 5px solid black;
   font-size: 100px;
 }
