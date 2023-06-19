@@ -1,55 +1,94 @@
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getGenres, getMovies } from "../../redux/actions";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import style from "./ProfileInfo.module.css";
 
 function ProfileInfo() {
-  const dispatch = useDispatch();
+  const [userData, setUserData] = useState(null);
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const response = await axios.get("http://localhost:3001/users/1");
+        setUserData(response.data);
+        console.log(userData);
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
+    };
+
+    fetchUser();
+  }, []);
 
   return (
-    <div className="w-full ">
-      <h1>Completa tu perfil</h1>
-      <section className="w-full flex">
-        <article>
-          <form>
-            <div>
-              <label htmlFor="name">Nombre: </label>
-              <input className="w-1/2 " type="text" name="name" />
-            </div>
-            <div>
-              <label htmlFor="apellido">Apellido: </label>
-              <input className="w-1/2 " type="text" name="apellido" />
-            </div>
-            <div>
-              <label htmlFor="telefono">Telefono: </label>
-              <input className="w-1/2 " type="text" name="telefono" />
-            </div>
-          </form>
-        </article>
-        <article>
-          <form>
-            <div>
-              <label htmlFor="cinema">Cine habitual: </label>
-              <input className="w-1/2 " type="text" name="cinema" />
-            </div>
-            <div>
-              <label htmlFor="email">Email: </label>
-              <input className="w-1/2 " type="email" name="email" />
-            </div>
-            <div>
-              <label htmlFor="cineplus">Tipo de socio: </label>
-              <input className="w-1/2 " type="text" name="cineplus" />
-            </div>
-          </form>
-          <div>
-            <div>
-              <button> Pasate a Cine Plus Gold</button>
-            </div>
-            <div>
-              <button> Pasate a Cine Plus Platinum</button>
-            </div>
-          </div>
-        </article>
-      </section>
+    <div className={style.container}>
+      <main className={style.containerMain}>
+        <div className={style.boxTitleAndSave}>
+          <h1 className={style.title}>Completa tu perfil</h1>
+          <button className={style.save}>Guardar</button>
+        </div>
+        <div className={style.containerArticle}>
+          <article className={style.article}>
+            <form className={style.form}>
+              <div className={style.boxForm}>
+                <label className={style.labelBoxForm} htmlFor="name">
+                  Nombre:
+                </label>
+                <input
+                  className={style.inputBoxForm}
+                  type="text"
+                  name="name"
+                  placeholder="Ej: Mauri"
+                />
+              </div>
+              <div className={style.boxForm}>
+                <label className={style.labelBoxForm} htmlFor="apellido">
+                  Apellido:
+                </label>
+                <input
+                  className={style.inputBoxForm}
+                  type="text"
+                  name="apellido"
+                  placeholder="Ej: Medina"
+                />
+              </div>
+              <div className={style.boxForm}>
+                <label className={style.labelBoxForm} htmlFor="telefono">
+                  Telefono:
+                </label>
+                <input
+                  className={style.inputBoxForm}
+                  type="text"
+                  name="telefono"
+                  placeholder="Ej: 1122334455"
+                />
+              </div>
+            </form>
+          </article>
+          <article className={style.article}>
+            <form className={style.form}>
+              <div className={style.boxForm}>
+                <label className={style.labelBoxForm} htmlFor="email">
+                  Gen. Favorito:
+                </label>
+                <input
+                  className={style.inputBoxForm}
+                  type="text"
+                  name="gen"
+                  placeholder="Ej: Aventura"
+                />
+              </div>
+              <div className={style.boxForm}>
+                <h4 className={style.h4}>Email:</h4>
+                <p className={style.textP}>Ej: algo@algo.com</p>
+              </div>
+              <div className={style.boxForm}>
+                <h4 className={style.h4}>Socio: </h4>
+                <p className={style.textP}>Ej: CinePlus BLACK</p>
+              </div>
+            </form>
+          </article>
+        </div>
+      </main>
     </div>
   );
 }
