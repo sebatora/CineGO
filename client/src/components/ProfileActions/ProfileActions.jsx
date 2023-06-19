@@ -1,16 +1,17 @@
 import React from "react";
-
+import style from "./ProfileActions.module.css";
+import { Link } from "react-router-dom";
 function ProfileActions() {
   return (
-    <div>
+    <div className={style.container}>
       <h2>Acciones</h2>
-      <section>
-        <div>
+      <section className={style.containerButton}>
+        <Link className={style.boxButton} to={"/changeEmail"}>
           <button>Cambiar email</button>
-        </div>
-        <div>
+        </Link>
+        <Link className={style.boxButton} to={"/record"}>
           <button>Ultimas operaciones/movimientos</button>
-        </div>
+        </Link>
       </section>
     </div>
   );
