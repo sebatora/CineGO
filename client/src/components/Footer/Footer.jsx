@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import style from './Footer.module.css';
+import cinego_blanco from "../../assets/cinego_blanco.png"
 import cinego_negro from "../../assets/cinego_negro.png"
 import { Link } from "react-router-dom";
 import '@fortawesome/fontawesome-free/css/all.css';
@@ -11,18 +12,22 @@ import { faFacebookSquare, faTwitterSquare, faLinkedin, faInstagramSquare, faGit
 library.add(faFacebookSquare, faTwitterSquare, faLinkedin, faInstagramSquare, faGithub, faReact, faNodeJs, faHtml5, faCss3Alt, faJs, faGitAlt, faTrello);
 
 
-function Footer() {
+function Footer({ theme }) {
   return (
-    <footer className={style.footer}>
-      <div className={style.box__copyright}>
+    <footer className="w-full py-16 ">
+      <div className="text-center px-40">
         <hr />
       </div>
-      <div className={style.container__footer}>
+      <div className="flex flex-wrap justify-between mx-36 mt-20">
         <div className={style.box__footer}>
           <div className={style.logo}>
-            <Link to="/">
-                <img src={cinego_negro} alt="CineGO" />
-            </Link>
+          <Link to="/">
+            {theme === "dark" ? (
+              <img className="w-40" src={cinego_blanco} alt="CineGO" />
+            ) : (
+              <img className="w-40" src={cinego_negro} alt="CineGO" />
+            )}
+          </Link>
           </div>
           <div className={style.terms}>
             <p>Tecnologías utilizadas</p>
@@ -41,22 +46,22 @@ function Footer() {
         </div>
 
         <div className={style.box__footer}>
-          <h2>Opciones</h2>
+          <h2 className="mb-24 text-black font-bold text-2xl">Opciones</h2>
           <Link to="/">Cartelera</Link>
           <Link to="/">Candy</Link>
           <Link to="/cinePlus">CinePlus</Link>
           <Link to="/login">Login</Link>
         </div>
         <div className={style.box__footer}>
-            <h2>¿Quienes somos?</h2>
+            <h2 className="mb-24 text-black font-bold text-2xl">¿Quienes somos?</h2>
             <Link to="/about">Programadores</Link>
             <Link to="https://github.com/sebatora/CineGO" target="_blank"><FontAwesomeIcon icon={faGithub} /> Repositorio</Link>
         </div>
       </div>
 
-      <div className={style.box__copyright}>
+      <div className="max-w-1200 mx-auto text-center px-40">
         <hr />
-        <p>Todos los derechos reservados © 2023 <b>| CineGo</b></p>
+        <p className="mt-20 text-gray-500">Todos los derechos reservados © 2023 <b>| CineGo</b></p>
       </div>
     </footer>
   )

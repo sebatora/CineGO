@@ -204,9 +204,172 @@ const dataAllGenres = [
     "name": "Western"  
   }
 ]
-
+const dataAllCandy =  [
+  {
+    "name": "Combo Mega Recargado",
+    "description": "1 Balde pop+2 gaseosas 24oz+1 golosina sin eleccion (sujeta a disponibilidad del cine)+1 recarga de balde (hasta las 00:00 y 2:00 AM dias con trasnoche)",
+    "price": 250,
+    "image": "https://static.cinemarkhoyts.com.ar/Images/ConcessionItemImage/A000000184.png",
+    "category": "combos"
+  },
+  {
+    "name": "Combo Familiar",
+    "description": "2 Bolsas pop medianas + 4 gaseosas medianas + 2 golosinas sin eleccion (sujeta a disponibilidad del cine). Imagen a modo ilustrativo.",
+    "price": 450,
+    "image": "https://static.cinemarkhoyts.com.ar/Images/ConcessionItemImage/A000000096.png",
+    "category": "combos"
+  },
+  {
+    "name": "Combo Nachos",
+    "description": "Nachos con queso + 1 gaseosa grande. Imagen a modo ilustrativo.",
+    "price": 150,
+    "image": "https://static.cinemarkhoyts.com.ar/Images/ConcessionItemImage/A000000099.png",
+    "category": "combos"
+  },
+  {
+    "name": "Combo Pan de Queso",
+    "description": "Porcion de 5 unidades de 20 grs cada uno + 1 gaseosa grande.",
+    "price": 350,
+    "image": "https://static.cinemarkhoyts.com.ar/Images/ConcessionItemImage/A000002870.png",
+    "category": "combos"
+  },
+  {
+    "name": "Balde de Pochoclo",
+    "description": "1 Balde de pochoclos. Imagen a modo ilustrativo.",
+    "price": 120,
+    "image": "https://static.cinemarkhoyts.com.ar/Images/ConcessionItemImage/A000000107.png",
+    "category": "pochoclos"
+  },
+  {
+    "name": "Pop Mediano",
+    "description": "1 Bolsa de pochoclos mediana. Imagen a modo ilustrativo.",
+    "price": 100,
+    "image": "https://static.cinemarkhoyts.com.ar/Images/ConcessionItemImage/A000000111.png",
+    "category": "pochoclos"
+  },
+  {
+    "name": "Pop Chico",
+    "description": "1 bolsa de pochoclos chica. Imagen a modo ilustrativo.",
+    "price": 50,
+    "image": "https://static.cinemarkhoyts.com.ar/Images/ConcessionItemImage/A000000185.png",
+    "category": "pochoclos"
+  },
+  {
+    "name": "Bebida Grande",
+    "description": "1 gaseosa 24 oz. Imagen a modo ilustrativo.",
+    "price": 80,
+    "image": "https://static.cinemarkhoyts.com.ar/Images/ConcessionItemImage/A000000113.png",
+    "category": "bebidas"
+  },
+  {
+    "name": "Agua",
+    "description": "1 Agua. Modelo sujeto a disponibilidad. Imagen a modo ilustrativo.",
+    "price": 60,
+    "image": "https://static.cinemarkhoyts.com.ar/Images/ConcessionItemImage/A000000126.png",
+    "category": "bebidas"
+  },
+  {
+    "name": "Smoothie Naranja/Durazno",
+    "description": "1 Smoothie naranja/durazno. Imagen a modo ilustrativo.",
+    "price": 40,
+    "image": "https://static.cinemarkhoyts.com.ar/Images/ConcessionItemImage/A000001823.png",
+    "category": "bebidas"
+  },
+  {
+    "name": "Smoothie Frutos Rojos",
+    "description": "1 Smoothie Frutos Rojos. Imagen a modo ilustrativo.",
+    "price": 30,
+    "image": "https://static.cinemarkhoyts.com.ar/Images/ConcessionItemImage/A000001489.png",
+    "category": "bebidas"
+  },
+  {
+    "name": "Smoothie Limonada",
+    "description": "1 Smoothie Limonada. Imagen a modo ilustrativo.",
+    "price": 70,
+    "image": "https://static.cinemarkhoyts.com.ar/Images/ConcessionItemImage/A000001511.png",
+    "category": "bebidas"
+  },
+  {
+    "name": "Pancho",
+    "description": "1 Pancho. Imagen a modo ilustrativo.",
+    "price": 90,
+    "image": "https://static.cinemarkhoyts.com.ar/Images/ConcessionItemImage/A000000125.png",
+    "category": "snacks"
+  },
+  {
+    "name": "Nachos con Queso",
+    "description": "Nachos crocantes servidos con queso fundido.",
+    "price": 80,
+    "image": "https://static.cinemarkhoyts.com.ar/Images/ConcessionItemImage/A000000112.png",
+    "category": "snacks"
+  },
+  {
+    "name": "Pan de Queso",
+    "description": "Porcion de 5 unidades de 20 grs cada uno. Imagen a modo ilustrativo.",
+    "price": 70,
+    "image": "https://static.cinemarkhoyts.com.ar/Images/ConcessionItemImage/A000002869.png",
+    "category": "snacks"
+  },
+  {
+    "name": "Café Snack Grande + Pan de Queso",
+    "description": "1 café grande + 1 porción de pan de queso (5 unidades)",
+    "price": 300,
+    "image": "https://static.cinemarkhoyts.com.ar/Images/ConcessionItemImage/A000002933.png",
+    "category": "cafeteria"
+  },
+  {
+    "name": "Café Snack Grade",
+    "description": "1 Cafe 16 oz. Imagen a modo ilustrativo.",
+    "price": 80,
+    "image": "https://static.cinemarkhoyts.com.ar/Images/ConcessionItemImage/A000002516.png",
+    "category": "cafeteria"
+  },
+  {
+    "name": "Café Snack + Alfajor",
+    "description": "1 Cafe 16 oz + 1 alfajor. Imagen a modo ilustrativo.",
+    "price": 90,
+    "image": "https://static.cinemarkhoyts.com.ar/Images/ConcessionItemImage/A000002518.png",
+    "category": "cafeteria"
+  },
+  {
+    "name": "Mogul Moras",
+    "description": "Imagen a modo ilustrativo. Valor por unidad.",
+    "price": 60,
+    "image": "https://static.cinemarkhoyts.com.ar/Images/ConcessionItemImage/A000003305.png",
+    "category": "golosinas"
+  },
+  {
+    "name": "Gomitas Aribo",
+    "description": "1 Gomitas Haribo. Imagen a modo ilustrativo. Modelo sujeto a disponibilidad.",
+    "price": 40,
+    "image": "https://static.cinemarkhoyts.com.ar/Images/ConcessionItemImage/A000002555.png",
+    "category": "golosinas"
+  },
+  {
+    "name": "Rocklets Chicos",
+    "description": "1 Rocklets chico. Imagen a modo ilustrativo.",
+    "price": 50,
+    "image": "https://static.cinemarkhoyts.com.ar/Images/ConcessionItemImage/A000000129.png",
+    "category": "golosinas"
+  },
+  {
+    "name": "Alfajores",
+    "description": "alfajor de chocolate con leche.",
+    "price": 70,
+    "image": "https://static.cinemarkhoyts.com.ar/Images/ConcessionItemImage/A000000137.png",
+    "category": "golosinas"
+  },
+  {
+    "name": "m&m",
+    "description": "1 m&m Imagen a modo ilustrativo. Modelo sujeto a disponibilidad.",
+    "price": 30,
+    "image": "https://static.cinemarkhoyts.com.ar/Images/ConcessionItemImage/A000000118.png",
+    "category": "golosinas"
+  }
+];
 
 module.exports = {
   dataAllMovies,
-  dataAllGenres
+  dataAllGenres,
+  dataAllCandy
 }

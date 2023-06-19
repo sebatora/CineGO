@@ -16,5 +16,6 @@ export const DELETE_MOVIE = "DELETE_MOVIE";
 export const POST_USER = "POST_USER";
 export const PUT_USER = "PUT_USER";
 export const DELETE_USER = "DELETE_USER";
+export const LOGIN_USER = "LOGIN_USER";
 
 

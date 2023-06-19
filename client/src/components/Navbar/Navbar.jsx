@@ -1,17 +1,19 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import cinego_blanco from "../../assets/cinego_blanco.png"
 import cinego_negro from "../../assets/cinego_negro.png"
 import ModalProfile from "../ModalProfile/ModalProfile";
 
-function Navbar() {
-  const [theme, setTheme] = useState(localStorage.getItem("color-theme") || "light");
-  const [activeModal, setActiveModal] = useState(false);
+const options = [
+  {name:"CinePlus", to: "/cineplus"},
+  {name:"Candy", to: "/candy"},
+  {name:"Sobre Nosotros", to: "/about"},
+]
 
-	useEffect(() => {
-		document.documentElement.classList.toggle("dark", theme === "dark");
-		localStorage.setItem("color-theme", theme);
-	}, [theme]);
+function Navbar({ theme, setTheme }) {
+  const [activeModal, setActiveModal] = useState(false);
+  const [activeMenu, setActiveMenu] = useState(false);
+  const navigate = useNavigate();
 
 	const toggleTheme = () => {
 		const newTheme = theme === "light" ? "dark" : "light";
@@ -19,7 +21,7 @@ function Navbar() {
 	}
   return (
     <nav className="w-full h-20 fixed flex justify-between items-center bg-white dark:bg-black z-10 shadow-md dark:shadow-white/50">
-      <div className="w-full ml-4">
+      <div className="w-full lg:ml-4 order-1">
         <Link to="/">
           {theme === "dark" ? (
             <img className="w-40" src={cinego_blanco} alt="CineGO" />
@@ -29,17 +31,37 @@ function Navbar() {
         </Link>
       </div>
 
-      <div className="w-full flex justify-center space-x-10">
-        <Link  to="/cineplus">
-          <h4 className="hover:underline">CinePlus</h4>
-        </Link>
+      {/* Botones */}
+      <div className="w-full h-full hidden lg:flex justify-center items-center mt-2 space-x-10 order-2">
+        {options.map((option, index) => (
+          <Link className="hover:opacity-80" key={index} to={option.to}>
+            <h4>{option.name}</h4>
+            <p></p>
+          </Link>
+        ))}
       </div>
 
-      
+      {/* Menu Responsive */}
+      <div className="w-full h-full lg:hidden flex pl-6">
+        {activeMenu ? (
+          <button>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" className="w-6 h-6 stroke-black dark:stroke-white">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        ) : (
+          <button>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" className="w-7 h-7 stroke-black dark:stroke-white">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            </svg>
+          </button>
+        )}
+      </div>
 
-      <div className="w-20 lg:w-full flex justify-end mr-8 lg:order-1 order-0">
+      <div className="w-20 lg:w-full h-full flex justify-end mr-8 mt-2 order-2">
         <div className="mx-4 flex justify-center">
-        <button onClick={() => setActiveModal(!activeModal)}>
+        {/* <button onClick={() => setActiveModal(!activeModal)}> */}
+        <button onClick={() => navigate("/login")}>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" className="w-6 h-6 stroke-black dark:stroke-white">
             <path strokeLinecap="round" strokeLinejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
           </svg>
@@ -48,8 +70,6 @@ function Navbar() {
             <ModalProfile activeModal={activeModal} setActiveModal={setActiveModal} />
           )}
         </div>
-
-        
 
         {/* Toogle Theme */}
         <button onClick={toggleTheme} className={theme === "light" ? "block" : "hidden"}>
