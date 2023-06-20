@@ -1,5 +1,5 @@
 
-const putCandyController = require("../controllers/putCandyController")
+const putCandyController = require("../controllers/putCandyController");
 
 const handlerPutCandy = async(req, res) =>{
     try {
