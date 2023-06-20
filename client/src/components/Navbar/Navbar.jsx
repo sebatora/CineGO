@@ -61,13 +61,13 @@ function Navbar({ theme, setTheme }) {
 
       <div className="w-20 lg:w-full h-full flex justify-end items-center mr-8 mt-2 order-2">
         <div className="mx-4 flex justify-center">
-          {!userData.email ? (
+          {Object.entries(userData).length === 0 ? (
             <Link to="/login">
               <h4>Sign In</h4>
             </Link>
           ) : (
             <button className="bg-white rounded-full p-1" onClick={() => setActiveModal(!activeModal)}>
-              <img className="w-6" src={userData.image} alt={userData.email} />
+              <img className="w-6" src={userData.userFound.image} alt={userData.userFound.firstName} />
             </button>
           )}
           
