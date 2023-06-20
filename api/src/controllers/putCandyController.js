@@ -1,4 +1,4 @@
-const { Candy } = require("../db")
+const { Candy } = require("../db");
 
 const putCandyController = async({ id, name, description, category, price, image}) =>{
     if (!name || !description || !category || !price || !image) throw new Error("Faltan datos");
@@ -13,7 +13,7 @@ const putCandyController = async({ id, name, description, category, price, image
     candy.price = price || candy.price;
     candy.image = image || candy.image
 
-    await candy.save()
+    await candy.save();
 }
 
 module.exports = putCandyController;
