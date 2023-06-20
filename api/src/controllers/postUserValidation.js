@@ -2,7 +2,7 @@ const getAllUsers = require("./getAllUsersController");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-const getUserValidation = async ({email, password}) => {
+const getUserValidation = async ({ email, password }) => {
   const dataUsers = await getAllUsers();
 
   const userFound = dataUsers.find((user) => user.email === email);

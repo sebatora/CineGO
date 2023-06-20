@@ -7,8 +7,7 @@ import { getGenres, getMovies } from "../../redux/actions";
 import Filter from "../Filter/Filter";
 import SearchBar from "../SearchBar/SearchBar";
 
-function MoviesContainer() {
-
+function MoviesContainer({ theme }) {
   const [loading, setLoading] = useState(true);
   const allMovies = useSelector((state) => state.allMovies);
 
@@ -16,8 +15,8 @@ function MoviesContainer() {
 
   useEffect(() => {
     dispatch(getMovies());
-    dispatch(getGenres())
-    setLoading(false)
+    dispatch(getGenres());
+    setLoading(false);
   }, [dispatch]);
 
   return (
@@ -31,16 +30,19 @@ function MoviesContainer() {
             <SearchBar />
           </div>
           <div className="w-full flex flex-wrap justify-center">
-            {allMovies.map(({ id, title, description, image, release_date }) => (
-              <MovieCard
-                key={id}
-                id={id}
-                title={title}
-                description={description}
-                image={image}
-                release_date={release_date}
-              />
-            ))}
+            {allMovies.map(
+              ({ id, title, description, image, release_date }) => (
+                <MovieCard
+                  key={id}
+                  id={id}
+                  title={title}
+                  description={description}
+                  image={image}
+                  release_date={release_date}
+                  theme={theme}
+                />
+              )
+            )}
           </div>
         </div>
       )}
