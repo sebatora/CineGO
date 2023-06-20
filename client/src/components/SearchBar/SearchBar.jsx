@@ -19,7 +19,7 @@ const SearchBar = () =>{
     <div className="w-full">
       <div className="relative">
         <input
-          className="w-full appearance-none bg-transparent rounded-2xl border-2 border-black dark:border-white focus:outline-none focus:border-black py-1 px-2 pl-3"
+          className="w-full appearance-none bg-transparent rounded-2xl border-2 border-black dark:border-white dark:text-white focus:outline-none focus:border-black py-1 px-2 pl-3"
           type="search"
           name="search"
           onChange={handleChange}

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 axios.defaults.baseURL = "http://localhost:3001";
 
 // Components
@@ -22,6 +22,7 @@ function App() {
   const [theme, setTheme] = useState(
     localStorage.getItem("color-theme") || "light"
   );
+  const location = useLocation();
 
   useEffect(() => {
     document.documentElement.classList.toggle("dark", theme === "dark");
@@ -30,7 +31,10 @@ function App() {
 
   return (
     <div className="w-full min-w-[1280px] h-full min-h-screen bg-white dark:bg-black flex flex-col">
-      <Navbar theme={theme} setTheme={setTheme} />
+      {location.pathname !== "/login" &&
+        location.pathname !== "/createUser" && (
+          <Navbar theme={theme} setTheme={setTheme} />
+        )}
 
       <Routes>
         <Route exact path="/" element={<Home theme={theme} />} />
@@ -46,7 +50,8 @@ function App() {
         renderizada SI o SI al final
       </Routes>
 
-      <Footer theme={theme} />
+      {location.pathname !== "/login" &&
+        location.pathname !== "/createUser" && <Footer theme={theme} />}
     </div>
   );
 }
