@@ -14,7 +14,7 @@ const handlerGetAllMovies = async (req, res) => {
     const moviesByName = await getMoviesByName(title);
     return res.status(200).json(moviesByName);
   } catch (error) {
-    return res.status(400).json({ error: error.message });
+    return res.status(404).json({ error: error.message });
   }
 };
 

@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getGenres, getMovies } from "../../redux/actions";
 import Filter from "../Filter/Filter";
 import SearchBar from "../SearchBar/SearchBar";
+import { ErrorSearch404 } from "../Error404/Error404";
 
 function MoviesContainer({ theme }) {
   const [loading, setLoading] = useState(true);
@@ -30,7 +31,7 @@ function MoviesContainer({ theme }) {
             <SearchBar />
           </div>
           <div className="w-full flex flex-wrap justify-center">
-            {allMovies.map(
+            {allMovies.length? allMovies.map(
               ({ id, title, description, image, release_date }) => (
                 <MovieCard
                   key={id}
@@ -42,7 +43,7 @@ function MoviesContainer({ theme }) {
                   theme={theme}
                 />
               )
-            )}
+            ): <ErrorSearch404/>}
           </div>
         </div>
       )}
