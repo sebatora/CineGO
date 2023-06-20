@@ -8,6 +8,7 @@ const routerUser = require("./routes/user.routes.js");
 const routerGenre = require("./routes/genre.routes.js");
 const routerOrder = require("./routes/order.routes.js");
 const routerCandy = require("./routes/candy.routes.js")
+const routerSubscription = require("./routes/susbcription.routes.js")
 
 const app = express();
 
@@ -22,7 +23,7 @@ app.use("/users", routerUser);
 app.use("/genres", routerGenre);
 app.use("/order", routerOrder);
 app.use("/candy", routerCandy)
-
+app.use("/susbcription", routerSubscription);
 
 
 module.exports = app;

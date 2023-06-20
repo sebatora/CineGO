@@ -6,7 +6,7 @@ function ProfileActions() {
     <div className={style.container}>
       <h2>Acciones</h2>
       <section className={style.containerButton}>
-        <Link className={style.boxButton} to={"/changeEmail"}>
+        <Link className={style.boxButton} to={"/changemail"}>
           <button>Cambiar email</button>
         </Link>
         <Link className={style.boxButton} to={"/record"}>
