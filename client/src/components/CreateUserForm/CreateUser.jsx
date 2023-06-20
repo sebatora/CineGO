@@ -7,13 +7,7 @@ const CreateUser = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    reset,
-    watch
-  } = useForm({
+  const { register, handleSubmit, formState: { errors }, reset, watch } = useForm({
     defaultValues: {
       firstName: "",
       lastName: "",
