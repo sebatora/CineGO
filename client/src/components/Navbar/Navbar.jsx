@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import cinego_blanco from "../../assets/cinego_blanco.png"
 import cinego_negro from "../../assets/cinego_negro.png"
 import ModalProfile from "../ModalProfile/ModalProfile";
@@ -45,13 +45,13 @@ function Navbar({ theme, setTheme }) {
       {/* Menu Responsive */}
       <div className="w-full h-full lg:hidden flex pl-6">
         {activeMenu ? (
-          <button>
+          <button onClick={() => setActiveMenu(!activeMenu)}>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" className="w-6 h-6 stroke-black dark:stroke-white">
               <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
         ) : (
-          <button>
+          <button onClick={() => setActiveMenu(!activeMenu)}>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" className="w-7 h-7 stroke-black dark:stroke-white">
               <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
             </svg>
@@ -70,7 +70,6 @@ function Navbar({ theme, setTheme }) {
               <img className="w-6" src={userData.userFound.image} alt={userData.userFound.firstName} />
             </button>
           )}
-          
           {activeModal && (
             <ModalProfile activeModal={activeModal} setActiveModal={setActiveModal} />
           )}
