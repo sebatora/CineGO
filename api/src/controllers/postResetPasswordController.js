@@ -35,18 +35,16 @@ const sendPasswordByEmail = (email, newPassword) => {
     // Configurar el transporte de nodemailer para enviar el correo
     const transporter = nodemailer.createTransport({
         // tengo que connfigurar el transporte de correo ej, SMTP
-        service: "gmail",
+        service: "hotmail",
         auth: {
-            user: "cinego74@gmail.com",
-            pass: "proyectogrupal1"
+            user: "cinego75@hotmail.com",
+            pass: "Proyecto1"
         },
-        port: 465,
-        secure: true,
     });
 
     // configuar el mensaje del correo
     const mailOptions = {
-        from: "cinego74@gmail.com", // remitente
+        from: "cinego75@hotmail.com", // remitente
         to: email, // Destinatario
         subject: "Nueva contraseña", // Asunto del correo 
         text: `Tu nueva contraseña es: ${newPassword}`, // Cuerpo del correo
