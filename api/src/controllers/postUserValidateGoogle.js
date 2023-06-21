@@ -1,12 +1,17 @@
 const { User } = require("../db");
-const getAllUsers = require("./getAllUsersController");
 
 const postUserValidateGoogle = async ({ firstName, lastName, image, email, token }) => {
-	const [newUser, created] = await User.findOrCreate({ 
+  const [newUser, created] = await User.findOrCreate({ 
     where: { email },
-    defaults: { firstName, lastName, email, image }
+    defaults: { firstName, lastName, email }
   });
-	const user = {
+
+  if (image) {
+    newUser.image = image; // Asigna la URL de la imagen directamente a la propiedad 'image'
+    await newUser.save();
+  }
+
+  const user = {
     id: newUser.id,
     firstName: newUser.firstName,
     lastName: newUser.lastName,
@@ -15,9 +20,9 @@ const postUserValidateGoogle = async ({ firstName, lastName, image, email, token
     cinePlus: newUser.cinePlus,
     isAdmin: newUser.isAdmin,
     token
-  }
+  };
 
-	return user;
-}
+  return user;
+};
 
-module.exports = postUserValidateGoogle
+module.exports = postUserValidateGoogle;
