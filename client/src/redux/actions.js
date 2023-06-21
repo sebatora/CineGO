@@ -10,7 +10,8 @@ import {
   POST_USER,
   LOGIN_USER,
   LOGOUT_USER,
-  GET_CANDY
+  GET_CANDY,
+  ADD_TO_CART
 } from "./action-type";
 
 import axios from "axios";
@@ -136,5 +137,13 @@ export const getCandy = () => {
     } catch (error) {
       return error.message;
     }
+  }
+}
+
+
+export const addCart = (id) =>{
+  return{
+    type: ADD_TO_CART,
+    payload: id
   }
 }

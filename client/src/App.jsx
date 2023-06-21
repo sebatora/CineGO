@@ -19,7 +19,7 @@ import { AuthProvider } from "./context/authContext";
 import ChangeMail from "./view/ChangeMail/ChangeMail";
 import Record from "./view/Record/Record";
 import Candy from "./view/Candy/Candy";
-import Ticket from "./components/Ticket/Ticket";
+import TicketContainer from "./components/TicketContainer/TicketContainer";
 
 
 import { useSelector } from "react-redux";
@@ -51,7 +51,7 @@ function App() {
         <Route path="/changeMail" element={<ChangeMail />} />
         <Route path="/record" element={<Record />} />
         <Route path="/candy" element={<Candy />} />
-        <Route path="/ticket" element={<Ticket/>}/>
+        <Route path="/ticket" element={<TicketContainer/>}/>
         <Route path="*" element={<Error404 />} /> //Esta ruta tiene que estar renderizada SI o SI al final
       </Routes>
 

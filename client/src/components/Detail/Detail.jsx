@@ -13,7 +13,7 @@ function Detail() {
 
   useEffect(() => {
     dispatch(getMovieById(id));
-    return () => dispatch(cleanDetail())
+    // return () => dispatch(cleanDetail())
   }, [id, dispatch]);
 
   return (

@@ -2,34 +2,15 @@
 .container{
     padding-top: 50px;
 }
-.button{
-    color: white;
-    border: 2px solid rgb(38, 40, 38);
-    margin-left: 50px;
-    margin-bottom: 20px;
-    padding: 5px;
-    border-radius: 5px;
-    background-color: #625f56b0;
-}
-.container h2{
-    padding: 0 50px 20px;
-    background-color: #7c7868;
-    width: 100%;
-}
-
-.name h3{
-    background-color: #83670276;
-    font-size: 15px;
-    padding-left: 50px;
-    width: 70%;
-}
 .card {
     width: 300px;
     border-radius: 10px;
     margin: 50px;
-    background: #f6f2d7;
+    background: #fbf1b3;
     overflow: hidden;
     text-align: center;
+    margin-left: 15%;
+    margin-top: 0px;
   }
 
 .cards {
@@ -44,7 +25,7 @@
     position: absolute;
     width: 24px;
     height: 24px;
-    background: #fff;
+    background: #ffffff;
     border-radius: 100%;
     bottom: -12px;
     border: 2px solid #836602;
@@ -57,9 +38,9 @@
   .cards:after {
     right: -13px;
   }
-.cards:hover{
-    background-color: #7ba7667b;
-}
+  .cards:hover{
+      background-color: #7ba7667b;
+  }
   .cards button{
     width: 100%;
     height: 67px;
@@ -75,24 +56,4 @@
   .cards_body img{
     width: 100%;
     margin-bottom: 25px;
-  }
-  .nex{
-    background-color: #c6c5c3;
-    display: flex;
-    flex-direction: row-reverse;
-    position: absolute;
-    width: 400px;
-    height: 600px;
-    margin-left: 70%;
-    border-radius: 5px;
-    border: solid 2px black;
-    align-items: flex-end
-  }
-
-  .nex button{
-    border: solid 2px rgb(1, 1, 1);
-    border-radius: 5px;
-    height: 30px;
-    margin: 10px;
-    
   }
