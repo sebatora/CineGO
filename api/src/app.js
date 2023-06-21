@@ -10,6 +10,7 @@ const routerOrder = require("./routes/order.routes.js");
 const routerCandy = require("./routes/candy.routes.js");
 const routerSubscription = require("./routes/susbcription.routes.js");
 const routerPayment = require("./routes/payment.routes.js");
+const routerResetPassword = require("./routes/resetpass.routes.js")
 
 const app = express();
 
@@ -26,5 +27,7 @@ app.use("/order", routerOrder);
 app.use("/candy", routerCandy)
 app.use("/susbcription", routerSubscription);
 app.use("/payment", routerPayment);
+app.use("/reset", routerResetPassword);
+
 
 module.exports = app;

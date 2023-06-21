@@ -13,7 +13,7 @@ function Detail() {
 
   useEffect(() => {
     dispatch(getMovieById(id));
-    return () => dispatch(cleanDetail())
+    // return () => dispatch(cleanDetail())
   }, [id, dispatch]);
 
   return (
@@ -55,7 +55,7 @@ function Detail() {
               </h2>
               <p className={style.description}> {detail.description} </p>
               <div className="mt-8 mb-10 flex justify-center">
-                <Link to='/login'>
+                <Link to='/ticket'>
                   <button className="bg-red-500 text-white border-none px-4 py-2 text-center text-base rounded cursor-pointer" type="submit">¡Comprar entradas!</button>
                 </Link>
               </div>

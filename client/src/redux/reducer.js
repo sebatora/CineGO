@@ -10,7 +10,8 @@ import {
   POST_USER,
   LOGIN_USER,
   LOGOUT_USER,
-  GET_CANDY
+  GET_CANDY,
+  ADD_TO_CART
 } from "./action-type";
 
 const initialState = {
@@ -19,7 +20,24 @@ const initialState = {
   movieById: {},
   allGenres: [],
   userData: {},
-  allCandy: []
+  allCandy: [],
+  cart:[],
+  productTicket: [
+    {
+      "id": 1,
+      "name": "general",
+      "image": "https://static.cinemarkhoyts.com.ar/Images/TicketTypeImage/1687.png",
+      "price": 200,
+      "description": "Entrada Promocional No acumulable con otras promociones. Lunes y martes."
+    },
+    {
+      "id": 2,
+      "name": "cineFan",
+      "image": "https://static.cinemarkhoyts.com.ar/Images/TicketTypeImage/1667.png",
+      "price": 290,
+      "description": "Incluye 2 entradas + Tarjeta Virtual."
+    }
+  ]
 };
 
 const rootReducer = (state = initialState, { type, payload }) => {
@@ -104,6 +122,24 @@ const rootReducer = (state = initialState, { type, payload }) => {
         ...state,
         allCandy: payload,
       };
+    }
+
+
+    case ADD_TO_CART :{
+      let newItem = state.productTicket.find(product => product.id === payload)
+
+      let itemCart = state.cart.find(item => item.id === newItem.id)
+
+      return itemCart ? {
+        ...state,
+        cart: state.cart.map(item => item.id === newItem.id ? {...item, price: item.price + newItem.price}
+          :item
+          )
+      }
+      :{
+        ...state,
+        cart: [...state.cart, {...newItem, price: newItem.price}]
+      }
     }
 
     default:
