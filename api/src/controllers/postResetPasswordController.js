@@ -62,3 +62,6 @@ const sendPasswordByEmail = (email, newPassword) => {
 
 
 module.exports = postResetPasswordController;
+
+
+// ACTUALIZACION DE CORREO OCUPEN ESE 
