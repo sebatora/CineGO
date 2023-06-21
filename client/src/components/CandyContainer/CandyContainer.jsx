@@ -3,6 +3,7 @@ import CandyCard from '../CandyCard/CandyCard';
 import Spinner from '../Spinner/Spinner';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCandy } from '../../redux/actions';
+import CandyCarrito from '../CandyCarrito/CandyCarrito';
 
 function CandyContainer() {
   const [loading, setLoading] = useState(true);
@@ -26,6 +27,8 @@ function CandyContainer() {
       {loading ? (
         <Spinner />
       ) : (
+        <div>
+
         <div className="w-full mt-28 flex flex-col items-center ">
           <h2>Combos</h2>
           <div className="flex flex-wrap justify-center">
@@ -68,6 +71,9 @@ function CandyContainer() {
               <CandyCard key={id} name={name} description={description} price={price} image={image} />
             ))}
           </div>
+        </div>
+
+          <CandyCarrito />
 
         </div>
       )}
