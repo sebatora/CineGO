@@ -10,6 +10,7 @@ import {
   POST_USER,
   LOGIN_USER,
   LOGOUT_USER,
+  GET_CANDY
 } from "./action-type";
 
 import axios from "axios";
@@ -124,3 +125,16 @@ export const loginUser = (user) => {
 export const logoutUser = () => {
   return { type: LOGOUT_USER };
 };
+
+
+//Trae todos los productos candy
+export const getCandy = () => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.get(`/candy`);
+      return dispatch({ type: GET_CANDY, payload: data });
+    } catch (error) {
+      return error.message;
+    }
+  }
+}

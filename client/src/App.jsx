@@ -18,7 +18,11 @@ import Profile from "./view/Profile/Profile";
 import { AuthProvider } from "./context/authContext";
 import ChangeMail from "./view/ChangeMail/ChangeMail";
 import Record from "./view/Record/Record";
+import Candy from "./view/Candy/Candy";
+
+
 import { useSelector } from "react-redux";
+
 
 function App() {
   const [theme, setTheme] = useState(window.localStorage.getItem("color-theme") || "light");
@@ -45,8 +49,8 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/changeMail" element={<ChangeMail />} />
         <Route path="/record" element={<Record />} />
-        <Route path="*" element={<Error404 />} /> //Esta ruta tiene que estar
-        renderizada SI o SI al final
+        <Route path="/candy" element={<Candy />} />
+        <Route path="*" element={<Error404 />} /> //Esta ruta tiene que estar renderizada SI o SI al final
       </Routes>
 
       {location.pathname !== "/login" && location.pathname !== "/createUser" && <Footer theme={theme} />}
