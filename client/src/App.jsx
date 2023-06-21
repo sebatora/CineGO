@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Route, Routes, useLocation } from "react-router-dom";
+
 axios.defaults.baseURL = "http://localhost:3001";
 
 // Components
@@ -14,28 +15,29 @@ import CinePlus from "./components/cinePlus/cinePlus";
 import Error404 from "./components/Error404/Error404";
 import Footer from "./components/Footer/Footer";
 import Profile from "./view/Profile/Profile";
+import { AuthProvider } from "./context/authContext";
 import ChangeMail from "./view/ChangeMail/ChangeMail";
 import Record from "./view/Record/Record";
 import Candy from "./view/Candy/Candy";
-axios.defaults.baseURL = "http://localhost:3001";
+
+
+import { useSelector } from "react-redux";
+
 
 function App() {
-  const [theme, setTheme] = useState(
-    localStorage.getItem("color-theme") || "light"
-  );
+  const [theme, setTheme] = useState(window.localStorage.getItem("color-theme") || "light");
   const location = useLocation();
+  const userData = useSelector(state => state.userData);
 
   useEffect(() => {
     document.documentElement.classList.toggle("dark", theme === "dark");
-    localStorage.setItem("color-theme", theme);
+    window.localStorage.setItem("color-theme", theme);
   }, [theme]);
 
   return (
-    <div className="w-full min-w-[1280px] h-full min-h-screen bg-white dark:bg-black flex flex-col">
-      {location.pathname !== "/login" &&
-        location.pathname !== "/createUser" && (
-          <Navbar theme={theme} setTheme={setTheme} />
-        )}
+    <div className="w-full h-full min-h-screen bg-white dark:bg-black flex flex-col">
+      <AuthProvider>
+      {location.pathname !== "/login" && location.pathname !== "/createUser" && <Navbar theme={theme} setTheme={setTheme} userData={userData} />}
 
       <Routes>
         <Route exact path="/" element={<Home theme={theme} />} />
@@ -51,8 +53,8 @@ function App() {
         <Route path="*" element={<Error404 />} /> //Esta ruta tiene que estar renderizada SI o SI al final
       </Routes>
 
-      {location.pathname !== "/login" &&
-        location.pathname !== "/createUser" && <Footer theme={theme} />}
+      {location.pathname !== "/login" && location.pathname !== "/createUser" && <Footer theme={theme} />}
+      </AuthProvider>
     </div>
   );
 }

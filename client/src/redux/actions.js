@@ -113,6 +113,7 @@ export const loginUser = (user) => {
   return async (dispatch) => {
     try {
       const { data } = await axios.post(`/users/login`, user);
+      window.localStorage.setItem("user", JSON.stringify(data));
       return dispatch({ type: LOGIN_USER, payload: data });
     } catch (error) {
       return error.message;
@@ -121,7 +122,6 @@ export const loginUser = (user) => {
 };
 
 // limpia userData
-
 export const logoutUser = () => {
   return { type: LOGOUT_USER };
 };

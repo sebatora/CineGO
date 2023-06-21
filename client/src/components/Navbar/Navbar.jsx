@@ -1,9 +1,8 @@
-import { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import cinego_blanco from "../../assets/cinego_blanco.png"
 import cinego_negro from "../../assets/cinego_negro.png"
 import ModalProfile from "../ModalProfile/ModalProfile";
-import { useSelector } from "react-redux";
 
 const options = [
   { name: "CinePlus", to: "/cineplus" },
@@ -12,10 +11,9 @@ const options = [
 ]
 
 function Navbar({ theme, setTheme }) {
-  const userData = useSelector(state => state.userData);
-  console.log(userData);
   const [activeModal, setActiveModal] = useState(false);
   const [activeMenu, setActiveMenu] = useState(false);
+  const userData = JSON.parse(window.localStorage.getItem("user"));
 
   const toggleTheme = () => {
     const newTheme = theme === "light" ? "dark" : "light";
@@ -45,13 +43,13 @@ function Navbar({ theme, setTheme }) {
       {/* Menu Responsive */}
       <div className="w-full h-full lg:hidden flex pl-6">
         {activeMenu ? (
-          <button>
+          <button onClick={() => setActiveMenu(!activeMenu)}>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" className="w-6 h-6 stroke-black dark:stroke-white">
               <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
         ) : (
-          <button>
+          <button onClick={() => setActiveMenu(!activeMenu)}>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" className="w-7 h-7 stroke-black dark:stroke-white">
               <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
             </svg>
@@ -61,18 +59,17 @@ function Navbar({ theme, setTheme }) {
 
       <div className="w-20 lg:w-full h-full flex justify-end items-center mr-8 mt-2 order-2">
         <div className="mx-4 flex justify-center">
-          {Object.entries(userData).length === 0 ? (
+          {!userData || Object.entries(userData).length === 0 ? (
             <Link to="/login">
               <h4>Sign In</h4>
             </Link>
           ) : (
             <button className="bg-white rounded-full p-1" onClick={() => setActiveModal(!activeModal)}>
-              <img className="w-6" src={userData.userFound.image} alt={userData.userFound.firstName} />
+              <img className="w-7 rounded-full" src={userData.image} alt={userData.firstName} />
             </button>
           )}
-          
           {activeModal && (
-            <ModalProfile activeModal={activeModal} setActiveModal={setActiveModal} />
+            <ModalProfile setActiveModal={setActiveModal} userData={userData} />
           )}
         </div>
 
