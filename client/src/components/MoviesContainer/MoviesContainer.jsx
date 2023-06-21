@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getGenres, getMovies } from "../../redux/actions";
 import Filter from "../Filter/Filter";
 import SearchBar from "../SearchBar/SearchBar";
-import { ErrorSearch404 } from "../Error404/Error404";
+import ErrorSearch404 from "../ErrorSearch404/ErrorSearch404";
 
 function MoviesContainer({ theme }) {
   const [loading, setLoading] = useState(true);
