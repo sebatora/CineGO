@@ -19,6 +19,7 @@ import { AuthProvider } from "./context/authContext";
 import ChangeMail from "./view/ChangeMail/ChangeMail";
 import Record from "./view/Record/Record";
 import Candy from "./view/Candy/Candy";
+import Ticket from "./components/Ticket/Ticket";
 
 
 import { useSelector } from "react-redux";
@@ -37,7 +38,7 @@ function App() {
   return (
     <div className="w-full h-full min-h-screen bg-white dark:bg-black flex flex-col">
       <AuthProvider>
-      {location.pathname !== "/login" && location.pathname !== "/createUser" && <Navbar theme={theme} setTheme={setTheme} userData={userData} />}
+      {location.pathname !== "/login" && location.pathname !== "/createUser" && location.pathname !== "/ticket" && <Navbar theme={theme} setTheme={setTheme} userData={userData} />}
 
       <Routes>
         <Route exact path="/" element={<Home theme={theme} />} />
@@ -50,6 +51,7 @@ function App() {
         <Route path="/changeMail" element={<ChangeMail />} />
         <Route path="/record" element={<Record />} />
         <Route path="/candy" element={<Candy />} />
+        <Route path="/ticket" element={<Ticket/>}/>
         <Route path="*" element={<Error404 />} /> //Esta ruta tiene que estar renderizada SI o SI al final
       </Routes>
 
