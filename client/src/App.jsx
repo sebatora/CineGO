@@ -18,22 +18,22 @@ import Profile from "./view/Profile/Profile";
 import { AuthProvider } from "./context/authContext";
 import ChangeMail from "./view/ChangeMail/ChangeMail";
 import Record from "./view/Record/Record";
+import { useSelector } from "react-redux";
 
 function App() {
-  const [theme, setTheme] = useState(
-    localStorage.getItem("color-theme") || "light"
-  );
+  const [theme, setTheme] = useState(window.localStorage.getItem("color-theme") || "light");
   const location = useLocation();
+  const userData = useSelector(state => state.userData);
 
   useEffect(() => {
     document.documentElement.classList.toggle("dark", theme === "dark");
-    localStorage.setItem("color-theme", theme);
+    window.localStorage.setItem("color-theme", theme);
   }, [theme]);
 
   return (
     <div className="w-full h-full min-h-screen bg-white dark:bg-black flex flex-col">
       <AuthProvider>
-      {location.pathname !== "/login" &&location.pathname !== "/createUser" && <Navbar theme={theme} setTheme={setTheme} />}
+      {location.pathname !== "/login" && location.pathname !== "/createUser" && <Navbar theme={theme} setTheme={setTheme} userData={userData} />}
 
       <Routes>
         <Route exact path="/" element={<Home theme={theme} />} />

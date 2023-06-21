@@ -1,9 +1,9 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { app } from "../firebase/firebaseConfig";
-import { GoogleAuthProvider, getAuth, onAuthStateChanged, signInWithRedirect, signOut } from "firebase/auth";
+import { auth } from "../firebase/firebaseConfig";
+import { GoogleAuthProvider, onAuthStateChanged, signInWithRedirect, signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { loginUser, postUser } from "../redux/actions";
+import { loginUser } from "../redux/actions";
 
 export const authContext = createContext();
 
@@ -14,33 +14,39 @@ export const useAuth = () => {
 }
 
 export const AuthProvider = ({ children }) => {
-	const auth = getAuth();
 	const [user, setUser] = useState({});
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 
-	const loginWithGoogle = () => {
-		const provider = new GoogleAuthProvider();
-		signInWithRedirect(auth, provider);
+	const loginWithGoogle = async () => {
+		try {
+			const provider = new GoogleAuthProvider();
+			await signInWithRedirect(auth, provider);
+		} catch (error) {
+			console.error(error);
+		}
 	};
 
-	const logout = () => signOut(auth);
+	const logout = () => {
+		localStorage.removeItem("token");
+		signOut(auth)
+	};
 
 	useEffect(() => {
 		onAuthStateChanged(auth, currentUser => {
 			if(currentUser !== null){
 				const firstName = currentUser.displayName.split(" ")[0];
 				const lastName = currentUser.displayName.split(" ")[1];
+				const token = currentUser.accessToken;
 				const userData = {
 					firstName,
 					lastName,
 					email: currentUser.email,
 					image: currentUser.photoURL,
-					token: currentUser.accessToken,
+					token: token.substring(0, 60),
 				}
-				console.log(userData);
-				// setUser(userData);
-				// dispatch(postUser(userData));
+				setUser(userData);
+				dispatch(loginUser(userData));
 				navigate("/");
 			}
 		})
