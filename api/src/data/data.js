@@ -207,14 +207,14 @@ const dataAllGenres = [
 const dataAllCandy =  [
   {
     "name": "Combo Mega Recargado",
-    "description": "1 Balde pop+2 gaseosas 24oz+1 golosina sin eleccion (sujeta a disponibilidad del cine)+1 recarga de balde (hasta las 00:00 y 2:00 AM dias con trasnoche)",
+    "description": "1 Balde pop + 2 gaseosas 24oz + 1 golosina sin eleccion + 1 recarga de balde",
     "price": 250,
     "image": "https://static.cinemarkhoyts.com.ar/Images/ConcessionItemImage/A000000184.png",
     "category": "combos"
   },
   {
     "name": "Combo Familiar",
-    "description": "2 Bolsas pop medianas + 4 gaseosas medianas + 2 golosinas sin eleccion (sujeta a disponibilidad del cine). Imagen a modo ilustrativo.",
+    "description": "2 Bolsas pop medianas + 4 gaseosas medianas + 2 golosinas sin eleccion. Imagen a modo ilustrativo.",
     "price": 450,
     "image": "https://static.cinemarkhoyts.com.ar/Images/ConcessionItemImage/A000000096.png",
     "category": "combos"

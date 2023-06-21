@@ -10,6 +10,7 @@ import {
   POST_USER,
   LOGIN_USER,
   LOGOUT_USER,
+  GET_CANDY
 } from "./action-type";
 
 const initialState = {
@@ -18,6 +19,7 @@ const initialState = {
   movieById: {},
   allGenres: [],
   userData: {},
+  allCandy: []
 };
 
 const rootReducer = (state = initialState, { type, payload }) => {
@@ -94,6 +96,13 @@ const rootReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         userData: {},
+      };
+    }
+
+    case GET_CANDY: {
+      return {
+        ...state,
+        allCandy: payload,
       };
     }
 
