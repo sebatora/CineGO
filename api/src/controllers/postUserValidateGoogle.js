@@ -1,15 +1,21 @@
 const { User } = require("../db");
+const { uploadImage } = require("../utils/cloudinary");
 
 const postUserValidateGoogle = async ({ firstName, lastName, image, email, token }) => {
   const [newUser, created] = await User.findOrCreate({ 
     where: { email },
-    defaults: { firstName, lastName, email }
+    defaults: { firstName, lastName, email, image }
   });
 
-  if (image) {
-    newUser.image = image; // Asigna la URL de la imagen directamente a la propiedad 'image'
-    await newUser.save();
+  let updatedImage = newUser.image;
+
+  if (image || image !== newUser.image) {
+    const cloudinaryResponse = await uploadImage(image);
+    updatedImage = cloudinaryResponse.secure_url;
   }
+
+  newUser.image = updatedImage;
+  await newUser.save();
 
   const user = {
     id: newUser.id,
@@ -26,3 +32,6 @@ const postUserValidateGoogle = async ({ firstName, lastName, image, email, token
 };
 
 module.exports = postUserValidateGoogle;
+
+
+
