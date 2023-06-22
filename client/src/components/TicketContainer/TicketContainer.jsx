@@ -3,23 +3,33 @@ import { Link } from "react-router-dom";
 import Ticket from "../Ticket/Ticket";
 import styles from "./TicketContainer.module.css"
 import Cart from "../Cart/Cart";
-import { addCart } from "../../redux/actions";
-import CartTotal from "../CartTotal/CartTotal";
+import { addCart, removeAllCart, removeOneCart } from "../../redux/actions";
 
 
 const TicketContainer = () =>{
-
     const dispatch = useDispatch()
     const product = useSelector((state)=> state.productTicket)
     const cart = useSelector((state)=>state.cart)
-    const  movieId = useSelector((state) => state.movieById)
-
+    const movieIds = useSelector((state)=> state.movieByIdCopy)
+    
     const cinefan = product.filter(name => name.name === "cineFan")
     const general = product.filter(name => name.name === "general")
 
     const addToCard = (id) =>{ 
+        
         dispatch(addCart(id))
     }
+
+    const delRemoveCart = (id, all = false) => {
+        if (all) {
+            dispatch(removeAllCart(id))
+        }
+        else{
+            dispatch(removeOneCart(id))
+        }
+    }
+
+    let total = cart.reduce((acc, el) => acc + el.price, 0)
 
     return (
         <div className={styles.container}>
@@ -28,18 +38,28 @@ const TicketContainer = () =>{
             </div>
             <div className={styles.cart}>
                 <h3>Carrito</h3>
-                <img src={movieId.image} alt={movieId.name} />
-                <h2>{movieId.name}</h2>
-                {cart?.map((item, index)=>(
-                        <Cart 
-                        key={index}
-                        id={item.id}
-                        price={item.price}
-                        name={item.name}
-                        />
-                    ))}   
-                <h3>Total: <CartTotal/> </h3>
-                <br />
+                <img src={movieIds.image} alt={movieIds.name} />
+                <p>{movieIds.title}</p>
+                <div>
+                    {cart?.map((item, index)=>(
+                            <Cart 
+                            key={index}
+                            id={item.id}
+                            price={item.price}
+                            name={item.name}
+                            count={item.count}
+                            delRemoveCart={delRemoveCart}
+                            addToCard={addToCard}
+                            />
+                        ))}   
+                </div>
+                <hr />
+                <div>
+                    <h4>Subtotal</h4>
+                    <h4>cargos por entrada</h4>
+                    <h4>total $ {total}</h4>
+                </div>
+                <hr />
                 <Link to="/login"><button className={styles.button}>Seguiente</button></Link>
             </div>
             <div>
