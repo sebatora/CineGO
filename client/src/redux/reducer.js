@@ -12,6 +12,8 @@ import {
   LOGOUT_USER,
   GET_CANDY,
   ADD_TO_CART,
+  REMOVE_ONE_CART,
+  REMOVE_ALL_CART,
   ADD_TO_CART_CANDY
 } from "./action-type";
 
@@ -19,6 +21,7 @@ const initialState = {
   allMovies: [],
   allMoviesCopy: [],
   movieById: {},
+  movieByIdCopy: {},
   allGenres: [],
   userData: {},
   allCandy: [],
@@ -54,6 +57,7 @@ const rootReducer = (state = initialState, { type, payload }) => {
     case GET_MOVIE_BY_ID: {
       return {
         ...state,
+        movieByIdCopy: payload,
         movieById: payload,
       };
     }
@@ -134,14 +138,33 @@ const rootReducer = (state = initialState, { type, payload }) => {
 
       return itemCart ? {
         ...state,
-        cart: state.cart.map(item => item.id === newItem.id ? {...item, price: item.price + newItem.price}
+        cart: state.cart.map(item => item.id === newItem.id ? {...item, price: item.price + newItem.price, count: item.count + 1}
           :item
           )
       }
       :{
         ...state,
-        cart: [...state.cart, {...newItem, price: newItem.price}]
+        cart: [...state.cart, {...newItem, price: newItem.price, count:1}]
       }
+    }
+    case REMOVE_ALL_CART: {
+      return {
+        ...state,
+        cart: state.cart.filter(item => item.id !== payload)
+      }
+    }
+    case REMOVE_ONE_CART: {
+      let itemDelete = state.cart.find(item => item.id === payload)
+      let newItem = state.productTicket.find(product => product.id === payload)
+
+      return itemDelete.count > 1 ? {
+        ...state,
+        cart: state.cart.map(item => item.id === payload?{...item, price: item.price - newItem.price, count: item.count - 1 }:item)
+      }:{
+        ...state,
+        cart: state.cart.filter(item => item.id !== payload)
+      }
+     
     }
 
     case ADD_TO_CART_CANDY :{

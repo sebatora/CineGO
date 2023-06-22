@@ -12,6 +12,8 @@ import {
   LOGOUT_USER,
   GET_CANDY,
   ADD_TO_CART,
+  REMOVE_ONE_CART,
+  REMOVE_ALL_CART,
   ADD_TO_CART_CANDY
 } from "./action-type";
 
@@ -149,6 +151,19 @@ export const addCart = (id) =>{
   }
 }
 
+
+export const removeAllCart = (id) =>{
+  return{
+    type: REMOVE_ALL_CART,
+    payload: id
+  }
+}
+export const removeOneCart = (id) =>{
+  return{
+    type: REMOVE_ONE_CART,
+    payload:id
+  }
+}
 export const addCartCandy = (id) =>{
   return{
     type: ADD_TO_CART_CANDY,

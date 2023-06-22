@@ -22,6 +22,10 @@ export const LOGOUT_USER = "LOGOUT_USER";
 // RUTAS DE CANDY
 export const GET_CANDY = "GET_CANDY";
 export const ADD_TO_CART_CANDY = "ADD_TO_CART_CANDY";
-
-
+// RUTAS DEL CARRITO TICKET
 export const ADD_TO_CART = "ADD_TO_CART";
+export const REMOVE_ALL_CART = "REMOVE_ALL_CART";
+export const REMOVE_ONE_CART = "REMOVE_ONE_CART";
+
+
+
