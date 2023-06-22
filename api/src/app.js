@@ -7,8 +7,9 @@ const routerMovie = require("./routes/movie.routes.js");
 const routerUser = require("./routes/user.routes.js");
 const routerGenre = require("./routes/genre.routes.js");
 const routerOrder = require("./routes/order.routes.js");
-const routerCandy = require("./routes/candy.routes.js")
-const routerSubscription = require("./routes/susbcription.routes.js")
+const routerCandy = require("./routes/candy.routes.js");
+const routerSubscription = require("./routes/susbcription.routes.js");
+const routerPayment = require("./routes/payment.routes.js");
 const routerResetPassword = require("./routes/resetpass.routes.js")
 
 const app = express();
@@ -25,6 +26,7 @@ app.use("/genres", routerGenre);
 app.use("/order", routerOrder);
 app.use("/candy", routerCandy)
 app.use("/susbcription", routerSubscription);
+app.use("/payment", routerPayment);
 app.use("/reset", routerResetPassword);
 
 
