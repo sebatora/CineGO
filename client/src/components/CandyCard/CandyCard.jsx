@@ -1,18 +1,10 @@
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
+
 
 function CandyCard({ name, description, price, image }) {
-  const navigate = useNavigate();
-  let orderData = {
-		title: "Ticket Spiderman",
-		description: "Entrada a spiderman para la función 3 a las 21hs",
-		picture_url: "https://image.tmdb.org/t/p/original/8Vt6mWEReuy4Of61Lnj5Xj704m8.jpg",
-	}
 
   const handleBuy = async () => {
 		try {
-			const { data } = await axios.post("http://localhost:3001/payment", orderData);
-      navigate("/payment");
+      console.log("Compra");
 		} catch (error) {
 			console.error(error);
 		}
