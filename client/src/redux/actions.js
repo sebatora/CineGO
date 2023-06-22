@@ -11,7 +11,8 @@ import {
   LOGIN_USER,
   LOGOUT_USER,
   GET_CANDY,
-  ADD_TO_CART
+  ADD_TO_CART,
+  ADD_TO_CART_CANDY
 } from "./action-type";
 
 import axios from "axios";
@@ -144,6 +145,13 @@ export const getCandy = () => {
 export const addCart = (id) =>{
   return{
     type: ADD_TO_CART,
+    payload: id
+  }
+}
+
+export const addCartCandy = (id) =>{
+  return{
+    type: ADD_TO_CART_CANDY,
     payload: id
   }
 }

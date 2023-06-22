@@ -21,5 +21,7 @@ export const LOGOUT_USER = "LOGOUT_USER";
 
 // RUTAS DE CANDY
 export const GET_CANDY = "GET_CANDY";
+export const ADD_TO_CART_CANDY = "ADD_TO_CART_CANDY";
+
 
 export const ADD_TO_CART = "ADD_TO_CART";

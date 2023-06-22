@@ -11,7 +11,8 @@ import {
   LOGIN_USER,
   LOGOUT_USER,
   GET_CANDY,
-  ADD_TO_CART
+  ADD_TO_CART,
+  ADD_TO_CART_CANDY
 } from "./action-type";
 
 const initialState = {
@@ -126,9 +127,10 @@ const rootReducer = (state = initialState, { type, payload }) => {
 
 
     case ADD_TO_CART :{
-      let newItem = state.productTicket.find(product => product.id === payload)
+      let newItem = state.productTicket.find(product => product.id === payload);
 
-      let itemCart = state.cart.find(item => item.id === newItem.id)
+      let itemCart = state.cart.find(item => item.id === newItem.id);
+      
 
       return itemCart ? {
         ...state,
@@ -139,6 +141,24 @@ const rootReducer = (state = initialState, { type, payload }) => {
       :{
         ...state,
         cart: [...state.cart, {...newItem, price: newItem.price}]
+      }
+    }
+
+    case ADD_TO_CART_CANDY :{
+      let newCandy = state.allCandy.find(product => product.id === payload);
+
+      let candyCart = state.cart.find(item => item.id === newCandy.id);
+      
+
+      return candyCart ? {
+        ...state,
+        cart: state.cart.map(item => item.id === newCandy.id ? {...item, price: item.price + newCandy.price}
+          :item
+          )
+      }
+      :{
+        ...state,
+        cart: [...state.cart, {...newCandy, price: newCandy.price}]
       }
     }
 
