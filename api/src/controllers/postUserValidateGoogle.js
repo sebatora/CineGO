@@ -1,5 +1,4 @@
 const { User } = require("../db");
-const getAllUsers = require("./getAllUsersController");
 
 const postUserValidateGoogle = async ({ firstName, lastName, image, email, token }) => {
 	const [newUser, created] = await User.findOrCreate({ 

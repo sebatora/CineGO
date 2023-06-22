@@ -8,7 +8,7 @@ function CandyCarrito() {
   };
 
   return (
-    <div className="w-full mt-28 flex flex-col items-center ">
+    <div className="w-1/3 mt-28 flex flex-col items-center ">
         <div className="w-60 h-80 mx-auto rounded overflow-hidden shadow-lg bg-white dark:bg-black dark:shadow-gray-700 flex flex-col">
             <div className="px-4 py-2 flex-grow">
                 <p className="text-gray-700 text-xl dark:text-gray-300">Candy</p>
