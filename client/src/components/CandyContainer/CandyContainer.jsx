@@ -23,8 +23,8 @@ function CandyContainer() {
     (product) => product.category === "golosinas"
   );
 
-  const handleBuy = (id) => {
-    dispatch(addCartCandy(id));
+  const handleBuy = (name) => {
+    dispatch(addCartCandy(name));
   };
 
   useEffect(() => {
@@ -49,7 +49,7 @@ function CandyContainer() {
                   description={description}
                   price={price}
                   image={image}
-                  handleBuy={() => handleBuy(id)}
+                  handleBuy={() => handleBuy(name)}
                 />
               ))}
             </div>
@@ -64,7 +64,7 @@ function CandyContainer() {
                   description={description}
                   price={price}
                   image={image}
-                  handleBuy={() => handleBuy(id)}
+                  handleBuy={() => handleBuy(name)}
                 />
               ))}
             </div>
@@ -79,7 +79,7 @@ function CandyContainer() {
                   description={description}
                   price={price}
                   image={image}
-                  handleBuy={() => handleBuy(id)}
+                  handleBuy={() => handleBuy(name)}
                 />
               ))}
             </div>
@@ -94,7 +94,7 @@ function CandyContainer() {
                   description={description}
                   price={price}
                   image={image}
-                  handleBuy={() => handleBuy(id)}
+                  handleBuy={() => handleBuy(name)}
                 />
               ))}
             </div>
@@ -109,7 +109,7 @@ function CandyContainer() {
                   description={description}
                   price={price}
                   image={image}
-                  handleBuy={() => handleBuy(id)}
+                  handleBuy={() => handleBuy(name)}
                 />
               ))}
             </div>
@@ -124,7 +124,7 @@ function CandyContainer() {
                   description={description}
                   price={price}
                   image={image}
-                  handleBuy={() => handleBuy(id)}
+                  handleBuy={() => handleBuy(name)}
                 />
               ))}
             </div>

@@ -14,7 +14,9 @@ import {
   ADD_TO_CART,
   REMOVE_ONE_CART,
   REMOVE_ALL_CART,
-  ADD_TO_CART_CANDY
+  ADD_TO_CART_CANDY,
+  REMOVE_ALL_CART_CANDY,
+  REMOVE_ONE_CANDY,
 } from "./action-type";
 
 const initialState = {
@@ -168,21 +170,41 @@ const rootReducer = (state = initialState, { type, payload }) => {
     }
 
     case ADD_TO_CART_CANDY :{
-      let newCandy = state.allCandy.find(product => product.id === payload);
+      let newCandy = state.allCandy.find(product => product.name === payload);
 
-      let candyCart = state.cart.find(item => item.id === newCandy.id);
+      let candyCart = state.cart.find(item => item.name === newCandy.name);
       
 
       return candyCart ? {
         ...state,
-        cart: state.cart.map(item => item.id === newCandy.id ? {...item, price: item.price + newCandy.price}
+        cart: state.cart.map(item => item.name === newCandy.name ? {...item, price: item.price + newCandy.price, count: item.count + 1}
           :item
           )
       }
       :{
         ...state,
-        cart: [...state.cart, {...newCandy, price: newCandy.price}]
+        cart: [...state.cart, {...newCandy, price: newCandy.price, count:1}]
       }
+    }
+
+    case REMOVE_ALL_CART_CANDY: {
+      return {
+        ...state,
+        cart: state.cart.filter(item => item.name !== payload)
+      }
+    }
+    case REMOVE_ONE_CANDY: {
+      let itemDelete = state.cart.find(item => item.name === payload)
+      let newCandy = state.allCandy.find(product => product.name === payload);
+
+      return itemDelete.count > 1 ? {
+        ...state,
+        cart: state.cart.map(item => item.name === payload?{...item, price: item.price - newCandy.price,  count: item.count - 1}:item)
+      }:{
+        ...state,
+        cart: state.cart.filter(item => item.name !== payload)
+      }
+     
     }
 
     default:
