@@ -19,54 +19,52 @@ function CandyContainer() {
   useEffect(() => {
     dispatch(getCandy());
     setLoading(false);
-  }, [dispatch]);
+  }, []);
 
   return (
     <>
-      <div className="mb-10">CandyContainer</div>
       {loading ? (
         <Spinner />
       ) : (
-        <div>
-
-        <div className="w-full mt-28 flex flex-col items-center ">
+      <div className='w-full flex'>
+        <div className="w-2/3 mt-28 flex flex-col items-center ">
           <h2>Combos</h2>
-          <div className="flex flex-wrap justify-center">
+          <div className="flex flex-wrap justify-center mb-10">
             {combos.map(({ id, name, description, price, image }) => (
               <CandyCard key={id} name={name} description={description} price={price} image={image} />
             ))}
           </div>
 
           <h2>Pochoclos</h2>
-          <div className="flex flex-wrap justify-center">
+          <div className="flex flex-wrap justify-center mb-10">
             {pochoclos.map(({ id, name, description, price, image }) => (
               <CandyCard key={id} name={name} description={description} price={price} image={image} />
             ))}
           </div>
 
           <h2>Bebidas</h2>
-          <div className="flex flex-wrap justify-center">
+          <div className="flex flex-wrap justify-center mb-10">
             {bebidas.map(({ id, name, description, price, image }) => (
               <CandyCard key={id} name={name} description={description} price={price} image={image} />
             ))}
           </div>
 
           <h2>Snacks</h2>
-          <div className="flex flex-wrap justify-center">
+          <div className="flex flex-wrap justify-center mb-10">
             {snacks.map(({ id, name, description, price, image }) => (
               <CandyCard key={id} name={name} description={description} price={price} image={image} />
             ))}
           </div>
 
           <h2>Cafeteria</h2>
-          <div className="flex flex-wrap justify-center">
+          <div className="flex flex-wrap justify-center mb-10">
             {cafeteria.map(({ id, name, description, price, image }) => (
               <CandyCard key={id} name={name} description={description} price={price} image={image} />
             ))}
           </div>
 
           <h2>Golosinas</h2>
-          <div className="flex flex-wrap justify-center">
+          <div className="flex flex-wrap justify-center mb-10">
             {golosinas.map(({ id, name, description, price, image }) => (
               <CandyCard key={id} name={name} description={description} price={price} image={image} />
             ))}

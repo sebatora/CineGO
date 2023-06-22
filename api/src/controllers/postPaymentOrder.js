@@ -8,7 +8,7 @@ const postPaymentOrder = async ({ title, description, picture_url }) => {
 					title,
 					description,
 					picture_url,
-					quantity: 2,
+					quantity: 1,
 					currency_id: "ARS",
 					unit_price: 11000,
 				}
@@ -27,7 +27,7 @@ const postPaymentOrder = async ({ title, description, picture_url }) => {
 			auto_return: "approved",
 		});
 
-		return { id: response.body.id };
+		return response;
 	} catch (error) {
 		throw new Error(error)		
 	}
