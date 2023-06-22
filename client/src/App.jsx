@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Route, Routes, useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 axios.defaults.baseURL = "http://localhost:3001";
 
@@ -19,11 +20,8 @@ import { AuthProvider } from "./context/authContext";
 import ChangeMail from "./view/ChangeMail/ChangeMail";
 import Record from "./view/Record/Record";
 import Candy from "./view/Candy/Candy";
-import Ticket from "./components/Ticket/Ticket";
-
-
-import { useSelector } from "react-redux";
-
+import TicketContainer from "./components/TicketContainer/TicketContainer";
+import Payment from "./components/Payment/Payment";
 
 function App() {
   const [theme, setTheme] = useState(window.localStorage.getItem("color-theme") || "light");
@@ -51,7 +49,8 @@ function App() {
         <Route path="/changeMail" element={<ChangeMail />} />
         <Route path="/record" element={<Record />} />
         <Route path="/candy" element={<Candy />} />
-        <Route path="/ticket" element={<Ticket/>}/>
+        <Route path="/ticket" element={<TicketContainer/>}/>
+        <Route path="/payment" element={<Payment />} />
         <Route path="*" element={<Error404 />} /> //Esta ruta tiene que estar renderizada SI o SI al final
       </Routes>
 

@@ -10,16 +10,38 @@ import {
   POST_USER,
   LOGIN_USER,
   LOGOUT_USER,
-  GET_CANDY
+  GET_CANDY,
+  ADD_TO_CART,
+  REMOVE_ONE_CART,
+  REMOVE_ALL_CART,
+  ADD_TO_CART_CANDY
 } from "./action-type";
 
 const initialState = {
   allMovies: [],
   allMoviesCopy: [],
   movieById: {},
+  movieByIdCopy: {},
   allGenres: [],
   userData: {},
-  allCandy: []
+  allCandy: [],
+  cart:[],
+  productTicket: [
+    {
+      "id": 1,
+      "name": "general",
+      "image": "https://static.cinemarkhoyts.com.ar/Images/TicketTypeImage/1687.png",
+      "price": 200,
+      "description": "Entrada Promocional No acumulable con otras promociones. Lunes y martes."
+    },
+    {
+      "id": 2,
+      "name": "cineFan",
+      "image": "https://static.cinemarkhoyts.com.ar/Images/TicketTypeImage/1667.png",
+      "price": 290,
+      "description": "Incluye 2 entradas + Tarjeta Virtual."
+    }
+  ]
 };
 
 const rootReducer = (state = initialState, { type, payload }) => {
@@ -35,6 +57,7 @@ const rootReducer = (state = initialState, { type, payload }) => {
     case GET_MOVIE_BY_ID: {
       return {
         ...state,
+        movieByIdCopy: payload,
         movieById: payload,
       };
     }
@@ -104,6 +127,62 @@ const rootReducer = (state = initialState, { type, payload }) => {
         ...state,
         allCandy: payload,
       };
+    }
+
+
+    case ADD_TO_CART :{
+      let newItem = state.productTicket.find(product => product.id === payload);
+
+      let itemCart = state.cart.find(item => item.id === newItem.id);
+      
+
+      return itemCart ? {
+        ...state,
+        cart: state.cart.map(item => item.id === newItem.id ? {...item, price: item.price + newItem.price, count: item.count + 1}
+          :item
+          )
+      }
+      :{
+        ...state,
+        cart: [...state.cart, {...newItem, price: newItem.price, count:1}]
+      }
+    }
+    case REMOVE_ALL_CART: {
+      return {
+        ...state,
+        cart: state.cart.filter(item => item.id !== payload)
+      }
+    }
+    case REMOVE_ONE_CART: {
+      let itemDelete = state.cart.find(item => item.id === payload)
+      let newItem = state.productTicket.find(product => product.id === payload)
+
+      return itemDelete.count > 1 ? {
+        ...state,
+        cart: state.cart.map(item => item.id === payload?{...item, price: item.price - newItem.price, count: item.count - 1 }:item)
+      }:{
+        ...state,
+        cart: state.cart.filter(item => item.id !== payload)
+      }
+     
+    }
+
+    case ADD_TO_CART_CANDY :{
+      let newCandy = state.allCandy.find(product => product.id === payload);
+
+      let candyCart = state.cart.find(item => item.id === newCandy.id);
+      
+
+      return candyCart ? {
+        ...state,
+        cart: state.cart.map(item => item.id === newCandy.id ? {...item, price: item.price + newCandy.price}
+          :item
+          )
+      }
+      :{
+        ...state,
+        cart: [...state.cart, {...newCandy, price: newCandy.price}]
+      }
     }
 
     default:
