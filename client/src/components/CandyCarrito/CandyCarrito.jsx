@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addCartCandy, removeAllCart, removeOneCart } from "../../redux/actions";
+import { addCartCandy, removeAllCartCandy, removeOneCartCandy } from "../../redux/actions";
 
 function CandyCarrito() {
   const dispatch = useDispatch();
@@ -8,15 +8,15 @@ function CandyCarrito() {
 
   let total = cart.reduce((acc, el) => acc + el.price, 0);
 
-  const addCart = (id) => {
-    dispatch(addCartCandy(id));
+  const addCart = (name) => {
+    dispatch(addCartCandy(name));
   };
 
-  const delRemoveCart = (id, all = false) => {
+  const delRemoveCart = (name, all = false) => {
     if (all) {
-      dispatch(removeAllCart(id));
+      dispatch(removeAllCartCandy(name));
     } else {
-      dispatch(removeOneCart(id));
+      dispatch(removeOneCartCandy(name));
     }
   };
 
@@ -36,9 +36,9 @@ function CandyCarrito() {
                 {" "}
                 {item.count} {item.name} : {item.price}
               </p>
-              <button onClick={() => delRemoveCart(id, true)}> X </button>
-              <button onClick={() => delRemoveCart(id)}> - </button>
-              <button onClick={() => addCart(id)}> + </button>
+              <button onClick={() => delRemoveCart(item.name, true)}> X </button>
+              <button onClick={() => delRemoveCart(item.name)}> - </button>
+              <button onClick={() => addCart(item.name)}> + </button>
             </div>
           ))}
         </div>
