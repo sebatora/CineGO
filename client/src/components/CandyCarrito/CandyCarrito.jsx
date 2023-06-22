@@ -1,12 +1,20 @@
-import React from 'react'
+import axios from 'axios';
 import { useSelector } from 'react-redux';
 
 function CandyCarrito() {
-
-  const cart = useSelector((state) => state.cart)
+  const cart = useSelector((state) => state.cart);
 
   let total = cart.reduce((acc, el) => acc + el.price, 0)
 
+  const handlePay = async () => {
+    try {
+      const { data } = await axios.post("http://localhost:3001/payment", cart);
+			window.location.href = data;
+      console.log(data);
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   return (
     <div className="w-1/3 mt-28 flex flex-col items-center ">
@@ -30,6 +38,7 @@ function CandyCarrito() {
 
                 <button
                   className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded text-xs"
+                  onClick={handlePay}
                 >
                   Comprar
                 </button>

@@ -1,10 +1,7 @@
-import axios from "axios";
-
 const Payment = () => {
 	const handleClick = async () => {
 		try {
-			const { data } = await axios.post("http://localhost:3001/payment");
-			window.location.href = data;
+			
 		} catch (error) {
 			console.log(error);
 		}
