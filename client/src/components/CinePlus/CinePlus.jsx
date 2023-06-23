@@ -2,7 +2,7 @@ import React from "react";
 import pochoclo from "../../assets/pochoclo.png";
 import { FaCheck, FaTimes } from "react-icons/fa";
 
-const cinePlus = () => {
+const CinePlus = () => {
   return (
     <div className="w-4/5 flex justify-around my-20 mx-auto">
       <div className="w-96 mt-20 rounded-lg relative">
@@ -148,4 +148,4 @@ const cinePlus = () => {
   );
 };
 
-export default cinePlus;
+export default CinePlus;

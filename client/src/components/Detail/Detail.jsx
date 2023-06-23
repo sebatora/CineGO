@@ -17,14 +17,13 @@ function Detail() {
   }, [id, dispatch]);
 
   return (
-    <div className="flex justify-center items-center h-screen mt-16 mb-32">
-      <div className="w-4/5 h-full relative mt-36">
+    <div className="w-4/5 h-full relative mt-20 flex justify-center items-center">
       {
         !detail.id ? (
           <Error404 />
         ) : (
-          <div className={style.row}>
-            <div className={style.movieInfo}>
+          <div className="flex flex-wrap">
+            <div className="w-2/3 flex flex-col px-4">
               <figure className={style.figure}>
                 <img src={detail.image} alt={detail.title} className={style.movieImage} />
               </figure>
@@ -64,7 +63,6 @@ function Detail() {
           </div>
         )
       }
-      </div>
     </div>
   );
 }

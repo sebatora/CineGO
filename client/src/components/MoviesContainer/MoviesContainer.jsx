@@ -11,7 +11,6 @@ import ErrorSearch404 from "../ErrorSearch404/ErrorSearch404";
 function MoviesContainer() {
   const [loading, setLoading] = useState(true);
   const allMovies = useSelector((state) => state.allMovies);
-  console.log(allMovies);
 
   const dispatch = useDispatch();
 
