@@ -107,6 +107,14 @@ export const filterOrder = (info) => {
 export const postUser = (newUser) => {
   return async (dispatch) => {
     try {
+      // Verificar si el correo electrónico ya está registrado
+      const response = await axios.get(`/users?email=${newUser.email}`);
+      const existingUser = response.data;
+
+      if (existingUser) {
+        throw new Error("El correo electrónico ya está registrado.");
+      }
+
       const { data } = await axios.post(`/users`, newUser);
       return dispatch({ type: POST_USER, payload: data });
     } catch (error) {
@@ -114,6 +122,7 @@ export const postUser = (newUser) => {
     }
   };
 };
+
 
 // Valida el login del usuario
 export const loginUser = (user) => {

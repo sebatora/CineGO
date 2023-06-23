@@ -7,15 +7,12 @@ import { Toaster, toast } from "react-hot-toast";
 import photoUser from "../../assets/userPhoto.png";
 import cloudinary from "cloudinary-core";
 import * as yup from "yup";
-import { yupResolver } from "@hookform/resolvers/yup"; 
-
-
+import { yupResolver } from "@hookform/resolvers/yup";
 
 const CreateUser = ({ onPhotoUpload }) => {
   const dispatch = useDispatch();
   const [uploadedPhoto, setUploadedPhoto] = useState("");
   const cl = new cloudinary.Cloudinary({ cloud_name: "dhyqgl7ie" });
-
 
   const navigate = useNavigate();
   const {
@@ -52,10 +49,9 @@ const CreateUser = ({ onPhotoUpload }) => {
         }
       }
     );
-  
+
     widget_cloudinary.open();
   };
-  
 
   useEffect(() => {
     const boton_photo = document.querySelector("#btn-photo");
@@ -66,18 +62,22 @@ const CreateUser = ({ onPhotoUpload }) => {
     };
   }, []);
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     try {
       // Agregar la URL de la foto al objeto de datos antes de enviarlo
       const userData = {
         ...data,
         photoUrl: uploadedPhoto
       };
-      
-      dispatch(postUser(userData));
-      reset();
-      navigate("/login");
-      toast("Usuario creado correctamente");
+
+      const errorMessage = await dispatch(postUser(userData));
+      if (errorMessage) {
+        toast.error(errorMessage);
+      } else {
+        reset();
+        navigate("/login");
+        toast("Usuario creado correctamente");
+      }
     } catch (error) {
       console.error(error);
     }
