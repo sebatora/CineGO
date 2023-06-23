@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { addCartCandy, removeAllCartCandy, removeOneCartCandy } from "../../redux/actions";
+import { addCartCandy, removeAllCartCandy, removeOneCartCandy, saveCart } from "../../redux/actions";
+import { useEffect, useState } from "react";
 
 function CandyCarrito() {
   const dispatch = useDispatch();
@@ -15,6 +16,7 @@ function CandyCarrito() {
   const delRemoveCart = (name, all = false) => {
     if (all) {
       dispatch(removeAllCartCandy(name));
+      window.localStorage.removeItem("cart");
     } else {
       dispatch(removeOneCartCandy(name));
     }
@@ -29,6 +31,19 @@ function CandyCarrito() {
     }
   }
 
+  useEffect(() => {
+    const storedCart = window.localStorage.getItem("cart");
+    if (storedCart) {
+      dispatch(saveCart(JSON.parse(storedCart)));
+    }
+  }, []);
+
+  useEffect(() => {
+    if(cart.length) {
+      window.localStorage.setItem("cart", JSON.stringify(cart));
+    }
+  }, [cart]);
+
   return (
     <div className="w-1/3 mt-28 flex flex-col items-center ">
       <div className="w-80 mx-auto rounded overflow-hidden shadow-lg bg-white dark:bg-black dark:shadow-gray-700 flex flex-col">
@@ -39,7 +54,7 @@ function CandyCarrito() {
           Productos seleccionados:{" "}
         </div>
         <div className="px-2 py1">
-          {cart?.map((item, index) => (
+          {cart.map((item, index) => (
             <div key={index}>
               <p className="text-sm font-bold  text-gray-700 dark:text-white">
                 {" "}

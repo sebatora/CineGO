@@ -17,6 +17,7 @@ import {
   ADD_TO_CART_CANDY,
   REMOVE_ALL_CART_CANDY,
   REMOVE_ONE_CANDY,
+  SAVE_CART,
 } from "./action-type";
 
 const initialState = {
@@ -149,12 +150,14 @@ const rootReducer = (state = initialState, { type, payload }) => {
         cart: [...state.cart, {...newItem, price: newItem.price, count:1}]
       }
     }
+
     case REMOVE_ALL_CART: {
       return {
         ...state,
         cart: state.cart.filter(item => item.id !== payload)
       }
     }
+
     case REMOVE_ONE_CART: {
       let itemDelete = state.cart.find(item => item.id === payload)
       let newItem = state.productTicket.find(product => product.id === payload)
@@ -166,7 +169,6 @@ const rootReducer = (state = initialState, { type, payload }) => {
         ...state,
         cart: state.cart.filter(item => item.id !== payload)
       }
-     
     }
 
     case ADD_TO_CART_CANDY :{
@@ -204,7 +206,13 @@ const rootReducer = (state = initialState, { type, payload }) => {
         ...state,
         cart: state.cart.filter(item => item.name !== payload)
       }
-     
+    }
+
+    case SAVE_CART: {
+      return {
+        ...state,
+        cart: payload,
+      }
     }
 
     default:

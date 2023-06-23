@@ -23,7 +23,7 @@ function Navbar({ theme, setTheme }) {
   }
   return (
     <nav className="w-full h-20 fixed flex justify-between items-center bg-white dark:bg-black z-10 shadow-md dark:shadow-white/50">
-      <div className="w-full lg:ml-4 order-1">
+      <div className="w-full lg:w-80 lg:ml-4 order-1">
         <Link to="/">
           {theme === "dark" ? (
             <img className="w-40" src={cinego_blanco} alt="CineGO" />
@@ -34,7 +34,7 @@ function Navbar({ theme, setTheme }) {
       </div>
 
       {/* Botones */}
-      <div className="w-full h-full hidden lg:flex justify-center items-center mt-2 space-x-10 order-2">
+      <div className="w-3/4 h-full hidden lg:flex justify-center items-center mt-2 space-x-10 order-2">
         {options.map((option, index) => (
           <Link className="hover:opacity-80" key={index} to={option.to}>
             <h4>{option.name}</h4>
@@ -59,7 +59,7 @@ function Navbar({ theme, setTheme }) {
         )}
       </div>
 
-      <div className="w-20 lg:w-full h-full flex justify-end items-center mr-8 mt-2 order-2">
+      <div className="w-20 lg:w-1/4 h-full flex justify-end items-center mr-8 mt-2 order-2">
         <div className="mx-4 flex justify-center">
           {!userData || Object.entries(userData).length === 0 ? (
             <Link to="/login">
