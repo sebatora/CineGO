@@ -13,7 +13,7 @@ import Detail from "./components/Detail/Detail";
 import Home from "./components/Home/Home";
 import Login from "./components/LoginForm/Login";
 import Navbar from "./components/Navbar/Navbar";
-import CinePlus from "./components/cinePlus/cinePlus";
+import CinePlus from "./components/CinePlus/CinePlus";
 import Error404 from "./components/Error404/Error404";
 import Footer from "./components/Footer/Footer";
 import Profile from "./view/Profile/Profile";
