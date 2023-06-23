@@ -6,7 +6,7 @@ import img3 from "../../assets/carousel_3.webp";
 import MoviesContainer from "../MoviesContainer/MoviesContainer";
 import { Toaster } from "react-hot-toast";
 
-function Home({ theme }) {
+function Home() {
   const images = [
     img1,
     img2,
@@ -17,7 +17,7 @@ function Home({ theme }) {
     <div className="w-full mt-28 flex flex-col items-center">
       <Toaster />
       <Carousel images={images} />
-      <MoviesContainer theme={theme} />
+      <MoviesContainer />
     </div>
   );
 }

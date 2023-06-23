@@ -8,9 +8,10 @@ import Filter from "../Filter/Filter";
 import SearchBar from "../SearchBar/SearchBar";
 import ErrorSearch404 from "../ErrorSearch404/ErrorSearch404";
 
-function MoviesContainer({ theme }) {
+function MoviesContainer() {
   const [loading, setLoading] = useState(true);
   const allMovies = useSelector((state) => state.allMovies);
+  console.log(allMovies);
 
   const dispatch = useDispatch();
 
@@ -18,7 +19,7 @@ function MoviesContainer({ theme }) {
     dispatch(getMovies());
     dispatch(getGenres());
     setLoading(false);
-  }, [dispatch]);
+  }, []);
 
   return (
     <>
@@ -31,16 +32,15 @@ function MoviesContainer({ theme }) {
             <SearchBar />
           </div>
           <div className="w-full flex flex-wrap justify-center">
-            {allMovies.length? allMovies.map(
-              ({ id, title, description, image, release_date }) => (
+            {allMovies.length ? allMovies.map(
+              ({ id, title, image, release_date, genres, clasification }) => (
                 <MovieCard
                   key={id}
                   id={id}
                   title={title}
-                  description={description}
+                  genres={genres}
+                  clasification={clasification}
                   image={image}
-                  release_date={release_date}
-                  theme={theme}
                 />
               )
             ): <ErrorSearch404/>}

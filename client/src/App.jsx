@@ -40,7 +40,7 @@ function App() {
       {location.pathname !== "/login" && location.pathname !== "/createUser" && <Navbar theme={theme} setTheme={setTheme} userData={userData} />}
 
       <Routes>
-        <Route exact path="/" element={<Home theme={theme} />} />
+        <Route exact path="/" element={<Home />} />
         <Route path="/detail/:id" element={<Detail />} />
         <Route path="/about" element={<About />} />
         <Route path="/cinePlus" element={<CinePlus />} />
