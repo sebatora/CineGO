@@ -6,7 +6,7 @@ cloudinary.config({
   cloud_name: CLOUDINARY_CLOUD_NAME,
   api_key: CLOUDINARY_API_KEY,
   api_secret: CLOUDINARY_API_SECRET,
-  secure: true,
+  secure_url: true,
 });
 
 const uploadImage = async (filePath) => await cloudinary.uploader.upload(filePath, {
@@ -15,3 +15,5 @@ const uploadImage = async (filePath) => await cloudinary.uploader.upload(filePat
 
 
 module.exports = { uploadImage }
+
+
