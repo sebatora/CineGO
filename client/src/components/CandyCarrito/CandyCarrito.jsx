@@ -1,4 +1,4 @@
-import React from "react";
+import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { addCartCandy, removeAllCartCandy, removeOneCartCandy } from "../../redux/actions";
 
@@ -19,6 +19,15 @@ function CandyCarrito() {
       dispatch(removeOneCartCandy(name));
     }
   };
+
+  const handlePay = async () => {
+    try {
+      const { data } = await axios.post("http://localhost:3001/payment", cart);
+      window.location.href = data.init_point;
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   return (
     <div className="w-1/3 mt-28 flex flex-col items-center ">
@@ -53,10 +62,15 @@ function CandyCarrito() {
           <strong>TOTAL: {total} </strong>
         </div>
 
-        <button className=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-2 rounded text-xs">
-          Comprar
-        </button>
-      </div>
+                <button
+                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded text-xs"
+                  onClick={handlePay}
+                >
+                  Comprar
+                </button>
+
+          
+        </div>
     </div>
   );
 }

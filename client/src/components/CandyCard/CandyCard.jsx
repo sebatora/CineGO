@@ -1,9 +1,4 @@
-
-
-
 function CandyCard({ id, name, description, price, image, handleBuy}) {
-
-
 
   return (
     <div className="w-full md:w-1/2 lg:w-1/2 xl:w-1/3 p-4 my-2 mx-2">
