@@ -1,14 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { filterOrder, getMovies } from "../../redux/actions";
 
 const Filter = () => {
   const dispatch = useDispatch();
-
-  const [active, setActive] = useState(false);
-
   const allGenres = useSelector((state) => state.allGenres);
-
   const [orderData, setOrderData] = useState({
     order: "",
     filterGenre: "",
@@ -30,97 +26,62 @@ const Filter = () => {
     setOrderData({ ...orderData, [name]: value });
   };
 
-  const handleFilter = async (event) => {
-    event.preventDefault();
-    try {
-      dispatch(filterOrder(orderData));
-
-      setActive(false);
-    } catch (error) {
-      alert(error);
-    }
-  };
-
-  const handleReset = () => {
-    dispatch(getMovies());
-  };
+  useEffect(() => {
+    dispatch(filterOrder(orderData));
+  }, [orderData]);
 
   return (
-    <div className="w-full flex">
-      <button
-        className="bg-transparent rounded-lg border border-black dark:border-white px-4 ml-10 dark:text-white"
-        onClick={() => setActive(true)}
+    <div className="w-2/3 flex justify-between space-x-4">
+      <select
+        className="bg-transparent dark:text-white border rounded-xl p-2"
+        name="order"
+        onChange={handleChangeOrder}
+        defaultValue="order"
       >
-        Filter
-      </button>
-
-      <div
-        className={`fixed inset-0 m-48 overflow-hidden bg-black z-10 ${
-          active ? "flex" : "hidden"
-        }`}
+        <option value="order" disabled>
+          Orden
+        </option>
+        <option className="dark:text-black" value="ascending">A to Z</option>
+        <option className="dark:text-black" value="descending">Z to A</option>
+        <option className="dark:text-black" value="most recent">Más Reciente</option>
+        <option className="dark:text-black" value="oldest">Más Antiguo</option>
+      </select>
+      <select
+        className="bg-transparent dark:text-white border rounded-xl p-2"
+        name="filterClasification"
+        onChange={handleChangeClasification}
+        defaultValue="clasification"
       >
-        <button
-          className="bg-red-500 absolute right-0 rounded-full px-2 m-2"
-          onClick={() => setActive(false)}
-        >
-          X
-        </button>
-        <select
-          className="w-3/4 h-10 my-16 mx-6"
-          name="order"
-          onChange={handleChangeOrder}
-          defaultValue="order"
-        >
-          <option value="order" disabled>
-            Orden
+        <option value="clasification" disabled>
+          Clasificación
+        </option>
+        <option className="dark:text-black" value="allClasification">Todas las clasificaciones</option>
+        <option className="dark:text-black" value="ATP">ATP</option>
+        <option className="dark:text-black" value="+13">+13</option>
+        <option className="dark:text-black" value="+16">+16</option>
+      </select>
+      <select
+        className="bg-transparent dark:text-white border rounded-xl p-2"
+        name="filterGenre"
+        onChange={handleChangeGenre}
+        defaultValue="genre"
+      >
+        <option value="genre" disabled>
+          Género
+        </option>
+        <option className="dark:text-black" value="allGenres">Todos los géneros</option>
+        {allGenres.map((genre) => (
+          <option className="dark:text-black" key={genre.id} value={genre.name}>
+            {genre.name}
           </option>
-          <option value="ascending">A to Z</option>
-          <option value="descending">Z to A</option>
-          <option value="most recent">Más Reciente</option>
-          <option value="oldest">Más Antiguo</option>
-        </select>
-        <select
-          className="w-3/4 h-10 my-16 mx-6"
-          name="filterClasification"
-          onChange={handleChangeClasification}
-          defaultValue="clasification"
-        >
-          <option value="clasification" disabled>
-            Clasificación
-          </option>
-          <option value="ATP">ATP</option>
-          <option value="+13">+13</option>
-          <option value="+16">+16</option>
-        </select>
-        <select
-          className="w-3/4 h-10 my-16 mx-6"
-          name="filterGenre"
-          onChange={handleChangeGenre}
-          defaultValue="genre"
-        >
-          <option value="genre" disabled>
-            Género
-          </option>
-          <option value="allGenres">Todos los géneros</option>
-          {allGenres.map((genre) => (
-            <option key={genre.id} value={genre.name}>
-              {genre.name}
-            </option>
-          ))}
-        </select>
-        <button
-          className="bg-green-600 absolute bottom-4 right-1/2 rounded-sm p-2"
-          onClick={handleFilter}
-        >
-          Filtrar
-        </button>
-      </div>
-      <button
-        className="bg-transparent rounded-lg border border-black dark:border-white px-4 ml-10 dark:text-white"
+        ))}
+      </select>
+      {/* <button
+        className="bg-transparent rounded-lg border border-black dark:border-white dark:text-white"
         onClick={handleReset}
       >
-        RESET
-      </button>
+        Todas las películas
+      </button> */}
     </div>
   );
 };
