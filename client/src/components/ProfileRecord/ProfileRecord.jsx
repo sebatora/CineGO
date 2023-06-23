@@ -1,5 +1,5 @@
 import React from "react";
-import style from "./Record.module.css";
+import style from "./ProfileRecord.module.css";
 import { FaExclamationCircle } from "react-icons/fa";
 
 function ProfileRecord() {

@@ -20,7 +20,7 @@ const CreateUser = ({ onPhotoUpload }) => {
     handleSubmit,
     formState: { errors },
     reset,
-    watch
+    watch,
   } = useForm({
     defaultValues: {
       firstName: "",
@@ -28,9 +28,9 @@ const CreateUser = ({ onPhotoUpload }) => {
       email: "",
       password: "",
       confirmPassword: "",
-      image: ""
+      image: "",
     },
-    resolver: yupResolver(schema)
+    resolver: yupResolver(schema),
   });
 
   const handleUploadPhoto = () => {
@@ -67,10 +67,10 @@ const CreateUser = ({ onPhotoUpload }) => {
       // Agregar la URL de la foto al objeto de datos antes de enviarlo
       const userData = {
         ...data,
-        photoUrl: uploadedPhoto
+        photoUrl: uploadedPhoto,
       };
 
-      const errorMessage = await dispatch(postUser(userData));
+      const errorMessage = dispatch(postUser(userData));
       if (errorMessage) {
         toast.error(errorMessage);
       } else {
@@ -120,7 +120,9 @@ const CreateUser = ({ onPhotoUpload }) => {
               className="border border-black p-2 rounded-lg w-60"
               type="text"
               placeholder="Apellido"
-              {...register("lastName", { required: "El apellido es requerido" })}
+              {...register("lastName", {
+                required: "El apellido es requerido",
+              })}
             />
             {errors.lastName && (
               <span className="mt-2 text-red-600 dark:text-red-600">
@@ -191,27 +193,40 @@ const CreateUser = ({ onPhotoUpload }) => {
         </div>
 
         <div className="w-full flex justify-start mt-4 ml-8">
-  <div className="flex flex-col mx-6">
-    <label className="mb-2 ml-4">Foto:</label>
-  
-  <div className="w-[200px] h-[200px] flex justify-start items-start rounded-full border border-[8px] border-gray-1000">
-  {uploadedPhoto ? (
-    <img src={uploadedPhoto} alt="User Photo" className="w-full h-full object-cover rounded-full" />
-  ) : (
-    watch("photoUser") && ( 
-      <img src={photoUser} alt="User Photo" className="w-full h-full object-cover rounded-full" />
-    )
-  )}
-</div>
-    <button
-      className="bg-black mt-10 py-3 px-8 rounded-lg text-white font-semibold ml-4"
-      type="button"
-      id="btn-photo"
-    > Subir foto
-    </button>
-  </div>
-</div>
-     <button className="h-[50px] ml-80 flex justify-end bg-black mt-10 py-4 px-20 rounded-lg text-white font-semibold flex flex-col mx-5" type="submit">
+          <div className="flex flex-col mx-6">
+            <label className="mb-2 ml-4">Foto:</label>
+
+            <div className="w-[200px] h-[200px] flex justify-start items-start rounded-full border border-[8px] border-gray-1000">
+              {uploadedPhoto ? (
+                <img
+                  src={uploadedPhoto}
+                  alt="User Photo"
+                  className="w-full h-full object-cover rounded-full"
+                />
+              ) : (
+                watch("photoUser") && (
+                  <img
+                    src={photoUser}
+                    alt="User Photo"
+                    className="w-full h-full object-cover rounded-full"
+                  />
+                )
+              )}
+            </div>
+            <button
+              className="bg-black mt-10 py-3 px-8 rounded-lg text-white font-semibold ml-4"
+              type="button"
+              id="btn-photo"
+            >
+              {" "}
+              Subir foto
+            </button>
+          </div>
+        </div>
+        <button
+          className="h-[50px] ml-80 flex justify-end bg-black mt-10 py-4 px-20 rounded-lg text-white font-semibold flex flex-col mx-5"
+          type="submit"
+        >
           Registrarse
         </button>
       </form>
@@ -226,16 +241,14 @@ const schema = yup.object().shape({
     .string()
     .required("El email es requerido")
     .email("Formato de email incorrecto"),
-  password: yup.string().required("La contraseña es requerida").min(6, "La contraseña debe tener al menos 6 caracteres"),
+  password: yup
+    .string()
+    .required("La contraseña es requerida")
+    .min(6, "La contraseña debe tener al menos 6 caracteres"),
   confirmPassword: yup
     .string()
     .oneOf([yup.ref("password"), null], "Las contraseñas no coinciden")
-    .required("La confirmación de contraseña es requerida")
+    .required("La confirmación de contraseña es requerida"),
 });
 
 export default CreateUser;
-
-
-
-
-

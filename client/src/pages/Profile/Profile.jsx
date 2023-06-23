@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import ProfileChange from "../../components/ProfileChange";
+import ProfileChange from "../../components/ProfileChange/ProfileChange";
 import style from "./Profile.module.css";
-import ProfileSubscription from "../../components/ProfileSubscription";
-import ProfileSecurity from "../../components/ProfileSecurity";
-import ProfileRecord from "../../components/ProfileRecord";
+import ProfileSubscription from "../../components/ProfileSubscription/ProfileSubscription";
+import ProfileSecurity from "../../components/ProfileSecurity/ProfileSecurity";
+import ProfileRecord from "../../components/ProfileRecord/ProfileRecord";
 
 function Profile() {
   const [activeComponent, setActiveComponent] = useState("profileChange");
