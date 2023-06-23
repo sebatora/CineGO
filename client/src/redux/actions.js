@@ -14,7 +14,9 @@ import {
   ADD_TO_CART,
   REMOVE_ONE_CART,
   REMOVE_ALL_CART,
-  ADD_TO_CART_CANDY
+  ADD_TO_CART_CANDY,
+  REMOVE_ALL_CART_CANDY,
+  REMOVE_ONE_CANDY,
 } from "./action-type";
 
 import axios from "axios";
@@ -164,9 +166,23 @@ export const removeOneCart = (id) =>{
     payload:id
   }
 }
-export const addCartCandy = (id) =>{
+export const addCartCandy = (name) =>{
   return{
     type: ADD_TO_CART_CANDY,
-    payload: id
+    payload: name
+  }
+}
+
+
+export const removeAllCartCandy = (name) =>{
+  return{
+    type: REMOVE_ALL_CART_CANDY,
+    payload: name
+  }
+}
+export const removeOneCartCandy = (name) =>{
+  return{
+    type: REMOVE_ONE_CANDY,
+    payload:name
   }
 }

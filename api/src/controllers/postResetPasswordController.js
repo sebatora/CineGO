@@ -1,67 +1,68 @@
-const { User } = require("../db")
-const bcrypt = require("bcrypt")
-const nodemailer = require("nodemailer")
+const { User } = require("../db");
+const bcrypt = require("bcrypt");
+const nodemailer = require("nodemailer");
 
-const postResetPasswordController = async(email) => {
+const postResetPasswordController = async (email, firstName) => {
   // Generamos una nueva contraseña de manera aleatoria
   const newPassword = generateRandomPassword();
 
-  // Encriptamos la nueva contraseña 
+  // Encriptamos la nueva contraseña
   const hashedPassword = await bcrypt.hash(newPassword, 10);
 
-  // Actualizar la contraseña en la BDD para el usuario correspondiente al correo
-  const user = await User.findOne({ where: { email } });
-  if (!user) throw Error("No existe ningun usuario con ese email");
+  // Obtener el usuario por el correo electrónico y el nombre
+  const user = await User.findOne({ where: { email, firstName } });
+  if (!user) throw new Error("El correo electrónico y el nombre no coinciden");
 
-  user.password = hashedPassword
+  // Actualizar la contraseña en la base de datos
+  user.password = hashedPassword;
   await user.save();
 
-  // Enviar la nueva contraseña por correo
+  // Enviar la nueva contraseña por correo electrónico
   sendPasswordByEmail(email, newPassword);
 };
 
 const generateRandomPassword = () => {
-    //lógica para generar una nueva contraseña aleatoria
-    const characters = "qwertyuiopasdfghjklzxcvbnmqwQWERTYUIOPASDFGHJKLZXCVBNM0123456789"
-    let newPassword = "";
-    for (let i = 0; i < 8; i++) {
-        const randomIndex = Math.floor(Math.random() * characters.length);
-        newPassword = newPassword + characters[randomIndex]
-    }
-    return newPassword
+  const characters = "qwertyuiopasdfghjklzxcvbnmqwQWERTYUIOPASDFGHJKLZXCVBNM0123456789";
+  let newPassword = "";
+  for (let i = 0; i < 8; i++) {
+    const randomIndex = Math.floor(Math.random() * characters.length);
+    newPassword += characters[randomIndex];
+  }
+  return newPassword;
 };
 
 const sendPasswordByEmail = (email, newPassword) => {
-    // Configurar el transporte de nodemailer para enviar el correo
-    const transporter = nodemailer.createTransport({
-        // tengo que connfigurar el transporte de correo ej, SMTP
-        service: "hotmail",
-        auth: {
-            user: "cinego75@hotmail.com",
-            pass: "Proyecto1"
-        },
-    });
+  // Configurar el transporte de nodemailer para enviar el correo
+  const transporter = nodemailer.createTransport({
+    // Configuración del transporte de correo (SMTP, etc.)
+    service: "hotmail",
+    auth: {
+      user: "cinego75@hotmail.com",
+      pass: "Proyecto1"
+    }
+  });
 
-    // configuar el mensaje del correo
-    const mailOptions = {
-        from: "cinego75@hotmail.com", // remitente
-        to: email, // Destinatario
-        subject: "Nueva contraseña", // Asunto del correo 
-        text: `Tu nueva contraseña es: ${newPassword}`, // Cuerpo del correo
-    };
+  // Configurar el mensaje del correo
+  const mailOptions = {
+    from: "cinego75@hotmail.com", // Remitente
+    to: email, // Destinatario
+    subject: "Nueva contraseña", // Asunto del correo
+    text: `Tu nueva contraseña es: ${newPassword}` // Cuerpo del correo
+  };
 
-    // Enviar el correo
-    transporter.sendMail(mailOptions, (error, info) => {
-        if(error) {
-            console.error("Error al enviar el correo electrónico:", error);
-        } else {
-            console.log("Correo electrónico enviado:", info.response);
-        } 
-    })
-}
-
+  // Enviar el correo
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.error("Error al enviar el correo electrónico:", error);
+    } else {
+      console.log("Correo electrónico enviado:", info.response);
+    }
+  });
+};
 
 module.exports = postResetPasswordController;
+
+
 
 
 // ACTUALIZACION DE CORREO OCUPEN ESE 
