@@ -147,24 +147,24 @@ export const getCandy = () => {
 }
 
 
-export const addCart = (id) =>{
+export const addCart = (name) =>{
   return{
     type: ADD_TO_CART,
-    payload: id
+    payload: name
   }
 }
 
 
-export const removeAllCart = (id) =>{
+export const removeAllCart = (name) =>{
   return{
     type: REMOVE_ALL_CART,
-    payload: id
+    payload: name
   }
 }
-export const removeOneCart = (id) =>{
+export const removeOneCart = (name) =>{
   return{
     type: REMOVE_ONE_CART,
-    payload:id
+    payload:name
   }
 }
 export const addCartCandy = (name) =>{
