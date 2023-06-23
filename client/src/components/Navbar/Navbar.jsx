@@ -6,10 +6,11 @@ import ModalProfile from "../ModalProfile/ModalProfile";
 
 
 const options = [
-  { name: "CinePlus", to: "/cineplus" },
+  { name: "Cartelera", to: "/" },
   { name: "Candy", to: "/candy" },
-  { name: "Sobre Nosotros", to: "/about" },
-  { name: "Preguntas Frecuentes", to: "/faq" },
+  { name: "CinePlus", to: "/cineplus" },
+  // { name: "Sobre Nosotros", to: "/about" },
+  // { name: "Preguntas Frecuentes", to: "/faq" },
 ]
 
 function Navbar({ theme, setTheme }) {
@@ -62,8 +63,8 @@ function Navbar({ theme, setTheme }) {
       <div className="w-20 lg:w-1/4 h-full flex justify-end items-center mr-8 mt-2 order-2">
         <div className="mx-4 flex justify-center">
           {!userData || Object.entries(userData).length === 0 ? (
-            <Link to="/login">
-              <h4>Sign In</h4>
+            <Link className="border p-2 rounded-lg" to="/login">
+              <span>Sign In</span>
             </Link>
           ) : (
             <button className="bg-white rounded-full p-1" onClick={() => setActiveModal(!activeModal)}>
