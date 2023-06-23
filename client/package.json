@@ -17,6 +17,7 @@
     "@fortawesome/free-brands-svg-icons": "^6.4.0",
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
     "@fortawesome/react-fontawesome": "^0.2.0",
+    "@hookform/resolvers": "^3.1.1",
     "@mercadopago/sdk-react": "^0.0.11",
     "@mui/icons-material": "^5.11.16",
     "@mui/material": "^5.13.5",
@@ -41,7 +42,8 @@
     "redux-thunk": "^2.4.2",
     "sweetalert2": "^11.7.12",
     "swiper": "^9.4.0",
-    "tailwindcss-animated": "^1.0.1"
+    "tailwindcss-animated": "^1.0.1",
+    "yup": "^1.2.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",

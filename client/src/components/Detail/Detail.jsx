@@ -56,7 +56,7 @@ function Detail() {
               <p className={style.description}> {detail.description} </p>
               <div className="mt-8 mb-10 flex justify-center">
                 <Link to='/ticket'>
-                  <button className="bg-red-500 text-white border-none px-4 py-2 text-center text-base rounded cursor-pointer" type="submit">¡Comprar entradas!</button>
+                  <button className="btn-blue text-white border-none px-4 py-2 text-center text-base rounded cursor-pointer" type="submit">¡Comprar entradas!</button>
                 </Link>
               </div>
               <iframe width="727" height="375" src={detail.trailer} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>

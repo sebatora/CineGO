@@ -16,7 +16,7 @@ function CandyCarrito() {
   let total = subtotal + servicio;
 
   const addCart = (name) => {
-    dispatch(addCartCandy(name));
+    dispatch(addCartCandy(name))
   };
 
   const delRemoveCart = (name, all = false) => {
@@ -31,7 +31,7 @@ function CandyCarrito() {
 
   const handlePay = async () => {
     try {
-      const { data } = await axios.post("http://localhost:3001/payment", cart);
+      const { data } = await axios.post("/payment", cart);
       window.location.href = data.init_point;
       window.localStorage.removeItem("cart");
     } catch (error) {
@@ -56,7 +56,7 @@ function CandyCarrito() {
   }, [cart]);
 
   return (
-    <div className="w-1/3 mt-36 flex flex-col items-center">
+    <div className="w-1/3 fixed right-0 mt-36 flex flex-col items-center">
       <Toaster />
       <div className="w-96 mx-auto rounded overflow-hidden shadow-lg bg-gray-50 dark:bg-black dark:shadow-gray-700 flex flex-col">
         <p className="px-2 py-2 font-bold text-center text-3xl text-gray-700 dark:text-gray-300">
@@ -107,7 +107,7 @@ function CandyCarrito() {
           <strong>TOTAL: $ {total} </strong>
         </div>
         <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 px-2 rounded text-xs"
+          className="btn-blue text-white font-bold py-4 px-2 rounded text-xs"
           onClick={handlePay}
         >
           Comprar

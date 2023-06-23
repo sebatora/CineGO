@@ -75,15 +75,16 @@ const Login = () => {
             </div>
 
             <button className="bg-green-600 py-3 px-10 rounded-lg text-white font-semibold" type="submit">Iniciar Sesión</button>
+            <p>o</p>
+            <button type="button" className="w-72 flex justify-center items-center text-white font-bold bg-blue-600 p-2 rounded-xl" onClick={handleLoginGoogle}>
+              <img className="w-10" src={LogoGoogle} alt="Logo Google" />
+              Iniciar sesión con Google
+            </button>
             <div className="w-full mt-4 flex flex-col">
               <h3 className="mb-2">¿No tenés cuenta?</h3>
               <Link className="w-48" to="/createUser">
                 <button type="button" className="w-48 bg-gray-500 rounded-lg p-3">Crear cuenta</button>
               </Link>
-              <button type="button" className="w-72 flex justify-center items-center text-white font-bold bg-blue-600 mt-4 p-2 rounded-xl" onClick={handleLoginGoogle}>
-                <img className="w-10" src={LogoGoogle} alt="Logo Google" />
-                Iniciar sesión con Google
-              </button>
             </div>
           </form>
         </div>

@@ -3,8 +3,8 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import style from "./ProfileSubscription.module.css";
-import CinePlusBlack from "../CinePlusBlack";
-import CinePlusGold from "../CinePlusGold";
+import CinePlusBlack from "../CinePlusBlack/CinePlusBlack";
+import CinePlusGold from "../CinePlusGold/CinePlusGold";
 
 function ProfileSubscription() {
   const userData = useSelector((state) => state.userData);

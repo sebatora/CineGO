@@ -9,7 +9,7 @@ const Ticket = ({ id, name, price, description, image, addToCard}) => {
                 <div className="px-4 py-2 flex-grow">
                     <p className="text-gray-700 text-sm dark:text-gray-300">{description}</p>
                 </div>
-                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 px-4 rounded text-xs" onClick={()=>addToCard(name)}>${price}</button>
+                    <button className="btn-blue text-white font-bold py-4 px-4 rounded text-xs" onClick={()=>addToCard(name)}>${price}</button>
             </div>
         </div>
     )
