@@ -101,49 +101,47 @@ const About = () => {
     },
   ];
 
-  const shuffledTeamMembers = [...teamMembers].sort(() => Math.random() - 0.5);
+  const teamMemberCards = teamMembers.map((member) => (
 
-  const teamMemberCards = shuffledTeamMembers.map((member) => (
-    <div key={member.name} className={style.member}>
-      <img src={member.photoUrl} alt={member.name} />
-      <div className="member">
-        <h2 className="text-2xl mb-1 mt-n1 dark:text-black">{member.name}</h2>
-      </div>
-      <div className="member">
-        <p className="text-sm text-gray-500 mb-4 dark:text-black">
-          {member.description}
-        </p>
-      </div>
-      <div className={style.socialLinks}>
-        <a href={member.linkedinUrl} target="_blank">
-          <img src={member.linkedinIcon} alt="LinkedIn" />
-        </a>
-        <a href={member.githubUrl} target="_blank">
-          <img src={member.githubIcon} alt="Github" />
-        </a>
-        <a href={member} target="_blank">
-          <img src={member.iconoCv} alt="curriculum vitae" />
-        </a>
+    <div key={member.name} className="w-1/2 sm:w-2/4 md:w-1/3 lg:w-1/4 p-2">
+      <div className="bg-gray-200 rounded-lg shadow-md p-4 transition duration-300 transform-gpu hover:scale-105 hover:shadow-custom">
+        <img
+          src={member.photoUrl}
+          alt={member.name}
+          className="mx-auto w-24 h-24 rounded-full mt-4"
+        />
+        <div className="text-center py-4">
+          <h2 className="text-lg font-semibold dark:text-black">{member.name}</h2>
+          <p className="text-sm text-gray-500 dark:text-gray-600">{member.description}</p>
+        </div>
+        <div className="flex justify-center space-x-2 pb-4">
+          <a href={member.linkedinUrl} target="_blank">
+            <img src={member.linkedinIcon} alt="LinkedIn" className="w-6 h-6" />
+          </a>
+          <a href={member.githubUrl} target="_blank">
+            <img src={member.githubIcon} alt="Github" className="w-6 h-6" />
+          </a>
+          <a href={member} target="_blank">
+            <img src={member.iconoCv} alt="Curriculum Vitae" className="w-6 h-6" />
+          </a>
+        </div>
       </div>
     </div>
   ));
-
-  return (
-    <div className="w-full mt-20 text-center">
-      <h1 className={style.h1}>QUIENES SOMOS</h1>
-      <p className={style.descrip}>
-        Somos un grupo de estudiantes en la etapa final del bootcamp de Henry,
-        un programa intensivo de desarrollo de software. Nuestro equipo está
-        comprometido en aplicar los conocimientos y habilidades adquiridas a lo
-        largo del bootcamp para desarrollar una aplicación innovadora. Nos
-        enfocamos en crear soluciones prácticas y eficientes que aborden las
-        necesidades de los usuarios. Estamos emocionados de trabajar juntos y
-        poner en práctica todo nuestro aprendizaje para ofrecer un producto
-        sobresaliente en el mundo de la tecnología.
-      </p>
-      <div className={style.members}>{teamMemberCards}</div>
+  
+   return (
+  <div className="w-full mt-20 text-center">
+    <h1 className="text-xl font-semibold text-gray-700">QUIENES SOMOS</h1>
+    <p className="mx-auto max-w-lg mt-4 text-gray-600">
+      Somos un grupo de estudiantes en la etapa final del bootcamp de Henry, un programa intensivo de desarrollo de software. Nuestro equipo está comprometido en aplicar los conocimientos y habilidades adquiridas a lo largo del bootcamp para desarrollar una aplicación innovadora. Nos enfocamos en crear soluciones prácticas y eficientes que aborden las necesidades de los usuarios. Estamos emocionados de trabajar juntos y poner en práctica todo nuestro aprendizaje para ofrecer un producto sobresaliente en el mundo de la tecnología.
+    </p>
+    <div className="w-4/5 mx-auto mt-8">
+      <div className="flex flex-wrap justify-center">
+        {teamMemberCards}
+      </div>
     </div>
-  );
+  </div>
+);
 };
 
 export default About;

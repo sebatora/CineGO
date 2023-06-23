@@ -1,11 +1,15 @@
-import { Wallet } from '@mercadopago/sdk-react';
-
 const Payment = () => {
-
+	const handleClick = async () => {
+		try {
+			
+		} catch (error) {
+			console.log(error);
+		}
+	}
 	return (
 		<div className='w-full p-10'>
 			<h1>Confirmar Compra</h1>
-			{preferenceId ? <Wallet initialization={{ preferenceId: preferenceId }} /> : null}
+			<button onClick={handleClick} className='bg-red-600 p-2 rounded-lg'>Comprar</button>
 		</div>
 	)
 }
