@@ -8,6 +8,7 @@ import {
   DELETE_MOVIE,
   FILTER_ORDER,
   POST_USER,
+  PUT_USER,
   LOGIN_USER,
   LOGOUT_USER,
   GET_CANDY,
@@ -115,6 +116,17 @@ export const postUser = (newUser) => {
   };
 };
 
+export const putUser = (user) => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.put(`/users`, user);
+      return dispatch({ type: PUT_USER, payload: data });
+    } catch (error) {
+      return error.message;
+    }
+  };
+};
+
 // Valida el login del usuario
 export const loginUser = (user) => {
   return async (dispatch) => {
@@ -133,7 +145,6 @@ export const logoutUser = () => {
   return { type: LOGOUT_USER };
 };
 
-
 //Trae todos los productos candy
 export const getCandy = () => {
   return async (dispatch) => {
@@ -143,54 +154,51 @@ export const getCandy = () => {
     } catch (error) {
       return error.message;
     }
-  }
-}
+  };
+};
 
-
-export const addCart = (id) =>{
-  return{
+export const addCart = (id) => {
+  return {
     type: ADD_TO_CART,
-    payload: id
-  }
-}
+    payload: id,
+  };
+};
 
-
-export const removeAllCart = (id) =>{
-  return{
+export const removeAllCart = (id) => {
+  return {
     type: REMOVE_ALL_CART,
-    payload: id
-  }
-}
-export const removeOneCart = (id) =>{
-  return{
+    payload: id,
+  };
+};
+export const removeOneCart = (id) => {
+  return {
     type: REMOVE_ONE_CART,
-    payload:id
-  }
-}
-export const addCartCandy = (name) =>{
-  return{
+    payload: id,
+  };
+};
+export const addCartCandy = (name) => {
+  return {
     type: ADD_TO_CART_CANDY,
-    payload: name
-  }
-}
+    payload: name,
+  };
+};
 
-
-export const removeAllCartCandy = (name) =>{
-  return{
+export const removeAllCartCandy = (name) => {
+  return {
     type: REMOVE_ALL_CART_CANDY,
-    payload: name
-  }
-}
-export const removeOneCartCandy = (name) =>{
-  return{
+    payload: name,
+  };
+};
+export const removeOneCartCandy = (name) => {
+  return {
     type: REMOVE_ONE_CANDY,
-    payload:name
-  }
-}
+    payload: name,
+  };
+};
 
-export const saveCart = cart => {
+export const saveCart = (cart) => {
   return {
     type: SAVE_CART,
     payload: cart,
-  }
-}
+  };
+};
