@@ -1,69 +1,98 @@
-p{
-  margin: 2% auto;
-  padding: 0;
+/* About.module.css */
+
+.h1 {
+  color: #656060;
 }
 
-.aboutContainer{
-  display: block;
-  margin: 1rem auto;
-  width: 50vw;
-  padding: 1%;
-  border-radius: 15px;
-  border: 2px solid var(--color-3);
-  text-align: center;
-  font-size: 1rem;
-  align-items: center;
+.descrip {
+  margin: 0 auto;
+  margin-bottom: 30px;
+  max-width: 80%;
+  text-align: justify;
+}
+
+.members {
+  display: flex;
   justify-content: center;
-  background-color: var(--color-2);
-  color: var(--color-1);
+  flex-wrap: wrap;
 }
 
-@media (max-width: 450px) {
-  .aboutContainer{
-    width: 80vw;
+.member {
+  width: 100%;
+  max-width: 350px;
+  padding: 30px;
+  margin: 10px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-image: url('../../assets/fondoClaroAbout.jpg');
+  background-size: cover;
+  background-position: center;
+  align-content: center;
+}
+
+.member img {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  width: 135px;
+  height: 135px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.member h2 {
+  font-size: 25px;
+  margin-bottom: 1px;
+  margin-top: -1px;
+}
+
+.member p {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 10px;
+}
+
+.socialLinks {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.socialLinks a {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.socialLinks img {
+  margin-top: 10px;
+  margin-left: 10px;
+  width: 30px;
+  height: 30px;
+}
+
+/* Media queries */
+
+@media (max-width: 768px) {
+  .members {
+    justify-content: space-between;
+  }
+
+  .member {
+    flex: 10 0 20%; /* Cambiamos el ancho a un porcentaje para que se ajuste a la pantalla */
+    max-width: 60%;
   }
 }
 
-.aboutImg{
-  text-align: center;
-  margin: auto;
-}
+@media (max-width: 480px) {
+  .members {
+    flex-direction: column;
+    align-items: center;
+  }
 
-img{
-  border-radius: 10px;
-  width: 80%;
-  max-width: 350px;
-}
-
-.aboutInfo{
-  width: 90%;
-  margin: auto;
-  border-radius: 10px;
-  font-size: larger;
-  font-weight: 600;
-}
-
-.aboutTech p{
-  display: flex;
-  width: 100%;
-}
-
-.aboutTech img {
-  width: 12%;
-  margin: 0 1%;
-}
-
-.aboutContact p{
-  display: flex;
-  width: 50%;
-  margin: 0 auto;
-}
-
-.aboutContact img {
-  width: 2rem;
-  margin: 0 1%;
-}
-
-.aboutContact a {
-text-decoration: none;
+  .member {
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin-bottom: 20px;
+  }
 }
