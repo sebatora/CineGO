@@ -39,7 +39,9 @@
     "react-select": "^5.7.3",
     "redux": "^4.2.1",
     "redux-thunk": "^2.4.2",
-    "swiper": "^9.4.0"
+    "sweetalert2": "^11.7.12",
+    "swiper": "^9.4.0",
+    "tailwindcss-animated": "^1.0.1"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",

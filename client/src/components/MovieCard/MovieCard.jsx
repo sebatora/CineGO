@@ -1,36 +1,19 @@
-import React, { useEffect } from "react";
-import style from "./MovieCard.module.css";
 import { Link } from "react-router-dom";
-import AOS from "aos";
-import "aos/dist/aos.css"; // You can also use <link> for styles
 
-function MovieCard({ id, title, image, theme }) {
-  useEffect(() => {
-    AOS.init({ duration: 2000 });
-  }, []);
-
+function MovieCard({ id, title, image, clasification }) {
   return (
-    <div
-      data-aos="zoom-in"
-      className={`${style.containerMovie} ${
-        theme === "dark" ? style.containerDark : ""
-      }`}
-    >
-      <Link className={style.link} to={`/detail/${id}`}>
-        <img className={style.img} src={image} />
-        {/*         <div className={style.boxH2}>
-          <h2 className={style.h2}>{title}</h2>
-        </div> */}
-        <div className={style.boxTitleH2}>
-          <h2
-            className={`${style.titleH2} ${
-              theme === "dark" ? style.titleH2Dark : ""
-            } `}
-          >
-            {title}
-          </h2>
-        </div>
-      </Link>
+    <div className="w-52 h-72 mx-4 my-8 rounded-sm hover:shadow-lg hover:shadow-black dark:hover:shadow-lg dark:hover:shadow-red-600 animate-fade-down animate-once animate-delay-1000">
+      <div className="w-full h-full relative group transition-transform duration-500 ease-linear hover:scale-105">
+        <Link className="w-full h-full" to={`/detail/${id}`}>
+          <img className="w-full h-full absolute" src={image} />
+          <div className="absolute right-0">
+            <h3 className="bg-white rounded-bl-xl dark:text-black p-1">{clasification}</h3>
+          </div>
+          <div className="w-full h-32 p-2 absolute bottom-0 flex flex-col justify-between text-center opacity-0 group-hover:opacity-100 group-hover:bg-black/80">
+            <h4 className="text-white">{title}</h4>
+          </div>
+        </Link>
+      </div>
     </div>
   );
 }

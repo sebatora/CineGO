@@ -22,7 +22,6 @@ import PaymentSuccess from "./components/PaymentSuccess/PaymentSuccess";
 import TicketContainer from "./components/TicketContainer/TicketContainer";
 import Candy from "./view/Candy/Candy";
 import Profile from "./view/Profile/Profile";
-
 function App() {
   const [theme, setTheme] = useState(
     window.localStorage.getItem("color-theme") || "light"
@@ -44,7 +43,7 @@ function App() {
           )}
 
         <Routes>
-          <Route exact path="/" element={<Home theme={theme} />} />
+          <Route exact path="/" element={<Home />} />
           <Route path="/detail/:id" element={<Detail />} />
           <Route path="/about" element={<About />} />
           <Route path="/cinePlus" element={<CinePlus />} />

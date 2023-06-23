@@ -1,7 +1,24 @@
 import React from "react";
 import { FaCheck, FaTimes } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
+import { putUserSubscription } from "../../redux/actions";
+import Swal from "sweetalert2";
 
 function CinePlusGold() {
+  const userData = useSelector((state) => state.userData);
+  const dispatch = useDispatch();
+  const user = { id: userData.id, cinePlus: "Gold" };
+
+  const handleSubmit = (e) => {
+    if (!user.id) {
+      Swal.fire("Inicia sesion primero");
+    } else {
+      e.preventDefault();
+      dispatch(putUserSubscription(user));
+      Swal.fire("Cambiaste de plan");
+    }
+  };
+
   return (
     <div className="w-4/5 flex justify-around mx-auto">
       <div className="w-96 mt-20 rounded-lg relative">
@@ -75,7 +92,10 @@ function CinePlusGold() {
                 <FaTimes className="dark:text-white" />
               </li>
             </ul>
-            <button className="w-7/12 mx-auto bg-slate-400 my-2 p-2 rounded-xl text-base font-bold">
+            <button
+              onClick={handleSubmit}
+              className="w-7/12 mx-auto bg-slate-400 my-2 p-2 rounded-xl text-base font-bold"
+            >
               ¡Quiero suscribirme!
             </button>
           </div>

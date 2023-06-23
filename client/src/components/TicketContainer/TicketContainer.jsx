@@ -14,17 +14,17 @@ const TicketContainer = () =>{
     const cinefan = product.filter(name => name.name === "cineFan")
     const general = product.filter(name => name.name === "general")
 
-    const addToCard = (id) =>{ 
+    const addToCard = (name) =>{ 
         
-        dispatch(addCart(id))
+        dispatch(addCart(name))
     }
 
-    const delRemoveCart = (id, all = false) => {
+    const delRemoveCart = (name, all = false) => {
         if (all) {
-            dispatch(removeAllCart(id))
+            dispatch(removeAllCart(name))
         }
         else{
-            dispatch(removeOneCart(id))
+            dispatch(removeOneCart(name))
         }
     }
 
@@ -74,7 +74,7 @@ const TicketContainer = () =>{
             <div className="w-1/3 mt-16 flex flex-col items-center">
                 <div className="w-80 mx-auto rounded overflow-hidden shadow-lg bg-gray-50 dark:bg-black dark:shadow-gray-700 flex flex-col ">
                     {/* <p className=" px-2 py-2 font-bold text-xl text-gray-700 dark:text-gray-300">Carrito</p> */}
-                    <img src={movieIds.image} alt={movieIds.name} className="w-48 h-full my-4 object-cover mx-auto block rounded"/>
+                    <img src={movieIds.image} alt={movieIds.title} className="w-48 h-full my-4 object-cover mx-auto block rounded"/>
                     <p className=" px-2 py-1 font-bold text-lg mb-1 text-gray-700 dark:text-white">{movieIds.title}</p>
                     <div className="px-2 py1">
                         <hr />

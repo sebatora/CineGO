@@ -75,7 +75,7 @@ function CandyCarrito() {
               >
                 <GoTrash className="text-xl mx-1" />
               </button>
-              <div className="mr-4 mt-2 font-bold text-sm">
+              <div className="mr-2 mt-2 text-sm font-bold text-gray-700 dark:text-white">
                 {item.count}{" "} {item.name}
               </div>
               <div className="flex items-center my-2 ml-auto">
