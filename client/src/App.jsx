@@ -24,6 +24,7 @@ import TicketContainer from "./components/TicketContainer/TicketContainer";
 import Payment from "./components/Payment/Payment";
 import PaymentSuccess from "./components/PaymentSuccess/PaymentSuccess";
 import PaymentFailure from "./components/PaymentFailure/PaymentFailure";
+import FaQ from "./components/FaQ/FaQ";
 
 function App() {
   const [theme, setTheme] = useState(window.localStorage.getItem("color-theme") || "light");
@@ -55,6 +56,7 @@ function App() {
         <Route path="/payment" element={<Payment />} />
         <Route path="/payment_success" element={<PaymentSuccess />} />
         <Route path="/payment_failure" element={<PaymentFailure />} />
+        <Route path="/faq" element={<FaQ />} />
         <Route path="*" element={<Error404 />} /> //Esta ruta tiene que estar renderizada SI o SI al final
       </Routes>
 
