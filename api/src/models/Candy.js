@@ -1,12 +1,14 @@
-const { DataTypes } = require('sequelize');
+const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
-  sequelize.define("candy", {
+  sequelize.define(
+    "candy",
+    {
       id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         primaryKey: true,
-        autoIncrement: true
+        autoIncrement: true,
       },
       name: {
         type: DataTypes.STRING,
@@ -26,10 +28,15 @@ module.exports = (sequelize) => {
       },
       image: {
         type: DataTypes.STRING,
-        // lo dejamos comentado hasta tener las imagenes 
+        // lo dejamos comentado hasta tener las imagenes
         // allowNull: false,
       },
-      
-    }, { timestamps: false }
-  )
-}
+      stock: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        defaultValue: 150, // Valor predeterminado de stock: 150
+      },
+    },
+    { timestamps: false }
+  );
+};
