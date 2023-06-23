@@ -72,7 +72,7 @@ Purchase.belongsToMany(Candy, {
   otherKey: "itemId",
 });
 Candy.belongsToMany(Purchase, {
-  through: "PurchaseItem",
+  through: "purchaseItem",
   foreignKey: "itemId",
   otherKey: "purchaseId",
 });
