@@ -70,16 +70,12 @@ const CreateUser = ({ onPhotoUpload }) => {
         photoUrl: uploadedPhoto,
       };
 
-      const errorMessage = dispatch(postUser(userData));
-      if (errorMessage) {
-        toast.error(errorMessage);
-      } else {
-        reset();
-        navigate("/login");
-        toast("Usuario creado correctamente");
-      }
+      await dispatch(postUser(userData))
+      reset();
+      toast("Usuario creado correctamente");
+      navigate("/login");
     } catch (error) {
-      console.error(error);
+      toast.error(error);
     }
   };
 
@@ -196,7 +192,7 @@ const CreateUser = ({ onPhotoUpload }) => {
           <div className="flex flex-col mx-6">
             <label className="mb-2 ml-4">Foto:</label>
 
-            <div className="w-[200px] h-[200px] flex justify-start items-start rounded-full border border-[8px] border-gray-1000">
+            <div className="w-[200px] h-[200px] flex justify-start items-start rounded-full border-[8px] border-gray-1000">
               {uploadedPhoto ? (
                 <img
                   src={uploadedPhoto}
@@ -224,7 +220,7 @@ const CreateUser = ({ onPhotoUpload }) => {
           </div>
         </div>
         <button
-          className="h-[50px] ml-80 flex justify-end bg-black mt-10 py-4 px-20 rounded-lg text-white font-semibold flex flex-col mx-5"
+          className="h-[50px] ml-80 justify-end bg-black mt-10 py-4 px-20 rounded-lg text-white font-semibold flex flex-col mx-5"
           type="submit"
         >
           Registrarse
