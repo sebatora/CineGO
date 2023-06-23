@@ -1,9 +1,9 @@
 require("dotenv").config();
-const app = require("./app.js");
-const postBulkGenres = require("./controllers/postBulkGenresController.js");
-const postBulkMovies = require("./controllers/postBulkMoviesController.js");
-const postBulkCandies = require("./controllers/postBulkCandyController.js");
-const { sequelize } = require("./db.js");
+const app = require("./src/app.js");
+const postBulkGenres = require("./src/controllers/postBulkGenresController.js");
+const postBulkMovies = require("./src/controllers/postBulkMoviesController.js");
+const postBulkCandies = require("./src/controllers/postBulkCandyController.js");
+const { sequelize } = require("./src/db.js");
 
 async function main(){
 	try {

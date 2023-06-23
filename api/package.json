@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "serve build -s -n -L -p $PORT",
+    "start": "node ./index.js",
     "dev": "nodemon src/index.js"
   },
   "keywords": [],
