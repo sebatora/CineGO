@@ -1,15 +1,33 @@
-import React from "react";
+import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { addCartCandy, removeAllCartCandy, removeOneCartCandy } from "../../redux/actions";
 
 function CandyCarrito() {
+  const dispatch = useDispatch();
+  const cart = useSelector((state) => state.cart);
 
-  const cart = useSelector((state) => state.cart)
+  let total = cart.reduce((acc, el) => acc + el.price, 0);
 
   const addCart = (name) => {
     dispatch(addCartCandy(name));
   };
 
+  const delRemoveCart = (name, all = false) => {
+    if (all) {
+      dispatch(removeAllCartCandy(name));
+    } else {
+      dispatch(removeOneCartCandy(name));
+    }
+  };
+
+  const handlePay = async () => {
+    try {
+      const { data } = await axios.post("http://localhost:3001/payment", cart);
+      window.location.href = data.init_point;
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   return (
     <div className="w-1/3 mt-28 flex flex-col items-center ">
