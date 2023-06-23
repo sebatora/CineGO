@@ -4,7 +4,8 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { AuthProvider } from "./context/authContext";
 
-axios.defaults.baseURL = "https://cinego-production.up.railway.app/";
+axios.defaults.baseURL = "https://cinego-production.up.railway.app";
+// axios.defaults.baseURL = "http://localhost:3001";
 
 // Components
 import About from "./components/About/About";
