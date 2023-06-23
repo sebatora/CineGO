@@ -16,9 +16,9 @@ async function main(){
 		});
 
 		// SE EJECTAN LAS FUNCIONES PARA QUE CREE AUTOMATICAMENTE LAS TABLAS AL INICIAR EL SERVER
-		postBulkGenres();
-		postBulkMovies();
-		postBulkCandies();
+		// postBulkGenres();
+		// postBulkMovies();
+		// postBulkCandies();
 	} catch (error) {
 		console.error("Error synchronizing database:", error);
 	}

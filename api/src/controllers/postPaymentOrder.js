@@ -18,8 +18,8 @@ const postPaymentOrder = async (cart) => {
 				date_created: "2023-06-30"
 			},
 			back_urls: {
-				success: "http://localhost:3000/payment_success",
-				failure: "http://localhost:3000/payment_failure",
+				success: "https://cine-go-ten.vercel.app/payment_success",
+				failure: "https://cine-go-ten.vercel.app/payment_failure",
 				pending: "",
 			},
 			auto_return: "approved",

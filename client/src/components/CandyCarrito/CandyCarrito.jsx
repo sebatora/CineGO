@@ -31,7 +31,7 @@ function CandyCarrito() {
 
   const handlePay = async () => {
     try {
-      const { data } = await axios.post("http://localhost:3001/payment", cart);
+      const { data } = await axios.post("https://cinego-production.up.railway.app/payment", cart);
       window.location.href = data.init_point;
       window.localStorage.removeItem("cart");
     } catch (error) {
