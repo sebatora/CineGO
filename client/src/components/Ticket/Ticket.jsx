@@ -1,21 +1,16 @@
-import styles from "./Ticket.module.css";
-
-
 const Ticket = ({ id, price, description, image, addToCard}) => {
 
     return(
-        <div className={styles.container}>
-
-            <div className={styles.card}>
-                <div className={styles.cards}>
-                    <button onClick={()=>addToCard(id)}>${price}</button>
+        <div className="w-full md:w-1/2 lg:w-1/2 xl:w-1/3 p-4 my-2 mx-16">
+            <div className="w-72 h-60 mx-10 rounded overflow-hidden shadow-lg bg-gray-50 dark:bg-black dark:shadow-gray-700 transform hover:scale-105 transition-transform duration-300 flex flex-col">
+                <div className=" mt-4 flex justify-center items-center h-20">
+                    <img src={image} alt="imagen" className="w-96 h-16 object-cover"/>
                 </div>
-                <div className={styles.cards_body}>
-                    <img src={image} alt="imagen" />
-                    <p>{description}</p>
+                <div className="px-4 py-2 flex-grow">
+                    <p className="text-gray-700 text-sm dark:text-gray-300">{description}</p>
                 </div>
+                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 px-4 rounded text-xs" onClick={()=>addToCard(id)}>${price}</button>
             </div>
-            
         </div>
     )
 }

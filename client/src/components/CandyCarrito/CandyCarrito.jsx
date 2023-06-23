@@ -44,7 +44,7 @@ function CandyCarrito() {
         </div>
         <hr />
         <div className=" px-2 pt-2 font-bold text-sm mb-1 text-gray-700 dark:text-white">
-          Subtotal:{" "}
+          Subtotal: $ {" "}
         </div>
         <div className=" px-2 font-bold text-sm mb-1 text-gray-700 dark:text-white">
           Cargo por servicio candy:{" "}

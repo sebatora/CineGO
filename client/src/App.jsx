@@ -36,7 +36,7 @@ function App() {
   return (
     <div className="w-full h-full min-h-screen bg-white dark:bg-black flex flex-col">
       <AuthProvider>
-      {location.pathname !== "/login" && location.pathname !== "/createUser" && location.pathname !== "/ticket" && <Navbar theme={theme} setTheme={setTheme} userData={userData} />}
+      {location.pathname !== "/login" && location.pathname !== "/createUser" && <Navbar theme={theme} setTheme={setTheme} userData={userData} />}
 
       <Routes>
         <Route exact path="/" element={<Home theme={theme} />} />
