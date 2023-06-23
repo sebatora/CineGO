@@ -25,8 +25,8 @@ app.use("/movies", routerMovie);
 app.use("/users", routerUser);
 app.use("/genres", routerGenre);
 app.use("/order", routerOrder);
-app.use("/candy", routerCandy);
-app.use("/susbcription", routerSubscription);
+app.use("/candy", routerCandy)
+app.use("/subscription", routerSubscription);
 app.use("/payment", routerPayment);
 app.use("/reset", routerResetPassword);
 app.use("/purchase", routerPurchase);

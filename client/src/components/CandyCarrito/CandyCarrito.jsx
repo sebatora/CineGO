@@ -1,7 +1,9 @@
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { addCartCandy, removeAllCartCandy, removeOneCartCandy } from "../../redux/actions";
+import { addCartCandy, removeAllCartCandy, removeOneCartCandy, saveCart } from "../../redux/actions";
+import { useEffect } from "react";
 import { GoTrash } from "react-icons/go";
+import { Toaster, toast } from "react-hot-toast";
 
 function CandyCarrito() {
   const dispatch = useDispatch();
@@ -20,8 +22,10 @@ function CandyCarrito() {
   const delRemoveCart = (name, all = false) => {
     if (all) {
       dispatch(removeAllCartCandy(name));
+      window.localStorage.removeItem("cart");
     } else {
       dispatch(removeOneCartCandy(name));
+      window.localStorage.removeItem("cart");
     }
   };
 
@@ -29,13 +33,31 @@ function CandyCarrito() {
     try {
       const { data } = await axios.post("http://localhost:3001/payment", cart);
       window.location.href = data.init_point;
+      window.localStorage.removeItem("cart");
     } catch (error) {
       console.error(error);
+      toast.error("Debes seleccionar un producto", {
+        duration: 3000
+      })
     }
   }
 
+  useEffect(() => {
+    const storedCart = window.localStorage.getItem("cart");
+    if (storedCart) {
+      dispatch(saveCart(JSON.parse(storedCart)));
+    }
+  }, []);
+
+  useEffect(() => {
+    if(cart.length) {
+      window.localStorage.setItem("cart", JSON.stringify(cart));
+    }
+  }, [cart]);
+
   return (
     <div className="w-1/3 mt-36 flex flex-col items-center">
+      <Toaster />
       <div className="w-96 mx-auto rounded overflow-hidden shadow-lg bg-gray-50 dark:bg-black dark:shadow-gray-700 flex flex-col">
         <p className="px-2 py-2 font-bold text-center text-3xl text-gray-700 dark:text-gray-300">
           Candy
