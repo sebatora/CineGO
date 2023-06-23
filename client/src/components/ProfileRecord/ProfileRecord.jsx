@@ -1,8 +1,8 @@
 import React from "react";
-import style from "./Record.module.css";
+import style from "./ProfileRecord.module.css";
 import { FaExclamationCircle } from "react-icons/fa";
 
-function Record() {
+function ProfileRecord() {
   return (
     <div className={style.container}>
       <main>
@@ -69,4 +69,4 @@ function Record() {
   );
 }
 
-export default Record;
+export default ProfileRecord;

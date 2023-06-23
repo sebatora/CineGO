@@ -31,18 +31,22 @@ function MoviesContainer() {
             <SearchBar />
           </div>
           <div className="w-full flex flex-wrap justify-center">
-            {allMovies.length ? allMovies.map(
-              ({ id, title, image, release_date, genres, clasification }) => (
-                <MovieCard
-                  key={id}
-                  id={id}
-                  title={title}
-                  genres={genres}
-                  clasification={clasification}
-                  image={image}
-                />
+            {allMovies.length ? (
+              allMovies.map(
+                ({ id, title, image, release_date, genres, clasification }) => (
+                  <MovieCard
+                    key={id}
+                    id={id}
+                    title={title}
+                    genres={genres}
+                    clasification={clasification}
+                    image={image}
+                  />
+                )
               )
-            ): <ErrorSearch404/>}
+            ) : (
+              <ErrorSearch404 />
+            )}
           </div>
         </div>
       )}

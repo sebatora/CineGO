@@ -99,7 +99,7 @@ const TicketContainer = () =>{
                             <strong>TOTAL: $ {total}</strong>
                         </div>
                     </div>
-                    <Link to="/login"  ><button className="w-80 bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-10 rounded text-xs">Seguiente</button></Link>
+                    <Link to="/login"  ><button className="w-80 btn-blue text-white font-bold py-3 px-10 rounded text-xs">Seguiente</button></Link>
                 </div>
             </div>
         </div>

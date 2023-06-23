@@ -6,23 +6,31 @@ import { postUser } from "../../redux/actions";
 import { Toaster, toast } from "react-hot-toast";
 import photoUser from "../../assets/userPhoto.png";
 import cloudinary from "cloudinary-core";
-import backgroundImg from "../../assets/fondoForm.png";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 const CreateUser = ({ onPhotoUpload }) => {
   const dispatch = useDispatch();
   const [uploadedPhoto, setUploadedPhoto] = useState("");
   const cl = new cloudinary.Cloudinary({ cloud_name: "dhyqgl7ie" });
-  
+
   const navigate = useNavigate();
-  const { register, handleSubmit, formState: { errors }, reset, watch } = useForm({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+    watch,
+  } = useForm({
     defaultValues: {
       firstName: "",
       lastName: "",
       email: "",
       password: "",
       confirmPassword: "",
-      image: ""
-    }
+      image: "",
+    },
+    resolver: yupResolver(schema),
   });
 
   const handleUploadPhoto = () => {
@@ -41,10 +49,9 @@ const CreateUser = ({ onPhotoUpload }) => {
         }
       }
     );
-  
+
     widget_cloudinary.open();
   };
-  
 
   useEffect(() => {
     const boton_photo = document.querySelector("#btn-photo");
@@ -55,20 +62,20 @@ const CreateUser = ({ onPhotoUpload }) => {
     };
   }, []);
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     try {
       // Agregar la URL de la foto al objeto de datos antes de enviarlo
       const userData = {
         ...data,
-        photoUrl: uploadedPhoto
+        photoUrl: uploadedPhoto,
       };
-      
-      dispatch(postUser(userData));
+
+      await dispatch(postUser(userData))
       reset();
-      navigate("/login");
       toast("Usuario creado correctamente");
+      navigate("/login");
     } catch (error) {
-      console.error(error);
+      toast.error(error);
     }
   };
 
@@ -86,7 +93,6 @@ const CreateUser = ({ onPhotoUpload }) => {
         className="w-[720px] flex flex-col justify-center items-center p-10 border border-black dark:border-white rounded"
         onSubmit={handleSubmit(onSubmit)}
         encType="multipart/form-data"
-        style={{ backgroundImage: `url(${backgroundImg})`}}
       >
         <h1 className="mb-6">Regístrate y crea una cuenta nueva</h1>
         <div className="w-full flex justify-center mt-4">
@@ -110,7 +116,9 @@ const CreateUser = ({ onPhotoUpload }) => {
               className="border border-black p-2 rounded-lg w-60"
               type="text"
               placeholder="Apellido"
-              {...register("lastName", { required: "El apellido es requerido" })}
+              {...register("lastName", {
+                required: "El apellido es requerido",
+              })}
             />
             {errors.lastName && (
               <span className="mt-2 text-red-600 dark:text-red-600">
@@ -181,28 +189,40 @@ const CreateUser = ({ onPhotoUpload }) => {
         </div>
 
         <div className="w-full flex justify-start mt-4 ml-8">
-  <div className="flex flex-col mx-6">
-    <label className="mb-2 ml-4">Foto:</label>
-  
-  <div className="w-[200px] h-[200px] flex justify-start items-start rounded-full border border-[8px] border-gray-1000">
-  {uploadedPhoto ? (
-    <img src={uploadedPhoto} alt="User Photo" className="w-full h-full object-cover rounded-full" />
-  ) : (
-    watch("photoUser") && ( 
-      <img src={photoUser} alt="User Photo" className="w-full h-full object-cover rounded-full" />
-    )
-  )}
-</div>
-    <button
-      className="bg-black mt-10 py-3 px-8 rounded-lg text-white font-semibold ml-4"
-      type="button"
-      id="btn-photo"
-    > Subir foto
-    </button>
-  </div>
-</div>
+          <div className="flex flex-col mx-6">
+            <label className="mb-2 ml-4">Foto:</label>
 
-        <button className="h-[50px] ml-80 flex justify-end bg-black mt-10 py-4 px-20 rounded-lg text-white font-semibold flex flex-col mx-5" type="submit">
+            <div className="w-[200px] h-[200px] flex justify-start items-start rounded-full border-[8px] border-gray-1000">
+              {uploadedPhoto ? (
+                <img
+                  src={uploadedPhoto}
+                  alt="User Photo"
+                  className="w-full h-full object-cover rounded-full"
+                />
+              ) : (
+                watch("photoUser") && (
+                  <img
+                    src={photoUser}
+                    alt="User Photo"
+                    className="w-full h-full object-cover rounded-full"
+                  />
+                )
+              )}
+            </div>
+            <button
+              className="bg-black mt-10 py-3 px-8 rounded-lg text-white font-semibold ml-4"
+              type="button"
+              id="btn-photo"
+            >
+              {" "}
+              Subir foto
+            </button>
+          </div>
+        </div>
+        <button
+          className="h-[50px] ml-80 justify-end bg-black mt-10 py-4 px-20 rounded-lg text-white font-semibold flex flex-col mx-5"
+          type="submit"
+        >
           Registrarse
         </button>
       </form>
@@ -210,9 +230,21 @@ const CreateUser = ({ onPhotoUpload }) => {
   );
 };
 
+const schema = yup.object().shape({
+  firstName: yup.string().required("El nombre es requerido"),
+  lastName: yup.string().required("El apellido es requerido"),
+  email: yup
+    .string()
+    .required("El email es requerido")
+    .email("Formato de email incorrecto"),
+  password: yup
+    .string()
+    .required("La contraseña es requerida")
+    .min(6, "La contraseña debe tener al menos 6 caracteres"),
+  confirmPassword: yup
+    .string()
+    .oneOf([yup.ref("password"), null], "Las contraseñas no coinciden")
+    .required("La confirmación de contraseña es requerida"),
+});
+
 export default CreateUser;
-
-
-
-
-

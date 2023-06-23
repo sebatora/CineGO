@@ -4,7 +4,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @layer base {
 	html {
 		box-sizing: border-box
@@ -32,4 +31,10 @@
 	a {
 		@apply dark:text-white text-slate-900 decoration-transparent;
 	}
+}
+
+@layer utilities {
+	.btn-blue {
+    @apply bg-blue-500 hover:bg-blue-700 transition-colors;
+  }
 }
