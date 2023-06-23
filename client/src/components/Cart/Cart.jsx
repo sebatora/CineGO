@@ -11,9 +11,7 @@ const Cart = ({ name, price, id, count, delRemoveCart, addToCard }) => {
             <GoTrash className="text-xl mx-1" />
           </button>
           <div className="mr-2 mt-2 text-sm font-bold text-gray-700 dark:text-white">
-            {count} Entradas
-            <br />
-            {name}
+            {count} {name}
           </div>
         </div>
         <div className="flex items-center ml-auto">
