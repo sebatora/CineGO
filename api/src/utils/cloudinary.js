@@ -10,7 +10,7 @@ cloudinary.config({
 });
 
 const uploadImage = async (filePath) => await cloudinary.uploader.upload(filePath, {
-    folder: "cinego",
+    folder: "cineGo",
   });
 
 
