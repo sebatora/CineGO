@@ -134,14 +134,14 @@ const rootReducer = (state = initialState, { type, payload }) => {
 
 
     case ADD_TO_CART :{
-      let newItem = state.productTicket.find(product => product.id === payload);
+      let newItem = state.productTicket.find(product => product.name === payload);
 
-      let itemCart = state.cart.find(item => item.id === newItem.id);
+      let itemCart = state.cart.find(item => item.name === newItem.name);
       
 
       return itemCart ? {
         ...state,
-        cart: state.cart.map(item => item.id === newItem.id ? {...item, price: item.price + newItem.price, count: item.count + 1}
+        cart: state.cart.map(item => item.name === newItem.name ? {...item, price: item.price + newItem.price, count: item.count + 1}
           :item
           )
       }
@@ -154,20 +154,20 @@ const rootReducer = (state = initialState, { type, payload }) => {
     case REMOVE_ALL_CART: {
       return {
         ...state,
-        cart: state.cart.filter(item => item.id !== payload)
+        cart: state.cart.filter(item => item.name !== payload)
       }
     }
 
     case REMOVE_ONE_CART: {
-      let itemDelete = state.cart.find(item => item.id === payload)
-      let newItem = state.productTicket.find(product => product.id === payload)
+      let itemDelete = state.cart.find(item => item.name === payload)
+      let newItem = state.productTicket.find(product => product.name === payload)
 
       return itemDelete.count > 1 ? {
         ...state,
-        cart: state.cart.map(item => item.id === payload?{...item, price: item.price - newItem.price, count: item.count - 1 }:item)
+        cart: state.cart.map(item => item.name === payload?{...item, price: item.price - newItem.price, count: item.count - 1 }:item)
       }:{
         ...state,
-        cart: state.cart.filter(item => item.id !== payload)
+        cart: state.cart.filter(item => item.name !== payload)
       }
     }
 
