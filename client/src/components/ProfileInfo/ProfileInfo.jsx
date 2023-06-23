@@ -8,7 +8,7 @@ function ProfileInfo() {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const response = await axios.get("http://localhost:3001/users/1");
+        const response = await axios.get("/users/1");
         setUserData(response.data);
         console.log(userData);
       } catch (error) {
