@@ -20,8 +20,8 @@ function ChangeMail() {
         </div>
       </div>
       <div className={style.containerButton}>
-        <Link className={style.buttom}>MODIFICAR</Link>
-        <Link className={style.buttom} to={"/"}>
+        <Link className={style.button}>MODIFICAR</Link>
+        <Link className={style.button} to={"/"}>
           Ir al Home
         </Link>
       </div>

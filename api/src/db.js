@@ -55,19 +55,19 @@ Purchase.belongsTo(User, {
 
 // relación muchos a muchos con Show a través de PurchaseItem
 Purchase.belongsToMany(Show, {
-  through: "PurchaseItem",
+  through: "purchaseItem",
   foreignKey: "purchaseId",
   otherKey: "itemId",
 });
 Show.belongsToMany(Purchase, {
-  through: "PurchaseItem",
+  through: "purchaseItem",
   foreignKey: "itemId",
   otherKey: "purchaseId",
 });
 
 // Establecer la relación muchos a muchos con Candy a través de PurchaseItem
 Purchase.belongsToMany(Candy, {
-  through: "PurchaseItem",
+  through: "purchaseItem",
   foreignKey: "purchaseId",
   otherKey: "itemId",
 });
