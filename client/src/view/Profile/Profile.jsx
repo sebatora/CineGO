@@ -2,13 +2,13 @@ import React from "react";
 import ProfileInfo from "../../components/ProfileInfo/ProfileInfo";
 import ProfileActions from "../../components/ProfileActions/ProfileActions";
 import style from "./Profile.module.css";
-import ProfileSuscription from "../../components/ProfileSuscription/ProfileSuscription";
+import ProfileSubscription from "../../components/ProfileSubscription/ProfileSubscription";
 
 function Profile() {
   return (
     <div className={style.containerUser}>
       <ProfileInfo />
-      <ProfileSuscription />
+      <ProfileSubscription />
       <ProfileActions />
     </div>
   );
