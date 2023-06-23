@@ -22,6 +22,7 @@ import Record from "./view/Record/Record";
 import Candy from "./view/Candy/Candy";
 import TicketContainer from "./components/TicketContainer/TicketContainer";
 import Payment from "./components/Payment/Payment";
+import FaQ from "./components/FaQ/FaQ";
 
 function App() {
   const [theme, setTheme] = useState(window.localStorage.getItem("color-theme") || "light");
@@ -51,6 +52,7 @@ function App() {
         <Route path="/candy" element={<Candy />} />
         <Route path="/ticket" element={<TicketContainer/>}/>
         <Route path="/payment" element={<Payment />} />
+        <Route path="/faq" element={<FaQ />} />
         <Route path="*" element={<Error404 />} /> //Esta ruta tiene que estar renderizada SI o SI al final
       </Routes>
 
