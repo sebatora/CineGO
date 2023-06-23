@@ -7,7 +7,7 @@ const { sequelize } = require("./db.js");
 
 async function main(){
 	try {
-		await sequelize.sync({ force: true });
+		await sequelize.sync({ force: false });
 		console.log("Database synchronized successfully.");
 	
 		const PORT = process.env.PORT || 3001;
