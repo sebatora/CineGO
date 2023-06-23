@@ -96,7 +96,7 @@ function CinePlusGold() {
               onClick={handleSubmit}
               className="w-7/12 mx-auto bg-slate-400 my-2 p-2 rounded-xl text-base font-bold"
             >
-              ¡Quiero suscribirme!
+              ¡Quiero suscribirme!!
             </button>
           </div>
         </div>
