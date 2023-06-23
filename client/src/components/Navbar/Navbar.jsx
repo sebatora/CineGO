@@ -4,10 +4,12 @@ import cinego_blanco from "../../assets/cinego_blanco.png"
 import cinego_negro from "../../assets/cinego_negro.png"
 import ModalProfile from "../ModalProfile/ModalProfile";
 
+
 const options = [
   { name: "CinePlus", to: "/cineplus" },
   { name: "Candy", to: "/candy" },
   { name: "Sobre Nosotros", to: "/about" },
+  { name: "Preguntas Frecuentes", to: "/faq" },
 ]
 
 function Navbar({ theme, setTheme }) {

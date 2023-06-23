@@ -8,10 +8,11 @@ import photoUser from "../../assets/userPhoto.png";
 import cloudinary from "cloudinary-core";
 import backgroundImg from "../../assets/fondoForm.png";
 
-const CreateUser = () => {
+const CreateUser = ({ onPhotoUpload }) => {
   const dispatch = useDispatch();
   const [uploadedPhoto, setUploadedPhoto] = useState("");
   const cl = new cloudinary.Cloudinary({ cloud_name: "dhyqgl7ie" });
+  
   const navigate = useNavigate();
   const { register, handleSubmit, formState: { errors }, reset, watch } = useForm({
     defaultValues: {
@@ -32,7 +33,10 @@ const CreateUser = () => {
       },
       (err, result) => {
         if (!err && result && result.event === "success") {
-          setUploadedPhoto(result.info.secure_url); // Almacenar la URL de la foto subida
+          const photoUrl = result.info.secure_url;
+          console.log("Image URL:", photoUrl); // Obtener la URL de la foto subida
+          setUploadedPhoto(photoUrl); // Almacenar la URL de la foto subida
+          onPhotoUpload(photoUrl); // Pasar la URL de la foto al componente padre (ModalProfile)
           toast("Imagen subida con éxito");
         }
       }
@@ -53,7 +57,13 @@ const CreateUser = () => {
 
   const onSubmit = (data) => {
     try {
-      dispatch(postUser(data));
+      // Agregar la URL de la foto al objeto de datos antes de enviarlo
+      const userData = {
+        ...data,
+        photoUrl: uploadedPhoto
+      };
+      
+      dispatch(postUser(userData));
       reset();
       navigate("/login");
       toast("Usuario creado correctamente");
