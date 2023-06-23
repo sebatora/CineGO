@@ -123,7 +123,7 @@ export const loginUser = (user) => {
       window.localStorage.setItem("user", JSON.stringify(data));
       return dispatch({ type: LOGIN_USER, payload: data });
     } catch (error) {
-      return error.message;
+      return "El correo electrónico o la contraseña ingresados son incorrectos. Por favor, verifícalos e intenta nuevamente.";
     }
   };
 };

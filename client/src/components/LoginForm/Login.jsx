@@ -20,24 +20,34 @@ const Login = () => {
   const { loginWithGoogle } = useAuth();
   const [loading, setLoading] = useState(false);
 
-  const onSubmit = (data) => {
-    try {
-      dispatch(loginUser(data));
+  const onSubmit = async (data) => {
+  try {
+    setLoading(true);
+    const response = await dispatch(loginUser(data));
+    
+    if (typeof response === "string") {
+      toast.error(response);
+    } else {
       reset();
       navigate("/");
       toast.success("Inicio de sesión exitoso");
-    } catch (error) {
-      console.log(error);
     }
-  };
-
+  } catch (error) {
+    toast.error("Ocurrió un error al iniciar sesión. Por favor, intenta nuevamente.");
+  } finally {
+    setLoading(false);
+  }
+};
 
   const handleLoginGoogle = async () => {
     try {
+      setLoading(true);
       await loginWithGoogle();
       toast.success("Inicio de sesión exitoso");
     } catch (error) {
       console.error(error);
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -46,8 +56,8 @@ const Login = () => {
       <Toaster />
       {loading ? (
         <Spinner />
-        ) : (
-          <div className="w-full h-full flex justify-center p-20">
+      ) : (
+        <div className="w-full h-full flex justify-center p-20">
           <button type="button" className="bg-gray-300 absolute left-0 top-0 m-6 p-3 rounded-lg" onClick={() => navigate("/")}>Volver</button>
           <form className="w-[500px] flex flex-col justify-center items-center p-10 border border-black dark:border-white rounded" onSubmit={handleSubmit(onSubmit)}>
             <h1>Ingresa a tu cuenta</h1>
@@ -77,9 +87,10 @@ const Login = () => {
             </div>
           </form>
         </div>
-        )}
-      </>
+      )}
+    </>
   );
 }
 
 export default Login;
+

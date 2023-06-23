@@ -6,15 +6,25 @@ import { postUser } from "../../redux/actions";
 import { Toaster, toast } from "react-hot-toast";
 import photoUser from "../../assets/userPhoto.png";
 import cloudinary from "cloudinary-core";
-import backgroundImg from "../../assets/fondoForm.png";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup"; 
+
+
 
 const CreateUser = ({ onPhotoUpload }) => {
   const dispatch = useDispatch();
   const [uploadedPhoto, setUploadedPhoto] = useState("");
   const cl = new cloudinary.Cloudinary({ cloud_name: "dhyqgl7ie" });
-  
+
+
   const navigate = useNavigate();
-  const { register, handleSubmit, formState: { errors }, reset, watch } = useForm({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+    watch
+  } = useForm({
     defaultValues: {
       firstName: "",
       lastName: "",
@@ -22,7 +32,8 @@ const CreateUser = ({ onPhotoUpload }) => {
       password: "",
       confirmPassword: "",
       image: ""
-    }
+    },
+    resolver: yupResolver(schema)
   });
 
   const handleUploadPhoto = () => {
@@ -86,7 +97,6 @@ const CreateUser = ({ onPhotoUpload }) => {
         className="w-[720px] flex flex-col justify-center items-center p-10 border border-black dark:border-white rounded"
         onSubmit={handleSubmit(onSubmit)}
         encType="multipart/form-data"
-        style={{ backgroundImage: `url(${backgroundImg})`}}
       >
         <h1 className="mb-6">Regístrate y crea una cuenta nueva</h1>
         <div className="w-full flex justify-center mt-4">
@@ -201,14 +211,27 @@ const CreateUser = ({ onPhotoUpload }) => {
     </button>
   </div>
 </div>
-
-        <button className="h-[50px] ml-80 flex justify-end bg-black mt-10 py-4 px-20 rounded-lg text-white font-semibold flex flex-col mx-5" type="submit">
+     <button className="h-[50px] ml-80 flex justify-end bg-black mt-10 py-4 px-20 rounded-lg text-white font-semibold flex flex-col mx-5" type="submit">
           Registrarse
         </button>
       </form>
     </div>
   );
 };
+
+const schema = yup.object().shape({
+  firstName: yup.string().required("El nombre es requerido"),
+  lastName: yup.string().required("El apellido es requerido"),
+  email: yup
+    .string()
+    .required("El email es requerido")
+    .email("Formato de email incorrecto"),
+  password: yup.string().required("La contraseña es requerida").min(6, "La contraseña debe tener al menos 6 caracteres"),
+  confirmPassword: yup
+    .string()
+    .oneOf([yup.ref("password"), null], "Las contraseñas no coinciden")
+    .required("La confirmación de contraseña es requerida")
+});
 
 export default CreateUser;
 
