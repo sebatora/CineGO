@@ -435,14 +435,6 @@ const dataAllCandy = [
     category: "combos",
   },
   {
-    name: "Combo Pan de Queso",
-    description: "Porcion de 5 unidades de 20 grs cada uno + 1 gaseosa grande.",
-    price: 350,
-    image:
-      "https://static.cinemarkhoyts.com.ar/Images/ConcessionItemImage/A000002870.png",
-    category: "combos",
-  },
-  {
     name: "Balde de Pochoclo",
     description: "1 Balde de pochoclos. Imagen a modo ilustrativo.",
     price: 120,

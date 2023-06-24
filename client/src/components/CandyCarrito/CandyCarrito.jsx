@@ -10,13 +10,24 @@ function CandyCarrito() {
   const cart = useSelector((state) => state.cart);
 
   let subtotal = cart.reduce((acc, el) => acc + el.price, 0);
-
   let servicio = subtotal * 0.10;
-
   let total = subtotal + servicio;
 
+  const formatPrice = (value) => {
+    if (value >= 1000) {
+      return value.toLocaleString();
+    }
+    return value;
+  };
+
   const addCart = (name) => {
-    dispatch(addCartCandy(name))
+    if (cart.length >= 6) {
+      toast.error("No se pueden agregar más de 6 productos al carrito", {
+        duration: 3000
+      });
+    } else {
+      dispatch(addCartCandy(name));
+    }
   };
 
   const delRemoveCart = (name, all = false) => {
@@ -98,13 +109,13 @@ function CandyCarrito() {
         </div>
 
         <div className="px-2 pt-2 font-bold text-sm mb-1 text-gray-700 dark:text-white">
-          Subtotal: $ {subtotal}
+          Subtotal: $ {formatPrice(subtotal)}
         </div>
         <div className="px-2 font-bold text-sm mb-1 text-gray-700 dark:text-white">
-          Cargo por servicio candy: $ {servicio}
+          Cargo por servicio candy: $ {formatPrice(servicio)}
         </div>
         <div className="px-2 font-bold text-lg mb-1 text-gray-700 dark:text-white">
-          <strong>TOTAL: $ {total} </strong>
+          <strong>TOTAL: $ {formatPrice(total)} </strong>
         </div>
         <button
           className="btn-blue text-white font-bold py-4 px-2 rounded text-xs"
