@@ -9,25 +9,12 @@ function CandyCarrito() {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
 
-  let subtotal = cart.reduce((acc, el) => acc + el.price, 0);
-  let servicio = subtotal * 0.10;
-  let total = subtotal + servicio;
-
-  const formatPrice = (value) => {
-    if (value >= 1000) {
-      return value.toLocaleString();
-    }
-    return value;
-  };
+  const subtotal = cart.reduce((acc, el) => acc + parseFloat(el.price), 0);
+  const servicio = subtotal * 0.10;
+  const total = subtotal + servicio;
 
   const addCart = (name) => {
-    if (cart.length >= 6) {
-      toast.error("No se pueden agregar más de 6 productos al carrito", {
-        duration: 3000
-      });
-    } else {
-      dispatch(addCartCandy(name));
-    }
+    dispatch(addCartCandy(name))
   };
 
   const delRemoveCart = (name, all = false) => {
@@ -90,7 +77,7 @@ function CandyCarrito() {
                 {item.count}{" "} {item.name}
               </div>
               <div className="flex items-center my-2 ml-auto">
-                <p className="mr-1 mt-2 text-sm font-bold text-gray-700 dark:text-white">$ {item.price}</p>
+                <p className="mr-1 mt-2 text-sm font-bold text-gray-700 dark:text-white">$ {item.price.toLocaleString('es-Us')}</p>
                 <button
                   onClick={() => delRemoveCart(item.name)}
                   className="rounded-full h-6 w-6 ml-1 mr-2 mt-2 bg-gray-200 hover:bg-gray-300 flex items-center justify-center text-gray-700 font-semibold transition-colors duration-300"
@@ -109,13 +96,13 @@ function CandyCarrito() {
         </div>
 
         <div className="px-2 pt-2 font-bold text-sm mb-1 text-gray-700 dark:text-white">
-          Subtotal: $ {formatPrice(subtotal)}
+          Subtotal: $ {subtotal.toLocaleString('en-US')}
         </div>
         <div className="px-2 font-bold text-sm mb-1 text-gray-700 dark:text-white">
-          Cargo por servicio candy: $ {formatPrice(servicio)}
+          Cargo por servicio candy: $ {servicio.toLocaleString('en-US')}
         </div>
         <div className="px-2 font-bold text-lg mb-1 text-gray-700 dark:text-white">
-          <strong>TOTAL: $ {formatPrice(total)} </strong>
+          <strong>TOTAL: $ {total.toLocaleString('en-US')} </strong>
         </div>
         <button
           className="btn-blue text-white font-bold py-4 px-2 rounded text-xs"

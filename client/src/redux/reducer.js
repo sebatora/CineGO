@@ -213,14 +213,14 @@ const rootReducer = (state = initialState, { type, payload }) => {
 
     case ADD_TO_CART_CANDY: {
       let newCandy = state.allCandy.find((product) => product.name === payload);
-
-      let candyCart = state.cart.find((item) => item.name === newCandy.name);
-
+    
+      let candyCart = state.cart.find((item) => item.name.trim().toLowerCase() === newCandy.name.trim().toLowerCase());
+    
       return candyCart
         ? {
             ...state,
             cart: state.cart.map((item) =>
-              item.name === newCandy.name
+              item.name.trim().toLowerCase() === newCandy.name.trim().toLowerCase()
                 ? {
                     ...item,
                     price: item.price + newCandy.price,
@@ -237,6 +237,7 @@ const rootReducer = (state = initialState, { type, payload }) => {
             ],
           };
     }
+    
 
     case REMOVE_ALL_CART_CANDY: {
       return {
