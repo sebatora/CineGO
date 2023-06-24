@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { Route, Routes, useLocation } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { AuthProvider } from "./context/authContext";
 
 // axios.defaults.baseURL = "https://cinego-production.up.railway.app";
@@ -28,7 +28,6 @@ function App() {
   const [theme, setTheme] = useState(
     window.localStorage.getItem("color-theme") || "light"
   );
-  const location = useLocation();
   const userData = useSelector((state) => state.userData);
 
   useEffect(() => {
@@ -39,9 +38,7 @@ function App() {
   return (
     <div className="w-full h-full min-h-screen bg-white dark:bg-black flex flex-col">
       <AuthProvider>
-        {location.pathname !== "/login" && location.pathname !== "/createUser" && (
-            <Navbar theme={theme} setTheme={setTheme} userData={userData} />
-          )}
+        <Navbar theme={theme} setTheme={setTheme} userData={userData} />
 
         <Routes>
           <Route exact path="/" element={<Home />} />
@@ -59,10 +56,11 @@ function App() {
           <Route path="*" element={<Error404 />} /> //Esta ruta tiene que estar renderizada SI o SI al final
         </Routes>
 
-        {location.pathname !== "/login" && location.pathname !== "/createUser" && <Footer theme={theme} />}
+        <Footer theme={theme} />
       </AuthProvider>
     </div>
   );
 }
 
 export default App;
+
