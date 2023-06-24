@@ -42,7 +42,7 @@ const TicketContainer = () =>{
             </div> */}
             <div className="w-2/3 mt-16 flex items-center" >
                 <div>
-                    <h4 className="mx-40"><b>Sumate a cineFan</b></h4>
+                    <h4 className="ml-36"><b>Sumate a cineFan</b></h4>
                         {cinefan?.map(({id, name, description, price, image}) =>(
                             <Ticket 
                             key={id}
