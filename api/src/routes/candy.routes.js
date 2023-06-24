@@ -1,9 +1,9 @@
 const routerCandy = require("express").Router();
 
-const handlerPostCandy = require("../handlers/handlerPostCandy");
-const handlerGetAllCandy = require("../handlers/handlerGetAllCandy");
-const handlerPutCandy = require("../handlers/handlerPutCandy");
-const handlerDeleteCandy = require("../handlers/handlerDeleteCandy");
+const handlerPostCandy = require("../handlers/candy/handlerPostCandy");
+const handlerGetAllCandy = require("../handlers/candy/handlerGetAllCandy");
+const handlerPutCandy = require("../handlers/candy/handlerPutCandy");
+const handlerDeleteCandy = require("../handlers/candy/handlerDeleteCandy");
 
 routerCandy.post("/", handlerPostCandy);
 routerCandy.get("/", handlerGetAllCandy);

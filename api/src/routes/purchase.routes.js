@@ -1,4 +1,4 @@
-const handlerPostPurchase = require("../handlers/handlerPostPurchase");
+const handlerPostPurchase = require("../handlers/purchase/handlerPostPurchase");
 
 const routerPurchase = require("express").Router();
 

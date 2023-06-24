@@ -1,4 +1,4 @@
-const handlerFilterMovies = require('../handlers/handlerFilterMovies');
+const handlerFilterMovies = require('../handlers/order/handlerFilterMovies');
 
 const routerOrder = require("express").Router();
 
