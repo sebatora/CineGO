@@ -36,7 +36,7 @@ function App() {
   }, [theme]);
 
   return (
-    <div className="w-full h-full min-h-screen bg-white dark:bg-black flex flex-col">
+    <div className="w-full h-full min-h-screen bg-light-100 dark:bg-dark-950 flex flex-col">
       <AuthProvider>
         <Navbar theme={theme} setTheme={setTheme} userData={userData} />
 
