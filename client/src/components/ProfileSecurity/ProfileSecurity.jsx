@@ -22,10 +22,10 @@ function ProfileSecurity() {
     });
   }
   const handleSubmit = (e) => {
+    e.preventDefault();
     if (!user.password) {
       Swal.fire("Contraseña Vacia");
     } else {
-      e.preventDefault();
       dispatch(putUser(user));
       dispatch(logoutUser());
       setUser({

@@ -10,10 +10,10 @@ function CinePlusGold() {
   const user = { id: userData.id, cinePlus: "Gold" };
 
   const handleSubmit = (e) => {
+    e.preventDefault();
     if (!user.id) {
       Swal.fire("Inicia sesion primero");
     } else {
-      e.preventDefault();
       dispatch(putUserSubscription(user));
       Swal.fire("Cambiaste de plan");
     }
