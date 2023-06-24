@@ -1,9 +1,9 @@
 const routerMovie = require("express").Router();
-const handlerPostMovie = require("../handlers/handlerPostMovie");
-const handlerGetAllMovies = require("../handlers/handlerGetAllMovies");
-const handlerGetMovieById = require("../handlers/handlerGetMovieById");
-const handlerPostBulkMovies = require("../handlers/handlerPostBulkMovies");
-const handlerPutMovie = require('../handlers/handlerPutMovies');
+const handlerPostMovie = require("../handlers/movie/handlerPostMovie");
+const handlerGetAllMovies = require("../handlers/movie/handlerGetAllMovies");
+const handlerGetMovieById = require("../handlers/movie/handlerGetMovieById");
+const handlerPostBulkMovies = require("../handlers/movie/handlerPostBulkMovies");
+const handlerPutMovie = require('../handlers/movie/handlerPutMovies');
 
 // Trae todas las peliculas
 routerMovie.get("/", handlerGetAllMovies);
