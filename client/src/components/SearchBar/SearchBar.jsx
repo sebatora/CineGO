@@ -29,7 +29,7 @@ const SearchBar = () =>{
         type="search"
         name="search"
         onChange={handleChange}
-        placeholder="Buscar películas"
+        placeholder="Buscar película"
       />
       )}
     </div>
