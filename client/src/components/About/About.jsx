@@ -3,6 +3,9 @@ import style from "./About.module.css";
 import iconoIn from "../../assets/Linkedin.png";
 import iconoGit from "../../assets/github.png";
 import iconoCv from "../../assets/iconCv.png";
+import { SiTailwindcss, SiRedux, SiVite, SiFirebase, SiMercadopago, SiReact, SiHtml5, SiCss3, SiJavascript, SiGit, SiGithub, SiTrello, SiFigma, SiNodedotjs, SiPostgresql, SiSequelize } from "react-icons/si";
+import { Link } from "react-router-dom";
+
 
 const About = () => {
   const teamMembers = [
@@ -101,49 +104,68 @@ const About = () => {
     },
   ];
 
-  const shuffledTeamMembers = [...teamMembers].sort(() => Math.random() - 0.5);
+  const teamMemberCards = teamMembers.map((member) => (
 
-  const teamMemberCards = shuffledTeamMembers.map((member) => (
-    <div key={member.name} className={style.member}>
-      <img src={member.photoUrl} alt={member.name} />
-      <div className="member">
-        <h2 className="text-2xl mb-1 mt-n1 dark:text-black">{member.name}</h2>
-      </div>
-      <div className="member">
-        <p className="text-sm text-gray-500 mb-4 dark:text-black">
-          {member.description}
-        </p>
-      </div>
-      <div className={style.socialLinks}>
-        <a href={member.linkedinUrl} target="_blank">
-          <img src={member.linkedinIcon} alt="LinkedIn" />
-        </a>
-        <a href={member.githubUrl} target="_blank">
-          <img src={member.githubIcon} alt="Github" />
-        </a>
-        <a href={member} target="_blank">
-          <img src={member.iconoCv} alt="curriculum vitae" />
-        </a>
+    <div key={member.name} className="w-1/2 sm:w-2/4 md:w-1/3 lg:w-1/4 p-2 ">
+      <div className="bg-gray-200 rounded-lg shadow-md p-4 transition duration-300 transform-gpu hover:scale-105 hover:shadow-custom">
+        <img
+          src={member.photoUrl}
+          alt={member.name}
+          className="mx-auto w-24 h-24 rounded-full mt-4"
+        />
+        <div className="text-center py-4">
+          <h2 className="text-lg font-semibold dark:text-black">{member.name}</h2>
+          <p className="text-sm text-gray-500 dark:text-gray-600">{member.description}</p>
+        </div>
+        <div className="flex justify-center space-x-2 pb-4">
+          <a href={member.linkedinUrl} target="_blank">
+            <img src={member.linkedinIcon} alt="LinkedIn" className="w-6 h-6" />
+          </a>
+          <a href={member.githubUrl} target="_blank">
+            <img src={member.githubIcon} alt="Github" className="w-6 h-6" />
+          </a>
+          <a href={member} target="_blank">
+            <img src={member.iconoCv} alt="Curriculum Vitae" className="w-6 h-6" />
+          </a>
+        </div>
       </div>
     </div>
   ));
-
-  return (
-    <div className="w-full mt-20 text-center">
-      <h1 className={style.h1}>QUIENES SOMOS</h1>
-      <p className={style.descrip}>
-        Somos un grupo de estudiantes en la etapa final del bootcamp de Henry,
-        un programa intensivo de desarrollo de software. Nuestro equipo está
-        comprometido en aplicar los conocimientos y habilidades adquiridas a lo
-        largo del bootcamp para desarrollar una aplicación innovadora. Nos
-        enfocamos en crear soluciones prácticas y eficientes que aborden las
-        necesidades de los usuarios. Estamos emocionados de trabajar juntos y
-        poner en práctica todo nuestro aprendizaje para ofrecer un producto
-        sobresaliente en el mundo de la tecnología.
-      </p>
-      <div className={style.members}>{teamMemberCards}</div>
+  
+   return (
+  <div className="w-full mt-28 text-center ">
+    <h1 className="text-4xl font-semibold text-gray-700">QUIENES SOMOS</h1>
+    <p className="mx-auto max-w-5xl mt-4 text-gray-600">
+      Somos un grupo de estudiantes en la etapa final del bootcamp de Henry, un programa intensivo de desarrollo de software. Nuestro equipo está comprometido en aplicar los conocimientos y habilidades adquiridas a lo largo del bootcamp para desarrollar una aplicación innovadora. Nos enfocamos en crear soluciones prácticas y eficientes que aborden las necesidades de los usuarios. Estamos emocionados de trabajar juntos y poner en práctica todo nuestro aprendizaje para ofrecer un producto sobresaliente en el mundo de la tecnología.
+    </p>
+    <div className="w-4/5 mx-auto mt-8">
+      <div className="flex flex-wrap justify-center">
+        {teamMemberCards}
+      </div>
     </div>
-  );
+    <div className="max-w-350px mt-1 font-medium text-gray-500 text-lg">
+            <p className="mt-10 text-xl">Tecnologías utilizadas</p>
+            <div className="flex items-center justify-center mt-5">
+                <Link to="https://es.react.dev" target="_blank" className="hover:text-blue-800"><SiReact className="text-3xl mr-6 hover:text-blue-800" /> </Link>
+                <Link to="https://redux.js.org" target="_blank" className="hover:text-blue-800" ><SiRedux className="text-3xl mr-6 hover:text-blue-800" /> </Link>
+                <Link to="https://nodejs.org/es" target="_blank" className="hover:text-blue-800"><SiNodedotjs className="text-3xl mr-6 hover:text-blue-800" /> </Link>
+                <Link to="https://developer.mozilla.org/es/docs/Web/HTML" target="_blank" className="hover:text-blue-800"><SiHtml5 className="text-3xl mr-6 hover:text-blue-800" /> </Link>
+                <Link to="https://developer.mozilla.org/es/docs/Web/CSS" target="_blank" className="hover:text-blue-800"><SiCss3 className="text-3xl mr-6 hover:text-blue-800" /> </Link>
+                <Link to="https://developer.mozilla.org/es/docs/Web/JavaScript" target="_blank" className="hover:text-blue-800"><SiJavascript className="text-3xl mr-6 hover:text-blue-800" /> </Link>
+                <Link to="https://git-scm.com" target="_blank" className="hover:text-blue-800"><SiGit className="text-3xl mr-6 hover:text-blue-800"/> </Link>
+                <Link to="https://www.postgresql.org" target="_blank" className="hover:text-blue-800"><SiPostgresql className="text-3xl mr-6 hover:text-blue-800"/> </Link>
+                <Link to="https://sequelize.org" target="_blank" className="hover:text-blue-800"><SiSequelize className="text-3xl mr-6 hover:text-blue-800"/> </Link>
+                <Link to="https://github.com" target="_blank" className="hover:text-blue-800"><SiGithub className="text-3xl mr-6 hover:text-blue-800"/> </Link>
+                <Link to="https://vitejs.dev" target="_blank" className="hover:text-blue-800"><SiVite className="text-3xl mr-6 hover:text-blue-800"/> </Link>
+                <Link to="https://firebase.google.com/?hl=es" target="_blank" className="hover:text-blue-800"><SiFirebase className="text-3xl mr-6 hover:text-blue-800"/> </Link>
+                <Link to="https://tailwindcss.com" target="_blank" className="hover:text-blue-800"><SiTailwindcss className="text-3xl mr-6 hover:text-blue-800"/> </Link>
+                <Link to="https://trello.com" target="_blank" className="hover:text-blue-800"><SiTrello className="text-3xl mr-6 hover:text-blue-800"/> </Link>
+                <Link to="https://www.figma.com/" target="_blank" className="hover:text-blue-800"><SiFigma className="text-3xl mr-6 hover:text-blue-800"/> </Link>
+                <Link to="https://www.mercadopago.com.ar" target="_blank" className="hover:text-blue-800"><SiMercadopago className="text-3xl mr-6 hover:text-blue-800"/> </Link>
+            </div>
+          </div>
+  </div>
+);
 };
 
 export default About;

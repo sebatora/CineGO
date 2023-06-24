@@ -8,9 +8,18 @@ import {
   DELETE_MOVIE,
   FILTER_ORDER,
   POST_USER,
+  PUT_USER,
   LOGIN_USER,
   LOGOUT_USER,
-  GET_CANDY
+  GET_CANDY,
+  ADD_TO_CART,
+  REMOVE_ONE_CART,
+  REMOVE_ALL_CART,
+  ADD_TO_CART_CANDY,
+  REMOVE_ALL_CART_CANDY,
+  REMOVE_ONE_CANDY,
+  SAVE_CART,
+  PUT_SUBSCRIPTION,
 } from "./action-type";
 
 import axios from "axios";
@@ -100,8 +109,40 @@ export const filterOrder = (info) => {
 export const postUser = (newUser) => {
   return async (dispatch) => {
     try {
+      // Verificar si el correo electrónico ya está registrado
+      // const response = await axios.get(`/users?email=${newUser.email}`);
+      // const existingUser = response.data;
+
+      // if (existingUser.length === 0) {
+      //   throw new Error("El correo electrónico ya está registrado.");
+      // }
+
       const { data } = await axios.post(`/users`, newUser);
       return dispatch({ type: POST_USER, payload: data });
+    } catch (error) {
+      return error.message;
+    }
+  };
+};
+
+// Modifica a un usuario
+export const putUser = (user) => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.put(`/users`, user);
+      return dispatch({ type: PUT_USER, payload: data });
+    } catch (error) {
+      return error.message;
+    }
+  };
+};
+
+// Modificar la suscripcion del usuario
+export const putUserSubscription = (user) => {
+  return async (dispatch) => {
+    try {
+      const { data } = axios.put(`/subscription`, user);
+      return dispatch({ type: PUT_SUBSCRIPTION, payload: data });
     } catch (error) {
       return error.message;
     }
@@ -116,7 +157,7 @@ export const loginUser = (user) => {
       window.localStorage.setItem("user", JSON.stringify(data));
       return dispatch({ type: LOGIN_USER, payload: data });
     } catch (error) {
-      return error.message;
+      return "El correo electrónico o la contraseña ingresados son incorrectos. Por favor, verifícalos e intenta nuevamente.";
     }
   };
 };
@@ -125,7 +166,6 @@ export const loginUser = (user) => {
 export const logoutUser = () => {
   return { type: LOGOUT_USER };
 };
-
 
 //Trae todos los productos candy
 export const getCandy = () => {
@@ -136,5 +176,51 @@ export const getCandy = () => {
     } catch (error) {
       return error.message;
     }
-  }
-}
+  };
+};
+
+export const addCart = (name) => {
+  return {
+    type: ADD_TO_CART,
+    payload: name,
+  };
+};
+
+export const removeAllCart = (name) => {
+  return {
+    type: REMOVE_ALL_CART,
+    payload: name,
+  };
+};
+export const removeOneCart = (name) => {
+  return {
+    type: REMOVE_ONE_CART,
+    payload: name,
+  };
+};
+export const addCartCandy = (name) => {
+  return {
+    type: ADD_TO_CART_CANDY,
+    payload: name,
+  };
+};
+
+export const removeAllCartCandy = (name) => {
+  return {
+    type: REMOVE_ALL_CART_CANDY,
+    payload: name,
+  };
+};
+export const removeOneCartCandy = (name) => {
+  return {
+    type: REMOVE_ONE_CANDY,
+    payload: name,
+  };
+};
+
+export const saveCart = (cart) => {
+  return {
+    type: SAVE_CART,
+    payload: cart,
+  };
+};

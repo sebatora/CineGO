@@ -1,14 +1,14 @@
 const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
-  const User = sequelize.define(
+  sequelize.define(
     "user",
     {
       id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         allowNull: false,
-        autoIncrement:true,
+        autoIncrement: true,
       },
       firstName: {
         type: DataTypes.STRING,
@@ -29,6 +29,9 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         defaultValue: "https://cdn-icons-png.flaticon.com/512/666/666201.png",
       },
+      phone: {
+        type: DataTypes.INTEGER,
+      },
       cinePlus: {
         type: DataTypes.STRING,
         defaultValue: "Estandar",
@@ -40,6 +43,4 @@ module.exports = (sequelize) => {
     },
     { timestamps: false }
   );
-
-  return User;
 };

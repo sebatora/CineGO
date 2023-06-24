@@ -1,0 +1,130 @@
+/* .CinePlusContainer {
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+} */
+
+/* .CinePlusitem {
+  margin-top: 5rem;
+  width: 380px;
+  border-radius: 10px;
+  position: relative;
+} */
+
+/* .boxPopGold {
+  width: 380px;
+  position: absolute;
+  top: -60px;
+  display: flex;
+  justify-content: space-around;
+} */
+
+/* .imgPopCorn {
+  width: 60px;
+  animation: tambaleo 1.5s infinite;
+}
+
+@keyframes tambaleo {
+  0% {
+    transform: translateX(0) rotate(-2deg);
+  }
+  50% {
+    transform: translateX(10px) rotate(10deg);
+  }
+  100% {
+    transform: translateX(0) rotate(-2deg);
+  }
+} */
+
+/* .boxHeaderGold {
+  display: grid;
+  align-items: center;
+  background-color: #f0ed52;
+  border: 2px solid #f0ed52;
+  border-radius: 10px 10px 0 0;
+  height: 50px;
+} */
+
+/* .boxHeaderPlatinum {
+  display: grid;
+  align-items: center;
+  background-color: #c4bcd1;
+  border: 2px solid #c4bcd1;
+  border-radius: 10px 10px 0 0;
+  height: 50px;
+}
+.CinePlusheading {
+  font-weight: bold;
+  margin: 0 auto;
+} */
+
+/* .boxBottomGold {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+  border: 3px solid #f0ed52;
+  border-radius: 0 0 10px 10px;
+  padding: 1rem 1rem;
+} */
+
+/* .boxBottomPlatinum {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+  border: 3px solid #c4bcd1;
+  border-radius: 0 0 10px 10px;
+  padding: 1rem 1rem;
+} */
+
+/* .containerLi {
+  display: flex;
+  justify-content: space-around;
+  margin: 0.5rem 0;
+} */
+
+/* ul {
+  margin: 0;
+  padding: 0;
+} */
+
+/* li {
+  margin: 0.5rem;
+} */
+
+/* .boxLi {
+  width: 80%;
+} */
+
+/* .boxLiH3 {
+  margin: 0;
+  font-weight: bold;
+  font-size: 14px;
+} */
+
+/* .boxLiP {
+  margin: 0;
+  font-size: 12px;
+  font-weight: normal;
+} */
+/* 
+.CinePlusbutton {
+  background-color: #f0ed52;
+  width: 70%;
+  margin: 0 auto;
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.CinePlusbuttonPlatinum {
+  background-color: #c4bcd1;
+} */
