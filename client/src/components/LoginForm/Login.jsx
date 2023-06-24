@@ -59,7 +59,7 @@ const Login = ({ theme }) => {
       {loading ? (
         <Spinner />
       ) : (
-        <div className="w-full h-full flex justify-center p-10">
+        <div className="w-full h-full flex justify-center items-center p-10">
         
         <form className="w-[500px] h-[750px] flex flex-col justify-center items-center p-10 border border-black dark:border-white rounded" onSubmit={handleSubmit(onSubmit)} style={{ marginTop: "100px" }}>
             {theme === "dark" ? (
