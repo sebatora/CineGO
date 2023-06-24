@@ -1,6 +1,14 @@
 const { User } = require("../../db");
+const bcrypt = require("bcryptjs");
 
-const putUserData = async (userId, firstName, lastName, phone, email) => {
+const putUserData = async (
+  userId,
+  firstName,
+  lastName,
+  phone,
+  email,
+  password
+) => {
   if (!userId) throw new Error("Faltan datos");
 
   // verificamos que usuario exista
@@ -11,11 +19,15 @@ const putUserData = async (userId, firstName, lastName, phone, email) => {
     throw new Error("Usuario no encontrado");
   }
 
-  // Actualizamos el nombre y apellido
+  // Actualizamos los datos
   user.firstName = firstName || user.firstName;
   user.lastName = lastName || user.lastName;
   user.phone = phone || user.phone;
   user.email = email || user.email;
+  if (password) {
+    const passwordHash = await bcrypt.hash(password, 10);
+    user.password = passwordHash;
+  }
 
   // Se guardan los cambios
   //save()= metodo para guardar cambios en la BDD

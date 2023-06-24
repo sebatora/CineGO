@@ -1,8 +1,8 @@
 import React from "react";
 import { FaCheck, FaTimes } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
-import { putUserSubscription } from "../../redux/actions";
 import Swal from "sweetalert2";
+import { putUserSubscription } from "../../redux/actions";
 
 function CinePlusGold() {
   const userData = useSelector((state) => state.userData);
