@@ -9,5 +9,6 @@
 }
 
 .img {
-  width: 100px;
+  width: 120px;
+  border-radius: 50%;
 }

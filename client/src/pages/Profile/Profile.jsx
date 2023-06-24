@@ -15,7 +15,7 @@ function Profile() {
   return (
     <div className={style.container}>
       <div className={style.containerProfile}>
-        <h1 className={style.h1}>Profile</h1>
+        <h1 className={style.h1}>Perfil</h1>
         <div className={style.containerButton}>
           <button
             className={style.button}
