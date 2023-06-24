@@ -1,6 +1,7 @@
 const { User } = require("../../db");
 const bcrypt = require("bcrypt");
 const nodemailer = require("nodemailer");
+const path = require('path');
 
 const postResetPasswordController = async (email, firstName) => {
   // Generamos una nueva contraseña de manera aleatoria
@@ -18,7 +19,7 @@ const postResetPasswordController = async (email, firstName) => {
   await user.save();
 
   // Enviar la nueva contraseña por correo electrónico
-  sendPasswordByEmail(email, newPassword);
+  sendPasswordByEmail(email, newPassword, firstName);
 };
 
 const generateRandomPassword = () => {
@@ -31,7 +32,7 @@ const generateRandomPassword = () => {
   return newPassword;
 };
 
-const sendPasswordByEmail = (email, newPassword) => {
+const sendPasswordByEmail = (email, newPassword, firstName) => {
   // Configurar el transporte de nodemailer para enviar el correo
   const transporter = nodemailer.createTransport({
     // Configuración del transporte de correo (SMTP, etc.)
@@ -42,12 +43,64 @@ const sendPasswordByEmail = (email, newPassword) => {
     }
   });
 
-  // Configurar el mensaje del correo
+  const imagePath = path.join(__dirname, "../assets/correoCineGo.jpg");
+
+  // Configurar el mensaje del correo con estilos HTML
   const mailOptions = {
     from: "cinego75@hotmail.com", // Remitente
     to: email, // Destinatario
     subject: "Nueva contraseña", // Asunto del correo
-    text: `Tu nueva contraseña es: ${newPassword}` // Cuerpo del correo
+    html: `
+      <html>
+        <head>
+          <style>
+            h1 {
+              font-family: Arial;
+              font-size: 20px;
+            }
+            p {
+              font-family: Arial;
+              font-size: 14px;
+            }
+            strong {
+              font-size: 20px;
+              font-weight: bold;
+            }
+            .message {
+              text-align: center;
+              font-family: Arial;
+              font-size: 20px;
+            }
+            .center {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+            img {
+              width: 720px;
+              height: 380px;
+              display: block;
+              margin: 0 auto;
+            }
+          </style>
+        </head>
+        <body>
+          <div class="center">
+            <img src="cid:correoCineGo.jpg" alt="Logo" />
+          </div>
+          <h1 class="message">Hola ${firstName}!</h1>
+          <p class="message">Acá está tu nueva contraseña:</p>
+          <p class="message"><strong>${newPassword}</strong></p>
+        </body>
+      </html>
+    `,
+    attachments: [
+      {
+        filename: "correoCineGo.jpg",
+        path: imagePath,
+        cid: "correoCineGo.jpg"
+      }
+    ]
   };
 
   // Enviar el correo
@@ -61,6 +114,7 @@ const sendPasswordByEmail = (email, newPassword) => {
 };
 
 module.exports = postResetPasswordController;
+
 
 
 
