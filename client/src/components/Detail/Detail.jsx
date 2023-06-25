@@ -6,11 +6,13 @@ import Error404 from '../Error404/Error404';
 import ReactStars from "react-stars";
 
 function Detail() {
+  const userData = JSON.parse(window.localStorage.getItem("user"));
   const [activeTrailer, setActiveTrailer] = useState(false);
   const dispatch = useDispatch();
   const { id } = useParams();
   const detail = useSelector(state => state.movieById);
   const [rating, setRating] = useState(0);
+  // console.log(detail);
 
   useEffect(() => {
     dispatch(getMovieById(id));
@@ -25,9 +27,9 @@ function Detail() {
         ) : (
           <div className="w-full flex flex-col mt-20 p-10">
             <div className="w-full flex">
-              <div className="w-80 flex flex-col items-center border">
+              <div className="w-96 h-fit flex flex-col items-center border border-light-200">
                 <div className="w-full relative">
-                  <img  className="w-full h-full" src={detail.image} alt={detail.title} />
+                  <img className="w-full h-[350px]" src={detail.image} alt={detail.title} />
                   <div className="absolute right-0 top-0 z-10">
                     <h3 className="bg-white rounded-bl-xl dark:text-black p-1">{detail.clasification}</h3>
                   </div>
@@ -39,17 +41,17 @@ function Detail() {
                     </button>
                   </div>
                 </div>
-                <ReactStars className="w-full flex justify-center p-4 border-b" count={5} size={40} half={false} value={rating} onChange={(newRating) => setRating(newRating)} />
+                <ReactStars className="w-full flex justify-center p-4 border-b border-b-light-200" count={5} size={40} half={false} value={rating} onChange={(newRating) => setRating(newRating)} />
                 <ul className="w-full">
-                  <li className="border-b p-2">
+                  <li className="border-b border-b-light-200 p-2">
                     <h4>Género:</h4>
-                    <p className="text-sm">{detail.genres?.map(genre => genre.name).join(', ')}</p>
+                    <p className="text-sm">{detail.genres?.map(genre => genre.name).join(' - ')}</p>
                   </li>
-                  <li className="border-b p-2">
+                  <li className="border-b border-b-light-200 p-2">
                     <h4>Director:</h4>
                     <p className="text-sm">{detail.director}</p>
                   </li>
-                  <li className="border-b p-2">
+                  <li className="border-b border-b-light-200 p-2">
                     <h4>Actores:</h4>
                     <p className="text-sm">{detail.actors}</p>
                   </li>
@@ -59,12 +61,43 @@ function Detail() {
                   </li>
                 </ul>
               </div>
-              <div className="w-2/3 flex flex-col items-center">
-                <h2 className="mb-6">{detail.title}</h2>
-                <p className="w-4/5">{detail.description}</p>
+              <div className="w-full flex flex-col ml-20">
+                <h2 className="pb-4 border-b-4 border-b-light-300 dark:border-b-dark-700">{detail.title}</h2>
+                <div className="w-4/5 mb-6">
+                  <h3 className="my-4">Sinopsis</h3>
+                  <p className="text-base">{detail.description}</p>
+                </div>
+                <div className="w-4/5 mb-6 flex flex-col">
+                  <h3>Horarios</h3>
+                  {/* {detail.shows.map(show => (
+                    <div className="flex space-x-4" key={show.id}>
+                      {show.type === "subtitulada" && (
+                        <>
+                          <h4>Subtitulada</h4>
+                          <p>{show.date}</p>
+                          <span>{show.hour}</span>
+                        </>
+                      )}
+                      {show.type === "doblada" && (
+                        <>
+                          <h4>Doblada</h4>
+                          <p>{show.date}</p>
+                          <span>{show.hour}</span>
+                        </>
+                      )}
+                      {show.type === "doblada 3D" && (
+                        <>
+                          <h4>Doblada 3D</h4>
+                          <p>{show.date}</p>
+                          <span>{show.hour}</span>
+                        </>
+                      )}
+                    </div>
+                  ))} */}
+                </div>
                 <div className="mt-8 mb-10 flex justify-center">
-                  <Link to='/ticket'>
-                    <button className="btn-blue text-white border-none px-4 py-2 text-center text-base rounded cursor-pointer" type="submit">¡Comprar entradas!</button>
+                  <Link to={`${userData === null ? "/login": "/ticket"}`}>
+                    <button className="bg-dark-200 text-white border-none px-4 py-2 text-center text-base rounded cursor-pointer" type="submit">¡Comprar entradas!</button>
                   </Link>
                 </div>
               </div>

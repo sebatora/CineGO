@@ -4,7 +4,6 @@
     height: 100px;
     position: relative;
     text-align: center;
-    
     -webkit-animation: sk-rotate 2.0s infinite linear;
     animation: sk-rotate 2.0s infinite linear;
   }

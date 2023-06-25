@@ -9,10 +9,10 @@ import '@fortawesome/fontawesome-free/css/all.css';
 
 function Footer({ theme }) {
   return (
-    <footer className="w-full border-t mt-4">
+    <footer className="w-full border-t border-t-light-200 dark:border-t-light-900 mt-4">
       <div className="w-full flex justify-evenly">
-        <div className="w-full flex pl-12">
-          <Link className="w-52" to="/">
+        <div className="w-full flex pl-12 pb-2">
+          <Link className="w-48" to="/">
             {theme === "dark" ? (
               <img src={cinego_blanco} alt="CineGO" />
             ) : (
@@ -22,39 +22,39 @@ function Footer({ theme }) {
         </div>
         <div className="w-full flex justify-center items-center">
           <span className="p-6">
-            <Link className="hover:opacity-80" to="/">
+            <Link className="hover:text-light-400" to="/">
               Cartelera
             </Link>
           </span>
           <span className="p-6">
-            <Link className="hover:opacity-80" to="/candy">
+            <Link className="hover:text-light-400" to="/candy">
               Candy
             </Link>
           </span>
           <span className="p-6">
-            <Link className="hover:opacity-80" to="/cinePlus">
+            <Link className="hover:text-light-400" to="/cinePlus">
               CinePlus
             </Link>
           </span>
           <span className="p-6">
-            <Link className="hover:opacity-80" to="/faq">
+            <Link className="hover:text-light-400" to="/faq">
               FAQ
             </Link>
           </span>
           <span className="p-6">
-            <Link className="hover:opacity-80" to="/about">
+            <Link className="hover:text-light-400" to="/about">
               Desarrolladores
             </Link>
           </span>
           <span className="p-6">
-            <Link className="hover:opacity-80" to="https://github.com/sebatora/CineGO" target="_blank">
+            <Link className="hover:text-light-400" to="https://github.com/sebatora/CineGO" target="_blank">
               Repositorio
             </Link>
           </span>
         </div>
       </div>
 
-      <div className="mx-auto border-t text-center">
+      <div className="mx-auto border-t border-t-light-200 dark:border-t-light-900 text-center">
         <p className="mt-2 mb-2 text-sm">Todos los derechos reservados © 2023 <b>| CineGo</b></p>
       </div>
     </footer>

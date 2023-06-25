@@ -23,7 +23,7 @@ function Navbar({ theme, setTheme }) {
     setTheme(newTheme);
   }
   return (
-    <nav className="w-full h-20 fixed flex justify-between items-center bg-light-100 dark:bg-dark-950 z-40 shadow-md dark:shadow-white/50">
+    <nav className="w-full h-16 fixed flex justify-between items-center bg-light-100 dark:bg-dark-950 z-40 shadow-md dark:shadow-sm dark:shadow-white/50">
       <div className="w-full lg:w-80 lg:ml-4 order-1">
         <Link to="/">
           {theme === "dark" ? (
@@ -37,8 +37,8 @@ function Navbar({ theme, setTheme }) {
       {/* Botones */}
       <div className="w-3/4 h-full hidden lg:flex justify-center items-center mt-2 space-x-10 order-2">
         {options.map((option, index) => (
-          <Link className="hover:opacity-80" key={index} to={option.to}>
-            <h4>{option.name}</h4>
+          <Link key={index} to={option.to}>
+            <p className="hover:text-light-400">{option.name}</p>
           </Link>
         ))}
       </div>
@@ -63,11 +63,11 @@ function Navbar({ theme, setTheme }) {
       <div className="w-20 lg:w-1/4 h-full flex justify-end items-center mr-8 mt-2 order-2">
         <div className="mx-4 flex justify-center">
           {!userData || Object.entries(userData).length === 0 ? (
-            <Link className="border p-2 rounded-lg" to="/login">
-              <span>Sign In</span>
+            <Link to="/login">
+              <span className="hover:text-light-400 mr-4">Sign In</span>
             </Link>
           ) : (
-            <button className="bg-white rounded-full p-1" onClick={() => setActiveModal(!activeModal)}>
+            <button className="bg-white rounded-full p-2" onClick={() => setActiveModal(!activeModal)}>
               <img className="w-7 rounded-full" src={userData.image} alt={userData.firstName} />
             </button>
           )}
