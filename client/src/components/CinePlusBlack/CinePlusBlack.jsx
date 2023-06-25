@@ -6,15 +6,17 @@ import pochoclo from "../../assets/pochoclo.png";
 import { putUserSubscription } from "../../redux/actions";
 
 function CinePlusBlack() {
+  /*  const userData = JSON.parse(window.localStorage.getItem("user")); */ // Para modificar
+
   const userData = useSelector((state) => state.userData);
   const dispatch = useDispatch();
   const user = { id: userData.id, cinePlus: "Black" };
 
   const handleSubmit = (e) => {
+    e.preventDefault();
     if (!user.id) {
       Swal.fire("Inicia sesion primero");
     } else {
-      e.preventDefault();
       dispatch(putUserSubscription(user));
       Swal.fire("Cambiaste de plan");
     }
