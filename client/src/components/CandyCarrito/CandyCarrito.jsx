@@ -50,7 +50,6 @@ function CandyCarrito() {
       });
     }
   };
-  
 
   useEffect(() => {
     const storedCart = window.localStorage.getItem("cart");

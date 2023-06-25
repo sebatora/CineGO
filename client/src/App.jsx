@@ -53,8 +53,8 @@ function App() {
           <Route path="/detail/:id" element={<Detail />} />
           <Route path="/about" element={<About />} />
           <Route path="/cinePlus" element={<CinePlusContainer />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/CreateUser" element={<CreateUser />} />
+          <Route path="/login" element={<Login theme={theme}/>} />
+          <Route path="/CreateUser" element={<CreateUser theme={theme}/>} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/candy" element={<Candy />} />
           <Route path="/ticket" element={<TicketContainer />} />
