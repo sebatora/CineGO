@@ -67,7 +67,7 @@ function Navbar({ theme, setTheme }) {
               <span className="hover:text-light-400 mr-4">Sign In</span>
             </Link>
           ) : (
-            <button className="bg-white rounded-full" onClick={() => setActiveModal(!activeModal)}>
+            <button className="bg-white rounded-full p-2" onClick={() => setActiveModal(!activeModal)}>
               <img className="w-7 rounded-full" src={userData.image} alt={userData.firstName} />
             </button>
           )}
