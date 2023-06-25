@@ -37,7 +37,7 @@ const Filter = () => {
   return (
     <div className="w-2/3 flex justify-between space-x-4">
       <select
-        className="bg-transparent dark:text-white border border-light-500 rounded-xl p-2"
+        className="w-48 bg-transparent dark:text-white border border-light-500 rounded-xl p-2"
         name="order"
         onChange={handleChangeOrder}
         defaultValue="order"
@@ -49,7 +49,7 @@ const Filter = () => {
         <option className="dark:text-black" value="oldest">Más Antiguo</option>
       </select>
       <select
-        className="bg-transparent dark:text-white border border-light-500 rounded-xl p-2"
+        className="w-48 bg-transparent dark:text-white border border-light-500 rounded-xl p-2"
         name="filterClasification"
         onChange={handleChangeClasification}
         defaultValue="clasification"
@@ -62,7 +62,7 @@ const Filter = () => {
         <option className="dark:text-black" value="+16">+16</option>
       </select>
       <select
-        className="bg-transparent dark:text-white border border-light-500 rounded-xl p-2"
+        className="w-48 bg-transparent dark:text-white border border-light-500 rounded-xl p-2"
         name="filterGenre"
         onChange={handleChangeGenre}
         defaultValue="genre"
