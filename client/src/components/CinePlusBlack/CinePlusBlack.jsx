@@ -1,14 +1,15 @@
 import React from "react";
 import { FaCheck } from "react-icons/fa";
 import { useDispatch } from "react-redux";
-import Swal from "sweetalert2";
 import pochoclo from "../../assets/pochoclo.png";
 import { putUserSubscription } from "../../redux/actions";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function CinePlusBlack() {
   const userData = JSON.parse(window.localStorage.getItem("user"));
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const subBlack = {
     type: "Cine Plus Black",
@@ -17,8 +18,8 @@ function CinePlusBlack() {
 
   const handleSubmit = async event => {
     event.preventDefault();
-    if (!userData.id) {
-      Swal.fire("Inicia sesion primero");
+    if (!userData) {
+      navigate("/login");
     } else {
       const { data } = await axios.post("/subscription", subBlack);
       window.location.href = data.init_point;
@@ -46,8 +47,8 @@ function CinePlusBlack() {
           />
         </div>
         <div className="">
-          <div className="h-14 grid items-center bg-black border-2 border-black dark:border-white rounded-t-xl">
-            <h2 className="font-bold mx-auto text-white">Cine Plus Black</h2>
+          <div className="h-14 grid items-center bg-black dark:bg-white border-2 border-black dark:border-white rounded-t-xl">
+            <h2 className="font-bold mx-auto text-white dark:text-black">Cine Plus Black</h2>
           </div>
           <div className="h-full flex flex-col justify-between p-4 border-4 border-black dark:border-white rounded-b-xl">
             <ul className="m-0 p-0">
@@ -117,7 +118,7 @@ function CinePlusBlack() {
             </ul>
             <button
               onClick={handleSubmit}
-              className="btn-blue w-7/12 mx-auto my-2 p-2 rounded-xl text-base font-bold"
+              className="bg-black dark:bg-white text-white dark:text-black w-7/12 mx-auto my-2 p-2 rounded-xl text-base font-bold"
             >
               ¡Quiero suscribirme!
             </button>

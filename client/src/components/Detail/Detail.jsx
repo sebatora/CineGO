@@ -12,14 +12,11 @@ function Detail() {
   const { id } = useParams();
   const detail = useSelector(state => state.movieById);
   const [rating, setRating] = useState(0);
-  console.log(detail);
-
-  // const jueves = detail.shows.filter(show => show.date === "2023-06-22");
 
   useEffect(() => {
     dispatch(getMovieById(id));
-    // return () => dispatch(cleanDetail())
-  }, [id]);
+    return () => dispatch(cleanDetail())
+  }, [id, dispatch]);
 
   return (
     <>
@@ -99,7 +96,7 @@ function Detail() {
                 </div>
                 <div className="mt-8 mb-10 flex justify-center">
                   <Link to={`${userData === null ? "/login": "/ticket"}`}>
-                    <button className="bg-dark-200 text-white border-none px-4 py-2 text-center text-base rounded cursor-pointer" type="submit">¡Comprar entradas!</button>
+                    <button className="bg-primary-600 hover:bg-primary-500 text-white border-none px-4 py-2 text-center text-base rounded cursor-pointer" type="submit">¡Comprar entradas!</button>
                   </Link>
                 </div>
               </div>

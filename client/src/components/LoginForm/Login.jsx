@@ -88,7 +88,7 @@ const Login = ({ theme }) => {
             <h1 className="flex flex-col mb-12">Ingresá a tu cuenta</h1>
             <div className="flex flex-col mb-6">
               <input
-                className="border border-blue-900 p-4 w-96"
+                className="border rounded-sm p-4 w-96"
                 type="text"
                 placeholder="Ingresa tu email..."
                 {...register("email", {
@@ -104,7 +104,7 @@ const Login = ({ theme }) => {
 
             <div className="flex flex-col mb-6">
               <input
-                className="border border-blue-900 p-4 w-96"
+                className="border rounded-sm p-4 w-96"
                 type="password"
                 placeholder="Ingresa tu contraseña..."
                 {...register("password", {
@@ -119,7 +119,7 @@ const Login = ({ theme }) => {
             </div>
 
             <button
-              className="btn-blue py-4 px-10 w-96 text-white font-semibold"
+              className="bg-primary-600 hover:bg-primary-500 py-4 px-10 w-96 text-white font-semibold"
               type="submit"
             >
               Iniciar Sesión
@@ -127,7 +127,7 @@ const Login = ({ theme }) => {
             <p>o</p>
             <button
               type="button"
-              className="w-96 flex justify-center items-center text-white font-bold bg-blue-600 py-2 px-8"
+              className="w-96 flex justify-center items-center text-white font-bold bg-blue-600 hover:bg-blue-500 py-2 px-8"
               onClick={handleLoginGoogle}
             >
               <img className="w-10 " src={LogoGoogle} alt="Logo Google" />
@@ -138,7 +138,7 @@ const Login = ({ theme }) => {
               <Link className="w-48" to="/createUser">
                 <button
                   type="button"
-                  className="btn-blue py-4 px-10 w-96 text-white font-semibold"
+                  className="bg-primary-600 hover:bg-primary-500 py-4 px-10 w-96 text-white font-semibold"
                 >
                   Crear cuenta
                 </button>

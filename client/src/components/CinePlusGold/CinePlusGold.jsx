@@ -1,13 +1,14 @@
 import React from "react";
 import { FaCheck, FaTimes } from "react-icons/fa";
 import { useDispatch } from "react-redux";
-import Swal from "sweetalert2";
 import { putUserSubscription } from "../../redux/actions";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function CinePlusGold() {
   const userData = JSON.parse(window.localStorage.getItem("user"));
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const subGold = {
     type: "Cine Plus Gold",
@@ -16,8 +17,8 @@ function CinePlusGold() {
 
   const handleSubmit = async event => {
     event.preventDefault();
-    if (!userData.id) {
-      Swal.fire("Inicia sesion primero");
+    if (!userData) {
+      navigate("/login")
     } else {
       const { data } = await axios.post("/subscription", subGold);
       window.location.href = data.init_point;
@@ -32,7 +33,7 @@ function CinePlusGold() {
           <div className="h-14 grid items-center bg-yellow-300 border-2 border-yellow-300 rounded-t-xl">
             <h2 className="font-bold mx-auto">Cine Plus Gold</h2>
           </div>
-          <div className="h-full flex flex-col justify-between p-4 border-4 border-yellow-400 rounded-b-xl">
+          <div className="h-full flex flex-col justify-between p-4 border-4 border-yellow-300 rounded-b-xl">
             <ul className="m-0 p-0">
               <li className="flex justify-around m-2">
                 <div className="w-4/5">
@@ -100,7 +101,7 @@ function CinePlusGold() {
             </ul>
             <button
               onClick={handleSubmit}
-              className="btn-blue w-7/12 mx-auto my-2 p-2 rounded-xl text-base font-bold"
+              className="w-7/12 mx-auto bg-yellow-300 hover:bg-yellow-200 my-2 p-2 rounded-xl text-base font-bold"
             >
               ¡Quiero suscribirme!
             </button>

@@ -99,8 +99,8 @@ const TicketContainer = () => {
                       <p>TOTAL: $ {total}</p>
                     </div>
                   </div>
-                  <Link to="/login" >
-                    <button className="w-80 btn-blue text-white font-bold py-3 px-10 rounded text-xs">Siguiente</button>
+                  <Link to="/candy" >
+                    <button className="w-80 bg-primary-600 hover:bg-primary-500 text-white font-bold py-3 px-10 rounded text-xs">Siguiente</button>
                   </Link>
               </div>
           </div>

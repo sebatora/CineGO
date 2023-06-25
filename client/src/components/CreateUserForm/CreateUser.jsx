@@ -82,7 +82,7 @@ const CreateUser = ({ onPhotoUpload, theme }) => {
   };
 
   return (
-    <div className="w-full h-full flex justify-center p-20">
+    <div className="w-full h-full flex justify-center pb-8">
      
       <form
         className="w-[720px] flex flex-col justify-center items-center p-10 border border-black dark:border-white rounded"
@@ -108,7 +108,7 @@ const CreateUser = ({ onPhotoUpload, theme }) => {
         <div className="w-full flex justify-center mt-4 py-3">
           <div className="flex flex-col mx-6">
             <input
-              className="border border-blue-900 p-3 w-60"
+              className="border rounded-sm p-3 w-60"
               type="text"
               placeholder="Nombre"
               {...register("firstName", { required: "El nombre es requerido" })}
@@ -121,7 +121,7 @@ const CreateUser = ({ onPhotoUpload, theme }) => {
           </div>
           <div className="flex flex-col mx-6 ">
             <input
-              className="border border-blue-900 p-3 w-60"
+              className="border rounded-sm p-3 w-60"
               type="text"
               placeholder="Apellido"
               {...register("lastName", {
@@ -138,7 +138,7 @@ const CreateUser = ({ onPhotoUpload, theme }) => {
 
         <div className="w-full my-4 flex flex-col py-3 ml-12 lg:ml mt-5">
           <input
-            className="border border-blue-900 p-3 w-96 ml-7"
+            className="border rounded-sm p-3 w-96 ml-7"
             type="text"
             placeholder="Email"
             {...register("email", {
@@ -159,7 +159,7 @@ const CreateUser = ({ onPhotoUpload, theme }) => {
         <div className="w-full flex justify-center mt-4">
           <div className="flex flex-col mx-6">
             <input
-              className="border border-blue-900 p-3 w-60"
+              className="border rounded-sm p-3 w-60"
               type="password"
               placeholder="Contraseña"
               {...register("password", {
@@ -176,7 +176,7 @@ const CreateUser = ({ onPhotoUpload, theme }) => {
 
           <div className="flex flex-col mx-6 mb-6">
             <input
-              className="border border-blue-900 p-3 w-60"
+              className="border rounded-sm p-3 w-60"
               type="password"
               placeholder="Confirmar Contraseña"
               {...register("confirmPassword", {
@@ -214,7 +214,7 @@ const CreateUser = ({ onPhotoUpload, theme }) => {
             </div>
             <div className="w-full flex justify-center mt-4 mb-6">
             <button
-              className="btn-blue py-4 px-10 w-92 text-white font-semibold"
+              className="bg-primary-600 hover:bg-primary-500 py-4 px-10 w-92 text-white font-semibold"
               type="button"
               id="btn-photo"
             >
@@ -226,7 +226,7 @@ const CreateUser = ({ onPhotoUpload, theme }) => {
         <div className="w-full flex justify-center mt-4">
 
         <button
-          className="btn-blue py-5 px-10 w-96 text-white font-semibold"
+          className="bg-primary-600 hover:bg-primary-500 py-5 px-10 w-96 text-white font-semibold"
           type="submit"
         >
           Registrarse
