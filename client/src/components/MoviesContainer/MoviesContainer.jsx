@@ -26,7 +26,7 @@ function MoviesContainer() {
         <Spinner />
       ) : (
         <div className="w-full">
-          <div className="w-full ml-24">
+          <div className="w-full pl-24">
             <h1 className="w-full my-4">Cartelera</h1>
             <div className="w-4/5 flex">
               <Filter />

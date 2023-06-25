@@ -12,12 +12,14 @@ function Detail() {
   const { id } = useParams();
   const detail = useSelector(state => state.movieById);
   const [rating, setRating] = useState(0);
-  // console.log(detail);
+  console.log(detail);
+
+  // const jueves = detail.shows.filter(show => show.date === "2023-06-22");
 
   useEffect(() => {
     dispatch(getMovieById(id));
-    return () => dispatch(cleanDetail())
-  }, [id, dispatch]);
+    // return () => dispatch(cleanDetail())
+  }, [id]);
 
   return (
     <>
@@ -62,7 +64,7 @@ function Detail() {
                 </ul>
               </div>
               <div className="w-full flex flex-col ml-20">
-                <h2 className="pb-4 border-b-4 border-b-light-300 dark:border-b-dark-700">{detail.title}</h2>
+                <h2 className="w-4/5 pb-4 border-b-4 border-b-light-300 dark:border-b-dark-700">{detail.title}</h2>
                 <div className="w-4/5 mb-6">
                   <h3 className="my-4">Sinopsis</h3>
                   <p className="text-base">{detail.description}</p>
