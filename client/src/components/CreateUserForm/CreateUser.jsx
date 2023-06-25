@@ -83,7 +83,6 @@ const CreateUser = ({ onPhotoUpload, theme }) => {
 
   return (
     <div className="w-full h-full flex justify-center pb-8">
-     
       <form
         className="w-[720px] flex flex-col justify-center items-center p-10 border border-black dark:border-white rounded"
         onSubmit={handleSubmit(onSubmit)}
@@ -92,7 +91,7 @@ const CreateUser = ({ onPhotoUpload, theme }) => {
       >
         {theme === "dark" ? (
               <img
-                className="w-40 mt-[-80px] mb-[-10px]"
+                className="w-40 mt-[1px] mb-[-1px]"
                 src={logoBlanco}
                 alt="CineGO"
               />
