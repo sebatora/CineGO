@@ -8,7 +8,7 @@ import Filter from "../Filter/Filter";
 import SearchBar from "../SearchBar/SearchBar";
 import ErrorSearch404 from "../ErrorSearch404/ErrorSearch404";
 
-function MoviesContainer({ theme }) {
+function MoviesContainer() {
   const [loading, setLoading] = useState(true);
   const allMovies = useSelector((state) => state.allMovies);
 
@@ -18,32 +18,38 @@ function MoviesContainer({ theme }) {
     dispatch(getMovies());
     dispatch(getGenres());
     setLoading(false);
-  }, [dispatch]);
+  }, []);
 
   return (
     <>
       {loading ? (
         <Spinner />
       ) : (
-        <div className="w-3/4">
-          <div className="w-full flex">
-            <Filter />
-            <SearchBar />
+        <div className="w-full">
+          <div className="w-full pl-24">
+            <h1 className="w-full my-4">Cartelera</h1>
+            <div className="w-4/5 flex">
+              <Filter />
+              <SearchBar />
+            </div>
           </div>
           <div className="w-full flex flex-wrap justify-center">
-            {allMovies.length? allMovies.map(
-              ({ id, title, description, image, release_date }) => (
-                <MovieCard
-                  key={id}
-                  id={id}
-                  title={title}
-                  description={description}
-                  image={image}
-                  release_date={release_date}
-                  theme={theme}
-                />
+            {allMovies.length ? (
+              allMovies.map(
+                ({ id, title, image, genres, clasification }) => (
+                  <MovieCard
+                    key={id}
+                    id={id}
+                    title={title}
+                    genres={genres}
+                    clasification={clasification}
+                    image={image}
+                  />
+                )
               )
-            ): <ErrorSearch404/>}
+            ) : (
+              <ErrorSearch404 />
+            )}
           </div>
         </div>
       )}

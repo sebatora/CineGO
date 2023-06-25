@@ -1,0 +1,30 @@
+.container {
+  width: 100%;
+  display: flex;
+}
+
+.containerProfile {
+  margin-top: 5rem;
+  width: 20%;
+  height: 100vh;
+  border-right: 1px solid black;
+}
+
+.containerItems {
+  width: 80%;
+  margin-top: 5rem;
+}
+.containerButton {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  padding-left: 3rem;
+  padding-top: 1rem;
+  width: 100%;
+  height: 100%;
+}
+
+.button {
+  margin: 1rem 0;
+}

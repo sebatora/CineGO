@@ -6,9 +6,9 @@ const PaymentFailure = () => {
 		<div className="w-full flex mt-20">
 			<div className="w-full flex flex-col justify-center items-center">
 				<h1>Oh no!</h1>
-				<p>Ha ocurrido un error en el pago.</p>
+				<h4>Ha ocurrido un error en el pago.</h4>
 				<Link className="mt-6" to="/">
-					<h3 className="border-b-4">Volver a la página principal</h3>
+					<h3>Volver a la página principal</h3>
 				</Link>
 			</div>
 			<div className="w-full">

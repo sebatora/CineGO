@@ -1,9 +1,9 @@
 const routerUser = require("express").Router();
-const handlerGetAllUsers = require("../handlers/handlerGetAllUsers");
-const handlerGetUserById = require("../handlers/handlerGetUserById");
-const handlerPostUser = require("../handlers/handlerPostUser");
-const handlerPutUserData = require("../handlers/handlerPutUserData");
-const handlerPostUserValidation = require("../handlers/handlerPostUserValidation");
+const handlerGetAllUsers = require("../handlers/user/handlerGetAllUsers");
+const handlerGetUserById = require("../handlers/user/handlerGetUserById");
+const handlerPostUser = require("../handlers/user/handlerPostUser");
+const handlerPutUserData = require("../handlers/user/handlerPutUserData");
+const handlerPostUserValidation = require("../handlers/user/handlerPostUserValidation");
 
 
 

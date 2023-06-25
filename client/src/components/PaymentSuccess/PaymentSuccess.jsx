@@ -8,7 +8,7 @@ const PaymentSuccess = () => {
 				<h1 className="mb-2">Felicidades!!!</h1>
 				<h4>Tu compra se ha completado correctamente.</h4>
 				<Link className="mt-6" to="/">
-					<h3 className="border-b-4 border-b-black dark:border-white">Volver a la página principal</h3>
+					<h3>Volver a la página principal</h3>
 				</Link>
 			</div>
 			<div className="w-full">

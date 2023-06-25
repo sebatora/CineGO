@@ -6,23 +6,33 @@ import { postUser } from "../../redux/actions";
 import { Toaster, toast } from "react-hot-toast";
 import photoUser from "../../assets/userPhoto.png";
 import cloudinary from "cloudinary-core";
-import backgroundImg from "../../assets/fondoForm.png";
+import logoBlanco from "../../assets/cinego_blanco_logo.png";
+import logoNegro from "../../assets/cinego_negro_logo.png";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 
-const CreateUser = ({ onPhotoUpload }) => {
+const CreateUser = ({ onPhotoUpload, theme }) => {
   const dispatch = useDispatch();
   const [uploadedPhoto, setUploadedPhoto] = useState("");
   const cl = new cloudinary.Cloudinary({ cloud_name: "dhyqgl7ie" });
-  
+
   const navigate = useNavigate();
-  const { register, handleSubmit, formState: { errors }, reset, watch } = useForm({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+    watch,
+  } = useForm({
     defaultValues: {
       firstName: "",
       lastName: "",
       email: "",
       password: "",
       confirmPassword: "",
-      image: ""
-    }
+      image: "",
+    },
+    resolver: yupResolver(schema),
   });
 
   const handleUploadPhoto = () => {
@@ -41,10 +51,9 @@ const CreateUser = ({ onPhotoUpload }) => {
         }
       }
     );
-  
+
     widget_cloudinary.open();
   };
-  
 
   useEffect(() => {
     const boton_photo = document.querySelector("#btn-photo");
@@ -55,45 +64,50 @@ const CreateUser = ({ onPhotoUpload }) => {
     };
   }, []);
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     try {
       // Agregar la URL de la foto al objeto de datos antes de enviarlo
       const userData = {
         ...data,
-        photoUrl: uploadedPhoto
+        photoUrl: uploadedPhoto,
       };
-      
-      dispatch(postUser(userData));
+
+      await dispatch(postUser(userData))
       reset();
-      navigate("/login");
       toast("Usuario creado correctamente");
+      navigate("/login");
     } catch (error) {
-      console.error(error);
+      toast.error(error);
     }
   };
 
   return (
-    <div className="w-full h-full flex justify-center p-20">
-      <Toaster />
-      <button
-        type="button"
-        className="bg-gray-300 absolute left-0 top-0 m-6 p-3 rounded-lg"
-        onClick={() => navigate("/login")}
-      >
-        Volver
-      </button>
+    <div className="w-full h-full flex justify-center pb-8">
       <form
         className="w-[720px] flex flex-col justify-center items-center p-10 border border-black dark:border-white rounded"
         onSubmit={handleSubmit(onSubmit)}
         encType="multipart/form-data"
-        style={{ backgroundImage: `url(${backgroundImg})`}}
+        style={{ marginTop: "100px" }}
       >
+        {theme === "dark" ? (
+              <img
+                className="w-40 mt-[1px] mb-[-1px]"
+                src={logoBlanco}
+                alt="CineGO"
+              />
+            ) : (
+              <img
+                className="w-40 mt-[1px] mb-[-1px]"
+                src={logoNegro}
+                alt="CineGO"
+              />
+            )}
+        
         <h1 className="mb-6">Regístrate y crea una cuenta nueva</h1>
-        <div className="w-full flex justify-center mt-4">
+        <div className="w-full flex justify-center mt-4 py-3">
           <div className="flex flex-col mx-6">
-            <label className="mb-2">Nombre:</label>
             <input
-              className="border border-black p-2 rounded-lg w-60"
+              className="border rounded-sm p-3 w-60"
               type="text"
               placeholder="Nombre"
               {...register("firstName", { required: "El nombre es requerido" })}
@@ -104,13 +118,14 @@ const CreateUser = ({ onPhotoUpload }) => {
               </span>
             )}
           </div>
-          <div className="flex flex-col mx-6">
-            <label className="mb-2">Apellido:</label>
+          <div className="flex flex-col mx-6 ">
             <input
-              className="border border-black p-2 rounded-lg w-60"
+              className="border rounded-sm p-3 w-60"
               type="text"
               placeholder="Apellido"
-              {...register("lastName", { required: "El apellido es requerido" })}
+              {...register("lastName", {
+                required: "El apellido es requerido",
+              })}
             />
             {errors.lastName && (
               <span className="mt-2 text-red-600 dark:text-red-600">
@@ -120,10 +135,9 @@ const CreateUser = ({ onPhotoUpload }) => {
           </div>
         </div>
 
-        <div className="w-full my-4 flex flex-col ml-12 lg:ml-28 mt-5">
-          <label className="mb-2 ml-8">Email:</label>
+        <div className="w-full my-4 flex flex-col py-3 ml-12 lg:ml mt-5">
           <input
-            className="border border-black p-2 rounded-lg w-80 ml-8"
+            className="border rounded-sm p-3 w-96 ml-7"
             type="text"
             placeholder="Email"
             {...register("email", {
@@ -143,9 +157,8 @@ const CreateUser = ({ onPhotoUpload }) => {
 
         <div className="w-full flex justify-center mt-4">
           <div className="flex flex-col mx-6">
-            <label className="mb-2">Contraseña:</label>
             <input
-              className="border border-black p-2 rounded-lg w-60"
+              className="border rounded-sm p-3 w-60"
               type="password"
               placeholder="Contraseña"
               {...register("password", {
@@ -160,10 +173,9 @@ const CreateUser = ({ onPhotoUpload }) => {
             )}
           </div>
 
-          <div className="flex flex-col mx-6">
-            <label className="mb-2">Confirmar Contraseña:</label>
+          <div className="flex flex-col mx-6 mb-6">
             <input
-              className="border border-black p-2 rounded-lg w-60"
+              className="border rounded-sm p-3 w-60"
               type="password"
               placeholder="Confirmar Contraseña"
               {...register("confirmPassword", {
@@ -180,39 +192,65 @@ const CreateUser = ({ onPhotoUpload }) => {
           </div>
         </div>
 
-        <div className="w-full flex justify-start mt-4 ml-8">
-  <div className="flex flex-col mx-6">
-    <label className="mb-2 ml-4">Foto:</label>
-  
-  <div className="w-[200px] h-[200px] flex justify-start items-start rounded-full border border-[8px] border-gray-1000">
-  {uploadedPhoto ? (
-    <img src={uploadedPhoto} alt="User Photo" className="w-full h-full object-cover rounded-full" />
-  ) : (
-    watch("photoUser") && ( 
-      <img src={photoUser} alt="User Photo" className="w-full h-full object-cover rounded-full" />
-    )
-  )}
-</div>
-    <button
-      className="bg-black mt-10 py-3 px-8 rounded-lg text-white font-semibold ml-4"
-      type="button"
-      id="btn-photo"
-    > Subir foto
-    </button>
-  </div>
-</div>
+        <div className="w-full justify-center mt-4 flex flex-col items-center">
+         
+            <div className="w-[200px] h-[200px] flex justify-center items-start rounded-full border-[8px] border-gray-400">
+              {uploadedPhoto ? (
+                <img
+                  src={uploadedPhoto}
+                  alt="User Photo"
+                  className="w-full h-full object-cover rounded-full"
+                />
+              ) : (
+                watch("photoUser") && (
+                  <img
+                    src={photoUser}
+                    alt="User Photo"
+                    className="w-full h-full object-cover rounded-full"
+                  />
+                )
+              )}
+            </div>
+            <div className="w-full flex justify-center mt-4 mb-6">
+            <button
+              className="bg-primary-600 hover:bg-primary-500 py-4 px-10 w-92 text-white font-semibold"
+              type="button"
+              id="btn-photo"
+            >
+              {" "}
+              Subir foto
+            </button>
+          </div>
+        </div>
+        <div className="w-full flex justify-center mt-4">
 
-        <button className="h-[50px] ml-80 flex justify-end bg-black mt-10 py-4 px-20 rounded-lg text-white font-semibold flex flex-col mx-5" type="submit">
+        <button
+          className="bg-primary-600 hover:bg-primary-500 py-5 px-10 w-96 text-white font-semibold"
+          type="submit"
+        >
           Registrarse
         </button>
+        </div>
       </form>
     </div>
   );
 };
 
+const schema = yup.object().shape({
+  firstName: yup.string().required("El nombre es requerido"),
+  lastName: yup.string().required("El apellido es requerido"),
+  email: yup
+    .string()
+    .required("El email es requerido")
+    .email("Formato de email incorrecto"),
+  password: yup
+    .string()
+    .required("La contraseña es requerida")
+    .min(6, "La contraseña debe tener al menos 6 caracteres"),
+  confirmPassword: yup
+    .string()
+    .oneOf([yup.ref("password"), null], "Las contraseñas no coinciden")
+    .required("La confirmación de contraseña es requerida"),
+});
+
 export default CreateUser;
-
-
-
-
-

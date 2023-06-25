@@ -1,32 +1,33 @@
+import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/authContext";
 import { logoutUser } from "../../redux/actions";
-import toast from "react-hot-toast";
 
 const ModalProfile = ({ setActiveModal, userData }) => {
   const { logout } = useAuth();
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   const handleLogout = async () => {
     try {
       dispatch(logoutUser());
       await logout();
       setActiveModal(false);
+      window.localStorage.removeItem("user");
+      navigate("/");
       toast("Se cerró sesión", {
-        duration: 4000,
+        duration: 3000,
         style: {
           color: "red",
         },
       });
-      window.localStorage.removeItem("user");
     } catch (error) {
       console.error(error);
     }
   };
 
   return (
-    <div className="w-96 h-40 flex flex-col top-20 right-0 bg-white dark:bg-black absolute uppercase border border-t-0 border-black dark:border-white dark:border-opacity-70 border-opacity-10 rounded-bl-md">
+    <div className="w-96 h-40 flex flex-col top-16 right-0 bg-light-100 dark:bg-dark-950 absolute uppercase border border-t-0 border-black dark:border-white dark:border-opacity-70 border-opacity-10 rounded-bl-md">
       <h3 className="my-4 flex justify-center select-none">
         ¡Bienvenido {userData.firstName}!
       </h3>
@@ -89,4 +90,3 @@ const ModalProfile = ({ setActiveModal, userData }) => {
 };
 
 export default ModalProfile;
-
