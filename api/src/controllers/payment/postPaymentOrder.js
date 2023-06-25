@@ -20,11 +20,8 @@ const postPaymentOrder = async (cart) => {
 			back_urls: {
 				success: "https://cine-go-ten.vercel.app/payment_success",
 				failure: "https://cine-go-ten.vercel.app/payment_failure",
-<<<<<<< HEAD:api/src/controllers/payment/postPaymentOrder.js
 				// success: "http://localhost:3000/payment_success",
 				// failure: "http://localhost:3000/payment_failure",
-=======
->>>>>>> d4969232f78ff0a7a1cf24cb85e029f14d3d1ad1:api/src/controllers/postPaymentOrder.js
 				pending: "",
 			},
 			auto_return: "approved",
