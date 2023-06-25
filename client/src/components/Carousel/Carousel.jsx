@@ -31,13 +31,13 @@ const Carousel = ({ images }) => {
           />
         ))}
       </div>
-      <div className="absolute bottom-2 flex justify-center space-x-4">
+      <div className="absolute bottom-2 flex justify-center items-center space-x-4">
         {images.map((_, index) => (
           <button
             key={index}
             onClick={() => handleIndexClick(index)}
-            className={`w-6 h-6 rounded-full bg-white border-none m-0 cursor-pointer opacity-60 transition-all duration-300 ease-in-out ${
-              index === currentImageIndex ? "opacity-100" : ""
+            className={`w-3 h-3 rounded-full bg-white border-none m-0 cursor-pointer transition-all duration-300 ease-in-out ${
+              index === currentImageIndex ? "p-2 bg-gray-400" : ""
             }`}
           />
         ))}

@@ -19,7 +19,6 @@ const ModalProfile = ({ setActiveModal, userData }) => {
         duration: 3000,
         style: {
           color: "red",
-          border: "red",
         },
       });
     } catch (error) {
@@ -34,7 +33,6 @@ const ModalProfile = ({ setActiveModal, userData }) => {
       </h3>
       <Link
         to="/profile"
-        onClick={() => setActiveModal(false)}
         className="flex mb-4 justify-center items-center gap-1"
       >
         {userData.photoUrl ? (
