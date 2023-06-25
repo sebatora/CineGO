@@ -192,12 +192,14 @@ export const removeAllCart = (name) => {
     payload: name,
   };
 };
+
 export const removeOneCart = (name) => {
   return {
     type: REMOVE_ONE_CART,
     payload: name,
   };
 };
+
 export const addCartCandy = (name) => {
   return {
     type: ADD_TO_CART_CANDY,
@@ -205,12 +207,14 @@ export const addCartCandy = (name) => {
   };
 };
 
+
 export const removeAllCartCandy = (name) => {
   return {
     type: REMOVE_ALL_CART_CANDY,
     payload: name,
   };
 };
+
 export const removeOneCartCandy = (name) => {
   return {
     type: REMOVE_ONE_CANDY,

@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import cinego_blanco from "../../assets/cinego_blanco.png"
 import cinego_negro from "../../assets/cinego_negro.png"
 import ModalProfile from "../ModalProfile/ModalProfile";
@@ -14,6 +14,7 @@ const options = [
 ]
 
 function Navbar({ theme, setTheme }) {
+  const location = useLocation();
   const [activeModal, setActiveModal] = useState(false);
   const [activeMenu, setActiveMenu] = useState(false);
   const userData = JSON.parse(window.localStorage.getItem("user"));
@@ -22,6 +23,11 @@ function Navbar({ theme, setTheme }) {
     const newTheme = theme === "light" ? "dark" : "light";
     setTheme(newTheme);
   }
+
+  useEffect(() => {
+    setActiveModal(false);
+  }, [location]);
+
   return (
     <nav className="w-full h-16 fixed flex justify-between items-center bg-light-100 dark:bg-dark-950 z-40 shadow-md dark:shadow-sm dark:shadow-white/50">
       <div className="w-full lg:w-80 lg:ml-4 order-1">
@@ -67,7 +73,7 @@ function Navbar({ theme, setTheme }) {
               <span className="hover:text-light-400 mr-4">Sign In</span>
             </Link>
           ) : (
-            <button className="bg-white rounded-full" onClick={() => setActiveModal(!activeModal)}>
+            <button className="bg-white rounded-full p-1" onClick={() => setActiveModal(!activeModal)}>
               <img className="w-7 rounded-full" src={userData.image} alt={userData.firstName} />
             </button>
           )}

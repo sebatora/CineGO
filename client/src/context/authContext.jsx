@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { auth } from "../firebase/firebaseConfig";
-import { GoogleAuthProvider, onAuthStateChanged, signInWithRedirect, signOut } from "firebase/auth";
+import { GoogleAuthProvider, getRedirectResult, onAuthStateChanged, signInWithRedirect, signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../redux/actions";
@@ -21,10 +21,10 @@ export const AuthProvider = ({ children }) => {
 	const loginWithGoogle = async () => {
 		try {
 			const provider = new GoogleAuthProvider();
-			await signInWithRedirect(auth, provider);
+			await signInWithRedirect(auth, provider).then(response => console.log(response));
 		} catch (error) {
 			console.error(error);
-		}
+		} 
 	};
 
 	const logout = () => {
@@ -33,16 +33,16 @@ export const AuthProvider = ({ children }) => {
 	};
 
 	useEffect(() => {
-		onAuthStateChanged(auth, currentUser => {
-			if(currentUser !== null){
-				const firstName = currentUser.displayName.split(" ")[0];
-				const lastName = currentUser.displayName.split(" ")[1];
-				const token = currentUser.accessToken;
+		getRedirectResult(auth).then((result) => {
+			if(result !== null){
+				const firstName = result.user.displayName.split(" ")[0];
+				const lastName = result.user.displayName.split(" ")[1];
+				const token = result.user.accessToken;
 				const userData = {
 					firstName,
 					lastName,
-					email: currentUser.email,
-					image: currentUser.photoURL,
+					email: result.user.email,
+					image: result.user.photoURL,
 					token: token.substring(0, 60),
 				}
 				setUser(userData);

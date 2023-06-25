@@ -191,7 +191,7 @@ const rootReducer = (state = initialState, { type, payload }) => {
       let newItem = state.productTicket.find(
         (product) => product.name === payload
       );
-
+    
       return itemDelete.count > 1
         ? {
             ...state,
@@ -204,43 +204,52 @@ const rootReducer = (state = initialState, { type, payload }) => {
                   }
                 : item
             ),
+            productCount: state.productCount - 1, // Actualizar el conteo al eliminar un producto
           }
         : {
             ...state,
             cart: state.cart.filter((item) => item.name !== payload),
+            productCount: state.productCount - 1, // Actualizar el conteo al eliminar un producto
           };
     }
+    
 
     case ADD_TO_CART_CANDY: {
-      let newCandy = state.allCandy.find((product) => product.name === payload);
-
-      let candyCart = state.cart.find(
-        (item) =>
-          item.name.trim().toLowerCase() === newCandy.name.trim().toLowerCase()
+      if (state.cart.length >= 4) {
+        alert("No puedes seleccionar más de 6 productos.");
+        return state;
+      }
+    
+      const newCandy = state.allCandy.find((product) => product.name === payload);
+      const candyCart = state.cart.find(
+        (item) => item.name.trim().toLowerCase() === newCandy.name.trim().toLowerCase()
       );
-
-      return candyCart
-        ? {
-            ...state,
-            cart: state.cart.map((item) =>
-              item.name.trim().toLowerCase() ===
-              newCandy.name.trim().toLowerCase()
-                ? {
-                    ...item,
-                    price: item.price + newCandy.price,
-                    count: item.count + 1,
-                  }
-                : item
-            ),
-          }
-        : {
-            ...state,
-            cart: [
-              ...state.cart,
-              { ...newCandy, price: newCandy.price, count: 1 },
-            ],
-          };
+    
+      if (candyCart) {
+        return {
+          ...state,
+          cart: state.cart.map((item) =>
+            item.name.trim().toLowerCase() === newCandy.name.trim().toLowerCase()
+              ? {
+                  ...item,
+                  price: item.price + newCandy.price,
+                  count: item.count + 1,
+                }
+              : item
+          ),
+        };
+      } else {
+        return {
+          ...state,
+          cart: [
+            ...state.cart,
+            { ...newCandy, price: newCandy.price, count: 1 },
+          ],
+        };
+      }
     }
+    
+    
 
     case REMOVE_ALL_CART_CANDY: {
       return {

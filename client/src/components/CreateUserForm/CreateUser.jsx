@@ -6,10 +6,12 @@ import { postUser } from "../../redux/actions";
 import { Toaster, toast } from "react-hot-toast";
 import photoUser from "../../assets/userPhoto.png";
 import cloudinary from "cloudinary-core";
+import logoBlanco from "../../assets/cinego_blanco_logo.png";
+import logoNegro from "../../assets/cinego_negro_logo.png";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-const CreateUser = ({ onPhotoUpload }) => {
+const CreateUser = ({ onPhotoUpload, theme }) => {
   const dispatch = useDispatch();
   const [uploadedPhoto, setUploadedPhoto] = useState("");
   const cl = new cloudinary.Cloudinary({ cloud_name: "dhyqgl7ie" });
@@ -81,25 +83,32 @@ const CreateUser = ({ onPhotoUpload }) => {
 
   return (
     <div className="w-full h-full flex justify-center p-20">
-      <Toaster />
-      <button
-        type="button"
-        className="bg-gray-300 absolute left-0 top-0 m-6 p-3 rounded-lg"
-        onClick={() => navigate("/login")}
-      >
-        Volver
-      </button>
+     
       <form
         className="w-[720px] flex flex-col justify-center items-center p-10 border border-black dark:border-white rounded"
         onSubmit={handleSubmit(onSubmit)}
         encType="multipart/form-data"
+        style={{ marginTop: "100px" }}
       >
+        {theme === "dark" ? (
+              <img
+                className="w-40 mt-[-80px] mb-[-10px]"
+                src={logoBlanco}
+                alt="CineGO"
+              />
+            ) : (
+              <img
+                className="w-40 mt-[1px] mb-[-1px]"
+                src={logoNegro}
+                alt="CineGO"
+              />
+            )}
+        
         <h1 className="mb-6">Regístrate y crea una cuenta nueva</h1>
-        <div className="w-full flex justify-center mt-4">
+        <div className="w-full flex justify-center mt-4 py-3">
           <div className="flex flex-col mx-6">
-            <label className="mb-2">Nombre:</label>
             <input
-              className="border border-black p-2 rounded-lg w-60"
+              className="border border-blue-900 p-3 w-60"
               type="text"
               placeholder="Nombre"
               {...register("firstName", { required: "El nombre es requerido" })}
@@ -110,10 +119,9 @@ const CreateUser = ({ onPhotoUpload }) => {
               </span>
             )}
           </div>
-          <div className="flex flex-col mx-6">
-            <label className="mb-2">Apellido:</label>
+          <div className="flex flex-col mx-6 ">
             <input
-              className="border border-black p-2 rounded-lg w-60"
+              className="border border-blue-900 p-3 w-60"
               type="text"
               placeholder="Apellido"
               {...register("lastName", {
@@ -128,10 +136,9 @@ const CreateUser = ({ onPhotoUpload }) => {
           </div>
         </div>
 
-        <div className="w-full my-4 flex flex-col ml-12 lg:ml-28 mt-5">
-          <label className="mb-2 ml-8">Email:</label>
+        <div className="w-full my-4 flex flex-col py-3 ml-12 lg:ml mt-5">
           <input
-            className="border border-black p-2 rounded-lg w-80 ml-8"
+            className="border border-blue-900 p-3 w-96 ml-7"
             type="text"
             placeholder="Email"
             {...register("email", {
@@ -151,9 +158,8 @@ const CreateUser = ({ onPhotoUpload }) => {
 
         <div className="w-full flex justify-center mt-4">
           <div className="flex flex-col mx-6">
-            <label className="mb-2">Contraseña:</label>
             <input
-              className="border border-black p-2 rounded-lg w-60"
+              className="border border-blue-900 p-3 w-60"
               type="password"
               placeholder="Contraseña"
               {...register("password", {
@@ -168,10 +174,9 @@ const CreateUser = ({ onPhotoUpload }) => {
             )}
           </div>
 
-          <div className="flex flex-col mx-6">
-            <label className="mb-2">Confirmar Contraseña:</label>
+          <div className="flex flex-col mx-6 mb-6">
             <input
-              className="border border-black p-2 rounded-lg w-60"
+              className="border border-blue-900 p-3 w-60"
               type="password"
               placeholder="Confirmar Contraseña"
               {...register("confirmPassword", {
@@ -188,11 +193,9 @@ const CreateUser = ({ onPhotoUpload }) => {
           </div>
         </div>
 
-        <div className="w-full flex justify-start mt-4 ml-8">
-          <div className="flex flex-col mx-6">
-            <label className="mb-2 ml-4">Foto:</label>
-
-            <div className="w-[200px] h-[200px] flex justify-start items-start rounded-full border-[8px] border-gray-1000">
+        <div className="w-full justify-center mt-4 flex flex-col items-center">
+         
+            <div className="w-[200px] h-[200px] flex justify-center items-start rounded-full border-[8px] border-gray-400">
               {uploadedPhoto ? (
                 <img
                   src={uploadedPhoto}
@@ -209,8 +212,9 @@ const CreateUser = ({ onPhotoUpload }) => {
                 )
               )}
             </div>
+            <div className="w-full flex justify-center mt-4 mb-6">
             <button
-              className="bg-black mt-10 py-3 px-8 rounded-lg text-white font-semibold ml-4"
+              className="btn-blue py-4 px-10 w-92 text-white font-semibold"
               type="button"
               id="btn-photo"
             >
@@ -219,12 +223,15 @@ const CreateUser = ({ onPhotoUpload }) => {
             </button>
           </div>
         </div>
+        <div className="w-full flex justify-center mt-4">
+
         <button
-          className="h-[50px] ml-80 justify-end bg-black mt-10 py-4 px-20 rounded-lg text-white font-semibold flex flex-col mx-5"
+          className="btn-blue py-5 px-10 w-96 text-white font-semibold"
           type="submit"
         >
           Registrarse
         </button>
+        </div>
       </form>
     </div>
   );
