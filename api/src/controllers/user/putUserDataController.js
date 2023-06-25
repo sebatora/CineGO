@@ -87,7 +87,7 @@ const sendEmailNotification = (user) => {
           <div class="center">
             <img src="cid:correoCineGo.jpg" alt="Logo" />
           </div>
-          <h1 class="message">Hola ${user.firstName}!</h1>
+          <h1 class="message">¡Hola, ${user.firstName}!</h1>
           <p class="message">Tus datos han sido actualizados exitosamente.</p>
         </body>
       </html>
