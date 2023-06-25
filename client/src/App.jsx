@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import { AuthProvider } from "./context/authContext";
 
 // axios.defaults.baseURL = "https://cinego-production.up.railway.app";
@@ -25,6 +25,7 @@ import Candy from "./pages/Candy/Candy";
 import Profile from "./pages/Profile/Profile";
 
 function App() {
+  const location = useLocation();
   const [theme, setTheme] = useState(
     window.localStorage.getItem("color-theme") || "light"
   );
@@ -34,6 +35,13 @@ function App() {
     document.documentElement.classList.toggle("dark", theme === "dark");
     window.localStorage.setItem("color-theme", theme);
   }, [theme]);
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  }, [location]);
 
   return (
     <div className="w-full h-full min-h-screen bg-light-100 dark:bg-dark-950 flex flex-col">

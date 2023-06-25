@@ -1,21 +1,27 @@
 import React from "react";
 import { FaCheck, FaTimes } from "react-icons/fa";
-import { useDispatch, useSelector } from "react-redux";
-import { putUserSubscription } from "../../redux/actions";
+import { useDispatch } from "react-redux";
 import Swal from "sweetalert2";
+import { putUserSubscription } from "../../redux/actions";
+import axios from "axios";
 
 function CinePlusGold() {
-  const userData = useSelector((state) => state.userData);
+  const userData = JSON.parse(window.localStorage.getItem("user"));
   const dispatch = useDispatch();
-  const user = { id: userData.id, cinePlus: "Gold" };
 
-  const handleSubmit = (e) => {
-    if (!user.id) {
+  const subGold = {
+    type: "Cine Plus Gold",
+    price: 2999,
+  }
+
+  const handleSubmit = async event => {
+    event.preventDefault();
+    if (!userData.id) {
       Swal.fire("Inicia sesion primero");
     } else {
-      e.preventDefault();
-      dispatch(putUserSubscription(user));
-      Swal.fire("Cambiaste de plan");
+      const { data } = await axios.post("/subscription", subGold);
+      window.location.href = data.init_point;
+      dispatch(putUserSubscription({ id: userData.id, cinePlus: "Gold" }));
     }
   };
 

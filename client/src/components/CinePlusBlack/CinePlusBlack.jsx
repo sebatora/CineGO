@@ -1,22 +1,28 @@
 import React from "react";
 import { FaCheck } from "react-icons/fa";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import Swal from "sweetalert2";
 import pochoclo from "../../assets/pochoclo.png";
 import { putUserSubscription } from "../../redux/actions";
+import axios from "axios";
 
 function CinePlusBlack() {
-  const userData = useSelector((state) => state.userData);
+  const userData = JSON.parse(window.localStorage.getItem("user"));
   const dispatch = useDispatch();
-  const user = { id: userData.id, cinePlus: "Black" };
 
-  const handleSubmit = (e) => {
-    if (!user.id) {
+  const subBlack = {
+    type: "Cine Plus Black",
+    price: 1999,
+  }
+
+  const handleSubmit = async event => {
+    event.preventDefault();
+    if (!userData.id) {
       Swal.fire("Inicia sesion primero");
     } else {
-      e.preventDefault();
-      dispatch(putUserSubscription(user));
-      Swal.fire("Cambiaste de plan");
+      const { data } = await axios.post("/subscription", subBlack);
+      window.location.href = data.init_point;
+      dispatch(putUserSubscription({ id: userData.id, cinePlus: "Black" }));
     }
   };
   return (

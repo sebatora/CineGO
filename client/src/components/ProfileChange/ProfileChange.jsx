@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import style from "./ProfileChange.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import { putUser, loginUser } from "../../redux/actions";
+import { loginUser, putUser } from "../../redux/actions";
+import style from "./ProfileChange.module.css";
 
 function ProfileChange() {
   const userData = useSelector((state) => state.userData);
   const dispatch = useDispatch();
+  /*   const userData = JSON.parse(window.localStorage.getItem("user")); */
 
   const [user, setUser] = useState({
     id: userData.id,
