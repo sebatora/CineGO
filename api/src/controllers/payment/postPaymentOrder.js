@@ -1,6 +1,6 @@
 const { mercadopago } = require("../../utils/mercadoPago");
 
-const postPaymentOrder = async (cart) => {
+const postPaymentOrder = async ({ cart, userData }) => {
 		const items = cart.map(item => ({
 			title: item.name,
 			description: item.description || "",
@@ -12,10 +12,9 @@ const postPaymentOrder = async (cart) => {
 		const response = await mercadopago.preferences.create({
 			items,
 			payer: {
-				name: "Noe",
-				surname: "Gomez",
-				email: "noegomez@gmail.com",
-				date_created: "2023-06-30"
+				name: userData.firstName,
+				surname: userData.lastName,
+				email: userData.email,
 			},
 			back_urls: {
 				success: "https://cine-go-ten.vercel.app/payment_success",

@@ -7,10 +7,10 @@ import { useEffect } from "react";
 
 const TicketContainer = () => {
   const userData = JSON.parse(window.localStorage.getItem("user"));
+  const storedMovie = JSON.parse(window.localStorage.getItem("movie"));
   const dispatch = useDispatch();
   const product = useSelector((state) => state.productTicket);
   const cart = useSelector((state) => state.cart);
-  const movieIds = useSelector((state) => state.movieByIdCopy);
 
   const cinefan = product.filter((name) => name.name === "cineFan");
   const general = product.filter((name) => name.name === "general");
@@ -84,16 +84,19 @@ const TicketContainer = () => {
       </div>
 
       <div className="w-1/3 mt-6 mb-10 flex flex-col items-center">
-        <div className="w-80 mx-auto rounded overflow-hidden shadow-lg bg-gray-50 dark:bg-black dark:shadow-gray-700 flex flex-col ">
-          {/* <p className=" px-2 py-2 font-bold text-xl text-gray-700 dark:text-gray-300">Carrito</p> */}
-          <img
-            src={movieIds.image}
-            alt={movieIds.title}
-            className="w-48 h-full my-4 object-cover mx-auto block rounded"
-          />
-          <p className=" px-2 py-1 font-bold text-lg mb-1 text-gray-700 dark:text-white">
-            {movieIds.title}
-          </p>
+        <div className="w-80 mx-auto rounded shadow-lg bg-gray-50 dark:bg-black dark:shadow-gray-700 flex flex-col ">
+          {storedMovie && (
+            <div className="w-full flex flex-col items-center pt-10">
+              <img
+                src={storedMovie.image}
+                alt={storedMovie.title}
+                className="h-80"
+              />
+              <p className=" px-2 py-1 font-bold text-lg mb-1 text-gray-700 dark:text-white">
+                {storedMovie.title}
+              </p>
+            </div>
+          )}
           <div className="px-2 py1">
             <hr />
             {cart?.map((item, index) => (
@@ -120,7 +123,7 @@ const TicketContainer = () => {
               <p>TOTAL: $ {total}</p>
             </div>
           </div>
-          <Link to="/candy">
+          <Link to={`${!userData ? "/login" : "/candy"}`}>
             <button className="w-80 bg-primary-600 hover:bg-primary-500 text-white font-bold py-3 px-10 rounded text-xs">
               Siguiente
             </button>
