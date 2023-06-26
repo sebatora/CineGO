@@ -20,6 +20,7 @@ import {
   REMOVE_ONE_CANDY,
   SAVE_CART,
   PUT_SUBSCRIPTION,
+  // ERROR
 } from "./action-type";
 
 import axios from "axios";
@@ -118,9 +119,14 @@ export const postUser = (newUser) => {
       // }
 
       const { data } = await axios.post(`/users`, newUser);
+      
       return dispatch({ type: POST_USER, payload: data });
     } catch (error) {
-      return error.message;
+      if (error.response.status === 404) {
+        let errorData = error.response.data.error
+        alert(errorData);
+      //  return dispatch({type:ERROR, payload: errorData})
+      }
     }
   };
 };
