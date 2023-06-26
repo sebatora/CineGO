@@ -1,18 +1,26 @@
 .container {
   width: 100%;
   display: flex;
+  margin-top: 4rem;
 }
 
 .containerProfile {
-  margin-top: 5rem;
   width: 20%;
-  height: 100vh;
+  padding: 1rem;
   border-right: 1px solid black;
+  color: rgb(95, 86, 86);
+}
+
+.boxTittle {
+  display: flex;
+  align-items: center;
+  padding: 0 0.5rem;
+  height: 3rem;
 }
 
 .containerItems {
   width: 80%;
-  margin-top: 5rem;
+  padding: 1rem;
 }
 .containerButton {
   display: flex;
@@ -26,5 +34,18 @@
 }
 
 .button {
-  margin: 1rem 0;
+  margin: 1.5rem 0;
+  transition: background-color 1.5s ease-out;
+}
+
+.inactive {
+  background-color: transparent;
+}
+
+.active {
+  padding: 0.3rem;
+  font-weight: bold;
+  background-color: #a6a6ca;
+  color: rgb(63, 58, 58);
+  border-radius: 3px;
 }
