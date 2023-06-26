@@ -34,7 +34,7 @@ const initialState = {
   productTicket: [
     {
       id: 1,
-      name: "general",
+      name: "Entrada General",
       image:
         "https://static.cinemarkhoyts.com.ar/Images/TicketTypeImage/1687.png",
       price: 200,
@@ -43,7 +43,7 @@ const initialState = {
     },
     {
       id: 2,
-      name: "cineFan",
+      name: "Entrada CineFan",
       image:
         "https://static.cinemarkhoyts.com.ar/Images/TicketTypeImage/1667.png",
       price: 290,

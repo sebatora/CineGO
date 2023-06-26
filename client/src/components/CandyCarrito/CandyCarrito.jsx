@@ -6,9 +6,10 @@ import { GoTrash } from "react-icons/go";
 import { Toaster, toast } from "react-hot-toast";
 
 function CandyCarrito() {
-  const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
+  const userData = useSelector((state) => state.userData);
   const [productCount, setProductCount] = useState(0);
+  const dispatch = useDispatch();
 
   const subtotal = cart.reduce((acc, el) => acc + parseFloat(el.price), 0);
   const servicio = subtotal * 0.10;
@@ -40,9 +41,10 @@ function CandyCarrito() {
   
   const handlePay = async () => {
     try {
-      const { data } = await axios.post("/payment", cart);
+      const { data } = await axios.post("/payment", { cart, userData });
       window.location.href = data.init_point;
       window.localStorage.removeItem("cart");
+      window.localStorage.removeItem("movie");
     } catch (error) {
       console.error(error);
       toast.error("Debes seleccionar un producto", {
