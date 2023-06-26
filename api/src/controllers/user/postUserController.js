@@ -11,13 +11,18 @@ const postUser = async ({ firstName, lastName, email, password, image }) => {
 
   const passwordHash = await bcrypt.hash(password, 10);
 
-  const createdUser = await User.create({
+  const userData = {
     firstName,
     lastName,
     email,
-    image,
     password: passwordHash,
-  });
+  };
+
+  if (image !== "") {
+    userData.image = image;
+  }
+
+  const createdUser = await User.create(userData);
 
   const imagePath = path.join(__dirname, "../../assets/Bienvenido.jpg");
 

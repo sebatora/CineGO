@@ -1,4 +1,4 @@
-function CandyCard({  name, description, price, image, handleBuy}) {
+function CandyCard({ name, description, price, image, addCart }) {
 
   return (
     <div className="w-full md:w-1/2 lg:w-1/2 xl:w-1/3 p-4 my-2 mx-0">
@@ -13,7 +13,7 @@ function CandyCard({  name, description, price, image, handleBuy}) {
         <div className="px-4 py-3 mb-3 flex justify-center items-center">
           <button
             className=" bg-primary-600 text-white font-bold py-1 px-24  rounded text-xs"
-            onClick={() => handleBuy(name)}
+            onClick={() => addCart(name)}
           >
             ${price}
           </button>
