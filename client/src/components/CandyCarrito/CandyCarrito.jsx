@@ -1,30 +1,18 @@
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { addCartCandy, removeAllCartCandy, removeOneCartCandy, saveCart } from "../../redux/actions";
-import { useEffect, useState } from "react";
+import { removeAllCartCandy, removeOneCartCandy, saveCart } from "../../redux/actions";
+import { useEffect } from "react";
 import { GoTrash } from "react-icons/go";
 import { Toaster, toast } from "react-hot-toast";
 
-function CandyCarrito() {
+function CandyCarrito({addCart, productCount, setProductCount}) {
   const cart = useSelector((state) => state.cart);
   const userData = useSelector((state) => state.userData);
-  const [productCount, setProductCount] = useState(0);
   const dispatch = useDispatch();
 
   const subtotal = cart.reduce((acc, el) => acc + parseFloat(el.price), 0);
   const servicio = subtotal * 0.10;
   const total = subtotal + servicio;
-
-  const addCart = (name) => {
-    if (productCount >= 5) {
-      toast.error("Has alcanzado el límite de 6 productos en tu carrito.", {
-        duration: 3000
-      });
-      return;
-    }
-    dispatch(addCartCandy(name));
-    setProductCount(productCount + 1);
-  };
   
 
   const delRemoveCart = (name, all = false) => {
@@ -67,7 +55,7 @@ function CandyCarrito() {
   }, [cart]);
 
   return (
-    <div className="w-1/3 fixed right-0 mt-44 flex flex-col items-center">
+    <div className="w-1/3 fixed right-0 mt-28 flex flex-col items-center">
       <Toaster />
       <div className="w-96 mx-auto rounded overflow-hidden shadow-lg bg-primary-50 dark:bg-dark-950 dark:shadow-gray-700 flex flex-col">
         <p className="px-2 py-2 font-bold text-center text-3xl text-gray-700 dark:text-gray-300">
@@ -100,10 +88,8 @@ function CandyCarrito() {
                 <button
                   onClick={() => {
                     addCart(item.name);
-                    toast.success("Producto agregado al carrito", {
-                      duration: 2000
-                    });
                   }}
+                    
                   className="rounded-full h-6 w-6 ml-1 mr-2 mt-2 bg-gray-200 hover:bg-gray-300 flex items-center justify-center text-gray-700 font-semibold transition-colors duration-300"
                 >
                   +
