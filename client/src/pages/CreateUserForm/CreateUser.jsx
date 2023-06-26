@@ -11,7 +11,7 @@ import logoNegro from "../../assets/cinego_negro_logo.png";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-const CreateUser = ({ onPhotoUpload, theme }) => {
+const CreateUser = ({ theme }) => {
   const dispatch = useDispatch();
   const [uploadedPhoto, setUploadedPhoto] = useState("");
   const cl = new cloudinary.Cloudinary({ cloud_name: "dhyqgl7ie" });
@@ -40,13 +40,14 @@ const CreateUser = ({ onPhotoUpload, theme }) => {
       {
         cloudName: "dhyqgl7ie",
         uploadPreset: "a2i0wk5f",
+        sources: ['local'],
+        resourceType:["image"],
+        clientAllowedFormats:["image"]
       },
       (err, result) => {
         if (!err && result && result.event === "success") {
           const photoUrl = result.info.secure_url;
-          console.log("Image URL:", photoUrl); // Obtener la URL de la foto subida
           setUploadedPhoto(photoUrl); // Almacenar la URL de la foto subida
-          onPhotoUpload(photoUrl); // Pasar la URL de la foto al componente padre (ModalProfile)
           toast("Imagen subida con éxito");
         }
       }
@@ -69,10 +70,12 @@ const CreateUser = ({ onPhotoUpload, theme }) => {
       // Agregar la URL de la foto al objeto de datos antes de enviarlo
       const userData = {
         ...data,
-        photoUrl: uploadedPhoto,
+        image: uploadedPhoto,
       };
 
-      await dispatch(postUser(userData))
+      console.log("image", userData);
+
+      await dispatch(postUser(userData));
       reset();
       toast("Usuario creado correctamente");
       navigate("/login");
@@ -90,19 +93,19 @@ const CreateUser = ({ onPhotoUpload, theme }) => {
         style={{ marginTop: "100px" }}
       >
         {theme === "dark" ? (
-              <img
-                className="w-40 mt-[1px] mb-[-1px]"
-                src={logoBlanco}
-                alt="CineGO"
-              />
-            ) : (
-              <img
-                className="w-40 mt-[1px] mb-[-1px]"
-                src={logoNegro}
-                alt="CineGO"
-              />
-            )}
-        
+          <img
+            className="w-40 mt-[1px] mb-[-1px]"
+            src={logoBlanco}
+            alt="CineGO"
+          />
+        ) : (
+          <img
+            className="w-40 mt-[1px] mb-[-1px]"
+            src={logoNegro}
+            alt="CineGO"
+          />
+        )}
+
         <h1 className="mb-6">Regístrate y crea una cuenta nueva</h1>
         <div className="w-full flex justify-center mt-4 py-3">
           <div className="flex flex-col mx-6">
@@ -193,25 +196,24 @@ const CreateUser = ({ onPhotoUpload, theme }) => {
         </div>
 
         <div className="w-full justify-center mt-4 flex flex-col items-center">
-         
-            <div className="w-[200px] h-[200px] flex justify-center items-start rounded-full border-[8px] border-gray-400">
-              {uploadedPhoto ? (
+          <div className="w-[200px] h-[200px] flex justify-center items-start rounded-full border-[8px] border-gray-400">
+            {uploadedPhoto ? (
+              <img
+                src={uploadedPhoto}
+                alt="User Photo"
+                className="w-full h-full object-cover rounded-full"
+              />
+            ) : (
+              watch("photoUser") && (
                 <img
-                  src={uploadedPhoto}
+                  src={photoUser}
                   alt="User Photo"
                   className="w-full h-full object-cover rounded-full"
                 />
-              ) : (
-                watch("photoUser") && (
-                  <img
-                    src={photoUser}
-                    alt="User Photo"
-                    className="w-full h-full object-cover rounded-full"
-                  />
-                )
-              )}
-            </div>
-            <div className="w-full flex justify-center mt-4 mb-6">
+              )
+            )}
+          </div>
+          <div className="w-full flex justify-center mt-4 mb-6">
             <button
               className="bg-primary-600 hover:bg-primary-500 py-4 px-10 w-92 text-white font-semibold"
               type="button"
@@ -223,13 +225,12 @@ const CreateUser = ({ onPhotoUpload, theme }) => {
           </div>
         </div>
         <div className="w-full flex justify-center mt-4">
-
-        <button
-          className="bg-primary-600 hover:bg-primary-500 py-5 px-10 w-96 text-white font-semibold"
-          type="submit"
-        >
-          Registrarse
-        </button>
+          <button
+            className="bg-primary-600 hover:bg-primary-500 py-5 px-10 w-96 text-white font-semibold"
+            type="submit"
+          >
+            Registrarse
+          </button>
         </div>
       </form>
     </div>
