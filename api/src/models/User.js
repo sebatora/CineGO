@@ -31,6 +31,7 @@ module.exports = (sequelize) => {
       },
       phone: {
         type: DataTypes.INTEGER,
+        defaultValue: 9999999
       },
       cinePlus: {
         type: DataTypes.STRING,
