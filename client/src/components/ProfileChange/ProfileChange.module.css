@@ -19,17 +19,28 @@
   padding: 0 0.5rem;
 }
 
+.containerProfileAndInfo {
+  width: 100%;
+  display: flex;
+}
+
 .containerForm {
-  width: 70%;
+  width: 100%;
   display: flex;
   flex-direction: column;
 }
 
 .containerImage {
+  height: 180px;
+  display: flex;
+  padding: 1rem 3rem;
+}
+
+.boxImage {
+  width: 70%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 1rem 0;
 }
 
 .image {
@@ -54,34 +65,76 @@
 .buttonDelete {
   background-color: rgb(231, 60, 60) !important;
 }
-
-.containerEditProfile {
+.containerInfo {
+  width: 100%;
   display: flex;
   flex-direction: column;
-  padding: 0 3rem;
+}
+
+.containerEditProfile {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 3rem;
 }
 
 .box {
   width: 100%;
   height: 3rem;
   display: flex;
-  flex-direction: column;
-  margin-bottom: 2rem;
+  align-items: center;
+  margin-bottom: 0.2rem;
+}
+
+.boxLabelAndInput {
+  width: 70%;
+  display: flex;
+  align-items: center;
 }
 
 .labelBox {
+  display: inline-block;
   font-size: 16px;
+  width: 20%;
 }
 
 .inputBox {
-  height: 10rem;
   padding: 0.5rem;
   border-radius: 3px;
+  width: 70%;
+}
+
+.containerError {
+  width: 30%;
+}
+
+.boxError {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.iconError {
+  font-size: 30px;
+  color: red;
+  margin: 0.5rem;
+}
+
+.iconCheck {
+  font-size: 30px;
+  color: rgb(0, 174, 255);
+  display: inline-block;
+  margin: 0 1rem;
+}
+
+.paragraph {
+  font-size: 14px;
+  line-height: 1;
 }
 
 .containerButtonSave {
-  padding: 0 3rem;
-  width: 100%;
+  width: 70%;
   display: flex;
   justify-content: center;
   padding: 2rem 0;
@@ -92,4 +145,18 @@
   height: 3rem;
   border: 1px solid black;
   border-radius: 3px;
+  background-color: #40d8dd !important;
+  transition: 1s ease-in-out;
+}
+
+.buttonSave:disabled {
+  background-color: rgb(190, 181, 181) !important;
+  cursor: default;
+  color: rgb(190, 181, 181);
+  transition: 1s ease-in-out;
+  width: 230px;
+  height: 80px;
+  color: black;
+  font-size: 20px;
+  font-weight: bold;
 }
