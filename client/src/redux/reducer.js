@@ -20,6 +20,7 @@ import {
   REMOVE_ONE_CANDY,
   SAVE_CART,
   PUT_SUBSCRIPTION,
+  // ERROR
 } from "./action-type";
 
 const initialState = {
@@ -36,24 +37,26 @@ const initialState = {
       id: 1,
       name: "Entrada General",
       image:
-        "https://static.cinemarkhoyts.com.ar/Images/TicketTypeImage/1687.png",
+      "https://static.cinemarkhoyts.com.ar/Images/TicketTypeImage/1687.png",
       price: 200,
       description:
-        "Entrada Promocional No acumulable con otras promociones. Lunes y martes.",
+      "Entrada Promocional No acumulable con otras promociones. Lunes y martes.",
     },
     {
       id: 2,
       name: "Entrada CineFan",
       image:
-        "https://static.cinemarkhoyts.com.ar/Images/TicketTypeImage/1667.png",
+      "https://static.cinemarkhoyts.com.ar/Images/TicketTypeImage/1667.png",
       price: 290,
       description: "Incluye 2 entradas + Tarjeta Virtual.",
     },
   ],
+  // errData:null,
 };
 
 const rootReducer = (state = initialState, { type, payload }) => {
   switch (type) {
+
     case GET_MOVIES: {
       return {
         ...state,
@@ -287,8 +290,17 @@ const rootReducer = (state = initialState, { type, payload }) => {
       };
     }
 
+    // case ERROR : {
+    //   return{
+    //     ...state,
+    //     errData: payload
+    //   }
+    // }
+
     default:
       return { ...state };
   }
+  
 };
+
 export default rootReducer;

@@ -34,3 +34,7 @@ export const REMOVE_ONE_CART = "REMOVE_ONE_CART";
 
 // RUTAS SUSCRIPCION
 export const PUT_SUBSCRIPTION = "PUT_SUBSCRIPTION";
+
+
+
+// export const ERROR = "ERROR";
