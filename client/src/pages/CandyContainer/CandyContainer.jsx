@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import CandyCard from "../CandyCard/CandyCard";
-import Spinner from "../Spinner/Spinner";
+import CandyCard from "../../components/CandyCard/CandyCard";
+import Spinner from "../../components/Spinner/Spinner";
 import { useDispatch, useSelector } from "react-redux";
 import { addCartCandy, getCandy } from "../../redux/actions";
-import CandyCarrito from "../CandyCarrito/CandyCarrito";
+import CandyCarrito from "../../components/CandyCarrito/CandyCarrito";
 
 function CandyContainer() {
   const dispatch = useDispatch();

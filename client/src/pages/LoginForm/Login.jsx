@@ -8,7 +8,7 @@ import logoNegro from "../../assets/cinego_negro_logo.png";
 import LogoGoogle from "../../assets/google_logo.png";
 import { useAuth } from "../../context/authContext";
 import { loginUser } from "../../redux/actions";
-import Spinner from "../Spinner/Spinner";
+import Spinner from "../../components/Spinner/Spinner";
 
 const Login = ({ theme }) => {
   const {

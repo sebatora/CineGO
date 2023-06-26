@@ -1,10 +1,10 @@
 import React from "react";
-import Carousel from "../Carousel/Carousel";
+import Carousel from "../../components/Carousel/Carousel";
 import img1 from "../../assets/carousel_1.png"
 import img2 from "../../assets/carousel_2.png"
 import img3 from "../../assets/carousel_3.png"
 import img4 from "../../assets/carousel_4.png"
-import MoviesContainer from "../MoviesContainer/MoviesContainer";
+import MoviesContainer from "../../components/MoviesContainer/MoviesContainer";
 import { Toaster } from "react-hot-toast";
 
 function Home() {
