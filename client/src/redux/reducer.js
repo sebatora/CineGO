@@ -218,8 +218,8 @@ const rootReducer = (state = initialState, { type, payload }) => {
     
 
     case ADD_TO_CART_CANDY: {
-      if (state.cart.length >= 4) {
-        alert("No puedes seleccionar más de 6 productos.");
+      if (state.cart.length >= 5) {
+        alert("No puedes seleccionar más de 5 productos.");
         return state;
       }
     
