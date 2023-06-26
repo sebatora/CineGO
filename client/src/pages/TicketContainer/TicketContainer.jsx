@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import Ticket from "../Ticket/Ticket";
-import Cart from "../Cart/Cart";
+import Ticket from "../../components/Ticket/Ticket";
+import Cart from "../../components/Cart/Cart";
 import { addCart, removeAllCart, removeOneCart, saveCart } from "../../redux/actions";
 import { useEffect } from "react";
 

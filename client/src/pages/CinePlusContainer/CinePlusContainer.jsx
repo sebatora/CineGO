@@ -1,6 +1,6 @@
 import React from "react";
-import CinePlusBlack from "../CinePlusBlack/CinePlusBlack";
-import CinePlusGold from "../CinePlusGold/CinePlusGold";
+import CinePlusBlack from "../../components/CinePlusBlack/CinePlusBlack";
+import CinePlusGold from "../../components/CinePlusGold/CinePlusGold";
 
 const CinePlus = () => {
   return (

@@ -2,7 +2,7 @@ import React, { useEffect, useState} from "react";
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { cleanDetail, getMovieById } from "../../redux/actions";
-import Error404 from '../Error404/Error404';
+import Error404 from '../../pages/Error404/Error404';
 import ReactStars from "react-stars";
 
 function Detail() {
