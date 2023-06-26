@@ -106,7 +106,7 @@ function CandyCarrito({addCart, productCount, setProductCount}) {
           Cargo por servicio candy: $ {servicio.toLocaleString('en-US')}
         </div>
         <div className="px-2 font-bold text-lg mb-1 text-gray-700 dark:text-white">
-          <strong>TOTAL: $ {total.toLocaleString('en-US')} </strong>
+          <p>TOTAL: $ {total.toLocaleString('en-US')} </p>
         </div>
         <div className="px-4 py-3 mb-2 flex justify-center items-center">
           <button
