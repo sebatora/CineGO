@@ -6,13 +6,17 @@ import Error404 from '../../pages/Error404/Error404';
 import ReactStars from "react-stars";
 
 function Detail() {
+  const detail = useSelector(state => state.movieById);
   const userData = JSON.parse(window.localStorage.getItem("user"));
   const [activeTrailer, setActiveTrailer] = useState(false);
   const dispatch = useDispatch();
   const { id } = useParams();
-  const detail = useSelector(state => state.movieById);
   const [rating, setRating] = useState(0);
 
+  const viernes = detail?.shows?.filter(show => show.date === "2023-06-22") || [];
+  const sabado = detail?.shows?.filter(show => show.date === "2023-06-23") || [];
+  const domingo = detail?.shows?.filter(show => show.date === "2023-06-24") || [];
+  
   useEffect(() => {
     dispatch(getMovieById(id));
     return () => dispatch(cleanDetail())
@@ -40,7 +44,7 @@ function Detail() {
                     </button>
                   </div>
                 </div>
-                <ReactStars className="w-full flex justify-center p-4 border-b border-b-light-200" count={5} size={40} half={false} value={rating} onChange={(newRating) => setRating(newRating)} />
+                <ReactStars className="w-full flex justify-center p-4 border-b border-b-light-200" count={5} size={30} half={false} value={rating} onChange={(newRating) => setRating(newRating)} />
                 <ul className="w-full">
                   <li className="border-b border-b-light-200 p-2">
                     <h4>Género:</h4>
@@ -60,40 +64,24 @@ function Detail() {
                   </li>
                 </ul>
               </div>
+              
               <div className="w-full flex flex-col ml-20">
                 <h2 className="w-4/5 pb-4 border-b-4 border-b-light-300 dark:border-b-dark-700">{detail.title}</h2>
                 <div className="w-4/5 mb-6">
                   <h3 className="my-4">Sinopsis</h3>
                   <p className="text-base">{detail.description}</p>
                 </div>
+                
                 <div className="w-4/5 mb-6 flex flex-col">
                   <h3>Horarios</h3>
-                  {/* {detail.shows.map(show => (
-                    <div className="flex space-x-4" key={show.id}>
-                      {show.type === "subtitulada" && (
-                        <>
-                          <h4>Subtitulada</h4>
-                          <p>{show.date}</p>
-                          <span>{show.hour}</span>
-                        </>
-                      )}
-                      {show.type === "doblada" && (
-                        <>
-                          <h4>Doblada</h4>
-                          <p>{show.date}</p>
-                          <span>{show.hour}</span>
-                        </>
-                      )}
-                      {show.type === "doblada 3D" && (
-                        <>
-                          <h4>Doblada 3D</h4>
-                          <p>{show.date}</p>
-                          <span>{show.hour}</span>
-                        </>
-                      )}
+                  {day?.map(show => (
+                    <div key={show.id}>
+                      <h2>{show.type}</h2>
+                      <h4>{show.hour}</h4>
                     </div>
-                  ))} */}
+                  ))}
                 </div>
+
                 <div className="mt-8 mb-10 flex justify-center">
                   <Link to={`${userData === null ? "/login": "/ticket"}`}>
                     <button className="bg-primary-600 hover:bg-primary-500 text-white border-none px-4 py-2 text-center text-base rounded cursor-pointer" type="submit">¡Comprar entradas!</button>
