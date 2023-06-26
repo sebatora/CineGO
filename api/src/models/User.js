@@ -29,10 +29,6 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         defaultValue: "https://cdn-icons-png.flaticon.com/512/666/666201.png",
       },
-      phone: {
-        type: DataTypes.INTEGER,
-        defaultValue: 9999999
-      },
       cinePlus: {
         type: DataTypes.STRING,
         defaultValue: "Estandar",
