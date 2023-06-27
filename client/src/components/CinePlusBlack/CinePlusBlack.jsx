@@ -114,7 +114,7 @@ function CinePlusBlack() {
             </ul>
             <button
               onClick={handleSubmit}
-              className="bg-black dark:bg-white text-white dark:text-black w-7/12 mx-auto my-2 p-2 rounded-xl text-base font-bold"
+              className="bg-black hover:bg-black/80 dark:bg-white dark:hover:bg-white/80 text-white dark:text-black w-7/12 mx-auto my-2 p-2 rounded-xl text-base font-bold"
             >
               ¡Quiero suscribirme!
             </button>
