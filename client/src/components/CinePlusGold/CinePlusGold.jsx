@@ -20,7 +20,7 @@ function CinePlusGold() {
     if (!userData) {
       navigate("/login");
     } else {
-      const { data } = await axios.post("/subscription", subGold);
+      const { data } = await axios.post("/subscription", { subscription: subGold, userData });
       window.location.href = data.init_point;
       dispatch(putUserSubscription({ id: userData.id, cinePlus: "Gold" }));
     }

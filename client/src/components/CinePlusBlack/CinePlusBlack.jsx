@@ -21,7 +21,7 @@ function CinePlusBlack() {
     if (!userData) {
       navigate("/login");
     } else {
-      const { data } = await axios.post("/subscription", subBlack);
+      const { data } = await axios.post("/subscription", { subscription: subBlack, userData });
       window.location.href = data.init_point;
       dispatch(putUserSubscription({ id: userData.id, cinePlus: "Black" }));
       dispatch(logoutUser());
