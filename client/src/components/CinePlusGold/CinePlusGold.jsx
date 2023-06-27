@@ -30,10 +30,13 @@ function CinePlusGold() {
     <div className="w-4/5 flex justify-around mx-auto">
       <div className="w-96 mt-14 rounded-lg relative">
         <div className="">
-          <div className="h-14 grid items-center bg-yellow-300 border-2 border-yellow-300 rounded-t-xl">
+          <div className="h-20 grid items-center bg-yellow-300 border-2 border-yellow-300 rounded-t-xl">
             <h2 className="font-bold mx-auto">Cine Plus Gold</h2>
+            <span className="font-bold mx-auto text-black dark:text-white">
+              ${subGold.price} por mes
+            </span>
           </div>
-          <div className="h-full flex flex-col justify-between p-4 border-4 border-yellow-300 rounded-b-xl">
+          <div className="h-[480px] flex flex-col justify-between p-4 border-4 border-yellow-300 rounded-b-xl">
             <ul className="m-0 p-0">
               <li className="flex justify-around m-2">
                 <div className="w-4/5">
@@ -51,15 +54,6 @@ function CinePlusGold() {
                   </h3>
                   <p className="m-0 text-xs font-normal">
                     Combo Mega o combo Nachos *Por única vez.
-                  </p>
-                </div>
-                <FaCheck className="dark:text-white" />
-              </li>
-              <li className="flex justify-around m-2">
-                <div className="w-4/5">
-                  <h3 className="m-0 text-sm font-bold">25% Off en Combos</h3>
-                  <p className="m-0 text-xs font-normal">
-                    Seleccionados del Candy
                   </p>
                 </div>
                 <FaCheck className="dark:text-white" />
@@ -103,7 +97,7 @@ function CinePlusGold() {
               onClick={handleSubmit}
               className="w-7/12 mx-auto bg-yellow-300 hover:bg-yellow-200 my-2 p-2 rounded-xl text-base font-bold"
             >
-              ¡Quiero suscribirme! <span>${subGold.price}</span> por mes
+              ¡Quiero suscribirme!
             </button>
           </div>
         </div>
