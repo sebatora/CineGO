@@ -153,11 +153,11 @@ const About = () => {
         <Link to="https://git-scm.com" target="_blank"><SiGit className="text-3xl hover:scale-110 mr-6 hover:text-orange-600"/> </Link>
         <Link to="https://www.postgresql.org" target="_blank"><SiPostgresql className="text-3xl hover:scale-110 mr-6 hover:text-blue-700"/> </Link>
         <Link to="https://sequelize.org" target="_blank"><SiSequelize className="text-3xl hover:scale-110 mr-6 hover:text-blue-700"/> </Link>
-        <Link to="https://github.com" target="_blank"><SiGithub className="text-3xl hover:scale-110 mr-6"/> </Link>
+        <Link to="https://github.com" target="_blank"><SiGithub className="text-3xl hover:scale-110 mr-6 hover:text-gray-600"/> </Link>
         <Link to="https://vitejs.dev" target="_blank"><SiVite className="text-3xl hover:scale-110 mr-6 hover:text-yellow-400"/> </Link>
         <Link to="https://firebase.google.com/?hl=es" target="_blank"><SiFirebase className="text-3xl hover:scale-110 mr-6 hover:text-orange-500"/> </Link>
         <Link to="https://tailwindcss.com" target="_blank"><SiTailwindcss className="text-3xl hover:scale-110 mr-6 hover:text-blue-500"/> </Link>
-        <Link to="https://trello.com" target="_blank"><SiTrello className="text-3xl hover:scale-110 mr-6 hover:text-gray-600"/> </Link>
+        <Link to="https://trello.com" target="_blank"><SiTrello className="text-3xl hover:scale-110 mr-6 hover:text-blue-800"/> </Link>
         <Link to="https://www.figma.com/" target="_blank"><SiFigma className="text-3xl hover:scale-110 mr-6 hover:text-purple-700"/> </Link>
         <Link to="https://www.mercadopago.com.ar" target="_blank"><SiMercadopago className="text-3xl hover:scale-110 mr-6 hover:text-blue-500"/> </Link>
       </div>
