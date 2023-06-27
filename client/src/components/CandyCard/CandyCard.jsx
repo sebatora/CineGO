@@ -12,7 +12,7 @@ function CandyCard({ name, description, price, image, addCart }) {
         </div>
         <div className="px-4 py-3 mb-3 flex justify-center items-center">
           <button
-            className=" bg-primary-600 text-white font-bold py-1 px-24  rounded text-xs"
+            className=" bg-primary-600 hover:bg-primary-500 text-white font-bold py-1 px-24  rounded text-xs"
             onClick={() => addCart(name)}
           >
             ${price}

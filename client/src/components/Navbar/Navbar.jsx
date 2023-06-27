@@ -8,7 +8,7 @@ const options = [
   { name: "Cartelera", to: "/" },
   { name: "Candy", to: "/candy" },
   { name: "CinePlus", to: "/cineplus" },
-  { name: "Contáctanos", to: "/contact" },
+  // { name: "Contáctanos", to: "/contact" },
   // { name: "Preguntas Frecuentes", to: "/faq" },
 ];
 
