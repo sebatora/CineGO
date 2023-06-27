@@ -2,7 +2,7 @@ import React from "react";
 import { FaCheck } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import pochoclo from "../../assets/pochoclo.png";
-import { putUserSubscription } from "../../redux/actions";
+import { logoutUser, putUserSubscription } from "../../redux/actions";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -24,6 +24,7 @@ function CinePlusBlack() {
       const { data } = await axios.post("/subscription", subBlack);
       window.location.href = data.init_point;
       dispatch(putUserSubscription({ id: userData.id, cinePlus: "Black" }));
+      dispatch(logoutUser());
     }
   };
   return (

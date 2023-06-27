@@ -88,12 +88,6 @@ function ProfileChange() {
                 >
                   Cambiar
                 </button>
-                <button
-                  type="button"
-                  className={`${style.buttonDelete} ${style.buttonImg}`}
-                >
-                  Borrar
-                </button>
               </div>
             </div>
           </div>
