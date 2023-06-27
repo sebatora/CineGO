@@ -14,6 +14,8 @@ const ModalProfile = ({ setActiveModal, userData }) => {
       await logout();
       setActiveModal(false);
       window.localStorage.removeItem("user");
+      window.localStorage.removeItem("movie");
+      window.localStorage.removeItem("cart");
       navigate("/");
       toast("Se cerró sesión", {
         duration: 3000,
