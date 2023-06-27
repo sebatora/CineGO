@@ -84,7 +84,7 @@ function ProfileChange() {
               <div className={style.boxButton}>
                 <button
                   type="button"
-                  className={`${style.buttonChange} ${style.buttonImg}`}
+                  className="bg-primary-600 hover:bg-primary-500 h-8 px-4 my-1 mx-2 rounded-md font-bold text-white"
                 >
                   Cambiar
                 </button>

@@ -117,7 +117,7 @@ const CreateUser = ({ theme }) => {
               {...register("firstName", { required: "El nombre es requerido" })}
             />
             {errors.firstName && (
-              <span className="mt-2 text-red-600 dark:text-red-600">
+              <span className="mt-2 text-red-600 dark:text-red-600 text-base">
                 {errors.firstName.message}
               </span>
             )}
@@ -132,7 +132,7 @@ const CreateUser = ({ theme }) => {
               })}
             />
             {errors.lastName && (
-              <span className="mt-2 text-red-600 dark:text-red-600">
+              <span className="mt-2 text-red-600 dark:text-red-600 text-base">
                 {errors.lastName.message}
               </span>
             )}
@@ -153,7 +153,7 @@ const CreateUser = ({ theme }) => {
             })}
           />
           {errors.email && (
-            <span className="mt-2 text-red-600 dark:text-red-600">
+            <span className="mt-2 text-red-600 dark:text-red-600 text-base">
               {errors.email.message}
             </span>
           )}
@@ -171,7 +171,7 @@ const CreateUser = ({ theme }) => {
               })}
             />
             {errors.password && (
-              <span className="mt-2 text-red-600 dark:text-red-600">
+              <span className="mt-2 text-red-600 dark:text-red-600 text-base">
                 {errors.password.message}
               </span>
             )}
@@ -189,7 +189,7 @@ const CreateUser = ({ theme }) => {
               })}
             />
             {errors.confirmPassword && (
-              <span className="mt-2 text-red-600 dark:text-red-600">
+              <span className="mt-2 text-red-600 dark:text-red-600 text-base">
                 {errors.confirmPassword.message}
               </span>
             )}
