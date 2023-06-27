@@ -4,7 +4,7 @@ const dataAllMovies = [
     description:
       "Durante numerosas misiones más que imposibles, Dom Toretto y su familia han sido capaces de ser más listos, de tener más valor y de ir más rápido que cualquier enemigo que se cruzara con ellos. Pero ahora tendrán que enfrentarse al oponente más letal que jamás hayan conocido: un terrible peligro que resurge del pasado, que se mueve por una sangrienta sed de venganza y que está dispuesto a destrozar a la familia y destruir para siempre todo lo que a Dom le importa.",
     image:
-      "https://image.tmdb.org/t/p/original/fiVW06jE7z9YnO4trhaMEdclSiC.jpg",
+      "https://res.cloudinary.com/dhyqgl7ie/image/upload/v1687876063/movie/1-RapidosyFuriososX_pvik8d.jpg",
     actors:
       "Vin Diesel, Michelle Rodriguez, Tyrese Gibson, Ludacris, John Cena, Jason Momoa, Jason Statham",
     director: "Louis Leterrier",
@@ -32,7 +32,7 @@ const dataAllMovies = [
     title: "John Wick 4",
     description:
       "John Wick descubre un camino para derrotar a la Alta Mesa. Pero para poder ganar su libertad, Wick deberá enfrentarse a un nuevo rival con poderosas alianzas en todo el mundo, capaz de convertir a viejos amigos en enemigos.",
-    image: "https://image.tmdb.org/t/p/original/vZloFAK7NmvMGKE7VkF5UHaz0I.jpg",
+    image: "https://res.cloudinary.com/dhyqgl7ie/image/upload/v1687876063/movie/2-JohnWick4_tl05jk.jpg",
     actors:
       "Keanu Reeves, Donnie Yen, Ian McShane, Laurence FishBurne, Rina Sawyama, Lance Reddick, Clancy Brown",
     director: "Chad Stahelski",
@@ -61,7 +61,7 @@ const dataAllMovies = [
     description:
       "Mientras trabajan en una avería subterránea, los fontaneros de Brooklyn, Mario y su hermano Luigi, viajan por una misteriosa tubería hasta un nuevo mundo mágico. Pero, cuando los hermanos se separan, Mario deberá emprender una épica misión para encontrar a Luigi.",
     image:
-      "https://image.tmdb.org/t/p/original/qNBAXBIQlnOThrVvA6mA2B5ggV6.jpg",
+      "https://res.cloudinary.com/dhyqgl7ie/image/upload/v1687876062/movie/3-MarioBros_getr5u.jpg",
     actors: "Chris Pratt, Charlie Day, Anya Taylor-Joy, Jack Black, Seth Rogen",
     director: "Aaron Horvath",
     duration: 92,
@@ -89,7 +89,7 @@ const dataAllMovies = [
     description:
       "Un detective se ve envuelto en un misterio en el que está involucrada su hija desaparecida y un programa secreto del gobierno mientras investiga una serie de atracos de alto nivel.",
     image:
-      "https://image.tmdb.org/t/p/original/3IhGkkalwXguTlceGSl8XUJZOVI.jpg",
+      "https://res.cloudinary.com/dhyqgl7ie/image/upload/v1687876063/movie/4-Hypnotic_i3yjpt.jpg",
     actors:
       "Ben Affleck, Alice Braga, J. D. Pardo, Dayo Okeniyi, Jeff Fahey, Jackie Earle Haley",
     director: "Robert Rodriguez",
@@ -118,7 +118,7 @@ const dataAllMovies = [
     description:
       "Miles Morales regresa para una aventura épica que transportará al amigable vecino de Brooklyn Spider-Man a través del Multiverso para unir fuerzas con Gwen Stacy y un nuevo equipo de Spider-People, y enfrentarse así a un villano mucho más poderoso que cualquier cosa que hayan conocido antes.",
     image:
-      "https://image.tmdb.org/t/p/original/8Vt6mWEReuy4Of61Lnj5Xj704m8.jpg",
+      "https://res.cloudinary.com/dhyqgl7ie/image/upload/v1687876063/movie/5-Spider-Man_q0y5qj.jpg",
     actors:
       "Shameik Moore, Hailee Steinfeld, Brian Tyree Henry, Luna Lauren Velez, Jake Johnson",
     director: "Kemp Powers",
@@ -147,7 +147,7 @@ const dataAllMovies = [
     description:
       "La batalla en la Tierra ya no es solo entre Autobots y Decepticons... Maximals, Predacons y Terrorcons se unen a Transformers: Rise of the Beasts.",
     image:
-      "https://image.tmdb.org/t/p/original/gPbM0MK8CP8A174rmUwGsADNYKD.jpg",
+      "https://res.cloudinary.com/dhyqgl7ie/image/upload/v1687876065/movie/6-Transformers_gxtytg.jpg",
     actors:
       "Anthony Ramos, Dominique Fishback, Peter Cullen, Ron Perlman, Peter Dinklage, Michelle Yeoh, Pete Davidson",
     director: "Steven Caple Jr.",
@@ -176,7 +176,7 @@ const dataAllMovies = [
     description:
       "Ambientada más de una década después de los acontecimientos de la primera película, 'Avatar: The Way of Water' empieza contando la historia de la familia Sully (Jake, Neytiri y sus hijos), los problemas que los persiguen, lo que tienen que hacer para mantenerse a salvo, las batallas que libran para seguir con vida y las tragedias que sufren.",
     image:
-      "https://image.tmdb.org/t/p/original/t6HIqrRAclMCA60NsSmeqe9RmNV.jpg",
+      "https://res.cloudinary.com/dhyqgl7ie/image/upload/v1687876065/movie/7-Avatar_n93ute.jpg",
     actors:
       "Sam Worthington, Zoe Saldaña, Sigourney Weaver, Stephen Lang, Kate Winslet, Cliff Curtis, Joel David Moore",
     director: "James Cameron",
@@ -205,7 +205,7 @@ const dataAllMovies = [
     description:
       "Star-Lord, todavía recuperándose de la pérdida de Gamora, debe reunir a su equipo para defender el universo junto con la protección de uno de los suyos. Una misión que, si no se completa, podría llevar al final de los Guardianes tal como los conocemos.",
     image:
-      "https://image.tmdb.org/t/p/original/r2J02Z2OpNTctfOSN1Ydgii51I3.jpg",
+      "https://res.cloudinary.com/dhyqgl7ie/image/upload/v1687876065/movie/8-GuardiansGalaxy_xne0xg.jpg",
     actors:
       "Chris Pratt, Zoe Saldaña, Dave Bautista, Karen Gillan, Pom Klementieff, Vin Diesel, Bradley Cooper",
     director: "James Gunn",
@@ -234,7 +234,7 @@ const dataAllMovies = [
     description:
       "Película sobre Gabriele Amorth, un sacerdote que ejerció como exorcista principal del Vaticano, realizando más de cien mil exorcismos a lo largo de su vida. Amorth escribió dos libros de memorias donde detalló sus experiencias luchando contra Satanás.",
     image:
-      "https://image.tmdb.org/t/p/original/gNPqcv1tAifbN7PRNgqpzY8sEJZ.jpg",
+      "https://res.cloudinary.com/dhyqgl7ie/image/upload/v1687876066/movie/9-ThePosesExorcise_slkdbq.jpg",
     actors:
       "Russell Crowe, Daniel Zovatto, Alex Essoe, Franco Nero, Peter DeSouza-Feighoney, Laurel Marsden, Cornell John",
     director: "Julius Avery",
@@ -263,7 +263,7 @@ const dataAllMovies = [
     description:
       "Nina, una secreta ex agente de operaciones especiales de la OTAN, debe usar todas sus habilidades letales para salvar a su hijo que ha sido secuestrado por gángsters despiadados. Encontrar a Max es una doble oportunidad para ella. Una oportunidad para una nueva sensación de adrenalina y la posibilidad de volver a la vida para su hijo, a quien debió haber tenido más.",
     image:
-      "https://image.tmdb.org/t/p/original/wws9Z90DdZ7D0n3gdzFSZ6cntJi.jpg",
+      "https://res.cloudinary.com/dhyqgl7ie/image/upload/v1687876061/movie/10-MothersDay_ebrxeh.jpg",
     actors:
       "Agnieszka Grochowska, Adrian Delikta, Dariusz Chojnacki, Paulina Chruściel, Paweł Koślik, Arkadiusz Brykalski",
     director: "Mateusz Rakowicz",
@@ -292,7 +292,7 @@ const dataAllMovies = [
     description:
       "La pareja de superhéroes Scott Lang y Hope van Dyne regresa para continuar sus aventuras como Ant-Man y la Avispa. Los dos, junto a los padres de Hope, Hank Pym y Janet van Dyne y la hija de Scott, Cassie Lang, se dedican a explorar el Mundo Cuántico, interactuando con nuevas y extrañas criaturas y embarcándose en una aventura que les llevará más allá de los límites de lo que creían posible.",
     image:
-      "https://image.tmdb.org/t/p/original/qnqGbB22YJ7dSs4o6M7exTpNxPz.jpg",
+      "https://res.cloudinary.com/dhyqgl7ie/image/upload/v1687876063/movie/11-Quantumania_s9btmn.jpg",
     actors:
       "Paul Rudd, Evangeline Lilly, Jonathan Majors, Kathryn Newton, Michelle Pfeiffer, Michael Douglas, Corey Stoll, Bill Murray, William Jackson Harper",
     director: "Peyton Reed",
@@ -321,7 +321,7 @@ const dataAllMovies = [
     description:
       "La pareja de superhéroes Scott Lang y Hope van Dyne regresa para continuar sus aventuras como Ant-Man y la Avispa. Los dos, junto a los padres de Hope, Hank Pym y Janet van Dyne y la hija de Scott, Cassie Lang, se dedican a explorar el Mundo Cuántico, interactuando con nuevas y extrañas criaturas y embarcándose en una aventura que les llevará más allá de los límites de lo que creían posible.",
     image:
-      "https://image.tmdb.org/t/p/original/xayG1dbIjJkmvimekx6TNrMOXmA.jpg",
+      "https://res.cloudinary.com/dhyqgl7ie/image/upload/v1687876063/movie/12-BloodGold_r4hpy3.jpg",
     actors:
       "Robert Maaser, Jördis Triebel, Marie Hacke, Alexander Scheer, Roy McCrerey, Stephan Grossmann, Florian Schmidtke",
     director: "Peter Thorwarth",
