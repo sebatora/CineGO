@@ -30,7 +30,7 @@ function CinePlusBlack() {
   return (
     <div className="w-4/5 flex justify-around  mx-auto">
       <div className="w-96 mt-14 rounded-lg relative">
-        <div className="w-96 absolute -top-14 flex justify-around">
+        {/*         <div className="w-96 absolute -top-14 flex justify-around">
           <img
             src={pochoclo}
             alt="Pochoclo"
@@ -46,14 +46,17 @@ function CinePlusBlack() {
             alt="Pochoclo"
             className="w-14 animate-tambaleo"
           />
-        </div>
+        </div> */}
         <div className="">
-          <div className="h-14 grid items-center bg-black dark:bg-white border-2 border-black dark:border-white rounded-t-xl">
+          <div className="h-20 grid items-center bg-black dark:bg-white border-2 border-black dark:border-white rounded-t-xl">
             <h2 className="font-bold mx-auto text-white dark:text-black">
               Cine Plus Black
             </h2>
+            <span className="font-bold mx-auto text-white dark:text-black">
+              ${subBlack.price} por mes
+            </span>
           </div>
-          <div className="h-full flex flex-col justify-between p-4 border-4 border-black dark:border-white rounded-b-xl">
+          <div className="h-[480px] flex flex-col justify-between p-4 border-2 border-black dark:border-white rounded-b-xl">
             <ul className="m-0 p-0">
               <li className="flex justify-around m-2">
                 <div className="w-4/5">
@@ -75,15 +78,7 @@ function CinePlusBlack() {
                 </div>
                 <FaCheck className="dark:text-white" />
               </li>
-              <li className="flex justify-around m-2">
-                <div className="w-4/5">
-                  <h3 className="m-0 text-sm font-bold">25% Off en Combos</h3>
-                  <p className="m-0 text-xs font-normal">
-                    Seleccionados del Candy
-                  </p>
-                </div>
-                <FaCheck className="dark:text-white" />
-              </li>
+
               <li className="flex justify-around m-2">
                 <div className="w-4/5">
                   <h3 className="m-0 text-sm font-bold">Suma Puntos</h3>
@@ -96,9 +91,7 @@ function CinePlusBlack() {
               <li className="flex justify-around m-2">
                 <div className="w-4/5">
                   <h3 className="m-0 text-sm font-bold">Canje de Puntos</h3>
-                  <p className="m-0 text-xs font-normal">
-                    Por entradas y combos
-                  </p>
+                  <p className="m-0 text-xs font-normal">Por entradas</p>
                 </div>
                 <FaCheck className="dark:text-white" />
               </li>
@@ -123,7 +116,7 @@ function CinePlusBlack() {
               onClick={handleSubmit}
               className="bg-black dark:bg-white text-white dark:text-black w-7/12 mx-auto my-2 p-2 rounded-xl text-base font-bold"
             >
-              ¡Quiero suscribirme! <span>${subBlack.price}</span> por mes
+              ¡Quiero suscribirme!
             </button>
           </div>
         </div>
