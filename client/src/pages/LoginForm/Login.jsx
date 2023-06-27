@@ -51,7 +51,7 @@ const Login = ({ theme }) => {
   const handleLoginGoogle = async () => {
     try {
       setLoading(true);
-      navigate("/")
+      navigate("/");
       await loginWithGoogle();
       toast.success("Inicio de sesión exitoso");
     } catch (error) {
@@ -69,51 +69,51 @@ const Login = ({ theme }) => {
       ) : (
         <div className="w-full h-full flex justify-center p-10">
           <form
-            className="w-[500px] h-[750px] flex flex-col justify-center items-center p-10 border border-black dark:border-white rounded"
+            className="w-[500px] h-[700px] flex flex-col justify-center items-center px-12 border border-black dark:border-white rounded"
             onSubmit={handleSubmit(onSubmit)}
             style={{ marginTop: "100px" }}
           >
             {theme === "dark" ? (
               <img
-                className="w-40 mt-[-80px] mb-[-10px]"
+                className="w-40"
                 src={logoBlanco}
                 alt="CineGO"
               />
             ) : (
               <img
-                className="w-40 mt-[-80px] mb-[-20px]"
+                className="w-40"
                 src={logoNegro}
                 alt="CineGO"
               />
             )}
-            <h1 className="flex flex-col mb-12">Ingresá a tu cuenta</h1>
-            <div className="flex flex-col mb-6">
+            <h1 className="mt-2 mb-4">Ingresá a tu cuenta</h1>
+            <div className="flex flex-col mb-4 items-center">
               <input
                 className="border rounded-sm p-4 w-96"
                 type="text"
-                placeholder="Ingresa tu email..."
+                placeholder="Ingresa tu email"
                 {...register("email", {
-                  required: "El email del usuario es requerido",
+                  required: "El email es requerido",
                 })}
               />
               {errors.email && (
-                <span className="text-red-600 dark:text-red-600">
+                <span className="text-red-600 dark:text-red-600 text-base mt-2">
                   {errors.email.message}
                 </span>
               )}
             </div>
 
-            <div className="flex flex-col mb-6">
+            <div className="flex flex-col mb-4 items-center">
               <input
                 className="border rounded-sm p-4 w-96"
                 type="password"
-                placeholder="Ingresa tu contraseña..."
+                placeholder="Ingresa tu contraseña"
                 {...register("password", {
                   required: "La contraseña es requerida",
                 })}
               />
               {errors.password && (
-                <span className="text-red-600 dark:text-red-600">
+                <span className="text-red-600 dark:text-red-600 text-base mt-2">
                   {errors.password.message}
                 </span>
               )}
@@ -128,23 +128,28 @@ const Login = ({ theme }) => {
             <p>o</p>
             <button
               type="button"
-              className="w-96 flex justify-center items-center text-white font-bold bg-blue-600 hover:bg-blue-500 py-2 px-8"
+              className="w-96 flex justify-center items-center text-white font-bold bg-primary-600 hover:bg-primary-500 py-2 px-8"
               onClick={handleLoginGoogle}
             >
               <img className="w-10 " src={LogoGoogle} alt="Logo Google" />
               Iniciar sesión con Google
             </button>
-            <div className="w-full mt-10 flex flex-col ml-10">
-              <h4 className="mb-5">¿No tenés cuenta?</h4>
-              <Link className="w-48" to="/createUser">
-                <button
-                  type="button"
-                  className="bg-primary-600 hover:bg-primary-500 py-4 px-10 w-96 text-white font-semibold"
-                >
-                  Crear cuenta
-                </button>
-              </Link>
+            <div className="w-full flex flex-row items-center justify-center mt-4 border-t border-black dark:border-white">
+            <Link className="items-center m-4" to="/createUser">
+              <h5>¿No tenés cuenta?</h5>
+            </Link>
+            <Link className="items-center" to="/forgotPassword">
+              <h5>¿Olvidaste tu contraseña?</h5>
+            </Link>
             </div>
+            {/* <Link className="w-96 flex items-center" to="/createUser">
+              <button
+                type="button"
+                className="bg-primary-600 hover:bg-primary-500 py-4 px-10 w-96 text-white font-semibold"
+              >
+                Crear cuenta
+              </button>
+            </Link> */}
           </form>
         </div>
       )}

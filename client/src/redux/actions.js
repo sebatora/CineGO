@@ -21,6 +21,7 @@ import {
   SAVE_CART,
   PUT_SUBSCRIPTION,
   DELETE_SUBSCRIPTION,
+  FORGOT_PASSWORD_USER,
   // ERROR
 } from "./action-type";
 
@@ -139,6 +140,18 @@ export const putUser = (user) => {
     try {
       const { data } = await axios.put(`/users`, user);
       return dispatch({ type: PUT_USER, payload: data });
+    } catch (error) {
+      return error.message;
+    }
+  };
+};
+
+// Envia la contraseña olvidada de un usuario
+export const forgotPassUser = (userData) => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.post(`/reset`, userData);
+      return dispatch({ type: FORGOT_PASSWORD_USER, payload: data });
     } catch (error) {
       return error.message;
     }

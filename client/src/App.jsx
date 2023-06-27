@@ -31,6 +31,7 @@ import Candy from "./pages/CandyContainer/CandyContainer";
 import Profile from "./pages/Profile/Profile";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import Contact from "./pages/Contact/Contact";
+import Resetpassword from "./pages/ResetPassForm/Resetpassword";
 
 function App() {
   const navigate = useNavigate();
@@ -68,6 +69,7 @@ function App() {
           <Route path="/cinePlus" element={<CinePlusContainer />} />
           <Route path="/login" element={<Login theme={theme}/>} />
           <Route path="/createUser" element={<CreateUser theme={theme}/>} />
+          <Route path="/forgotPassword" element={<Resetpassword theme={theme}/>} />
           <Route path="/profile" element={
             <PrivateRouteUser>
               <Profile />
