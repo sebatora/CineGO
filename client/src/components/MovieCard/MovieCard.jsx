@@ -7,9 +7,11 @@ function MovieCard({ id, title, image, clasification }) {
         <Link className="w-full h-full" to={`/detail/${id}`}>
           <img className="w-full h-full absolute" src={image} />
           <div className="absolute right-0">
-            <h3 className="bg-white rounded-bl-xl dark:text-black p-1">{clasification}</h3>
+            <h3 className="bg-white rounded-bl-xl dark:text-black p-1">
+              {clasification}
+            </h3>
           </div>
-          <div className="w-full h-32 p-2 absolute bottom-0 flex flex-col justify-between text-center opacity-0 group-hover:opacity-100 group-hover:bg-black/80 group-hover:animate-fade group-hover:animate-once group-hover:animate-delay-400">
+          <div className="w-full h-24   p-2 absolute bottom-0 flex flex-col justify-center items-center text-center opacity-0 group-hover:opacity-100 group-hover:bg-black/80 group-hover:animate-fade group-hover:animate-once group-hover:animate-delay-400">
             <h4 className="text-white">{title}</h4>
           </div>
         </Link>

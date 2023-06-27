@@ -20,6 +20,7 @@ import {
   REMOVE_ONE_CANDY,
   SAVE_CART,
   PUT_SUBSCRIPTION,
+  // ERROR
 } from "./action-type";
 
 const initialState = {
@@ -34,7 +35,7 @@ const initialState = {
   productTicket: [
     {
       id: 1,
-      name: "general",
+      name: "Entrada General",
       image:
         "https://static.cinemarkhoyts.com.ar/Images/TicketTypeImage/1687.png",
       price: 200,
@@ -43,13 +44,14 @@ const initialState = {
     },
     {
       id: 2,
-      name: "cineFan",
+      name: "Entrada CineFan",
       image:
         "https://static.cinemarkhoyts.com.ar/Images/TicketTypeImage/1667.png",
       price: 290,
       description: "Incluye 2 entradas + Tarjeta Virtual.",
     },
   ],
+  // errData:null,
 };
 
 const rootReducer = (state = initialState, { type, payload }) => {
@@ -151,32 +153,38 @@ const rootReducer = (state = initialState, { type, payload }) => {
     }
 
     case ADD_TO_CART: {
-      let newItem = state.productTicket.find(
-        (product) => product.name === payload
+      if (state.cart.length >= 5) {
+        alert("No puedes seleccionar más de 5 productos.");
+        return state;
+      }
+    
+      let newItem = state.productTicket.find((product) => product.name === payload);
+      let itemCart = state.cart.find(
+        (item) => item.name.trim().toLowerCase() === newItem.name.trim().toLowerCase()
       );
-
-      let itemCart = state.cart.find((item) => item.name === newItem.name);
-
-      return itemCart
-        ? {
-            ...state,
-            cart: state.cart.map((item) =>
-              item.name === newItem.name
-                ? {
-                    ...item,
-                    price: item.price + newItem.price,
-                    count: item.count + 1,
-                  }
-                : item
-            ),
-          }
-        : {
-            ...state,
-            cart: [
-              ...state.cart,
-              { ...newItem, price: newItem.price, count: 1 },
-            ],
-          };
+    
+      if (itemCart) {
+        return {
+          ...state,
+          cart: state.cart.map((item) =>
+            item.name.trim().toLowerCase() === newItem.name.trim().toLowerCase()
+              ? {
+                  ...item,
+                  price: item.price + newItem.price,
+                  count: item.count + 1,
+                }
+              : item
+          ),
+        };
+      } else {
+        return {
+          ...state,
+          cart: [
+            ...state.cart,
+            { ...newItem, price: newItem.price, count: 1 },
+          ],
+        };
+      }
     }
 
     case REMOVE_ALL_CART: {
@@ -191,7 +199,7 @@ const rootReducer = (state = initialState, { type, payload }) => {
       let newItem = state.productTicket.find(
         (product) => product.name === payload
       );
-    
+
       return itemDelete.count > 1
         ? {
             ...state,
@@ -212,24 +220,27 @@ const rootReducer = (state = initialState, { type, payload }) => {
             productCount: state.productCount - 1, // Actualizar el conteo al eliminar un producto
           };
     }
-    
 
     case ADD_TO_CART_CANDY: {
-      if (state.cart.length >= 4) {
-        alert("No puedes seleccionar más de 6 productos.");
+      if (state.cart.length >= 5) {
+        alert("No puedes seleccionar más de 5 productos.");
         return state;
       }
-    
-      const newCandy = state.allCandy.find((product) => product.name === payload);
-      const candyCart = state.cart.find(
-        (item) => item.name.trim().toLowerCase() === newCandy.name.trim().toLowerCase()
+
+      const newCandy = state.allCandy.find(
+        (product) => product.name === payload
       );
-    
+      const candyCart = state.cart.find(
+        (item) =>
+          item.name.trim().toLowerCase() === newCandy.name.trim().toLowerCase()
+      );
+
       if (candyCart) {
         return {
           ...state,
           cart: state.cart.map((item) =>
-            item.name.trim().toLowerCase() === newCandy.name.trim().toLowerCase()
+            item.name.trim().toLowerCase() ===
+            newCandy.name.trim().toLowerCase()
               ? {
                   ...item,
                   price: item.price + newCandy.price,
@@ -248,8 +259,6 @@ const rootReducer = (state = initialState, { type, payload }) => {
         };
       }
     }
-    
-    
 
     case REMOVE_ALL_CART_CANDY: {
       return {
@@ -287,8 +296,16 @@ const rootReducer = (state = initialState, { type, payload }) => {
       };
     }
 
+    // case ERROR : {
+    //   return{
+    //     ...state,
+    //     errData: payload
+    //   }
+    // }
+
     default:
       return { ...state };
   }
 };
+
 export default rootReducer;

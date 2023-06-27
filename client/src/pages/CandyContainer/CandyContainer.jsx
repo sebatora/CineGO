@@ -4,11 +4,13 @@ import Spinner from "../../components/Spinner/Spinner";
 import { useDispatch, useSelector } from "react-redux";
 import { addCartCandy, getCandy } from "../../redux/actions";
 import CandyCarrito from "../../components/CandyCarrito/CandyCarrito";
+import { Toaster, toast } from "react-hot-toast";
 
 function CandyContainer() {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
   const products = useSelector((state) => state.allCandy);
+  const [productCount, setProductCount] = useState(0);
 
   const combos = products.filter((product) => product.category === "combos");
   const pochoclos = products.filter(
@@ -23,8 +25,18 @@ function CandyContainer() {
     (product) => product.category === "golosinas"
   );
 
-  const handleBuy = (name) => {
+  const addCart = (name) => {
+    if (productCount >= 5) {
+      toast.error("Has alcanzado el límite de 5 productos en tu carrito.", {
+        duration: 3000
+      });
+      return;
+    }
     dispatch(addCartCandy(name));
+    toast.success("Producto agregado al carrito", {
+      duration: 2000
+    });
+    setProductCount(productCount + 1);
   };
 
   useEffect(() => {
@@ -38,6 +50,7 @@ function CandyContainer() {
         <Spinner />
       ) : (
         <div className="w-full flex">
+          <Toaster />
           <div className="w-2/3 mt-28 flex flex-col items-center ">
             <h2>Combos</h2>
             <div className="flex flex-wrap justify-center mb-10">
@@ -49,7 +62,7 @@ function CandyContainer() {
                   description={description}
                   price={price}
                   image={image}
-                  handleBuy={() => handleBuy(name)}
+                  addCart={() => addCart(name)}
                 />
               ))}
             </div>
@@ -64,7 +77,7 @@ function CandyContainer() {
                   description={description}
                   price={price}
                   image={image}
-                  handleBuy={() => handleBuy(name)}
+                  addCart={() => addCart(name)}
                 />
               ))}
             </div>
@@ -79,7 +92,7 @@ function CandyContainer() {
                   description={description}
                   price={price}
                   image={image}
-                  handleBuy={() => handleBuy(name)}
+                  addCart={() => addCart(name)}
                 />
               ))}
             </div>
@@ -94,7 +107,7 @@ function CandyContainer() {
                   description={description}
                   price={price}
                   image={image}
-                  handleBuy={() => handleBuy(name)}
+                  addCart={() => addCart(name)}
                 />
               ))}
             </div>
@@ -109,7 +122,7 @@ function CandyContainer() {
                   description={description}
                   price={price}
                   image={image}
-                  handleBuy={() => handleBuy(name)}
+                  addCart={() => addCart(name)}
                 />
               ))}
             </div>
@@ -124,13 +137,13 @@ function CandyContainer() {
                   description={description}
                   price={price}
                   image={image}
-                  handleBuy={() => handleBuy(name)}
+                  addCart={() => addCart(name)}
                 />
               ))}
             </div>
           </div>
 
-          <CandyCarrito />
+          <CandyCarrito addCart={addCart} productCount={productCount} setProductCount={setProductCount} />
         </div>
       )}
     </>

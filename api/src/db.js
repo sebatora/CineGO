@@ -10,7 +10,7 @@ const sequelize = new Sequelize(
     logging: false,
     native: false,
   }
-); 
+);
 
 const basename = path.basename(__filename);
 
@@ -48,6 +48,7 @@ Show.belongsTo(Movie, {
 //relación entre Purchase y User
 User.hasMany(Purchase, {
   foreignKey: "userId",
+  as: "purchases",
 });
 Purchase.belongsTo(User, {
   foreignKey: "userId",
