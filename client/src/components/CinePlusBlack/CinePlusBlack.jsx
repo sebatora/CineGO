@@ -28,7 +28,7 @@ function CinePlusBlack() {
   };
   return (
     <div className="w-4/5 flex justify-around  mx-auto">
-      <div className="w-96 mt-20 rounded-lg relative">
+      <div className="w-96 mt-14 rounded-lg relative">
         <div className="w-96 absolute -top-14 flex justify-around">
           <img
             src={pochoclo}

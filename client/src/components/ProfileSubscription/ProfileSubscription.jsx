@@ -46,7 +46,6 @@ function ProfileSubscription() {
       </div>
       {userData.cinePlus === "Estandar" ? (
         <div className={style.containerSubscription}>
-          <h2>Pasate a: </h2>
           <div className={style.boxSubscription}>
             <CinePlusGold />
             <CinePlusBlack />

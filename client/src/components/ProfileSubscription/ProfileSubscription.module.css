@@ -1,7 +1,5 @@
 .container {
   width: 100%;
-  height: 80vh;
-
   font-size: 14px;
 }
 
@@ -35,6 +33,7 @@
 }
 
 .boxSubscription {
+  width: 100%;
   display: flex;
 }
 
