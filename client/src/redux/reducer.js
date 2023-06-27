@@ -20,6 +20,7 @@ import {
   REMOVE_ONE_CANDY,
   SAVE_CART,
   PUT_SUBSCRIPTION,
+  DELETE_SUBSCRIPTION,
   // ERROR
 } from "./action-type";
 
@@ -131,6 +132,12 @@ const rootReducer = (state = initialState, { type, payload }) => {
       };
     }
 
+    case DELETE_SUBSCRIPTION: {
+      return {
+        ...state,
+      };
+    }
+
     case LOGIN_USER: {
       return {
         ...state,
@@ -157,12 +164,15 @@ const rootReducer = (state = initialState, { type, payload }) => {
         alert("No puedes seleccionar más de 5 productos.");
         return state;
       }
-    
-      let newItem = state.productTicket.find((product) => product.name === payload);
-      let itemCart = state.cart.find(
-        (item) => item.name.trim().toLowerCase() === newItem.name.trim().toLowerCase()
+
+      let newItem = state.productTicket.find(
+        (product) => product.name === payload
       );
-    
+      let itemCart = state.cart.find(
+        (item) =>
+          item.name.trim().toLowerCase() === newItem.name.trim().toLowerCase()
+      );
+
       if (itemCart) {
         return {
           ...state,
@@ -179,10 +189,7 @@ const rootReducer = (state = initialState, { type, payload }) => {
       } else {
         return {
           ...state,
-          cart: [
-            ...state.cart,
-            { ...newItem, price: newItem.price, count: 1 },
-          ],
+          cart: [...state.cart, { ...newItem, price: newItem.price, count: 1 }],
         };
       }
     }
