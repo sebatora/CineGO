@@ -10,6 +10,7 @@ import { GoTrash } from "react-icons/go";
 import { Toaster, toast } from "react-hot-toast";
 import { Link } from "react-router-dom";
 
+
 function CandyCarrito({ addCart, productCount, setProductCount }) {
   const userData = JSON.parse(window.localStorage.getItem("user"));
   const cart = useSelector((state) => state.cart);

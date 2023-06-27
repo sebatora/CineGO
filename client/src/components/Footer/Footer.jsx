@@ -1,15 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import cinego_blanco from "../../assets/cinego_blanco.png"
-import cinego_negro from "../../assets/cinego_negro.png"
-import '@fortawesome/fontawesome-free/css/all.css';
+import cinego_blanco from "../../assets/cinego_blanco.png";
+import cinego_negro from "../../assets/cinego_negro.png";
+import "@fortawesome/fontawesome-free/css/all.css";
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
-
 function Footer({ theme }) {
   return (
-    <footer className="w-full border-t border-t-light-200 dark:border-t-light-900 mt-4">
+    <footer className="w-full border-t border-t-light-200 dark:border-t-light-900">
       <div className="w-full flex justify-evenly">
         <div className="w-1/4 flex pl-12">
           <Link className="w-40" to="/">
@@ -42,12 +41,21 @@ function Footer({ theme }) {
             </Link>
           </span>
           <span className="p-6 text-sm">
+            <Link className="hover:text-light-400" to="/contact">
+              Contáctanos
+            </Link>
+          </span>
+          <span className="p-6 text-sm">
             <Link className="hover:text-light-400" to="/about">
               Desarrolladores
             </Link>
           </span>
           <span className="p-6 text-sm">
-            <Link className="hover:text-light-400" to="https://github.com/sebatora/CineGO" target="_blank">
+            <Link
+              className="hover:text-light-400"
+              to="https://github.com/sebatora/CineGO"
+              target="_blank"
+            >
               Repositorio
             </Link>
           </span>
@@ -55,10 +63,12 @@ function Footer({ theme }) {
       </div>
 
       <div className="mx-auto border-t border-t-light-200 dark:border-t-light-900 text-center">
-        <p className="mt-2 mb-2 text-xs">Todos los derechos reservados © 2023 <b>| CineGO</b></p>
+        <p className="mt-2 mb-2 text-xs">
+          Todos los derechos reservados © 2023 <b>| CineGO</b>
+        </p>
       </div>
     </footer>
-  )
+  );
 }
 
 export default Footer;

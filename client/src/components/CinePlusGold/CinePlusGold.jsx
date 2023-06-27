@@ -12,13 +12,13 @@ function CinePlusGold() {
 
   const subGold = {
     type: "Cine Plus Gold",
-    price: 2999,
-  }
+    price: 1499,
+  };
 
-  const handleSubmit = async event => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     if (!userData) {
-      navigate("/login")
+      navigate("/login");
     } else {
       const { data } = await axios.post("/subscription", subGold);
       window.location.href = data.init_point;
@@ -28,7 +28,7 @@ function CinePlusGold() {
 
   return (
     <div className="w-4/5 flex justify-around mx-auto">
-      <div className="w-96 mt-20 rounded-lg relative">
+      <div className="w-96 mt-14 rounded-lg relative">
         <div className="">
           <div className="h-14 grid items-center bg-yellow-300 border-2 border-yellow-300 rounded-t-xl">
             <h2 className="font-bold mx-auto">Cine Plus Gold</h2>
@@ -103,7 +103,7 @@ function CinePlusGold() {
               onClick={handleSubmit}
               className="w-7/12 mx-auto bg-yellow-300 hover:bg-yellow-200 my-2 p-2 rounded-xl text-base font-bold"
             >
-              ¡Quiero suscribirme!
+              ¡Quiero suscribirme! <span>${subGold.price}</span> por mes
             </button>
           </div>
         </div>

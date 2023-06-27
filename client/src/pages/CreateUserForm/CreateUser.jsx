@@ -77,7 +77,7 @@ const CreateUser = ({ theme }) => {
 
       await dispatch(postUser(userData));
       reset();
-      toast("Usuario creado correctamente");
+      // toast("Usuario creado correctamente");
       navigate("/login");
     } catch (error) {
       toast.error(error);
@@ -86,6 +86,7 @@ const CreateUser = ({ theme }) => {
 
   return (
     <div className="w-full h-full flex justify-center pb-8">
+     
       <form
         className="w-[720px] flex flex-col justify-center items-center p-10 border border-black dark:border-white rounded"
         onSubmit={handleSubmit(onSubmit)}

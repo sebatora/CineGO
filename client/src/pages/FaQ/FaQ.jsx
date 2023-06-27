@@ -16,7 +16,7 @@ const FaQ = () => {
     },
     {
       id: 3,
-      question: "Quiero una devolución parcial de mi compra (devolver una de las varias entradas, devolver las comidas pero no las entrdas, u otros casos similares), ¿es posible?",
+      question: "Quiero una devolución parcial de mi compra, ¿es posible?",
       answer: "No podemos hacer devoluciones parciales desde CineGo. Usted puede dirigirse a la boletería del cine y realizar el pedido de devolución parcial antes de que inicie la función para la cual había comprado entradas. También puede pedir la devolución total y hacer una nueva compra. Para eso, le solicitaremos ver el mail de confirmación de la compra teniendo en cuenta que para gestionar una devolución debe hacerlo al menos tres (3) horas antes del inicio de la función para la cual haya comprado entradas",
     },
     {

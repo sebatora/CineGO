@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import Ticket from "../../components/Ticket/Ticket";
 import Cart from "../../components/Cart/Cart";
 import { addCart, removeAllCart, removeOneCart, saveCart } from "../../redux/actions";
-import { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { Toaster, toast } from "react-hot-toast";
 
 const TicketContainer = () => {
   const userData = JSON.parse(window.localStorage.getItem("user"));
@@ -11,29 +12,40 @@ const TicketContainer = () => {
   const dispatch = useDispatch();
   const product = useSelector((state) => state.productTicket);
   const cart = useSelector((state) => state.cart);
+  const [productCount, setProductCount] = useState(0);
 
-  const cinefan = product.filter((name) => name.name === "cineFan");
-  const general = product.filter((name) => name.name === "general");
+  const cinefan = product.filter((name) => name.name === "Entrada CineFan");
+  const general = product.filter((name) => name.name === "Entrada General");
 
   const addToCard = (name) => {
+    if (productCount >= 5) {
+      toast.error("Has alcanzado el límite de 5 productos en tu carrito.", {
+        duration: 3000
+      });
+      return;
+    }
     dispatch(addCart(name));
+    toast.success("Producto agregado al carrito", {
+      duration: 2000
+    });
+    setProductCount(productCount + 1);
   };
 
-  const delRemoveCart = (name, all = false) => {
+const delRemoveCart = (name, all = false) => {
     if (all) {
       dispatch(removeAllCart(name));
       window.localStorage.removeItem("cart");
+      setProductCount(0);
     } else {
       dispatch(removeOneCart(name));
       window.localStorage.removeItem("cart");
+      setProductCount(productCount - 1);
     }
   };
 
-  let subtotal = cart.reduce((acc, el) => acc + el.price, 0);
-
-  let servicio = subtotal * 0.1;
-
-  let total = subtotal + servicio;
+  const subtotal = cart.reduce((acc, el) => acc + parseFloat(el.price), 0);
+  const servicio = subtotal * 0.10;
+  const total = subtotal + servicio;
 
   useEffect(() => {
     const storedCart = window.localStorage.getItem("cart");
@@ -50,6 +62,7 @@ const TicketContainer = () => {
 
   return (
     <div className="mt-16 flex">
+      <Toaster /> 
       <div className="w-2/3 flex flex-col">
         <div className="flex items-center justify-center mt-20">
           <div className="w-full flex flex-col items-center">
@@ -62,7 +75,7 @@ const TicketContainer = () => {
                 description={description}
                 price={price}
                 image={image}
-                addToCard={addToCard}
+                addToCard={() => addToCard(name)}
               />
             ))}
           </div>
@@ -76,7 +89,7 @@ const TicketContainer = () => {
                 description={description}
                 price={price}
                 image={image}
-                addToCard={addToCard}
+                addToCard={() => addToCard(name)}
               />
             ))}
           </div>
@@ -84,15 +97,15 @@ const TicketContainer = () => {
       </div>
 
       <div className="w-1/3 mt-6 mb-10 flex flex-col items-center">
-        <div className="w-80 mx-auto rounded shadow-lg bg-gray-50 dark:bg-black dark:shadow-gray-700 flex flex-col ">
+        <div className="w-80 mx-auto rounded shadow-lg bg-primary-50 dark:bg-black dark:shadow-gray-700 flex flex-col ">
           {storedMovie && (
-            <div className="w-full flex flex-col items-center pt-10">
+            <div className="w-full flex flex-col items-center py-2">
               <img
                 src={storedMovie.image}
                 alt={storedMovie.title}
-                className="h-80"
+                className="h-72 rounded"
               />
-              <p className=" px-2 py-1 font-bold text-lg mb-1 text-gray-700 dark:text-white">
+              <p className=" px-2 py-1 font-bold text-base mb-1 mt-1 text-gray-700 dark:text-white">
                 {storedMovie.title}
               </p>
             </div>
@@ -108,19 +121,21 @@ const TicketContainer = () => {
                 count={item.count}
                 delRemoveCart={delRemoveCart}
                 addToCard={addToCard}
+                productCount={productCount} 
+                setProductCount={setProductCount}
               />
             ))}
           </div>
 
           <div>
             <div className="px-2 pt-2 font-bold text-sm mb-1 text-gray-700 dark:text-white">
-              Subtotal: $ {subtotal}
+              Subtotal: $ {subtotal.toLocaleString('en-US')}
             </div>
             <div className="px-2 font-bold text-sm mb-1 text-gray-700 dark:text-white">
-              Cargos por servicio de entradas: $ {servicio}{" "}
+              Cargo por servicio candy: $ {servicio.toLocaleString('en-US')}
             </div>
             <div className="px-2 font-bold text-lg mb-1 text-gray-700 dark:text-white">
-              <p>TOTAL: $ {total}</p>
+              <p>TOTAL: $ {total.toLocaleString('en-US')}</p>
             </div>
           </div>
           <Link to={`${!userData ? "/login" : "/candy"}`}>
