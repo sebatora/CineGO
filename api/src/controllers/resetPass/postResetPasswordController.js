@@ -89,7 +89,7 @@ const sendPasswordByEmail = (email, newPassword, firstName) => {
           <div class="center">
             <img src="cid:correoCineGo.jpg" alt="Logo" />
           </div>
-          <h1 class="message">Hola ${firstName}!</h1>
+          <h1 class="message">Hola, ¡${firstName}!</h1>
           <p class="message">Acá está tu nueva contraseña:</p>
           <p class="message"><strong>${newPassword}</strong></p>
         </body>
