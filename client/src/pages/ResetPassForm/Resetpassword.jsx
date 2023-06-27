@@ -34,7 +34,7 @@ const Resetpassword = ({ theme }) => {
         toast.error("Los datos son incorrectos. Por favor, intenta nuevamente.");
       } else {
         reset();
-        navigate("/");
+        navigate("/login");
         toast.success("Su nueva contraseña fue enviada", {
           duration: 2000
         });
