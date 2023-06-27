@@ -8,7 +8,7 @@ const options = [
   { name: "Cartelera", to: "/" },
   { name: "Candy", to: "/candy" },
   { name: "CinePlus", to: "/cineplus" },
-  { name: "Contáctanos", to: "/contact" },
+  // { name: "Contáctanos", to: "/contact" },
   // { name: "Preguntas Frecuentes", to: "/faq" },
 ];
 
@@ -90,7 +90,7 @@ function Navbar({ theme, setTheme }) {
           {!userData || Object.entries(userData).length === 0 ? (
             <Link to="/login">
               <span className="hover:text-light-400 mr-4 text-base">
-                Sign In
+                Ingresar
               </span>
             </Link>
           ) : (

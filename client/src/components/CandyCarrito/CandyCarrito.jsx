@@ -122,7 +122,7 @@ function CandyCarrito({ addCart, productCount, setProductCount }) {
         <div className="px-4 py-3 mb-2 flex justify-center items-center">
           <Link to={`${!userData ? "/login" : "/candy"}`}>
             <button
-              className="bg-primary-600 text-white font-bold py-2 px-36  rounded text-xs"
+              className="bg-primary-600 hover:bg-primary-500 text-white font-bold py-2 px-36  rounded text-xs"
               onClick={handlePay}
             >
               Comprar

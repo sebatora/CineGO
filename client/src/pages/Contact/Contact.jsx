@@ -55,7 +55,7 @@ const Contact = () => {
             className="border rounded-sm p-2"
             name="name"
             type="text"
-            placeholder="Jane Doe"
+            placeholder="Ingresa tu nombre"
             {...register("name", {
               required: "El nombre es requerido",
               maxLength: {
@@ -76,7 +76,7 @@ const Contact = () => {
             className="border rounded-sm p-2"
             name="email"
             type="email"
-            placeholder="janedoe@gmail.com"
+            placeholder="Ingresa tu email"
             {...register("email", {
               required: "El email es requerido",
               pattern: {

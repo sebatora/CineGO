@@ -135,10 +135,10 @@ const Login = ({ theme }) => {
               Iniciar sesión con Google
             </button>
             <div className="w-full flex flex-row items-center justify-center mt-4 border-t border-black dark:border-white">
-            <Link className="items-center m-4" to="/createUser">
+            <Link className="items-center m-4 text-gray-600 hover:text-primary-500" to="/createUser">
               <h5>¿No tenés cuenta?</h5>
             </Link>
-            <Link className="items-center" to="/forgotPassword">
+            <Link className="items-center text-gray-600 hover:text-primary-500" to="/forgotPassword">
               <h5>¿Olvidaste tu contraseña?</h5>
             </Link>
             </div>
