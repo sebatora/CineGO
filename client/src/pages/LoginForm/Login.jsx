@@ -51,7 +51,7 @@ const Login = ({ theme }) => {
   const handleLoginGoogle = async () => {
     try {
       setLoading(true);
-      navigate("/")
+      navigate("/");
       await loginWithGoogle();
       toast.success("Inicio de sesión exitoso");
     } catch (error) {

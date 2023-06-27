@@ -29,7 +29,7 @@ const ModalProfile = ({ setActiveModal, userData }) => {
   };
 
   return (
-    <div className="w-96 h-40 flex flex-col top-16 right-0 bg-light-100 dark:bg-dark-950 absolute uppercase border border-t-0 border-black dark:border-white dark:border-opacity-70 border-opacity-10 rounded-bl-md">
+    <div className="w-96 h-40 flex flex-col top-12 right-0 bg-light-100 dark:bg-dark-950 absolute uppercase border border-t-0 border-black dark:border-white dark:border-opacity-70 border-opacity-10 rounded-bl-md">
       <h3 className="my-4 flex justify-center select-none">
         ¡Bienvenido {userData.firstName}!
       </h3>
