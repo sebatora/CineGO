@@ -1,7 +1,7 @@
 .container {
   width: 100%;
   display: flex;
-  margin-top: 4rem;
+  margin-top: 3rem;
 }
 
 .containerProfile {
@@ -35,7 +35,6 @@
 
 .button {
   margin: 1.5rem 0;
-  transition: background-color 1.5s ease-out;
 }
 
 .inactive {
@@ -43,9 +42,11 @@
 }
 
 .active {
-  padding: 0.3rem;
+  width: 200px;
+  padding: 0.5rem;
   font-weight: bold;
-  background-color: #a6a6ca;
-  color: rgb(63, 58, 58);
+  background-color: #000000;
+  color: rgb(255, 255, 255);
   border-radius: 3px;
+  text-align: left;
 }

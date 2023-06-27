@@ -3,7 +3,6 @@ import { BiCheckCircle, BiErrorCircle } from "react-icons/bi";
 import { useDispatch } from "react-redux";
 import Swal from "sweetalert2";
 import { logoutUser, putUser } from "../../redux/actions";
-import ProfileBoxHelp from "../ProfileBoxHelp/ProfileBoxHelp";
 import style from "./ProfileChange.module.css";
 import { validateField } from "./validate";
 
@@ -97,7 +96,6 @@ function ProfileChange() {
                 </button>
               </div>
             </div>
-            <ProfileBoxHelp />
           </div>
           <div className={style.containerInfo}>
             <div className={style.containerEditProfile}>
@@ -199,6 +197,17 @@ function ProfileChange() {
                     onChange={handleChange}
                     disabled
                   />
+                  {!error.cinePlus && (
+                    <BiCheckCircle className={style.iconCheck} />
+                  )}
+                </div>
+                <div className={style.containerError}>
+                  {error.cinePlus && error.cinePlus !== "" && (
+                    <div className={style.boxError}>
+                      <BiErrorCircle className={style.iconError} />
+                      <span className={style.paragraph}>{error.cinePlus}</span>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
