@@ -74,7 +74,7 @@ function Detail() {
                 
                 <div className="w-4/5 mb-6 flex flex-col">
                   <h3>Horarios</h3>
-                  {day?.map(show => (
+                  {viernes?.map(show => (
                     <div key={show.id}>
                       <h2>{show.type}</h2>
                       <h4>{show.hour}</h4>
