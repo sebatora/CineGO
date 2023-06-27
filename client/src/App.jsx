@@ -30,6 +30,7 @@ import TicketContainer from "./pages/TicketContainer/TicketContainer";
 import Candy from "./pages/CandyContainer/CandyContainer";
 import Profile from "./pages/Profile/Profile";
 import Dashboard from "./pages/Dashboard/Dashboard";
+import Contact from "./pages/Contact/Contact";
 
 function App() {
   const navigate = useNavigate();
@@ -77,6 +78,7 @@ function App() {
           <Route path="/payment_success" element={<PaymentSuccess />} />
           <Route path="/payment_failure" element={<PaymentFailure />} />
           <Route path="/faq" element={<FaQ />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="/dashboard" element={
             <PrivateRouteAdmin>
               <Dashboard />
