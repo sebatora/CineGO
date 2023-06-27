@@ -14,9 +14,9 @@ function CinePlusBlack() {
   const subBlack = {
     type: "Cine Plus Black",
     price: 1999,
-  }
+  };
 
-  const handleSubmit = async event => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     if (!userData) {
       navigate("/login");
@@ -48,7 +48,9 @@ function CinePlusBlack() {
         </div>
         <div className="">
           <div className="h-14 grid items-center bg-black dark:bg-white border-2 border-black dark:border-white rounded-t-xl">
-            <h2 className="font-bold mx-auto text-white dark:text-black">Cine Plus Black</h2>
+            <h2 className="font-bold mx-auto text-white dark:text-black">
+              Cine Plus Black
+            </h2>
           </div>
           <div className="h-full flex flex-col justify-between p-4 border-4 border-black dark:border-white rounded-b-xl">
             <ul className="m-0 p-0">
@@ -120,7 +122,7 @@ function CinePlusBlack() {
               onClick={handleSubmit}
               className="bg-black dark:bg-white text-white dark:text-black w-7/12 mx-auto my-2 p-2 rounded-xl text-base font-bold"
             >
-              ¡Quiero suscribirme!
+              ¡Quiero suscribirme! <span>${subBlack.price}</span> por mes
             </button>
           </div>
         </div>

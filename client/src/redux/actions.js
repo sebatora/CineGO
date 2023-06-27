@@ -20,6 +20,7 @@ import {
   REMOVE_ONE_CANDY,
   SAVE_CART,
   PUT_SUBSCRIPTION,
+  DELETE_SUBSCRIPTION,
   // ERROR
 } from "./action-type";
 
@@ -120,13 +121,12 @@ export const postUser = (newUser) => {
       // }
 
       const { data } = await axios.post(`/users`, newUser);
-      
       return dispatch({ type: POST_USER, payload: data });
     } catch (error) {
       if (error.response.status === 404) {
-        let errorData = error.response.data.error
+        let errorData = error.response.data.error;
         alert(errorData);
-      //  return dispatch({type:ERROR, payload: errorData})
+        //  return dispatch({type:ERROR, payload: errorData})
       }
     }
   };
@@ -156,6 +156,17 @@ export const putUserSubscription = (user) => {
   };
 };
 
+// Eliminar la suscripción del usuario
+export const deleteUserSubscription = (id) => {
+  return async (dispatch) => {
+    try {
+      const { data } = axios.delete(`/subscription`, id);
+      return dispatch({ type: DELETE_SUBSCRIPTION, payload: data });
+    } catch (error) {
+      return error.message;
+    }
+  };
+};
 // Valida el login del usuario
 export const loginUser = (user) => {
   return async (dispatch) => {
@@ -213,7 +224,6 @@ export const addCartCandy = (name) => {
     payload: name,
   };
 };
-
 
 export const removeAllCartCandy = (name) => {
   return {

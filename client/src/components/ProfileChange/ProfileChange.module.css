@@ -46,7 +46,7 @@
 .image {
   width: 120px;
   border-radius: 50%;
-  border: 1px solid black;
+  /*   border: 1px solid black; */
 }
 
 .buttonImg {
@@ -55,15 +55,15 @@
   margin: 0.3rem;
   border-radius: 5px;
   font-weight: bold;
-  border: 1px solid black;
+  /*   border: 1px solid rgb(146, 3, 75); */
 }
 
 .buttonChange {
-  background-color: rgb(166, 166, 202) !important;
+  background-color: rgb(251, 255, 0) !important;
 }
 
 .buttonDelete {
-  background-color: rgb(231, 60, 60) !important;
+  background-color: rgb(251, 255, 0) !important;
 }
 .containerInfo {
   width: 100%;
@@ -87,9 +87,11 @@
 }
 
 .boxLabelAndInput {
-  width: 70%;
+  position: relative;
+  width: 60%;
+  margin: 0 auto;
   display: flex;
-  align-items: center;
+  flex-direction: column;
 }
 
 .labelBox {
@@ -101,7 +103,7 @@
 .inputBox {
   padding: 0.5rem;
   border-radius: 3px;
-  width: 70%;
+  width: 100%;
 }
 
 .containerError {
@@ -122,8 +124,11 @@
 }
 
 .iconCheck {
+  position: absolute;
+  left: 90%;
+  top: 50%;
   font-size: 30px;
-  color: rgb(0, 174, 255);
+  color: rgb(0, 255, 21);
   display: inline-block;
   margin: 0 1rem;
 }
@@ -145,11 +150,13 @@
   height: 3rem;
   border: 1px solid black;
   border-radius: 3px;
-  background-color: #40d8dd !important;
+  background-color: #000000 !important;
   transition: 1s ease-in-out;
+  color: white;
+  font-weight: bold;
 }
 
-.buttonSave:disabled {
+/* .buttonSave:disabled {
   background-color: rgb(190, 181, 181) !important;
   cursor: default;
   color: rgb(190, 181, 181);
@@ -160,3 +167,4 @@
   font-size: 20px;
   font-weight: bold;
 }
+ */
