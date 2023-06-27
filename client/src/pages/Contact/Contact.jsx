@@ -76,7 +76,7 @@ const Contact = () => {
 				</div>
 				<button className="bg-primary-600 hover:bg-primary-500 p-4 mt-2 text-white font-semibold" type='submit'>Enviar</button>
 			</form>
-			<MapContainer className="w-2/3 h-[570px]" center={[-34.61315, -58.37723]} zoom={10} scrollWheelZoom={false}>
+			<MapContainer className="w-2/3 h-[570px]" style={{zIndex: 1}} center={[-34.61315, -58.37723]} zoom={10} scrollWheelZoom={false}>
 				<TileLayer
 					attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 					url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
