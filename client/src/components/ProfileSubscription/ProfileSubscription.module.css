@@ -37,6 +37,13 @@
   display: flex;
 }
 
+.boxSubscriptionGold {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .buttonCancelBlack {
   width: 350px;
   height: 50px;
