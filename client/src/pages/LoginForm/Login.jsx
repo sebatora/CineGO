@@ -142,14 +142,6 @@ const Login = ({ theme }) => {
               <h5>¿Olvidaste tu contraseña?</h5>
             </Link>
             </div>
-            {/* <Link className="w-96 flex items-center" to="/createUser">
-              <button
-                type="button"
-                className="bg-primary-600 hover:bg-primary-500 py-4 px-10 w-96 text-white font-semibold"
-              >
-                Crear cuenta
-              </button>
-            </Link> */}
           </form>
         </div>
       )}

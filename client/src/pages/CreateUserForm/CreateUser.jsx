@@ -42,8 +42,7 @@ const CreateUser = ({ theme }) => {
         uploadPreset: "a2i0wk5f",
         sources: ['local'],
         resourceType:["image"],
-        clientAllowedFormats:["image"],
-        allowed_formats: ['jpg', 'jpeg', 'png']
+        clientAllowedFormats:["image"]
       },
       (err, result) => {
         if (!err && result && result.event === "success") {
@@ -78,7 +77,7 @@ const CreateUser = ({ theme }) => {
 
       await dispatch(postUser(userData));
       reset();
-      toast("Usuario creado correctamente");
+      // toast("Usuario creado correctamente");
       navigate("/login");
     } catch (error) {
       toast.error(error);
@@ -87,6 +86,7 @@ const CreateUser = ({ theme }) => {
 
   return (
     <div className="w-full h-full flex justify-center pb-8">
+     
       <form
         className="w-[720px] flex flex-col justify-center items-center p-10 border border-black dark:border-white rounded"
         onSubmit={handleSubmit(onSubmit)}
@@ -139,9 +139,9 @@ const CreateUser = ({ theme }) => {
           </div>
         </div>
 
-        <div className="w-full my-4 flex flex-col py-3 ml-12 lg:ml mt-5">
+        <div className={`w-full my-4 flex flex-col py-3 ml-12 ${errors.email ? "ml-1" : "ml-28"}`}>
           <input
-            className="border rounded-sm p-3 w-96 ml-7"
+            className="border rounded-sm p-3 w-96"
             type="text"
             placeholder="Email"
             {...register("email", {
@@ -158,7 +158,7 @@ const CreateUser = ({ theme }) => {
             </span>
           )}
         </div>
-
+          
         <div className="w-full flex justify-center mt-4">
           <div className="flex flex-col mx-6">
             <input
@@ -239,20 +239,26 @@ const CreateUser = ({ theme }) => {
 };
 
 const schema = yup.object().shape({
-  firstName: yup.string().required("El nombre es requerido"),
-  lastName: yup.string().required("El apellido es requerido"),
+  firstName: yup
+    .string()
+    .matches(/^[A-Za-z]+$/, 'El nombre solo puede contener letras')
+    .required('El nombre es requerido'),
+  lastName: yup
+    .string()
+    .matches(/^[A-Za-z]+$/, 'El apellido solo puede contener letras')
+    .required('El apellido es requerido'),
   email: yup
     .string()
-    .required("El email es requerido")
-    .email("Formato de email incorrecto"),
+    .required('El email es requerido')
+    .email('Formato de email incorrecto'),
   password: yup
     .string()
-    .required("La contraseña es requerida")
-    .min(6, "La contraseña debe tener al menos 6 caracteres"),
+    .required('La contraseña es requerida')
+    .min(6, 'La contraseña debe tener al menos 6 caracteres'),
   confirmPassword: yup
     .string()
-    .oneOf([yup.ref("password"), null], "Las contraseñas no coinciden")
-    .required("La confirmación de contraseña es requerida"),
+    .oneOf([yup.ref('password'), null], 'Las contraseñas no coinciden')
+    .required('La confirmación de contraseña es requerida'),
 });
 
 export default CreateUser;
