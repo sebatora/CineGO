@@ -28,7 +28,7 @@ function CinePlusGold() {
 
   return (
     <div className="w-4/5 flex justify-around mx-auto">
-      <div className="w-96 mt-20 rounded-lg relative">
+      <div className="w-96 mt-14 rounded-lg relative">
         <div className="">
           <div className="h-14 grid items-center bg-yellow-300 border-2 border-yellow-300 rounded-t-xl">
             <h2 className="font-bold mx-auto">Cine Plus Gold</h2>
