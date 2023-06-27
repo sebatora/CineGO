@@ -37,6 +37,12 @@ const postPurchaseController = async (userId, items, totalPrice) => {
           price,
         };
       }
+      // else if (type === "subscription") {
+
+      //   await purchase.addCandy(candy, { through: { price, quantity } });
+      //   itemDetails = {
+      //   };
+      // }
       purchasedItems.push(itemDetails);
     }
     // Asignar los detalles de la compra al campo 'items' del modelo 'purchase'
