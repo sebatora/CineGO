@@ -1,7 +1,9 @@
 const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
-  sequelize.define("purchase", {
+  sequelize.define(
+    "purchase",
+    {
       id: {
         type: DataTypes.UUID,
         primaryKey: true,
@@ -15,6 +17,15 @@ module.exports = (sequelize) => {
         type: DataTypes.DATE,
         allowNull: false,
         defaultValue: DataTypes.NOW,
+      },
+      // items: {
+      //   type: DataTypes.ARRAY,
+      //   defaultValue: [],
+      // },
+      items: {
+        type: DataTypes.JSONB,
+        allowNull: false,
+        defaultValue: [],
       },
     },
     { timestamps: false }
