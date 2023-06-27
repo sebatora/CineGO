@@ -121,6 +121,7 @@ export const postUser = (newUser) => {
 
       const { data } = await axios.post(`/users`, newUser);
       
+      alert(data);
       return dispatch({ type: POST_USER, payload: data });
     } catch (error) {
       if (error.response.status === 404) {

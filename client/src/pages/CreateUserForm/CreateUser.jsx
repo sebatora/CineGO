@@ -15,7 +15,7 @@ const CreateUser = ({ theme }) => {
   const dispatch = useDispatch();
   const [uploadedPhoto, setUploadedPhoto] = useState("");
   const cl = new cloudinary.Cloudinary({ cloud_name: "dhyqgl7ie" });
-
+  
   const navigate = useNavigate();
   const {
     register,
@@ -74,11 +74,11 @@ const CreateUser = ({ theme }) => {
       };
 
       console.log("image", userData);
-
       await dispatch(postUser(userData));
-      reset();
-      toast("Usuario creado correctamente");
+      
+      // toast("Usuario creado correctamente");
       navigate("/login");
+      reset();
     } catch (error) {
       toast.error(error);
     }
