@@ -34,6 +34,11 @@ module.exports = (sequelize) => {
         allowNull: false,
         defaultValue: 150, // Valor predeterminado de stock: 150
       },
+      activeCandy: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: true,
+      },
     },
     { timestamps: false }
   );
