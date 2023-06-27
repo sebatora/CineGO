@@ -4,8 +4,10 @@ import { removeAllCartCandy, removeOneCartCandy, saveCart } from "../../redux/ac
 import { useEffect } from "react";
 import { GoTrash } from "react-icons/go";
 import { Toaster, toast } from "react-hot-toast";
+import { Link } from "react-router-dom";
 
 function CandyCarrito({addCart, productCount, setProductCount}) {
+  const userLogin = JSON.parse(window.localStorage.getItem("user"));
   const cart = useSelector((state) => state.cart);
   const userData = useSelector((state) => state.userData);
   const dispatch = useDispatch();
@@ -109,12 +111,14 @@ function CandyCarrito({addCart, productCount, setProductCount}) {
           <p>TOTAL: $ {total.toLocaleString('en-US')} </p>
         </div>
         <div className="px-4 py-3 mb-2 flex justify-center items-center">
-          <button
-            className="bg-primary-600 text-white font-bold py-2 px-36  rounded text-xs"
-            onClick={handlePay}
-          >
-            Comprar
-          </button>
+          <Link to={`${!userLogin ? "/login" : "/candy"}`}>
+            <button
+              className="bg-primary-600 text-white font-bold py-2 px-36  rounded text-xs"
+              onClick={handlePay}
+            >
+              Comprar
+            </button>
+          </Link>
         </div>
 
       </div>

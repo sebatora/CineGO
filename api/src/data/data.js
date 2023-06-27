@@ -413,7 +413,7 @@ const dataAllCandy = [
       "1 Balde pop + 2 gaseosas 24oz + 1 golosina sin eleccion + 1 recarga de balde",
     price: 250,
     image:
-      "https://static.cinemarkhoyts.com.ar/Images/ConcessionItemImage/A000000184.png",
+      "https://res.cloudinary.com/dhyqgl7ie/image/upload/v1687876321/Imagen%20Candy/1_-_Combo_mega_Recargado_woddir.png",
     category: "combos",
   },
   {
@@ -422,7 +422,7 @@ const dataAllCandy = [
       "2 Bolsas pop medianas + 4 gaseosas medianas + 2 golosinas sin eleccion. Imagen a modo ilustrativo.",
     price: 450,
     image:
-      "https://static.cinemarkhoyts.com.ar/Images/ConcessionItemImage/A000000096.png",
+      "https://res.cloudinary.com/dhyqgl7ie/image/upload/v1687876321/Imagen%20Candy/2_-_Combo_Familiar_csty0o.png",
     category: "combos",
   },
   {
@@ -431,7 +431,7 @@ const dataAllCandy = [
       "Nachos con queso + 1 gaseosa grande. Imagen a modo ilustrativo.",
     price: 150,
     image:
-      "https://static.cinemarkhoyts.com.ar/Images/ConcessionItemImage/A000000099.png",
+      "https://res.cloudinary.com/dhyqgl7ie/image/upload/v1687876321/Imagen%20Candy/3_-_Combo_Nachos_o2lc7p.png",
     category: "combos",
   },
   {
@@ -439,7 +439,7 @@ const dataAllCandy = [
     description: "1 Balde de pochoclos. Imagen a modo ilustrativo.",
     price: 120,
     image:
-      "https://static.cinemarkhoyts.com.ar/Images/ConcessionItemImage/A000000107.png",
+      "https://res.cloudinary.com/dhyqgl7ie/image/upload/v1687876321/Imagen%20Candy/4_-_Balde_de_Pochoclos_wta0cn.png",
     category: "pochoclos",
   },
   {
@@ -447,7 +447,7 @@ const dataAllCandy = [
     description: "1 Bolsa de pochoclos mediana. Imagen a modo ilustrativo.",
     price: 100,
     image:
-      "https://static.cinemarkhoyts.com.ar/Images/ConcessionItemImage/A000000111.png",
+      "https://res.cloudinary.com/dhyqgl7ie/image/upload/v1687876321/Imagen%20Candy/5_-_Pop_Mediano_eqqjqh.jpg",
     category: "pochoclos",
   },
   {
@@ -455,7 +455,7 @@ const dataAllCandy = [
     description: "1 bolsa de pochoclos chica. Imagen a modo ilustrativo.",
     price: 50,
     image:
-      "https://static.cinemarkhoyts.com.ar/Images/ConcessionItemImage/A000000185.png",
+      "https://res.cloudinary.com/dhyqgl7ie/image/upload/v1687876321/Imagen%20Candy/6_-_Pop_Chico_zccc8n.png",
     category: "pochoclos",
   },
   {
@@ -463,7 +463,7 @@ const dataAllCandy = [
     description: "1 gaseosa 24 oz. Imagen a modo ilustrativo.",
     price: 80,
     image:
-      "https://static.cinemarkhoyts.com.ar/Images/ConcessionItemImage/A000000113.png",
+      "https://res.cloudinary.com/dhyqgl7ie/image/upload/v1687876322/Imagen%20Candy/7_-_Bebida_Grande_iej4al.png",
     category: "bebidas",
   },
   {
@@ -472,7 +472,7 @@ const dataAllCandy = [
       "1 Agua. Modelo sujeto a disponibilidad. Imagen a modo ilustrativo.",
     price: 60,
     image:
-      "https://static.cinemarkhoyts.com.ar/Images/ConcessionItemImage/A000000126.png",
+      "https://res.cloudinary.com/dhyqgl7ie/image/upload/v1687876322/Imagen%20Candy/8_-_Agua_sc61mi.png",
     category: "bebidas",
   },
   {
@@ -480,7 +480,7 @@ const dataAllCandy = [
     description: "1 Smoothie naranja/durazno. Imagen a modo ilustrativo.",
     price: 40,
     image:
-      "https://static.cinemarkhoyts.com.ar/Images/ConcessionItemImage/A000001823.png",
+      "https://res.cloudinary.com/dhyqgl7ie/image/upload/v1687876322/Imagen%20Candy/9_-_Smoothie_Naranja-Durazno_auf9yf.png",
     category: "bebidas",
   },
   {
@@ -488,7 +488,7 @@ const dataAllCandy = [
     description: "1 Smoothie Frutos Rojos. Imagen a modo ilustrativo.",
     price: 30,
     image:
-      "https://static.cinemarkhoyts.com.ar/Images/ConcessionItemImage/A000001489.png",
+      "https://res.cloudinary.com/dhyqgl7ie/image/upload/v1687876322/Imagen%20Candy/10_-_Smoothie_Limonada_bmuvsd.png",
     category: "bebidas",
   },
   {
@@ -496,7 +496,7 @@ const dataAllCandy = [
     description: "1 Smoothie Limonada. Imagen a modo ilustrativo.",
     price: 70,
     image:
-      "https://static.cinemarkhoyts.com.ar/Images/ConcessionItemImage/A000001511.png",
+      "https://res.cloudinary.com/dhyqgl7ie/image/upload/v1687876806/Imagen%20Candy/22_-_Smoothie_Limonada_km3yvi.png",
     category: "bebidas",
   },
   {
@@ -504,7 +504,7 @@ const dataAllCandy = [
     description: "1 Pancho. Imagen a modo ilustrativo.",
     price: 90,
     image:
-      "https://static.cinemarkhoyts.com.ar/Images/ConcessionItemImage/A000000125.png",
+      "https://res.cloudinary.com/dhyqgl7ie/image/upload/v1687876322/Imagen%20Candy/11_-_Pancho_xoxk3n.png",
     category: "snacks",
   },
   {
@@ -512,7 +512,7 @@ const dataAllCandy = [
     description: "Nachos crocantes servidos con queso fundido.",
     price: 80,
     image:
-      "https://static.cinemarkhoyts.com.ar/Images/ConcessionItemImage/A000000112.png",
+      "https://res.cloudinary.com/dhyqgl7ie/image/upload/v1687876322/Imagen%20Candy/12_-_Nachos_con_Queso_fblmeo.png",
     category: "snacks",
   },
   {
@@ -521,7 +521,7 @@ const dataAllCandy = [
       "Porcion de 5 unidades de 20 grs cada uno. Imagen a modo ilustrativo.",
     price: 70,
     image:
-      "https://static.cinemarkhoyts.com.ar/Images/ConcessionItemImage/A000002869.png",
+      "https://res.cloudinary.com/dhyqgl7ie/image/upload/v1687876322/Imagen%20Candy/13_-_Pan_de_Queso_gea9zc.png",
     category: "snacks",
   },
   {
@@ -529,15 +529,15 @@ const dataAllCandy = [
     description: "1 café grande + 1 porción de pan de queso (5 unidades)",
     price: 300,
     image:
-      "https://static.cinemarkhoyts.com.ar/Images/ConcessionItemImage/A000002933.png",
+      "https://res.cloudinary.com/dhyqgl7ie/image/upload/v1687876322/Imagen%20Candy/14_-_Cafe_Snack_Grande_Pan_de_Queso_xikloa.png",
     category: "cafeteria",
   },
   {
-    name: "Café Snack Grade",
+    name: "Café Snack Grande",
     description: "1 Cafe 16 oz. Imagen a modo ilustrativo.",
     price: 80,
     image:
-      "https://static.cinemarkhoyts.com.ar/Images/ConcessionItemImage/A000002516.png",
+      "https://res.cloudinary.com/dhyqgl7ie/image/upload/v1687876322/Imagen%20Candy/15_-_Cafe_Snack_Grande_uq5b6u.png",
     category: "cafeteria",
   },
   {
@@ -545,7 +545,7 @@ const dataAllCandy = [
     description: "1 Cafe 16 oz + 1 alfajor. Imagen a modo ilustrativo.",
     price: 90,
     image:
-      "https://static.cinemarkhoyts.com.ar/Images/ConcessionItemImage/A000002518.png",
+      "https://res.cloudinary.com/dhyqgl7ie/image/upload/v1687876323/Imagen%20Candy/16_-_Cafe_Snack_Alfajor_snjc9n.png",
     category: "cafeteria",
   },
   {
@@ -553,7 +553,7 @@ const dataAllCandy = [
     description: "Imagen a modo ilustrativo. Valor por unidad.",
     price: 60,
     image:
-      "https://static.cinemarkhoyts.com.ar/Images/ConcessionItemImage/A000003305.png",
+      "https://res.cloudinary.com/dhyqgl7ie/image/upload/v1687876323/Imagen%20Candy/17_-_Mogul_Moras_ebka0s.png",
     category: "golosinas",
   },
   {
@@ -562,7 +562,7 @@ const dataAllCandy = [
       "1 Gomitas Haribo. Imagen a modo ilustrativo. Modelo sujeto a disponibilidad.",
     price: 40,
     image:
-      "https://static.cinemarkhoyts.com.ar/Images/ConcessionItemImage/A000002555.png",
+      "https://res.cloudinary.com/dhyqgl7ie/image/upload/v1687876323/Imagen%20Candy/18_-_Gomitas_Aribo_bnzso7.png",
     category: "golosinas",
   },
   {
@@ -570,7 +570,7 @@ const dataAllCandy = [
     description: "1 Rocklets chico. Imagen a modo ilustrativo.",
     price: 50,
     image:
-      "https://static.cinemarkhoyts.com.ar/Images/ConcessionItemImage/A000000129.png",
+      "https://res.cloudinary.com/dhyqgl7ie/image/upload/v1687876323/Imagen%20Candy/19_-_Rocklets_Chicos_k9flmm.jpg",
     category: "golosinas",
   },
   {
@@ -578,7 +578,7 @@ const dataAllCandy = [
     description: "alfajor de chocolate con leche.",
     price: 70,
     image:
-      "https://static.cinemarkhoyts.com.ar/Images/ConcessionItemImage/A000000137.png",
+      "https://res.cloudinary.com/dhyqgl7ie/image/upload/v1687876323/Imagen%20Candy/20_-_Alfajores_ckyxdo.png",
     category: "golosinas",
   },
   {
@@ -587,7 +587,7 @@ const dataAllCandy = [
       "1 m&m Imagen a modo ilustrativo. Modelo sujeto a disponibilidad.",
     price: 30,
     image:
-      "https://static.cinemarkhoyts.com.ar/Images/ConcessionItemImage/A000000118.png",
+      "https://res.cloudinary.com/dhyqgl7ie/image/upload/v1687876323/Imagen%20Candy/21_-_m_m_tsa9st.jpg",
     category: "golosinas",
   },
 ];
