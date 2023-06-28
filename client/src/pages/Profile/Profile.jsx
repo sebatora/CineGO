@@ -1,77 +1,67 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import ProfileChange from "../../components/ProfileChange/ProfileChange";
-import style from "./Profile.module.css";
 import ProfileSubscription from "../../components/ProfileSubscription/ProfileSubscription";
 import ProfileSecurity from "../../components/ProfileSecurity/ProfileSecurity";
 import ProfileRecord from "../../components/ProfileRecord/ProfileRecord";
-import { Navigate } from "react-router-dom";
 
 function Profile() {
-  const userData = JSON.parse(window.localStorage.getItem("user"));
   const [activeComponent, setActiveComponent] = useState("profileChange");
+  const userData = JSON.parse(window.localStorage.getItem("user"));
 
   const handleButtonClick = (componentName) => {
     setActiveComponent(componentName);
   };
 
-  if (!userData) {
-    return <Navigate to="/login" />;
-  }
-
   return (
-    <div className={style.container}>
-      <div className={style.containerProfile}>
-        <div className={style.boxTittle}>
-          <h1 className={style.h1}>Perfil</h1>
-        </div>
-        <div className={style.containerButton}>
+    <div className="w-full flex mt-12">
+      <div className="w-1/5 mb-52 rounded-br-[150px] bg-light-300 dark:bg-slate-900">
+        <h1 className="w-full mt-5 ml-5">Perfil</h1>
+        <div className="w-3/4 p-4">
           <button
-            className={`${style.button} ${
+            className={`w-40 my-4 text-start ${
               activeComponent === "profileChange"
-                ? style.active
-                : style.inactive
+                && "font-bold border-b-4 border-light-700 dark:border-dark-700 ml-2 scale-105"
             }`}
             onClick={() => handleButtonClick("profileChange")}
             disabled={activeComponent === "profileChange"}
           >
-            Modificar Perfil
+            <span className={activeComponent === "profileChange" && "text-light-700"}>Modificar Perfil</span>
           </button>
           <button
-            className={`${style.button} ${
+            className={`w-52 my-4 text-start ${
               activeComponent === "profileSubscription"
-                ? style.active
-                : style.inactive
+                && "font-bold border-b-4 border-light-700 dark:border-dark-700 ml-2 scale-105"
             }`}
             onClick={() => handleButtonClick("profileSubscription")}
             disabled={activeComponent === "profileSubscription"}
           >
-            Modificar Suscripcion
+            <span className={activeComponent === "profileSubscription" && "text-light-700"}>Modificar Suscripción</span>
           </button>
+          {userData.password && (
+            <button
+              className={`w-28 my-4 text-start ${
+                activeComponent === "profileSecurity"
+                  && "font-bold border-b-4 border-light-700 dark:border-dark-700 ml-2 scale-105"
+              }`}
+              onClick={() => handleButtonClick("profileSecurity")}
+              disabled={activeComponent === "profileSecurity"}
+            >
+              <span className={activeComponent === "profileSecurity" && "text-light-700"}>Seguridad</span>
+            </button>
+          )}
           <button
-            className={`${style.button} ${
-              activeComponent === "profileSecurity"
-                ? style.active
-                : style.inactive
-            }`}
-            onClick={() => handleButtonClick("profileSecurity")}
-            disabled={activeComponent === "profileSecurity"}
-          >
-            Seguridad
-          </button>
-          <button
-            className={`${style.button} ${
+            className={`w-48 my-4 text-start ${
               activeComponent === "profileRecord"
-                ? style.active
-                : style.inactive
+                && "font-bold border-b-4 border-light-700 dark:border-dark-700 ml-2 scale-105"
             }`}
             onClick={() => handleButtonClick("profileRecord")}
             disabled={activeComponent === "profileRecord"}
           >
-            Historial de compras
+            <span className={activeComponent === "profileRecord" && "text-light-700"}>Historial de compras</span>
           </button>
         </div>
       </div>
-      <div className={style.containerItems}>
+      <div className="w-4/5 ml-auto">
         {activeComponent === "profileChange" && <ProfileChange />}
         {activeComponent === "profileSubscription" && <ProfileSubscription />}
         {activeComponent === "profileSecurity" && <ProfileSecurity />}

@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import style from "./Efecto.module.css";
+import { useEffect, useState } from "react";
 
 const TextAnimation = ({ word }) => {
   const [letters, setLetters] = useState([]);
@@ -9,15 +8,15 @@ const TextAnimation = ({ word }) => {
   }, [word]);
 
   return (
-    <div className={style.textAnimation}>
+    <div className="w-96 h-20 flex justify-center items-center bg-dark-100 mb-6 rounded-md">
       {letters.map((letter, index) => (
         <span
           key={index}
-          className={`${style.animatedLetter} ${
-            index % 2 === 0 ? style.black : style.white
+          className={`animate-colorAnimation text-3xl ${
+            index % 2 === 0 ? "text-black" : "text-white"
           }`}
           style={{
-            animationDelay: `${index * 0.5}s`, // Añade un retraso único para cada letra
+            animationDelay: `${index * 0.1}s`, // Añade un retraso único para cada letra
           }}
         >
           {letter}
