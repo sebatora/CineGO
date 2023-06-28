@@ -4,7 +4,6 @@ import { Toaster, toast } from "react-hot-toast";
 import { useForm } from "react-hook-form";
 import { MapContainer, Marker, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import LocationIcon from "../../assets/location_icon.png";
 
 const Contact = () => {
   const { VITE_SERVICE_ID, VITE_TEMPLATE_ID, VITE_PUBLIC_KEY } = import.meta

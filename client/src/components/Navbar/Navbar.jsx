@@ -95,7 +95,6 @@ function Navbar({ theme, setTheme }) {
             </Link>
           ) : (
             <button
-              className="bg-white rounded-full p-1"
               onClick={() => setActiveModal(!activeModal)}
             >
               <img

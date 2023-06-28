@@ -12,10 +12,16 @@ export default {
           "0%": { transform: "translateX(0) rotate(-2deg)" },
           "50%": { transform: "translateX(10px) rotate(10deg)" },
           "100%": { transform: "translateX(0) rotate(-2deg)" },
+        },
+        colorAnimation: {
+          "0%": { color: "black" },
+          "50%": { color: "white" },
+          "100%": { color: "black" },
         }
       },
       animation: {
-        tambaleo: "tambaleo 1.5s infinite"
+        tambaleo: "tambaleo 1.5s infinite",
+        colorAnimation: "colorAnimation 1s infinite"
       },
       colors: {
         'primary': {

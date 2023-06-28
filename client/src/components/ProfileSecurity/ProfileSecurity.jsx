@@ -60,6 +60,7 @@ function ProfileSecurity() {
   };
 
   return (
+
     <div className={style.container}>
       <div className={style.containerH2}>
         <h2 className={style.h2}>Cambiar contraseña</h2>
@@ -111,6 +112,7 @@ function ProfileSecurity() {
         </div>
       </form>
     </div>
+
   );
 }
 

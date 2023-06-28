@@ -18,7 +18,7 @@ const Carousel = ({ images }) => {
   };
 
   return (
-    <div className="w-11/12 h-[420px] relative overflow-hidden flex flex-col items-center mt-2">
+    <div className="w-3/4 h-[420px] relative overflow-hidden flex flex-col items-center mt-2">
       <div className="w-11/12 h-11/12 rounded-md">
         {images.map((image, index) => (
           <img

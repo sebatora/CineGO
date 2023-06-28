@@ -1,18 +1,18 @@
-.container {
+/* .container {
   width: 100%;
   display: flex;
   margin-top: 3rem;
-}
+} */
 
-.containerProfile {
+/* .containerProfile {
   width: 20%;
   padding: 1rem;
   margin: 0 auto;
   border-right: 1px solid black;
   color: rgb(95, 86, 86);
-}
+} */
 
-.boxTittle {
+/* .boxTittle {
   display: flex;
   align-items: center;
   padding: 0 0.5rem;
@@ -50,4 +50,4 @@
   color: rgb(255, 255, 255);
   border-radius: 3px;
   text-align: left;
-}
+} */
