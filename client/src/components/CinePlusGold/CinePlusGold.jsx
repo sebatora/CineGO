@@ -21,7 +21,7 @@ function CinePlusGold() {
     if (!userData) {
       navigate("/login");
     } else if (userData.cinePlus === "Gold") {
-      toast.error("Ya estas suscripto a esta plan");
+      toast.error("Ya estas suscripto a este plan!");
     } else {
       const { data } = await axios.post("/subscription", {
         subscription: subGold,
@@ -51,7 +51,7 @@ function CinePlusGold() {
                   <h3 className="m-0 text-sm font-bold">
                     2 Entradas Mensuales CinePlus
                   </h3>
-                  <p className="m-0 text-xs font-normal">GRATIS!</p>
+                  <p className="m-0 text-xs font-normal">*GRATIS!</p>
                 </div>
                 <FaCheck className="dark:text-white" />
               </li>
@@ -68,7 +68,7 @@ function CinePlusGold() {
               <li className="flex justify-around m-2">
                 <div className="w-4/5">
                   <h3 className="m-0 text-sm font-bold">Exclusivos</h3>
-                  <p className="m-0 text-xs font-normal">Avant premiere</p>
+                  <p className="m-0 text-xs font-normal">*Avant premiere</p>
                 </div>
                 <FaCheck className="dark:text-white" />
               </li>
@@ -76,7 +76,7 @@ function CinePlusGold() {
                 <div className="w-4/5">
                   <h3 className="m-0 text-sm font-bold">20% Off</h3>
                   <p className="m-0 text-xs font-normal">
-                    en todas las compras!
+                    *En todas las compras
                   </p>
                 </div>
                 <FaCheck className="dark:text-white" />
