@@ -20,6 +20,9 @@ import {
   REMOVE_ONE_CANDY,
   SAVE_CART,
   PUT_SUBSCRIPTION,
+  DELETE_SUBSCRIPTION,
+  FORGOT_PASSWORD_USER,
+  // ERROR
 } from "./action-type";
 
 import axios from "axios";
@@ -41,6 +44,7 @@ export const getMovieById = (id) => {
   return async (dispatch) => {
     try {
       const { data } = await axios.get(`/movies/${id}`);
+      window.localStorage.setItem("movie", JSON.stringify(data));
       return dispatch({ type: GET_MOVIE_BY_ID, payload: data });
     } catch (error) {
       return error.message;
@@ -118,9 +122,14 @@ export const postUser = (newUser) => {
       // }
 
       const { data } = await axios.post(`/users`, newUser);
+      alert(data)
       return dispatch({ type: POST_USER, payload: data });
     } catch (error) {
-      return error.message;
+      if (error.response.status === 404) {
+        let errorData = error.response.data.error;
+        alert(errorData);
+        //  return dispatch({type:ERROR, payload: errorData})
+      }
     }
   };
 };
@@ -131,6 +140,18 @@ export const putUser = (user) => {
     try {
       const { data } = await axios.put(`/users`, user);
       return dispatch({ type: PUT_USER, payload: data });
+    } catch (error) {
+      return error.message;
+    }
+  };
+};
+
+// Envia la contraseña olvidada de un usuario
+export const forgotPassUser = (userData) => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.post(`/reset`, userData);
+      return dispatch({ type: FORGOT_PASSWORD_USER, payload: data });
     } catch (error) {
       return error.message;
     }
@@ -149,6 +170,17 @@ export const putUserSubscription = (user) => {
   };
 };
 
+// Eliminar la suscripción del usuario
+export const deleteUserSubscription = (id) => {
+  return async (dispatch) => {
+    try {
+      const { data } = axios.delete(`/subscription`, id);
+      return dispatch({ type: DELETE_SUBSCRIPTION, payload: data });
+    } catch (error) {
+      return error.message;
+    }
+  };
+};
 // Valida el login del usuario
 export const loginUser = (user) => {
   return async (dispatch) => {
@@ -206,7 +238,6 @@ export const addCartCandy = (name) => {
     payload: name,
   };
 };
-
 
 export const removeAllCartCandy = (name) => {
   return {

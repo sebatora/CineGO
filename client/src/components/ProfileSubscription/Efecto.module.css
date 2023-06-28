@@ -1,0 +1,35 @@
+/* @keyframes colorAnimation {
+  0% {
+    color: black;
+  }
+  50% {
+    color: white;
+  }
+  100% {
+    color: black;
+  }
+}
+
+.textAnimation {
+  display: inline-block;
+  background-color: yellow;
+  width: 350px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px 10px 0 0;
+}
+
+.animatedLetter {
+  animation: colorAnimation 1s infinite;
+  font-size: 50px;
+}
+
+.white {
+  color: white;
+}
+
+.black {
+  color: black;
+} */

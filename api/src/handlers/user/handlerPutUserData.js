@@ -2,15 +2,15 @@ const putUserData = require("../../controllers/user/putUserDataController");
 
 const handlerPutUserData = async (req, res) => {
   try {
-    const { id, firstName, lastName, phone, email, password } = req.body;
+    const { id, firstName, lastName, email, password, image } = req.body;
     // llamo al controlador para actualizar los datos del usuario
     const userData = await putUserData(
       id,
       firstName,
       lastName,
-      phone,
       email,
-      password
+      password,
+      image
     );
 
     res.status(200).json(userData);

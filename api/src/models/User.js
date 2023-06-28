@@ -29,9 +29,6 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         defaultValue: "https://cdn-icons-png.flaticon.com/512/666/666201.png",
       },
-      phone: {
-        type: DataTypes.INTEGER,
-      },
       cinePlus: {
         type: DataTypes.STRING,
         defaultValue: "Estandar",
@@ -39,6 +36,11 @@ module.exports = (sequelize) => {
       isAdmin: {
         type: DataTypes.BOOLEAN,
         defaultValue: false,
+      },
+      activeUser: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: true,
       },
     },
     { timestamps: false }

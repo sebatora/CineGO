@@ -1,3 +1,54 @@
-.boxSunscription {
+/* .container {
+  width: 100%;
+  font-size: 14px;
+}
+
+.containerH2 {
+  width: 95%;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  margin: 0 auto;
+  background-color: white;
+  border-radius: 3px;
+}
+
+.h2 {
+  padding: 0 0.5rem;
+}
+
+.containerSubscription {
+  width: 100%;
+  height: 100%;
+  padding: 2rem 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.h3 {
+  margin-bottom: 1rem;
+}
+
+.boxSubscription {
+  width: 100%;
   display: flex;
 }
+
+.boxSubscriptionGold {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.buttonCancelBlack {
+  width: 350px;
+  height: 50px;
+  background-color: black;
+  color: white;
+  border-radius: 0 0 10px 10px;
+  font-size: 20px;
+} */

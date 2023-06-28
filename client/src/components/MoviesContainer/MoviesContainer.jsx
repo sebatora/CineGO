@@ -25,10 +25,9 @@ function MoviesContainer() {
       {loading ? (
         <Spinner />
       ) : (
-        <div className="w-full">
+        <div className="w-full mt-8">
           <div className="w-full pl-24">
-            <h1 className="w-full my-4">Cartelera</h1>
-            <div className="w-4/5 flex">
+            <div className="w-4/5 flex justify-items ">
               <Filter />
               <SearchBar />
             </div>
@@ -36,13 +35,14 @@ function MoviesContainer() {
           <div className="w-full flex flex-wrap justify-center">
             {allMovies.length ? (
               allMovies.map(
-                ({ id, title, image, genres, clasification }) => (
+                ({ id, title, image, genres, clasification, duration }) => (
                   <MovieCard
                     key={id}
                     id={id}
                     title={title}
                     genres={genres}
                     clasification={clasification}
+                    duration={duration}
                     image={image}
                   />
                 )

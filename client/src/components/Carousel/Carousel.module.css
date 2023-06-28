@@ -6,7 +6,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: .2rem;
+  margin-top: 0.2rem;
 }
 
 .containerButtons {
@@ -26,7 +26,7 @@
   margin: 0 5px;
   cursor: pointer;
   opacity: 0.5;
-  transition:  0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
 }
 
 .indexButton.active {
@@ -55,4 +55,3 @@
 .carouselImage.active {
   opacity: 1;
 }
-

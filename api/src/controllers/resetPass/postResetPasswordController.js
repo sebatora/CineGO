@@ -1,9 +1,9 @@
 const { User } = require("../../db");
 const bcrypt = require("bcrypt");
 const nodemailer = require("nodemailer");
-const path = require('path');
+const path = require("path");
 
-const postResetPasswordController = async (email, firstName) => {
+const postResetPasswordController = async (firstName, email) => {
   // Generamos una nueva contraseña de manera aleatoria
   const newPassword = generateRandomPassword();
 
@@ -23,7 +23,8 @@ const postResetPasswordController = async (email, firstName) => {
 };
 
 const generateRandomPassword = () => {
-  const characters = "qwertyuiopasdfghjklzxcvbnmqwQWERTYUIOPASDFGHJKLZXCVBNM0123456789";
+  const characters =
+    "qwertyuiopasdfghjklzxcvbnmqwQWERTYUIOPASDFGHJKLZXCVBNM0123456789";
   let newPassword = "";
   for (let i = 0; i < 8; i++) {
     const randomIndex = Math.floor(Math.random() * characters.length);
@@ -39,11 +40,11 @@ const sendPasswordByEmail = (email, newPassword, firstName) => {
     service: "hotmail",
     auth: {
       user: "cinego75@hotmail.com",
-      pass: "Proyecto1"
-    }
+      pass: "Proyecto1",
+    },
   });
 
-  const imagePath = path.join(__dirname, "../assets/correoCineGo.jpg");
+  const imagePath = path.join(__dirname, "../../assets/correoCineGo.jpg");
 
   // Configurar el mensaje del correo con estilos HTML
   const mailOptions = {
@@ -88,7 +89,7 @@ const sendPasswordByEmail = (email, newPassword, firstName) => {
           <div class="center">
             <img src="cid:correoCineGo.jpg" alt="Logo" />
           </div>
-          <h1 class="message">Hola ${firstName}!</h1>
+          <h1 class="message">Hola, ¡${firstName}!</h1>
           <p class="message">Acá está tu nueva contraseña:</p>
           <p class="message"><strong>${newPassword}</strong></p>
         </body>
@@ -98,9 +99,9 @@ const sendPasswordByEmail = (email, newPassword, firstName) => {
       {
         filename: "correoCineGo.jpg",
         path: imagePath,
-        cid: "correoCineGo.jpg"
-      }
-    ]
+        cid: "correoCineGo.jpg",
+      },
+    ],
   };
 
   // Enviar el correo
@@ -115,8 +116,4 @@ const sendPasswordByEmail = (email, newPassword, firstName) => {
 
 module.exports = postResetPasswordController;
 
-
-
-
-
-// ACTUALIZACION DE CORREO OCUPEN ESE 
+// ACTUALIZACION DE CORREO OCUPEN ESE

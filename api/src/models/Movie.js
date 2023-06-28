@@ -45,7 +45,7 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      onBillBoard: {
+      activeMovie: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
         defaultValue: true,

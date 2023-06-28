@@ -1,0 +1,24 @@
+.container {
+  width: 15%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  margin: 0 auto;
+  background-color: white;
+  border-radius: 3px;
+  text-align: center;
+}
+
+.boxH4 {
+  width: 82%;
+  margin: 0 auto;
+  padding: 1rem 0;
+}
+
+.h4 {
+  color: rgb(56, 212, 17);
+  font-size: 18px;
+  font-weight: bold;
+}

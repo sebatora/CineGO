@@ -19,6 +19,7 @@ export const PUT_USER = "PUT_USER";
 export const DELETE_USER = "DELETE_USER";
 export const LOGIN_USER = "LOGIN_USER";
 export const LOGOUT_USER = "LOGOUT_USER";
+export const FORGOT_PASSWORD_USER = "FORGOT_PASSWORD_USER";
 
 // RUTAS DE CANDY
 export const GET_CANDY = "GET_CANDY";
@@ -34,3 +35,6 @@ export const REMOVE_ONE_CART = "REMOVE_ONE_CART";
 
 // RUTAS SUSCRIPCION
 export const PUT_SUBSCRIPTION = "PUT_SUBSCRIPTION";
+export const DELETE_SUBSCRIPTION = "DELETE_SUBSCRIPTION";
+
+// export const ERROR = "ERROR";

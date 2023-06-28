@@ -5,6 +5,9 @@ import { FaExclamationCircle } from "react-icons/fa";
 function ProfileRecord() {
   return (
     <div className={style.container}>
+      <h2 className="w-full flex items-center justify-center h-16 bg-light-200 dark:bg-slate-800">
+        Suscripción
+      </h2>
       <main>
         <div>
           <h1>Hola "Nombre del usuario".</h1>

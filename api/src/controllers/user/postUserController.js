@@ -4,22 +4,28 @@ const nodemailer = require("nodemailer");
 const path = require("path");
 
 const postUser = async ({ firstName, lastName, email, password, image }) => {
-  if (!firstName || !lastName || !email || !password) throw new Error("Faltan datos");
+  if (!firstName || !lastName || !email || !password)
+    throw new Error("Faltan datos");
 
   const userExists = await User.findOne({ where: { email } });
   if (userExists) throw new Error("El usuario ya existe");
 
   const passwordHash = await bcrypt.hash(password, 10);
 
-  const createdUser = await User.create({
+  const userData = {
     firstName,
     lastName,
     email,
-    image,
     password: passwordHash,
-  });
+  };
 
-  const imagePath = path.join(__dirname, "../../assets/Bienvenido.jpg");
+  if (image !== "") {
+    userData.image = image;
+  }
+
+  const createdUser = await User.create(userData);
+
+  const imagePath = path.join(__dirname, "../../assets/bienvenido.jpg");
 
   // Configurar el servicio de envío de correos electrónicos (SMTP)
   const transporter = nodemailer.createTransport({
@@ -33,7 +39,7 @@ const postUser = async ({ firstName, lastName, email, password, image }) => {
   // Configurar el mensaje de correo electrónico con estilos HTML
   const mailOptions = {
     from: "cinego75@hotmail.com",
-    to: email,
+    to: createdUser.email,
     subject: "¡Bienvenido a cineGO!",
     html: `
       <html>
@@ -71,7 +77,7 @@ const postUser = async ({ firstName, lastName, email, password, image }) => {
         </head>
         <body>
           <div class="center">
-            <img src="cid:Bienvenido.jpg" alt="Logo" />
+            <img src="cid:bienvenido.jpg" alt="Logo" />
           </div>
           <h1 class="message">Hola ${firstName}!</h1>
           <p class="message">Tu cuenta ha sido creada exitosamente. ¡Disfruta de la mejor experiencia de cine!</p>
@@ -80,9 +86,9 @@ const postUser = async ({ firstName, lastName, email, password, image }) => {
     `,
     attachments: [
       {
-        filename: "Bienvenido.jpg",
+        filename: "bienvenido.jpg",
         path: imagePath,
-        cid: "correoCineGo.jpg",
+        cid: "bienvenido.jpg",
       },
     ],
   };
@@ -100,5 +106,3 @@ const postUser = async ({ firstName, lastName, email, password, image }) => {
 };
 
 module.exports = postUser;
-
-

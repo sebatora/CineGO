@@ -1,22 +1,31 @@
 const { mercadopago } = require("../../utils/mercadoPago");
 
-const postSubscription = async ({ type, price }) => {
-	const response = await mercadopago.preapproval.create({
-		reason: type,
-		auto_recurring: {
-			frequency: 1,
-			frequency_type: "months",
-			transaction_amount: price,
-			currency_id: "ARS"
-		},
-		back_url: "https://cine-go-ten.vercel.app/payment_success",
-		payer_email: "test_user_378129027@testuser.com",
-		status: "pending",
-	});
+const postSubscription = async ({ subscription, userData }) => {
+  const response = await mercadopago.preferences.create({
+    items: [
+      {
+        title: subscription.type,
+        currency_id: "ARS",
+        quantity: 1,
+        unit_price: Number(subscription.price),
+      },
+    ],
+    payer: {
+      name: userData.firstName,
+      surname: userData.lastName,
+      email: userData.email,
+    },
+    back_urls: {
+      success: "https://cine-go-ten.vercel.app/payment_success" || "http://localhost:3000/payment_success",
+      failure: "https://cine-go-ten.vercel.app/payment_failure" || "http://localhost:3000/payment_failure",
+      pending: "",
+    },
+    auto_return: "approved",
+  });
 
-	if(!response) throw new Error("Error al crear orden");
+  if (!response) throw new Error("Error al crear orden");
 
-	return response.body;
-}
+  return response.body;
+};
 
 module.exports = postSubscription;

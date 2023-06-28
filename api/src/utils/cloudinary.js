@@ -13,6 +13,8 @@ const uploadImage = async (filePath) => await cloudinary.uploader.upload(filePat
     folder: "cineGo",
   });
 
+  
+
 
 module.exports = { uploadImage }
 
