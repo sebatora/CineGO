@@ -3,7 +3,13 @@ const bcrypt = require("bcrypt");
 const nodemailer = require("nodemailer");
 const path = require("path");
 
-const postResetPasswordController = async (firstName, email) => {
+const postResetPassword = async ( email, firstName) => {
+  // Convertir el correo electrónico a minúsculas
+  email = email.toLowerCase();
+
+  // Convertir el nombre a minúsculas y capitalizar la primera letra
+  firstName = firstName.toLowerCase();
+
   // Generamos una nueva contraseña de manera aleatoria
   const newPassword = generateRandomPassword();
 
@@ -114,6 +120,6 @@ const sendPasswordByEmail = (email, newPassword, firstName) => {
   });
 };
 
-module.exports = postResetPasswordController;
+module.exports = postResetPassword;
 
 // ACTUALIZACION DE CORREO OCUPEN ESE
