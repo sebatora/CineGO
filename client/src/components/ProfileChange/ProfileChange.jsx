@@ -98,7 +98,7 @@ function ProfileChange() {
                   Nombre:
                 </label>
                 <input
-                  className={`p-2 rounded-md ${disabled ? "bg-light-200 placeholder:text-light-400" : ""}`}
+                  className={`p-2 rounded-md ${disabled ? "bg-light-200 placeholder:text-light-400 dark:bg-slate-900" : ""}`}
                   type="text"
                   name="firstName"
                   value={user.firstName}
@@ -127,7 +127,7 @@ function ProfileChange() {
                   Apellido:
                 </label>
                 <input
-                  className={`p-2 rounded-md ${disabled ? "bg-light-200 placeholder:text-light-400" : ""}`}
+                  className={`p-2 rounded-md ${disabled ? "bg-light-200 placeholder:text-light-400 dark:bg-slate-900" : ""}`}
                   type="text"
                   name="lastName"
                   value={user.lastName}
@@ -156,7 +156,7 @@ function ProfileChange() {
                   Email:
                 </label>
                 <input
-                  className={`p-2 rounded-md ${disabled ? "bg-light-200 placeholder:text-light-400" : ""}`}
+                  className={`p-2 rounded-md ${disabled ? "bg-light-200 placeholder:text-light-400 dark:bg-slate-900" : ""}`}
                   type="text"
                   name="email"
                   value={user.email}
