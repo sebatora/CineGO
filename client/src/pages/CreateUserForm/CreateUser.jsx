@@ -73,8 +73,6 @@ const CreateUser = ({ theme }) => {
         image: uploadedPhoto,
       };
 
-      console.log("image", userData);
-
       await dispatch(postUser(userData));
       reset();
       // toast("Usuario creado correctamente");
