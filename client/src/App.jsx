@@ -5,7 +5,7 @@ import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import { AuthProvider } from "./context/authContext";
 
 
-axios.defaults.baseURL = import.meta.env.APIURL || "http://localhost:3001";
+axios.defaults.baseURL = "https://cinego-production.up.railway.app" || "http://localhost:3001";
 
 // Components
 import Footer from "./components/Footer/Footer";
