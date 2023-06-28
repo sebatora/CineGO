@@ -54,13 +54,18 @@ function ProfileSubscription() {
             <CinePlusBlack />
         </div>
       ) : ( */}
-        <div className="w-full h-screen flex flex-col justify-center items-center">
-          <h3 className="mb-4 font-bold">Tenes el plan mas tocho de todos</h3>
-          <TextAnimation word={userData.cinePlus.toUpperCase()} />
-          <button className="w-80 p-4 rounded-lg bg-black hover:bg-black/80 dark:bg-white dark:hover:bg-white/80" onClick={handleSubmit}>
-            <span className="text-white dark:text-black">Cancelar suscripción</span>
-          </button>
-        </div>
+      <div className="w-full h-screen flex flex-col justify-center items-center">
+        <h3 className="mb-4 font-bold">Tenes el plan mas tocho de todos</h3>
+        <TextAnimation word={userData.cinePlus.toUpperCase()} />
+        <button
+          className="w-80 p-4 rounded-lg bg-black hover:bg-black/80 dark:bg-white dark:hover:bg-white/80"
+          onClick={handleSubmit}
+        >
+          <span className="text-white dark:text-black">
+            Cancelar suscripción
+          </span>
+        </button>
+      </div>
       {/* )} */}
     </div>
   );
