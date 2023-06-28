@@ -49,9 +49,9 @@ function CinePlusGold() {
               <li className="flex justify-around m-2">
                 <div className="w-4/5">
                   <h3 className="m-0 text-sm font-bold">
-                    2 Entradas Mensuales CinePlus
+                    2 Entradas Mensuales
                   </h3>
-                  <p className="m-0 text-xs font-normal">GRATIS!</p>
+                  <p className="m-0 text-xs font-normal">GRATIS</p>
                 </div>
                 <FaCheck className="dark:text-white" />
               </li>
@@ -76,7 +76,7 @@ function CinePlusGold() {
                 <div className="w-4/5">
                   <h3 className="m-0 text-sm font-bold">20% Off</h3>
                   <p className="m-0 text-xs font-normal">
-                    *En todas las compras
+                    *En todas tus compras
                   </p>
                 </div>
                 <FaCheck className="dark:text-white" />
@@ -84,7 +84,7 @@ function CinePlusGold() {
             </ul>
             <button
               onClick={handleSubmit}
-              className="w-7/12 mx-auto bg-yellow-300 hover:bg-yellow-200 my-2 p-2 rounded-xl text-base font-bold"
+              className="w-7/12 mx-auto bg-yellow-300 hover:bg-yellow-200 my-8 p-2 rounded-xl text-base font-bold"
             >
               ¡Quiero suscribirme!
             </button>
