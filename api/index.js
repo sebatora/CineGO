@@ -1,8 +1,8 @@
 require("dotenv").config();
 const app = require("./src/app.js");
-const postBulkGenres = require("./src/controllers/genre/postBulkGenresController.js");
-const postBulkMovies = require("./src/controllers/movie/postBulkMoviesController.js");
-const postBulkCandies = require("./src/controllers/candy/postBulkCandyController.js");
+// const postBulkGenres = require("./src/controllers/genre/postBulkGenresController.js");
+// const postBulkMovies = require("./src/controllers/movie/postBulkMoviesController.js");
+// const postBulkCandies = require("./src/controllers/candy/postBulkCandyController.js");
 const { sequelize } = require("./src/db.js");
 
 async function main(){
@@ -16,9 +16,9 @@ async function main(){
 		});
 
 		// SE EJECTAN LAS FUNCIONES PARA QUE CREE AUTOMATICAMENTE LAS TABLAS AL INICIAR EL SERVER
-		postBulkGenres();
-		postBulkMovies();
-		postBulkCandies();
+		// postBulkGenres();
+		// postBulkMovies();
+		// postBulkCandies();
 	} catch (error) {
 		console.error("Error synchronizing database:", error);
 	}
