@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { BiCheckCircle, BiErrorCircle } from "react-icons/bi";
 import { useDispatch } from "react-redux";
 import Swal from "sweetalert2";
+import "sweetalert2/dist/sweetalert2.css";
 import { logoutUser, putUser } from "../../redux/actions";
 import { validateField } from "../../helpers/validateProfile";
 
