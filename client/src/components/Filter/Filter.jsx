@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState, useRef } from "react";
-import { useDispastch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { filterOrder, getMovies } from "../../redux/actions";
 
 const Filter = () => {
