@@ -12,6 +12,7 @@ const routerSubscription = require("./routes/subscription.routes.js");
 const routerPayment = require("./routes/payment.routes.js");
 const routerResetPassword = require("./routes/resetpass.routes.js");
 const routerPurchase = require("./routes/purchase.routes.js");
+const allBulk = require("./routes/allBulkCreate.routes.js");
 
 const app = express();
 
@@ -25,10 +26,11 @@ app.use("/movies", routerMovie);
 app.use("/users", routerUser);
 app.use("/genres", routerGenre);
 app.use("/order", routerOrder);
-app.use("/candy", routerCandy)
+app.use("/candy", routerCandy);
 app.use("/subscription", routerSubscription);
 app.use("/payment", routerPayment);
 app.use("/reset", routerResetPassword);
 app.use("/purchase", routerPurchase);
+app.use("/create-proyect/cineGooooooo.!", allBulk);
 
 module.exports = app;
