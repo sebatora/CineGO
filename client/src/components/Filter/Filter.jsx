@@ -35,7 +35,7 @@ const Filter = () => {
   }, [orderData]);
 
   return (
-    <div className="w-2/3 flex justify-between space-x-4">
+    <div className="w-2/3 flex justify-between space-x-4 ml-36">
       <select
         className="w-48 bg-transparent dark:text-white border border-light-500 rounded-xl p-2"
         name="order"

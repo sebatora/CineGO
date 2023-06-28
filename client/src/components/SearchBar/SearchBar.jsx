@@ -17,8 +17,8 @@ const SearchBar = () => {
   }, [dispatch, name]);
 
   return (
-    <div className="w-3/4 flex ml-8">
-      <button className="mx-2" onClick={() => setActiveSearch(!activeSearch)}>
+    <div className="w-4/4 flex ml-8">
+      <button className="mx-2" onClick={() => setActiveSearch(!activeSearch)} style={{ cursor: "default" }}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -33,21 +33,16 @@ const SearchBar = () => {
           />
         </svg>
       </button>
-      {activeSearch && (
-        <input
-          className={`${
-            activeSearch
-              ? "animate-fade-right animate-once animate-delay-100"
-              : ""
-          } w-3/4 appearance-none bg-transparent focus:border-b-2 dark:focus:border-b-white dark:text-white focus:outline-none focus:border-black py-1 px-2`}
-          type="search"
-          name="search"
-          onChange={handleChange}
-          placeholder="Buscar película"
-        />
-      )}
-    </div>
-  );
+
+      <input
+        className="w-4/4 appearance-none bg-transparent focus:border-b-2 dark:focus:border-b-white dark:text-white focus:outline-none focus:border-black py-1 px-2"
+        type="search"
+        name="search"
+        onChange={handleChange}
+        placeholder="Buscar película"
+      />
+  </div>
+);
 };
 
 export default SearchBar;

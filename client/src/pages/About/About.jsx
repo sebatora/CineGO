@@ -103,7 +103,8 @@ const About = () => {
     },
   ];
 
-  const teamMemberCards = teamMembers.map((member) => (
+  const shuffledTeamMembers = [...teamMembers].sort(() => Math.random() - 0.5);
+  const teamMemberCards = shuffledTeamMembers.map((member) => (
     <div key={member.name} className="w-1/2 sm:w-2/4 md:w-1/3 lg:w-1/4 p-2 ">
       <div className="bg-gray-200 rounded-lg shadow-md p-4 transition duration-300 transform-gpu hover:scale-105 hover:shadow-custom">
         <img
