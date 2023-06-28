@@ -13,7 +13,7 @@ function CinePlusBlack() {
 
   const subBlack = {
     type: "Cine Plus Black",
-    price: 1999,
+    price: 999,
   };
 
   const handleSubmit = async (event) => {
@@ -21,7 +21,10 @@ function CinePlusBlack() {
     if (!userData) {
       navigate("/login");
     } else {
-      const { data } = await axios.post("/subscription", { subscription: subBlack, userData });
+      const { data } = await axios.post("/subscription", {
+        subscription: subBlack,
+        userData,
+      });
       window.location.href = data.init_point;
       dispatch(putUserSubscription({ id: userData.id, cinePlus: "Black" }));
       dispatch(logoutUser());
@@ -61,7 +64,7 @@ function CinePlusBlack() {
               <li className="flex justify-around m-2">
                 <div className="w-4/5">
                   <h3 className="m-0 text-sm font-bold">
-                    2 Entradas Mensuales CinePlus
+                    4 Entradas Mensuales CinePlus
                   </h3>
                   <p className="m-0 text-xs font-normal">GRATIS!</p>
                 </div>
@@ -72,42 +75,24 @@ function CinePlusBlack() {
                   <h3 className="m-0 text-sm font-bold">
                     Regalo de bienvenida
                   </h3>
-                  <p className="m-0 text-xs font-normal">
-                    Combo Mega o combo Nachos *Por única vez.
-                  </p>
+                  <p className="m-0 text-xs font-normal">*Por única vez.</p>
                 </div>
                 <FaCheck className="dark:text-white" />
               </li>
 
               <li className="flex justify-around m-2">
                 <div className="w-4/5">
-                  <h3 className="m-0 text-sm font-bold">Suma Puntos</h3>
+                  <h3 className="m-0 text-sm font-bold">Avant premiere</h3>
+                  <p className="m-0 text-xs font-normal">Acceso exclusivo</p>
+                </div>
+                <FaCheck className="dark:text-white" />
+              </li>
+              <li className="flex justify-around m-2">
+                <div className="w-4/5">
+                  <h3 className="m-0 text-sm font-bold">50% Off</h3>
                   <p className="m-0 text-xs font-normal">
-                    Con todas tus compras
+                    en todas las compras!
                   </p>
-                </div>
-                <FaCheck className="dark:text-white" />
-              </li>
-              <li className="flex justify-around m-2">
-                <div className="w-4/5">
-                  <h3 className="m-0 text-sm font-bold">Canje de Puntos</h3>
-                  <p className="m-0 text-xs font-normal">Por entradas</p>
-                </div>
-                <FaCheck className="dark:text-white" />
-              </li>
-              <li className="flex justify-around m-2">
-                <div className="w-4/5">
-                  <h3 className="m-0 text-sm font-bold">
-                    Funciones y concursos
-                  </h3>
-                  <p className="m-0 text-xs font-normal">Exclusivos</p>
-                </div>
-                <FaCheck className="dark:text-white" />
-              </li>
-              <li className="flex justify-around m-2">
-                <div className="w-4/5">
-                  <h3 className="m-0 text-sm font-bold">50% Off en Entradas</h3>
-                  <p className="m-0 text-xs font-normal">1 vez al mes!</p>
                 </div>
                 <FaCheck className="dark:text-white" />
               </li>
