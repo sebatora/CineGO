@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import Swal from "sweetalert2";
+import "sweetalert2/dist/sweetalert2.css";
 import { logoutUser, putUserSubscription } from "../../redux/actions";
 import CinePlusBlack from "../CinePlusBlack/CinePlusBlack";
 import CinePlusGold from "../CinePlusGold/CinePlusGold";
