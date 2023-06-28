@@ -73,8 +73,6 @@ const CreateUser = ({ theme }) => {
         image: uploadedPhoto,
       };
 
-      console.log("image", userData);
-
       await dispatch(postUser(userData));
       reset();
       // toast("Usuario creado correctamente");
@@ -139,7 +137,7 @@ const CreateUser = ({ theme }) => {
           </div>
         </div>
 
-        <div className={`w-full my-4 flex flex-col py-3 ml-12 ${errors.email ? "ml-1" : "ml-28"}`}>
+        <div className={`w-full my-4 flex flex-col py-3 ml-12 ${errors.email ? "ml-28" : "ml-28"}`}>
           <input
             className="border rounded-sm p-3 w-96"
             type="text"
@@ -241,11 +239,11 @@ const CreateUser = ({ theme }) => {
 const schema = yup.object().shape({
   firstName: yup
     .string()
-    .matches(/^[A-Za-z]+$/, 'El nombre solo puede contener letras')
+    .matches(/^[A-Za-z]+$/, 'Solo puede contener letras')
     .required('El nombre es requerido'),
   lastName: yup
     .string()
-    .matches(/^[A-Za-z]+$/, 'El apellido solo puede contener letras')
+    .matches(/^[A-Za-z]+$/, 'Solo puede contener letras')
     .required('El apellido es requerido'),
   email: yup
     .string()
@@ -254,11 +252,11 @@ const schema = yup.object().shape({
   password: yup
     .string()
     .required('La contraseña es requerida')
-    .min(6, 'La contraseña debe tener al menos 6 caracteres'),
+    .min(6, 'Mínimo 6 caracteres'),
   confirmPassword: yup
     .string()
     .oneOf([yup.ref('password'), null], 'Las contraseñas no coinciden')
-    .required('La confirmación de contraseña es requerida'),
+    .required('Confirmación requerida'),
 });
 
 export default CreateUser;
