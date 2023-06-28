@@ -7,6 +7,10 @@ const postUser = async ({ firstName, lastName, email, password, image }) => {
   if (!firstName || !lastName || !email || !password)
     throw new Error("Faltan datos");
 
+    firstName = firstName.toUpperCase();
+    lastName = lastName.toUpperCase();
+    email = email.toLowerCase();
+
   const userExists = await User.findOne({ where: { email } });
   if (userExists) throw new Error("El usuario ya existe");
 

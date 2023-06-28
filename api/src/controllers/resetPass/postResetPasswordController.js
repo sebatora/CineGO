@@ -8,7 +8,7 @@ const postResetPassword = async ( email, firstName) => {
   email = email.toLowerCase();
 
   // Convertir el nombre a minúsculas y capitalizar la primera letra
-  firstName = firstName.toLowerCase();
+  firstName = firstName.toUpperCase();
 
   // Generamos una nueva contraseña de manera aleatoria
   const newPassword = generateRandomPassword();
