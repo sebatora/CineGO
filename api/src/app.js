@@ -31,6 +31,6 @@ app.use("/subscription", routerSubscription);
 app.use("/payment", routerPayment);
 app.use("/reset", routerResetPassword);
 app.use("/purchase", routerPurchase);
-app.use("/create-proyect/cineGooooooo.!", allBulk);
+app.use("/create-proyect", allBulk);
 
 module.exports = app;
