@@ -14,50 +14,74 @@ function Profile() {
 
   return (
     <div className="w-full flex mt-12">
-      <div className="w-1/5 mb-52 rounded-br-[150px] bg-light-300 dark:bg-slate-900">
+      <div className="w-1/5 h-[500px] mb-52 rounded-br-[150px] bg-light-300 dark:bg-slate-900">
         <h1 className="w-full mt-5 ml-5">Perfil</h1>
         <div className="w-3/4 p-4">
           <button
             className={`w-40 my-4 text-start ${
-              activeComponent === "profileChange"
-                && "font-bold border-b-4 border-light-700 dark:border-dark-700 ml-2 scale-105"
+              activeComponent === "profileChange" &&
+              "font-bold border-b-4 border-light-700 dark:border-dark-700 ml-2 scale-105"
             }`}
             onClick={() => handleButtonClick("profileChange")}
             disabled={activeComponent === "profileChange"}
           >
-            <span className={activeComponent === "profileChange" && "text-light-700"}>Modificar Perfil</span>
+            <span
+              className={
+                activeComponent === "profileChange" && "text-light-700"
+              }
+            >
+              Modificar Perfil
+            </span>
           </button>
           <button
             className={`w-52 my-4 text-start ${
-              activeComponent === "profileSubscription"
-                && "font-bold border-b-4 border-light-700 dark:border-dark-700 ml-2 scale-105"
+              activeComponent === "profileSubscription" &&
+              "font-bold border-b-4 border-light-700 dark:border-dark-700 ml-2 scale-105"
             }`}
             onClick={() => handleButtonClick("profileSubscription")}
             disabled={activeComponent === "profileSubscription"}
           >
-            <span className={activeComponent === "profileSubscription" && "text-light-700"}>Modificar Suscripción</span>
+            <span
+              className={
+                activeComponent === "profileSubscription" && "text-light-700"
+              }
+            >
+              Modificar Suscripción
+            </span>
           </button>
           {userData.password && (
             <button
               className={`w-28 my-4 text-start ${
-                activeComponent === "profileSecurity"
-                  && "font-bold border-b-4 border-light-700 dark:border-dark-700 ml-2 scale-105"
+                activeComponent === "profileSecurity" &&
+                "font-bold border-b-4 border-light-700 dark:border-dark-700 ml-2 scale-105"
               }`}
               onClick={() => handleButtonClick("profileSecurity")}
               disabled={activeComponent === "profileSecurity"}
             >
-              <span className={activeComponent === "profileSecurity" && "text-light-700"}>Seguridad</span>
+              <span
+                className={
+                  activeComponent === "profileSecurity" && "text-light-700"
+                }
+              >
+                Seguridad
+              </span>
             </button>
           )}
           <button
             className={`w-48 my-4 text-start ${
-              activeComponent === "profileRecord"
-                && "font-bold border-b-4 border-light-700 dark:border-dark-700 ml-2 scale-105"
+              activeComponent === "profileRecord" &&
+              "font-bold border-b-4 border-light-700 dark:border-dark-700 ml-2 scale-105"
             }`}
             onClick={() => handleButtonClick("profileRecord")}
             disabled={activeComponent === "profileRecord"}
           >
-            <span className={activeComponent === "profileRecord" && "text-light-700"}>Historial de compras</span>
+            <span
+              className={
+                activeComponent === "profileRecord" && "text-light-700"
+              }
+            >
+              Historial de compras
+            </span>
           </button>
         </div>
       </div>

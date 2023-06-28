@@ -1,9 +1,9 @@
-import React from "react";
-import { FaCheck, FaTimes } from "react-icons/fa";
-import { useDispatch } from "react-redux";
-import { putUserSubscription } from "../../redux/actions";
 import axios from "axios";
+import React from "react";
+import { FaCheck } from "react-icons/fa";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { putUserSubscription } from "../../redux/actions";
 
 function CinePlusGold() {
   const userData = JSON.parse(window.localStorage.getItem("user"));
@@ -31,7 +31,7 @@ function CinePlusGold() {
 
   return (
     <div className="w-4/5 flex justify-around mx-auto">
-      <div className="w-96 mt-14 rounded-lg relative">
+      <div className="w-96 mt-2 rounded-lg relative">
         <div className="">
           <div className="h-20 grid items-center bg-yellow-300 border-2 border-yellow-300 rounded-t-xl">
             <h2 className="font-bold mx-auto">Cine Plus Gold</h2>
@@ -39,7 +39,7 @@ function CinePlusGold() {
               ${subGold.price} por mes
             </span>
           </div>
-          <div className="h-[480px] flex flex-col justify-between p-4 border-4 border-yellow-300 rounded-b-xl">
+          <div className="h-[280px] flex flex-col justify-between p-4 border-4 border-yellow-300 rounded-b-xl">
             <ul className="m-0 p-0">
               <li className="flex justify-around m-2">
                 <div className="w-4/5">

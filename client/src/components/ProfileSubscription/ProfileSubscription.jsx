@@ -7,10 +7,12 @@ import CinePlusBlack from "../CinePlusBlack/CinePlusBlack";
 import CinePlusGold from "../CinePlusGold/CinePlusGold";
 import TextAnimation from "./Efecto";
 import style from "./ProfileSubscription.module.css";
+import { useNavigate } from "react-router-dom";
 
 function ProfileSubscription() {
   const userData = JSON.parse(window.localStorage.getItem("user"));
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const userCinePlus = {
     id: userData.id,
     cinePlus: "Estandar",
@@ -30,6 +32,8 @@ function ProfileSubscription() {
       if (result.isConfirmed) {
         dispatch(putUserSubscription(userCinePlus));
         dispatch(logoutUser());
+        navigate("/");
+
         window.localStorage.removeItem("user");
         Swal.fire(
           "Listo!",
@@ -42,19 +46,67 @@ function ProfileSubscription() {
 
   return (
     <div className="mb-10">
+      <h2 className="w-full flex items-center justify-center h-16 bg-light-200 dark:bg-slate-800">
+        Suscripción
+      </h2>
+      {userData.cinePlus === "Estandar" ? (
+        <div className="">
+          <div className="flex flex-col items-center mt-2">
+            <h3 className="mb-4 font-bold">Tu plan: </h3>
+            <TextAnimation word={userData.cinePlus.toUpperCase()} />
+          </div>
+          <div className="flex">
+            <CinePlusGold />
+            <CinePlusBlack />
+          </div>
+        </div>
+      ) : userData.cinePlus === "Gold" ? (
+        <div className="">
+          <div className="flex flex-col items-center mt-2">
+            <h3 className="mb-4 font-bold">Tu plan: </h3>
+            <div className="flex">
+              <TextAnimation word={userData.cinePlus.toUpperCase()} />
+              <button
+                onClick={handleSubmit}
+                className="w-96 h-20 flex justify-center items-center bg-dark-400 mb-6 rounded-md text-3xl mx-2 font-bold"
+              >
+                Cancelar suscripción
+              </button>
+            </div>
+          </div>
+          <div className="flex">
+            <CinePlusBlack />
+          </div>
+        </div>
+      ) : (
+        <div className="flex items-center justify-center">
+          <div className="flex flex-col items-center mt-24">
+            <h3 className="mb-4 font-bold">Tenes el plan mas tocho de todos</h3>
+            <div>
+              <TextAnimation word={userData.cinePlus.toUpperCase()} />
+              <button
+                onClick={handleSubmit}
+                className="w-96 h-20 flex justify-center items-center bg-dark-400 mb-6 rounded-md text-3xl"
+              >
+                Cancelar suscripción
+              </button>
+            </div>
+            <div className="flex">
+              <CinePlusGold />
+            </div>
+          </div>
+        </div>
+      )}
       {/* <h2 className="w-full flex items-center justify-center h-16 bg-light-200 dark:bg-slate-800">Suscripción actual: {userData.cinePlus} </h2>
       {userData.cinePlus === "Estandar" ? (
-        <div className="flex items-center">
-          <CinePlusGold />
-          <CinePlusBlack />
-        </div>
+          
       ) : userData.cinePlus === "Gold" ? (
         <div className="flex items-center">
           <h2>Pasate a: </h2>
             <CinePlusBlack />
         </div>
       ) : ( */}
-      <div className="w-full h-screen flex flex-col justify-center items-center">
+      {/*       <div className="w-full h-screen flex flex-col justify-center items-center">
         <h3 className="mb-4 font-bold">Tenes el plan mas tocho de todos</h3>
         <TextAnimation word={userData.cinePlus.toUpperCase()} />
         <button
@@ -65,7 +117,7 @@ function ProfileSubscription() {
             Cancelar suscripción
           </span>
         </button>
-      </div>
+      </div> */}
       {/* )} */}
     </div>
   );

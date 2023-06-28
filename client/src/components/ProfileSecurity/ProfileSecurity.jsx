@@ -61,9 +61,9 @@ function ProfileSecurity() {
 
   return (
     <div className={style.container}>
-      <div className={style.containerH2}>
-        <h2 className={style.h2}>Cambiar contraseña</h2>
-      </div>
+      <h2 className="w-full flex items-center justify-center h-16 bg-light-200 dark:bg-slate-800">
+        Suscripción
+      </h2>
       <form
         onSubmit={handleSubmit}
         className={style.containerFormProfileSecurity}
