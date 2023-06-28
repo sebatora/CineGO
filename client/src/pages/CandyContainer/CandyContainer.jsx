@@ -40,8 +40,9 @@ function CandyContainer() {
   };
 
   useEffect(() => {
-    dispatch(getCandy());
-    setLoading(false);
+    dispatch(getCandy()).then(() => {
+      setLoading(false);
+    });
   }, []);
 
   return (
