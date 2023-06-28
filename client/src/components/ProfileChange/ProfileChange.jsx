@@ -18,11 +18,12 @@ function ProfileChange() {
     image: "",
   });
   const [disabled, setDisabled] = useState(false);
-  
+  const [uploadedPhoto, setUploadedPhoto] = useState("");
+
   useEffect(() => {
-    if(!userData.password){
-      setDisabled(true)
-    } 
+    if (!userData.password) {
+      setDisabled(true);
+    }
   }, []);
 
   function handleChange(e) {
@@ -39,9 +40,34 @@ function ProfileChange() {
     }));
   }
 
+  const handleUploadPhoto = () => {
+    const widget_cloudinary = window.cloudinary.createUploadWidget(
+      {
+        cloudName: "dhyqgl7ie",
+        uploadPreset: "a2i0wk5f",
+        sources: ['local'],
+        resourceType: ["image"],
+        clientAllowedFormats: ["image"],
+      },
+      (err, result) => {
+        if (!err && result && result.event === "success") {
+          const image = result.info.secure_url;
+          setUploadedPhoto(image); // Almacenar la URL de la foto subida
+          toast("Imagen subida con éxito");
+        }
+      }
+    );
+
+    widget_cloudinary.open();
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (user.firstName || user.lastName || user.email) {
+    const savePic = {
+      ...user,
+      image: uploadedPhoto,
+    };
+    if (user.firstName || user.lastName || user.email || savePic.image) {
       Swal.fire({
         title: "Vas a modificar tus datos. Estas seguro?",
         text: "Tendras que volver a iniciar sesion",
@@ -52,7 +78,7 @@ function ProfileChange() {
         confirmButtonText: "Si!",
       }).then((result) => {
         if (result.isConfirmed) {
-          dispatch(putUser(user));
+          dispatch(putUser(savePic));
           dispatch(logoutUser());
           window.localStorage.removeItem("user");
           setUser({
@@ -66,7 +92,9 @@ function ProfileChange() {
             "Listo!",
             "Modificaste tus datos. Volve a iniciar sesion",
             "success"
-          );
+          ).then(() => {
+            window.location.href = "/login"; 
+          });
         }
       });
     } else {
@@ -78,14 +106,17 @@ function ProfileChange() {
     }
   };
 
+
   return (
     <div className="w-full">
       <h2 className="w-full flex items-center justify-center h-16 bg-light-200 dark:bg-slate-800">Editar perfil</h2>
       <form className="w-full flex flex-col" onSubmit={handleSubmit}>
           <div className="w-full flex flex-col items-center h-44 my-6">
-            <img className="w-32 rounded-full" src={userData.image} />
+          <img className="w-32 rounded-full" src={uploadedPhoto || userData.image} alt="Profile" />
             <button
               type="button"
+              id="btn-photo"
+              onClick={handleUploadPhoto}
               className="bg-primary-600 hover:bg-primary-500 text-center px-4 mt-4 py-2 rounded-md font-bold text-white"
             >
               Cambiar
