@@ -7,7 +7,7 @@ const postPurchaseController = async (userId, items, totalPrice) => {
 
     // Iterar sobre los items comprados
     for (const item of items) {
-      const { type, itemId, price, quantity } = item;
+      const { type, itemId, price, quantity, cinePlus } = item;
       let itemDetails;
       // Restar la cantidad comprada del stock correspondiente (Show o Candy)
       if (type === "show") {
@@ -36,13 +36,17 @@ const postPurchaseController = async (userId, items, totalPrice) => {
           quantity,
           price,
         };
+      } else if (type === "subscription") {
+        const subscriptionUser = await User.findByPk(userId);
+        subscriptionUser.cinePlus = cinePlus; // Actualizar el atributo cinePlus según el valor proporcionado en el cuerpo
+        await subscriptionUser.save();
+        itemDetails = {
+          // id: itemId,
+          name: `Subscription ${cinePlus}`,
+          quantity,
+          price,
+        };
       }
-      // else if (type === "subscription") {
-
-      //   await purchase.addCandy(candy, { through: { price, quantity } });
-      //   itemDetails = {
-      //   };
-      // }
       purchasedItems.push(itemDetails);
     }
     // Asignar los detalles de la compra al campo 'items' del modelo 'purchase'
