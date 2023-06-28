@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 import "sweetalert2/dist/sweetalert2.css";
 import { logoutUser, putUser } from "../../redux/actions";
 import style from "./ProfileSecurity.module.css";
-import { validateForm } from "./validation";
+import { validateForm } from "../../helpers/validationSecurity";
 
 function ProfileSecurity() {
   const userData = JSON.parse(window.localStorage.getItem("user"));
@@ -60,7 +60,6 @@ function ProfileSecurity() {
   };
 
   return (
-
     <div className={style.container}>
       <div className={style.containerH2}>
         <h2 className={style.h2}>Cambiar contraseña</h2>
@@ -112,7 +111,6 @@ function ProfileSecurity() {
         </div>
       </form>
     </div>
-
   );
 }
 

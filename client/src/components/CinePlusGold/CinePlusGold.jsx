@@ -12,7 +12,7 @@ function CinePlusGold() {
 
   const subGold = {
     type: "Cine Plus Gold",
-    price: 1499,
+    price: 499,
   };
 
   const handleSubmit = async (event) => {
@@ -20,7 +20,10 @@ function CinePlusGold() {
     if (!userData) {
       navigate("/login");
     } else {
-      const { data } = await axios.post("/subscription", { subscription: subGold, userData });
+      const { data } = await axios.post("/subscription", {
+        subscription: subGold,
+        userData,
+      });
       window.location.href = data.init_point;
       dispatch(putUserSubscription({ id: userData.id, cinePlus: "Gold" }));
     }
@@ -52,30 +55,11 @@ function CinePlusGold() {
                   <h3 className="m-0 text-sm font-bold">
                     Regalo de bienvenida
                   </h3>
-                  <p className="m-0 text-xs font-normal">
-                    Combo Mega o combo Nachos *Por única vez.
-                  </p>
+                  <p className="m-0 text-xs font-normal">*Por única vez.</p>
                 </div>
                 <FaCheck className="dark:text-white" />
               </li>
-              <li className="flex justify-around m-2">
-                <div className="w-4/5">
-                  <h3 className="m-0 text-sm font-bold">Suma Puntos</h3>
-                  <p className="m-0 text-xs font-normal">
-                    Con todas tus compras
-                  </p>
-                </div>
-                <FaCheck className="dark:text-white" />
-              </li>
-              <li className="flex justify-around m-2">
-                <div className="w-4/5">
-                  <h3 className="m-0 text-sm font-bold">Canje de Puntos</h3>
-                  <p className="m-0 text-xs font-normal">
-                    Por entradas y combos
-                  </p>
-                </div>
-                <FaCheck className="dark:text-white" />
-              </li>
+
               <li className="flex justify-around m-2">
                 <div className="w-4/5">
                   <h3 className="m-0 text-sm font-bold">
@@ -83,14 +67,16 @@ function CinePlusGold() {
                   </h3>
                   <p className="m-0 text-xs font-normal">Exclusivos</p>
                 </div>
-                <FaTimes className="dark:text-white" />
+                <FaCheck className="dark:text-white" />
               </li>
               <li className="flex justify-around m-2">
                 <div className="w-4/5">
-                  <h3 className="m-0 text-sm font-bold">50% Off en Entradas</h3>
-                  <p className="m-0 text-xs font-normal">1 vez al mes!</p>
+                  <h3 className="m-0 text-sm font-bold">25% Off</h3>
+                  <p className="m-0 text-xs font-normal">
+                    en todas las compras!
+                  </p>
                 </div>
-                <FaTimes className="dark:text-white" />
+                <FaCheck className="dark:text-white" />
               </li>
             </ul>
             <button

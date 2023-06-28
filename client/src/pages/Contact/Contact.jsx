@@ -38,7 +38,6 @@ const Contact = () => {
     }
   };
 
-
   return (
     <div className="mt-20 px-10 py-4 flex">
       <Toaster />
@@ -47,7 +46,7 @@ const Contact = () => {
         ref={form}
         onSubmit={handleSubmit(sendMessage)}
       >
-        <h2 className="pb-3">Contáctanos</h2>
+        <h2 className="pb-3">Contacto</h2>
         <div className={`flex flex-col ${errors.name ? "mb-0" : "mb-2"}`}>
           <label htmlFor="name">Nombre</label>
           <input

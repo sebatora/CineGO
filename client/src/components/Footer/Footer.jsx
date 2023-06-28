@@ -42,7 +42,7 @@ function Footer({ theme }) {
           </span>
           <span className="p-6 text-sm">
             <Link className="hover:text-light-400" to="/contact">
-              Contáctanos
+              Contacto
             </Link>
           </span>
           <span className="p-6 text-sm">
