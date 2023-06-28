@@ -410,7 +410,7 @@ const dataAllCandy = [
   {
     name: "Combo Mega Recargado",
     description:
-      "1 Balde pop + 2 gaseosas 24oz + 1 golosina sin eleccion + 1 recarga de balde",
+      "1 Balde pop + 2 gaseosas 24oz + 1 golosina sin eleccion + 1 recarga de balde. Imagen a modo ilustrativo.",
     price: 250,
     image:
       "https://res.cloudinary.com/dhyqgl7ie/image/upload/v1687876321/Imagen%20Candy/1_-_Combo_mega_Recargado_woddir.png",
@@ -469,7 +469,7 @@ const dataAllCandy = [
   {
     name: "Agua",
     description:
-      "1 Agua. Modelo sujeto a disponibilidad. Imagen a modo ilustrativo.",
+      "1 Agua. Imagen a modo ilustrativo.",
     price: 60,
     image:
       "https://res.cloudinary.com/dhyqgl7ie/image/upload/v1687876322/Imagen%20Candy/8_-_Agua_sc61mi.png",
@@ -509,7 +509,7 @@ const dataAllCandy = [
   },
   {
     name: "Nachos con Queso",
-    description: "Nachos crocantes servidos con queso fundido.",
+    description: "Nachos crocantes servidos con queso fundido. Imagen a modo ilustrativo.",
     price: 80,
     image:
       "https://res.cloudinary.com/dhyqgl7ie/image/upload/v1687876322/Imagen%20Candy/12_-_Nachos_con_Queso_fblmeo.png",
@@ -525,15 +525,15 @@ const dataAllCandy = [
     category: "snacks",
   },
   {
-    name: "Café Snack Grande + Pan de Queso",
-    description: "1 café grande + 1 porción de pan de queso (5 unidades)",
+    name: "Café Grande + Pan de Queso",
+    description: "1 café grande + 1 porción de pan de queso (5 unidades). Imagen a modo ilustrativo.",
     price: 300,
     image:
       "https://res.cloudinary.com/dhyqgl7ie/image/upload/v1687876322/Imagen%20Candy/14_-_Cafe_Snack_Grande_Pan_de_Queso_xikloa.png",
     category: "cafeteria",
   },
   {
-    name: "Café Snack Grande",
+    name: "Café Grande",
     description: "1 Cafe 16 oz. Imagen a modo ilustrativo.",
     price: 80,
     image:
@@ -541,7 +541,7 @@ const dataAllCandy = [
     category: "cafeteria",
   },
   {
-    name: "Café Snack + Alfajor",
+    name: "Café + Alfajor",
     description: "1 Cafe 16 oz + 1 alfajor. Imagen a modo ilustrativo.",
     price: 90,
     image:
@@ -550,16 +550,16 @@ const dataAllCandy = [
   },
   {
     name: "Mogul Moras",
-    description: "Imagen a modo ilustrativo. Valor por unidad.",
+    description: "1 Gomitas Mogul Moras. Imagen a modo ilustrativo.",
     price: 60,
     image:
       "https://res.cloudinary.com/dhyqgl7ie/image/upload/v1687876323/Imagen%20Candy/17_-_Mogul_Moras_ebka0s.png",
     category: "golosinas",
   },
   {
-    name: "Gomitas Aribo",
+    name: "Gomitas Haribo",
     description:
-      "1 Gomitas Haribo. Imagen a modo ilustrativo. Modelo sujeto a disponibilidad.",
+      "1 Gomitas Haribo. Imagen a modo ilustrativo.",
     price: 40,
     image:
       "https://res.cloudinary.com/dhyqgl7ie/image/upload/v1687876323/Imagen%20Candy/18_-_Gomitas_Aribo_bnzso7.png",
@@ -575,7 +575,7 @@ const dataAllCandy = [
   },
   {
     name: "Alfajores",
-    description: "alfajor de chocolate con leche.",
+    description: "Alfajor de chocolate con leche. Imagen a modo ilustrativo.",
     price: 70,
     image:
       "https://res.cloudinary.com/dhyqgl7ie/image/upload/v1687876323/Imagen%20Candy/20_-_Alfajores_ckyxdo.png",
@@ -584,7 +584,7 @@ const dataAllCandy = [
   {
     name: "m&m",
     description:
-      "1 m&m Imagen a modo ilustrativo. Modelo sujeto a disponibilidad.",
+      "1 m&m. Imagen a modo ilustrativo.",
     price: 30,
     image:
       "https://res.cloudinary.com/dhyqgl7ie/image/upload/v1687876323/Imagen%20Candy/21_-_m_m_tsa9st.jpg",

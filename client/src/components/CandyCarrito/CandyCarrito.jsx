@@ -65,35 +65,35 @@ function CandyCarrito({ addCart, productCount, setProductCount }) {
   }, [cart]);
 
   return (
-    <div className="w-1/3 fixed right-0 mt-28 flex flex-col items-center">
+    <div className="w-1/3 fixed right-0 mt-20 flex flex-col items-center">
       <Toaster />
-      <div className="w-96 mx-auto rounded overflow-hidden shadow-lg bg-primary-50 dark:bg-dark-950 dark:shadow-gray-700 flex flex-col">
+      <div className="w-100 mx-auto rounded overflow-hidden shadow-lg bg-primary-50 dark:bg-dark-950 dark:shadow-gray-700 flex flex-col">
         <p className="px-2 py-2 font-bold text-center text-3xl text-gray-700 dark:text-gray-300">
           Candy
         </p>
         <div className="px-2 py-1 font-bold text-lg mb-1 text-gray-700 dark:text-white">
           Productos seleccionados:{" "}
         </div>
-        <div className="px-2 py1">
+        <div className="px-2 py-1">
           <hr />
           {cart?.map((item, index) => (
-            <div key={index} className="flex items-center border-b pb-0">
+            <div key={index} className="flex items-center border-b">
               <button
                 onClick={() => delRemoveCart(item.name, true)}
-                className="rounded-full h-6 w-6 mr-3 ml-1 mt-1 bg-gray-200 hover:bg-gray-300 flex items-center justify-center text-gray-700 font-semibold transition-colors duration-300"
+                className="rounded-full h-6 w-6 mr-3 ml-1 mt-0 bg-gray-200 hover:bg-gray-300 flex items-center justify-center text-gray-700 font-semibold transition-colors duration-300"
               >
                 <GoTrash className="text-xl mx-1" />
               </button>
-              <div className="mr-2 mt-2 text-sm font-bold text-gray-700 dark:text-white">
+              <div className="mr-2 mt-0 text-sm font-bold text-gray-700 dark:text-white">
                 {item.count} {item.name}
               </div>
               <div className="flex items-center my-2 ml-auto">
-                <p className="mr-1 mt-2 text-sm font-bold text-gray-700 dark:text-white">
+                <p className="mr-1 mt-0 text-sm font-bold text-gray-700 dark:text-white">
                   $ {item.price.toLocaleString("es-Us")}
                 </p>
                 <button
                   onClick={() => delRemoveCart(item.name)}
-                  className="rounded-full h-6 w-6 ml-1 mr-2 mt-2 bg-gray-200 hover:bg-gray-300 flex items-center justify-center text-gray-700 font-semibold transition-colors duration-300"
+                  className="rounded-full h-6 w-6 ml-1 mr-2 mt-0 bg-gray-200 hover:bg-gray-300 flex items-center justify-center text-gray-700 font-semibold transition-colors duration-300"
                 >
                   -
                 </button>
@@ -101,7 +101,7 @@ function CandyCarrito({ addCart, productCount, setProductCount }) {
                   onClick={() => {
                     addCart(item.name);
                   }}
-                  className="rounded-full h-6 w-6 ml-1 mr-2 mt-2 bg-gray-200 hover:bg-gray-300 flex items-center justify-center text-gray-700 font-semibold transition-colors duration-300"
+                  className="rounded-full h-6 w-6 ml-1 mr-2 mt-0 bg-gray-200 hover:bg-gray-300 flex items-center justify-center text-gray-700 font-semibold transition-colors duration-300"
                 >
                   +
                 </button>
