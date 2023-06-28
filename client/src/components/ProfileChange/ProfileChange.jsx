@@ -6,7 +6,6 @@ import "sweetalert2/dist/sweetalert2.css";
 import { logoutUser, putUser } from "../../redux/actions";
 import { validateField } from "../../helpers/validateProfile";
 
-
 function ProfileChange() {
   const userData = JSON.parse(window.localStorage.getItem("user"));
   const dispatch = useDispatch();
@@ -20,11 +19,11 @@ function ProfileChange() {
   });
   const [disabled, setDisabled] = useState(false);
   const [uploadedPhoto, setUploadedPhoto] = useState("");
-  
+
   useEffect(() => {
-    if(!userData.password){
-      setDisabled(true)
-    } 
+    if (!userData.password) {
+      setDisabled(true);
+    }
   }, []);
 
   function handleChange(e) {
@@ -47,8 +46,8 @@ function ProfileChange() {
         cloudName: "dhyqgl7ie",
         uploadPreset: "a2i0wk5f",
         sources: ['local'],
-        resourceType:["image"],
-        clientAllowedFormats:["image"]
+        resourceType: ["image"],
+        clientAllowedFormats: ["image"],
       },
       (err, result) => {
         if (!err && result && result.event === "success") {
@@ -62,22 +61,13 @@ function ProfileChange() {
     widget_cloudinary.open();
   };
 
-  useEffect(() => {
-    const boton_photo = document.querySelector("#btn-photo");
-    boton_photo.addEventListener("click", handleUploadPhoto);
-
-    return () => {
-      boton_photo.removeEventListener("click", handleUploadPhoto);
-    };
-  }, []);
-
   const handleSubmit = (e) => {
     e.preventDefault();
     const savePic = {
       ...user,
-      image: uploadedPhoto
-    }
-    if (user.firstName || user.lastName || user.email || user.image) {
+      image: uploadedPhoto,
+    };
+    if (user.firstName || user.lastName || user.email || savePic.image) {
       Swal.fire({
         title: "Vas a modificar tus datos. Estas seguro?",
         text: "Tendras que volver a iniciar sesion",
@@ -103,7 +93,7 @@ function ProfileChange() {
             "Modificaste tus datos. Volve a iniciar sesion",
             "success"
           ).then(() => {
-            window.location.href = "/login"; // Redirigir a la página de inicio de sesión
+            window.location.href = "/login"; 
           });
         }
       });
@@ -115,6 +105,7 @@ function ProfileChange() {
       });
     }
   };
+
 
   return (
     <div className="w-full">
