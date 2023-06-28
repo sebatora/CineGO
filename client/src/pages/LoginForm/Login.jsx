@@ -51,8 +51,8 @@ const Login = ({ theme }) => {
   const handleLoginGoogle = async () => {
     try {
       setLoading(true);
-      navigate("/");
       await loginWithGoogle();
+      navigate("/");
       toast.success("Inicio de sesión exitoso");
     } catch (error) {
       console.error(error);
@@ -74,17 +74,9 @@ const Login = ({ theme }) => {
             style={{ marginTop: "100px" }}
           >
             {theme === "dark" ? (
-              <img
-                className="w-40"
-                src={logoBlanco}
-                alt="CineGO"
-              />
+              <img className="w-40" src={logoBlanco} alt="CineGO" />
             ) : (
-              <img
-                className="w-40"
-                src={logoNegro}
-                alt="CineGO"
-              />
+              <img className="w-40" src={logoNegro} alt="CineGO" />
             )}
             <h1 className="mt-2 mb-4">Ingresá a tu cuenta</h1>
             <div className="flex flex-col mb-4 items-center">
@@ -135,12 +127,18 @@ const Login = ({ theme }) => {
               Iniciar sesión con Google
             </button>
             <div className="w-full flex flex-row items-center justify-center mt-4 border-t border-black dark:border-white">
-            <Link className="items-center m-4 text-gray-600 hover:text-primary-500" to="/createUser">
-              <h5>¿No tenés cuenta?</h5>
-            </Link>
-            <Link className="items-center text-gray-600 hover:text-primary-500" to="/forgotPassword">
-              <h5>¿Olvidaste tu contraseña?</h5>
-            </Link>
+              <Link
+                className="items-center m-4 text-gray-600 hover:text-primary-500"
+                to="/createUser"
+              >
+                <h5>¿No tenés cuenta?</h5>
+              </Link>
+              <Link
+                className="items-center text-gray-600 hover:text-primary-500"
+                to="/forgotPassword"
+              >
+                <h5>¿Olvidaste tu contraseña?</h5>
+              </Link>
             </div>
           </form>
         </div>
