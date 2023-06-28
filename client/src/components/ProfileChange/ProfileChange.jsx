@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BiCheckCircle, BiErrorCircle } from "react-icons/bi";
 import { useDispatch } from "react-redux";
 import Swal from "sweetalert2";
 import { logoutUser, putUser } from "../../redux/actions";
-import style from "./ProfileChange.module.css";
 import { validateField } from "../../helpers/validateProfile";
 
 function ProfileChange() {
@@ -17,6 +16,13 @@ function ProfileChange() {
     email: "",
     image: "",
   });
+  const [disabled, setDisabled] = useState(false);
+  
+  useEffect(() => {
+    if(!userData.password){
+      setDisabled(true)
+    } 
+  }, []);
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -92,14 +98,15 @@ function ProfileChange() {
                   Nombre:
                 </label>
                 <input
-                  className="p-2 rounded-md"
+                  className={`p-2 rounded-md ${disabled ? "bg-light-200 placeholder:text-light-400" : ""}`}
                   type="text"
                   name="firstName"
                   value={user.firstName}
                   placeholder={userData.firstName}
                   onChange={handleChange}
+                  disabled={disabled}
                 />
-                {!error.firstName && (
+                {!disabled && !error.firstName && (
                   <BiCheckCircle className="absolute text-3xl text-green-500 right-3 top-10" />
                 )}
               </div>
@@ -120,14 +127,15 @@ function ProfileChange() {
                   Apellido:
                 </label>
                 <input
-                  className="p-2 rounded-md"
+                  className={`p-2 rounded-md ${disabled ? "bg-light-200 placeholder:text-light-400" : ""}`}
                   type="text"
                   name="lastName"
                   value={user.lastName}
                   placeholder={userData.lastName}
                   onChange={handleChange}
+                  disabled={disabled}
                 />
-                {!error.lastName && (
+                {!disabled && !error.lastName && (
                   <BiCheckCircle className="absolute text-3xl text-green-500 right-3 top-10" />
                 )}
               </div>
@@ -148,14 +156,15 @@ function ProfileChange() {
                   Email:
                 </label>
                 <input
-                  className="p-2 rounded-md"
+                  className={`p-2 rounded-md ${disabled ? "bg-light-200 placeholder:text-light-400" : ""}`}
                   type="text"
                   name="email"
                   value={user.email}
                   placeholder={userData.email}
                   onChange={handleChange}
+                  disabled={disabled}
                 />
-                {!error.email && (
+                {!disabled && !error.email && (
                   <BiCheckCircle className="absolute text-3xl text-green-500 right-3 top-10" />
                 )}
               </div>
@@ -176,7 +185,7 @@ function ProfileChange() {
                   CinePlus:
                 </label>
                 <input
-                  className="w-1/2 p-2 rounded-md bg-light-300 dark:bg-slate-900 placeholder:text-light-900 placeholder:font-semibold dark:placeholder:text-white"
+                  className="w-1/2 p-2 rounded-md bg-light-200 dark:bg-slate-900 placeholder:text-light-400 placeholder:font-semibold dark:placeholder:text-lig"
                   type="text"
                   name="cinePlus"
                   value={user.cinePlus}
@@ -188,7 +197,7 @@ function ProfileChange() {
             </div>
           </div>
         </div>
-        <button className="w-40 py-2 ml-12 mt-4 mb-8 rounded-md font-bold bg-green-600 hover:bg-green-500" type="submit">
+        <button className={`w-40 py-2 ml-12 mt-4 mb-8 rounded-md font-bold ${disabled ? "bg-green-600 opacity-50" : "bg-green-600 hover:bg-green-500"}`} type="submit" disabled={disabled}>
           Guardar
         </button>
       </form>

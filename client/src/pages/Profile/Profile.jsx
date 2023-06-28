@@ -1,21 +1,16 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import ProfileChange from "../../components/ProfileChange/ProfileChange";
 import ProfileSubscription from "../../components/ProfileSubscription/ProfileSubscription";
 import ProfileSecurity from "../../components/ProfileSecurity/ProfileSecurity";
 import ProfileRecord from "../../components/ProfileRecord/ProfileRecord";
-import { Navigate } from "react-router-dom";
 
 function Profile() {
-  const userData = JSON.parse(window.localStorage.getItem("user"));
   const [activeComponent, setActiveComponent] = useState("profileChange");
+  const userData = JSON.parse(window.localStorage.getItem("user"));
 
   const handleButtonClick = (componentName) => {
     setActiveComponent(componentName);
   };
-
-  if (!userData) {
-    return <Navigate to="/login" />;
-  }
 
   return (
     <div className="w-full flex mt-12">
@@ -42,16 +37,18 @@ function Profile() {
           >
             <span className={activeComponent === "profileSubscription" && "text-light-700"}>Modificar Suscripción</span>
           </button>
-          <button
-            className={`w-28 my-4 text-start ${
-              activeComponent === "profileSecurity"
-                && "font-bold border-b-4 border-light-700 dark:border-dark-700 ml-2 scale-105"
-            }`}
-            onClick={() => handleButtonClick("profileSecurity")}
-            disabled={activeComponent === "profileSecurity"}
-          >
-            <span className={activeComponent === "profileSecurity" && "text-light-700"}>Seguridad</span>
-          </button>
+          {userData.password && (
+            <button
+              className={`w-28 my-4 text-start ${
+                activeComponent === "profileSecurity"
+                  && "font-bold border-b-4 border-light-700 dark:border-dark-700 ml-2 scale-105"
+              }`}
+              onClick={() => handleButtonClick("profileSecurity")}
+              disabled={activeComponent === "profileSecurity"}
+            >
+              <span className={activeComponent === "profileSecurity" && "text-light-700"}>Seguridad</span>
+            </button>
+          )}
           <button
             className={`w-48 my-4 text-start ${
               activeComponent === "profileRecord"

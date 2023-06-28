@@ -40,33 +40,27 @@ function ProfileSubscription() {
   };
 
   return (
-    <div className={style.container}>
-      <div className={style.containerH2}>
-        <h2 className={style.h2}>Suscripción actual: {userData.cinePlus} </h2>
-      </div>
+    <div className="mb-10">
+      {/* <h2 className="w-full flex items-center justify-center h-16 bg-light-200 dark:bg-slate-800">Suscripción actual: {userData.cinePlus} </h2>
       {userData.cinePlus === "Estandar" ? (
-        <div className={style.containerSubscription}>
-          <div className={style.boxSubscription}>
-            <CinePlusGold />
-            <CinePlusBlack />
-          </div>
+        <div className="flex items-center">
+          <CinePlusGold />
+          <CinePlusBlack />
         </div>
       ) : userData.cinePlus === "Gold" ? (
-        <div className={style.containerSubscription}>
+        <div className="flex items-center">
           <h2>Pasate a: </h2>
-          <div className={style.boxSubscription}>
             <CinePlusBlack />
-          </div>
         </div>
-      ) : (
-        <div className={style.containerSubscription}>
-          <h3 className={style.h3}>Tenes el plan mas tocho de todos</h3>
+      ) : ( */}
+        <div className="w-full h-screen flex flex-col justify-center items-center">
+          <h3 className="mb-4 font-bold">Tenes el plan mas tocho de todos</h3>
           <TextAnimation word={userData.cinePlus.toUpperCase()} />
-          <button className={style.buttonCancelBlack} onClick={handleSubmit}>
-            Cancelar suscripción
+          <button className="w-80 p-4 rounded-lg bg-black hover:bg-black/80 dark:bg-white dark:hover:bg-white/80" onClick={handleSubmit}>
+            <span className="text-white dark:text-black">Cancelar suscripción</span>
           </button>
         </div>
-      )}
+      {/* )} */}
     </div>
   );
 }
