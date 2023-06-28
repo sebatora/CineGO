@@ -1,4 +1,4 @@
-.container {
+/* .container {
   width: 100%;
   height: 100%;
   font-size: 14px;
@@ -46,7 +46,6 @@
 .image {
   width: 120px;
   border-radius: 50%;
-  /*   border: 1px solid black; */
 }
 
 .buttonImg {
@@ -55,7 +54,6 @@
   margin: 0.3rem;
   border-radius: 5px;
   font-weight: bold;
-  /*   border: 1px solid rgb(146, 3, 75); */
 }
 
 .buttonChange {
@@ -153,7 +151,7 @@
   font-weight: bold;
 }
 
-/* .buttonSave:disabled {
+.buttonSave:disabled {
   background-color: rgb(190, 181, 181) !important;
   cursor: default;
   color: rgb(190, 181, 181);

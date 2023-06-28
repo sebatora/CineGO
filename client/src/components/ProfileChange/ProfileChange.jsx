@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import Swal from "sweetalert2";
 import { logoutUser, putUser } from "../../redux/actions";
 import style from "./ProfileChange.module.css";
-import { validateField } from "./validate";
+import { validateField } from "../../helpers/validateProfile";
 
 function ProfileChange() {
   const userData = JSON.parse(window.localStorage.getItem("user"));
@@ -72,147 +72,126 @@ function ProfileChange() {
   };
 
   return (
-    <div className={style.container}>
-      <div className={style.containerH2}>
-        <h2 className={style.h2}>Editar perfil</h2>
-      </div>
-      <div className={style.containerProfileAndInfo}>
-        <form className={style.containerForm} onSubmit={handleSubmit}>
-          <div className={style.containerImage}>
-            <div className={style.boxImage}>
-              <img className={style.image} src={userData.image} />
-              <div className={style.boxButton}>
-                <button
-                  type="button"
-                  className="bg-primary-600 hover:bg-primary-500 h-8 px-4 my-1 mx-2 rounded-md font-bold text-white"
-                >
-                  Cambiar
-                </button>
-              </div>
-            </div>
-          </div>
-          <div className={style.containerInfo}>
-            <div className={style.containerEditProfile}>
-              <div className={style.box}>
-                <div className={style.boxLabelAndInput}>
-                  <label className={style.labelBox} htmlFor="firstName">
-                    Nombre:
-                  </label>
-                  <input
-                    className={style.inputBox}
-                    type="text"
-                    name="firstName"
-                    value={user.firstName}
-                    placeholder={userData.firstName}
-                    onChange={handleChange}
-                  />
-                  {!error.firstName && (
-                    <BiCheckCircle className={style.iconCheck} />
-                  )}
-                </div>
-                <div className={style.containerError}>
-                  {error.firstName && (
-                    <div className={style.boxError}>
-                      <BiErrorCircle className={style.iconError} />
-                      <span className={style.paragraph}>{error.firstName}</span>
-                    </div>
-                  )}
-                </div>
-              </div>
-            </div>
-            <div className={style.containerEditProfile}>
-              <div className={style.box}>
-                <div className={style.boxLabelAndInput}>
-                  <label className={style.labelBox} htmlFor="lastName">
-                    Apellido:
-                  </label>
-                  <input
-                    className={style.inputBox}
-                    type="text"
-                    name="lastName"
-                    value={user.lastName}
-                    placeholder={userData.lastName}
-                    onChange={handleChange}
-                  />
-                  {!error.lastName && (
-                    <BiCheckCircle className={style.iconCheck} />
-                  )}
-                </div>
-                <div className={style.containerError}>
-                  {error.lastName && (
-                    <div className={style.boxError}>
-                      <BiErrorCircle className={style.iconError} />
-                      <span className={style.paragraph}>{error.lastName}</span>
-                    </div>
-                  )}
-                </div>
-              </div>
-            </div>
-            <div className={style.containerEditProfile}>
-              <div className={style.box}>
-                <div className={style.boxLabelAndInput}>
-                  <label className={style.labelBox} htmlFor="email">
-                    Email:
-                  </label>
-                  <input
-                    className={style.inputBox}
-                    type="text"
-                    name="email"
-                    value={user.email}
-                    placeholder={userData.email}
-                    onChange={handleChange}
-                  />
-                  {!error.email && (
-                    <BiCheckCircle className={style.iconCheck} />
-                  )}
-                </div>
-                <div className={style.containerError}>
-                  {error.email && error.email !== "" && (
-                    <div className={style.boxError}>
-                      <BiErrorCircle className={style.iconError} />
-                      <span className={style.paragraph}>{error.email}</span>
-                    </div>
-                  )}
-                </div>
-              </div>
-            </div>
-            <div className={style.containerEditProfile}>
-              <div className={style.box}>
-                <div className={style.boxLabelAndInput}>
-                  <label className={style.labelBox} htmlFor="cinePlus">
-                    CinePlus:
-                  </label>
-                  <input
-                    className={style.inputBox}
-                    type="text"
-                    name="cinePlus"
-                    value={user.cinePlus}
-                    placeholder={userData.cinePlus}
-                    onChange={handleChange}
-                    disabled
-                  />
-                  {!error.cinePlus && (
-                    <BiCheckCircle className={style.iconCheck} />
-                  )}
-                </div>
-                <div className={style.containerError}>
-                  {error.cinePlus && error.cinePlus !== "" && (
-                    <div className={style.boxError}>
-                      <BiErrorCircle className={style.iconError} />
-                      <span className={style.paragraph}>{error.cinePlus}</span>
-                    </div>
-                  )}
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className={style.containerButtonSave}>
-            <button className={style.buttonSave} type="submit">
-              Guardar
+    <div className="w-full">
+      <h2 className="w-full flex items-center justify-center h-16 bg-light-200 dark:bg-slate-800">Editar perfil</h2>
+      <form className="w-full flex flex-col" onSubmit={handleSubmit}>
+          <div className="w-full flex flex-col items-center h-44 my-6">
+            <img className="w-32 rounded-full" src={userData.image} />
+            <button
+              type="button"
+              className="bg-primary-600 hover:bg-primary-500 text-center px-4 mt-4 py-2 rounded-md font-bold text-white"
+            >
+              Cambiar
             </button>
+        </div>
+        <div className="w-full flex flex-col">
+          <div className="w-full flex flex-col py-4 px-12">
+            <div className="w-full h-12 flex items-center mb-2">
+              <div className="w-full relative flex flex-col pr-2">
+                <label className="mb-2" htmlFor="firstName">
+                  Nombre:
+                </label>
+                <input
+                  className="p-2 rounded-md"
+                  type="text"
+                  name="firstName"
+                  value={user.firstName}
+                  placeholder={userData.firstName}
+                  onChange={handleChange}
+                />
+                {!error.firstName && (
+                  <BiCheckCircle className="absolute text-3xl text-green-500 right-3 top-10" />
+                )}
+              </div>
+              <div className="w-full pt-10">
+                {error.firstName && (
+                  <div className="flex items-center">
+                    <BiErrorCircle className="text-3xl text-red-600" />
+                    <span>{error.firstName}</span>
+                  </div>
+                )}
+              </div>
+            </div>
           </div>
-        </form>
-      </div>
+          <div className="w-full flex flex-col py-4 px-12">
+            <div className="w-full h-12 flex items-center mb-2">
+              <div className="w-full relative flex flex-col pr-2">
+                <label className="mb-2" htmlFor="lastName">
+                  Apellido:
+                </label>
+                <input
+                  className="p-2 rounded-md"
+                  type="text"
+                  name="lastName"
+                  value={user.lastName}
+                  placeholder={userData.lastName}
+                  onChange={handleChange}
+                />
+                {!error.lastName && (
+                  <BiCheckCircle className="absolute text-3xl text-green-500 right-3 top-10" />
+                )}
+              </div>
+              <div className="w-full pt-10">
+                {error.lastName && (
+                  <div className="flex items-center">
+                    <BiErrorCircle className="text-3xl text-red-600" />
+                    <span>{error.lastName}</span>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+          <div className="w-full flex flex-col py-4 px-12">
+            <div className="w-full h-12 flex items-center mb-2">
+              <div className="w-full relative flex flex-col pr-2">
+                <label className="mb-2" htmlFor="email">
+                  Email:
+                </label>
+                <input
+                  className="p-2 rounded-md"
+                  type="text"
+                  name="email"
+                  value={user.email}
+                  placeholder={userData.email}
+                  onChange={handleChange}
+                />
+                {!error.email && (
+                  <BiCheckCircle className="absolute text-3xl text-green-500 right-3 top-10" />
+                )}
+              </div>
+              <div className="w-full pt-10">
+                {error.email && error.email !== "" && (
+                  <div className="flex items-center">
+                    <BiErrorCircle className="text-3xl text-red-600" />
+                    <span>{error.email}</span>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+          <div className="w-full flex flex-col py-4 px-12">
+            <div className="w-full h-12 flex items-center mb-2">
+              <div className="w-full relative flex flex-col pr-2">
+                <label className="mb-2" htmlFor="cinePlus">
+                  CinePlus:
+                </label>
+                <input
+                  className="w-1/2 p-2 rounded-md bg-light-300 dark:bg-slate-900 placeholder:text-light-900 placeholder:font-semibold dark:placeholder:text-white"
+                  type="text"
+                  name="cinePlus"
+                  value={user.cinePlus}
+                  placeholder={userData.cinePlus}
+                  onChange={handleChange}
+                  disabled
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <button className="w-40 py-2 ml-12 mt-4 mb-8 rounded-md font-bold bg-green-600 hover:bg-green-500" type="submit">
+          Guardar
+        </button>
+      </form>
     </div>
   );
 }
