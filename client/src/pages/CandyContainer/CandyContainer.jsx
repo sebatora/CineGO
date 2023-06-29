@@ -36,8 +36,19 @@ function CandyContainer() {
     toast.success("Producto agregado al carrito", {
       duration: 2000,
     });
+
+    localStorage.setItem("productCount", productCount + 1);
     setProductCount(productCount + 1);
-  };
+  }; 
+  
+  useEffect(() => {
+    const storeProductCount = localStorage.getItem("productCount");
+  
+    if (storeProductCount) {
+      setProductCount(Number(storeProductCount));
+    }
+  }, []);
+  
 
   useEffect(() => {
     dispatch(getCandy()).then(() => {
