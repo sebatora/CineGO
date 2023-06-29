@@ -15,7 +15,7 @@ const getMovieById = async (id) => {
       {
         model: Show,
         as: "shows",
-        attributes: ["id", "date", "hour", "type", "stock"],
+        attributes: ["id", "date", "hour", "type", "stock", "language"],
       },
     ],
   });
