@@ -59,10 +59,6 @@ const CreateUser = ({ theme }) => {
   useEffect(() => {
     const boton_photo = document.querySelector("#btn-photo");
     boton_photo.addEventListener("click", handleUploadPhoto);
-
-    return () => {
-      boton_photo.removeEventListener("click", handleUploadPhoto);
-    };
   }, []);
 
   const onSubmit = async (data) => {
@@ -239,11 +235,11 @@ const CreateUser = ({ theme }) => {
 const schema = yup.object().shape({
   firstName: yup
     .string()
-    .matches(/^[A-Za-z]+$/, 'Solo puede contener letras')
+    .matches(/^[A-Za-z]{1,15}$/, 'Solo letras máx 15 caracteres')
     .required('El nombre es requerido'),
   lastName: yup
     .string()
-    .matches(/^[A-Za-z]+$/, 'Solo puede contener letras')
+    .matches(/^[A-Za-z]{1,15}$/, 'Solo letras máx 15 caracteres')
     .required('El apellido es requerido'),
   email: yup
     .string()
