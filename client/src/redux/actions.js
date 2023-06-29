@@ -23,7 +23,6 @@ import {
   DELETE_SUBSCRIPTION,
   FORGOT_PASSWORD_USER,
   POST_PURCHASES,
-  POST_PURCHASE_ORDER,
   // ERROR
 } from "./action-type";
 
