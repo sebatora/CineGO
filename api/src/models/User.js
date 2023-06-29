@@ -42,6 +42,10 @@ module.exports = (sequelize) => {
         allowNull: false,
         defaultValue: true,
       },
+      activePlus: {
+        type: DataTypes.DATE,
+        allowNull: true,
+      },
     },
     { timestamps: false }
   );
