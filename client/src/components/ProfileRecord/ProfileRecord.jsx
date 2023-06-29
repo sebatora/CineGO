@@ -6,19 +6,20 @@ import { getUserById } from "../../redux/actions";
 function ProfileRecord() {
   const userData = JSON.parse(window.localStorage.getItem("user"));
   const dispatch = useDispatch();
-  console.log(userData);
 
   useEffect(() => {
     dispatch(getUserById(userData.id));
   }, []);
 
   return (
-    <div className="h-screen mt-20">
+    <div className="h-screen">
+      <h2 className="w-full flex items-center justify-center h-16 bg-light-200 dark:bg-slate-800">Historial de Compras</h2>
       {userData?.purchases && userData?.purchases.map((purchase, index) => (
         <div key={index}>
-          {purchase.items.map(item => (
-            <div className="">
-              <h3>{item.name}</h3>
+          {purchase.items.map((item, index) => (
+            <div key={index} className="">
+              {item.name && <h3>{item.name}</h3>}
+              {item.title && <h3>{item.title}</h3>}
               <h3>{item.quantity}</h3>
             </div>
           ))}

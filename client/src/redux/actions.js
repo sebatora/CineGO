@@ -117,6 +117,7 @@ export const getUserById = (userId) => {
   return async (dispatch) => {
     try {
       const { data } = await axios.get(`/users/${userId}`);
+      window.localStorage.setItem("user", JSON.stringify(data));
       return dispatch({ type: GET_USER_BY_ID, payload: data });
     } catch (error) {
       return error.message;
