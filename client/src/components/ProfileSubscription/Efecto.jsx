@@ -8,7 +8,7 @@ const TextAnimation = ({ word }) => {
   }, [word]);
 
   return (
-    <div className="w-96 h-20 flex justify-center items-center bg-dark-100 mb-6 rounded-md">
+    <div className="flex justify-center items-center p-4 bg-dark-100 mb-6 rounded-md">
       {letters.map((letter, index) => (
         <span
           key={index}
