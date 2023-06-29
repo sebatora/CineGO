@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { cleanDetail, getMovieById } from "../../redux/actions";
-import Error404 from "../../pages/Error404/Error404";
+import { useNavigate, useParams } from "react-router-dom";
 import ReactStars from "react-stars";
+import Error404 from "../../pages/Error404/Error404";
+import { cleanDetail, getMovieById } from "../../redux/actions";
 
 function Detail() {
   const detail = useSelector((state) => state.movieById);
@@ -14,6 +14,7 @@ function Detail() {
   const [rating, setRating] = useState(0);
   const [selectedDay, setSelectedDay] = useState(null);
   const [selectedType, setSelectedType] = useState(null);
+  const navigate = useNavigate();
 
   const handleClick = (day) => {
     if (selectedDay === day) {
@@ -31,6 +32,31 @@ function Detail() {
     dispatch(getMovieById(id));
     return () => dispatch(cleanDetail());
   }, [id, dispatch]);
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    if (!userData) {
+      navigate("/login");
+    } else {
+      const orderPurchase = {
+        userId: userData.id,
+        items: [
+          {
+            itemId: id,
+            quantity: null,
+            price: null,
+            type: "show",
+          },
+        ],
+        totalPrice: null,
+      };
+      navigate("/ticket");
+      window.localStorage.setItem(
+        "orderPurchase",
+        JSON.stringify(orderPurchase)
+      );
+    }
+  };
 
   return (
     <>
@@ -164,14 +190,13 @@ function Detail() {
               </div>
 
               <div className="mt-8 mb-10 flex justify-center">
-                <Link to={`${userData === null ? "/login" : "/ticket"}`}>
-                  <button
-                    className="bg-primary-600 hover:bg-primary-500 text-white border-none px-4 py-2 text-center text-base rounded cursor-pointer"
-                    type="submit"
-                  >
-                    ¡Comprar entradas!
-                  </button>
-                </Link>
+                <button
+                  onClick={handleSubmit}
+                  className="bg-primary-600 hover:bg-primary-500 text-white border-none px-4 py-2 text-center text-base rounded cursor-pointer"
+                  type="submit"
+                >
+                  ¡Comprar entradas!
+                </button>
               </div>
             </div>
           </div>
