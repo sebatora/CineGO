@@ -1,12 +1,13 @@
 const postPurchaseController = require("../../controllers/purchase/postPurchaseController");
 
 async function handlerPostPurchase(req, res) {
-  const { userId, items, totalPrice } = req.body;
+  const { userId, items, totalPrice, orderNumber } = req.body;
   try {
     const { purchase, user } = await postPurchaseController(
       userId,
       items,
-      totalPrice
+      totalPrice,
+      orderNumber
     );
     return res.status(201).json({ purchase, user });
   } catch (error) {
