@@ -3,7 +3,7 @@ import React from "react";
 import { FaCheck } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { logoutUser, putUserSubscription } from "../../redux/actions";
+import { postPurchaseOrder, postPurchases, putUserSubscription } from "../../redux/actions";
 import toast, { Toaster } from "react-hot-toast";
 
 function CinePlusBlack() {
@@ -16,6 +16,7 @@ function CinePlusBlack() {
     price: 1199,
   };
 
+  // 1405701014-0a63b4fe-9128-4d71-b3f8-840e535775b8
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (!userData) {
@@ -27,8 +28,19 @@ function CinePlusBlack() {
         subscription: subBlack,
         userData,
       });
+      const orderPurchase = { 
+        userId: userData.id, 
+        items: [
+          {
+            cinePlus: "Black",
+            quantity: 1,
+            type: "subscription"
+          }
+        ],
+        totalPrice: subBlack.price
+      }
       window.location.href = data.init_point;
-      dispatch(putUserSubscription({ id: userData.id, cinePlus: "Black" }));
+      window.localStorage.setItem("orderPurchase", JSON.stringify(orderPurchase));
     }
   };
 
