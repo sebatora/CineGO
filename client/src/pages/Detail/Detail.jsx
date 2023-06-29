@@ -12,6 +12,20 @@ function Detail() {
   const dispatch = useDispatch();
   const { id } = useParams();
   const [rating, setRating] = useState(0);
+  const [selectedDay, setSelectedDay] = useState(null);
+  const [selectedType, setSelectedType] = useState(null);
+
+  const handleClick = (day) => {
+    if (selectedDay === day) {
+      setSelectedDay(null); // Si se hace clic nuevamente en el mismo día, se deselecciona
+    } else {
+      setSelectedDay(day);
+    }
+  };
+
+  const handleClickType = (type) => {
+    setSelectedType(type);
+  };
 
   useEffect(() => {
     dispatch(getMovieById(id));
@@ -91,21 +105,62 @@ function Detail() {
                 <h3 className="my-4">Sinopsis</h3>
                 <p className="text-base">{detail.description}</p>
               </div>
-
               <div className="w-4/5 mb-6 flex flex-col">
-                <h3>Shows</h3>
-                <div className="flex items-center justify-between">
-                  {detail.shows
-                    ?.map((show) => show.date)
-                    .filter(
-                      (date, index, array) => array.indexOf(date) === index
-                    )
-                    .map((date) => (
-                      <div key={date}>
-                        <h2>{date}</h2>
-                      </div>
-                    ))}
+                <div>
+                  <h3>Shows</h3>
+                  <div className="flex items-center justify-between">
+                    {detail.shows
+                      ?.map((show) => show.date)
+                      .filter(
+                        (date, index, array) => array.indexOf(date) === index
+                      )
+                      .map((date) => (
+                        <button
+                          key={date}
+                          onClick={() => handleClick(date)}
+                          className={selectedDay === date ? "selected" : ""}
+                        >
+                          {date}
+                        </button>
+                      ))}
+                  </div>
                 </div>
+                {selectedDay && (
+                  <div>
+                    <h4>Tipos:</h4>
+                    <div className="flex items-center justify-between">
+                      {detail.shows
+                        ?.filter((show) => show.date === selectedDay)
+                        .map((show) => show.type)
+                        .filter(
+                          (type, index, array) => array.indexOf(type) === index
+                        )
+                        .map((type) => (
+                          <button
+                            key={type}
+                            onClick={() => handleClickType(type)}
+                            className={selectedType === type ? "selected" : ""}
+                          >
+                            {type}
+                          </button>
+                        ))}
+                    </div>
+                  </div>
+                )}
+                {selectedType && (
+                  <div>
+                    <h4>Horarios:</h4>
+                    {detail.shows
+                      ?.filter(
+                        (show) =>
+                          show.date === selectedDay &&
+                          show.type === selectedType
+                      )
+                      .map((show) => (
+                        <button key={show.id}>{show.hour}</button>
+                      ))}
+                  </div>
+                )}
               </div>
 
               <div className="mt-8 mb-10 flex justify-center">

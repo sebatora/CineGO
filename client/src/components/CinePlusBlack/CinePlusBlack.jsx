@@ -1,10 +1,9 @@
 import axios from "axios";
 import React from "react";
+import toast, { Toaster } from "react-hot-toast";
 import { FaCheck } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { postPurchaseOrder, postPurchases, putUserSubscription } from "../../redux/actions";
-import toast, { Toaster } from "react-hot-toast";
 
 function CinePlusBlack() {
   const userData = JSON.parse(window.localStorage.getItem("user"));
@@ -28,19 +27,22 @@ function CinePlusBlack() {
         subscription: subBlack,
         userData,
       });
-      const orderPurchase = { 
-        userId: userData.id, 
+      const orderPurchase = {
+        userId: userData.id,
         items: [
           {
             cinePlus: "Black",
             quantity: 1,
-            type: "subscription"
-          }
+            type: "subscription",
+          },
         ],
-        totalPrice: subBlack.price
-      }
+        totalPrice: subBlack.price,
+      };
       window.location.href = data.init_point;
-      window.localStorage.setItem("orderPurchase", JSON.stringify(orderPurchase));
+      window.localStorage.setItem(
+        "orderPurchase",
+        JSON.stringify(orderPurchase)
+      );
     }
   };
 
