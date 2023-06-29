@@ -26,6 +26,7 @@ import {
 } from "./action-type";
 
 import axios from "axios";
+import Swal from 'sweetalert2';
 
 // Trae todas las peliculas
 export const getMovies = () => {
@@ -122,12 +123,20 @@ export const postUser = (newUser) => {
       // }
 
       const { data } = await axios.post(`/users`, newUser);
-      alert(data)
+      Swal.fire({
+        html: `<strong>${data}</strong> `,
+        icon: 'success',
+      });
+      
       return dispatch({ type: POST_USER, payload: data });
     } catch (error) {
       if (error.response.status === 404) {
         let errorData = error.response.data.error;
-        alert(errorData);
+        Swal.fire({
+          html: `<strong>${errorData}</strong> `,
+          icon: 'error',
+        });
+        
         //  return dispatch({type:ERROR, payload: errorData})
       }
     }
