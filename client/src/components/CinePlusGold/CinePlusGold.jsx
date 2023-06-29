@@ -84,9 +84,9 @@ function CinePlusGold() {
             </ul>
             <button
               onClick={handleSubmit}
-              className="w-7/12 mx-auto bg-yellow-300 hover:bg-yellow-200 my-8 p-2 rounded-xl text-base font-bold"
+              className="w-7/12 mx-auto bg-yellow-300 hover:bg-yellow-200 my-8 p-2 rounded-xl"
             >
-              ¡Quiero suscribirme!
+              <span className="text-base font-bold">¡Quiero suscribirme!</span>
             </button>
           </div>
         </div>

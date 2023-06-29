@@ -1,12 +1,10 @@
-import React from "react";
-import style from "./ProfileRecord.module.css";
 import { FaExclamationCircle } from "react-icons/fa";
 
 function ProfileRecord() {
   return (
-    <div className={style.container}>
+    <div className="h-screen">
       <h2 className="w-full flex items-center justify-center h-16 bg-light-200 dark:bg-slate-800">
-        Suscripción
+        Historial de Compras
       </h2>
       <main>
         <div>
