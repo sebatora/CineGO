@@ -23,12 +23,11 @@ import {
   DELETE_SUBSCRIPTION,
   FORGOT_PASSWORD_USER,
   POST_PURCHASES,
-  POST_PURCHASE_ORDER,
   // ERROR
 } from "./action-type";
 
 import axios from "axios";
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
 
 // Trae todas las peliculas
 export const getMovies = () => {
@@ -127,18 +126,18 @@ export const postUser = (newUser) => {
       const { data } = await axios.post(`/users`, newUser);
       Swal.fire({
         html: `<strong>${data}</strong> `,
-        icon: 'success',
+        icon: "success",
       });
-      
+
       return dispatch({ type: POST_USER, payload: data });
     } catch (error) {
       if (error.response.status === 404) {
         let errorData = error.response.data.error;
         Swal.fire({
           html: `<strong>${errorData}</strong> `,
-          icon: 'error',
+          icon: "error",
         });
-        
+
         //  return dispatch({type:ERROR, payload: errorData})
       }
     }

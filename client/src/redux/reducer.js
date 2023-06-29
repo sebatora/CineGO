@@ -21,7 +21,6 @@ import {
   SAVE_CART,
   PUT_SUBSCRIPTION,
   DELETE_SUBSCRIPTION,
-  POST_PURCHASE_ORDER,
   // ERROR
 } from "./action-type";
 
