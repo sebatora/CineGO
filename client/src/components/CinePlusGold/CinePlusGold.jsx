@@ -27,8 +27,19 @@ function CinePlusGold() {
         subscription: subGold,
         userData,
       });
+      const orderPurchase = { 
+        userId: userData.id, 
+        items: [
+          {
+            cinePlus: "Gold",
+            quantity: 1,
+            type: "subscription"
+          }
+        ],
+        totalPrice: subGold.price
+      }
       window.location.href = data.init_point;
-      dispatch(putUserSubscription({ id: userData.id, cinePlus: "Gold" }));
+      window.localStorage.setItem("orderPurchase", JSON.stringify(orderPurchase));
     }
   };
 

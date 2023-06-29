@@ -22,6 +22,8 @@ import {
   PUT_SUBSCRIPTION,
   DELETE_SUBSCRIPTION,
   FORGOT_PASSWORD_USER,
+  POST_PURCHASES,
+  POST_PURCHASE_ORDER,
   // ERROR
 } from "./action-type";
 
@@ -266,5 +268,17 @@ export const saveCart = (cart) => {
   return {
     type: SAVE_CART,
     payload: cart,
+  };
+};
+
+// PURCHASE
+export const postPurchases = (purchase) => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.post(`/purchase`, purchase);
+      return dispatch({ type: POST_PURCHASES, payload: data });
+    } catch (error) {
+      return error.message;
+    }
   };
 };

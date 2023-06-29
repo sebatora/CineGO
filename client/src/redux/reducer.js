@@ -21,6 +21,7 @@ import {
   SAVE_CART,
   PUT_SUBSCRIPTION,
   DELETE_SUBSCRIPTION,
+  POST_PURCHASE_ORDER,
   // ERROR
 } from "./action-type";
 
@@ -52,7 +53,6 @@ const initialState = {
       description: "Incluye 2 entradas + Tarjeta Virtual.",
     },
   ],
-  // errData:null,
 };
 
 const rootReducer = (state = initialState, { type, payload }) => {
@@ -302,13 +302,6 @@ const rootReducer = (state = initialState, { type, payload }) => {
         cart: payload,
       };
     }
-
-    // case ERROR : {
-    //   return{
-    //     ...state,
-    //     errData: payload
-    //   }
-    // }
 
     default:
       return { ...state };

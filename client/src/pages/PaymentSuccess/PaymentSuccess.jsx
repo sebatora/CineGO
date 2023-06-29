@@ -1,7 +1,17 @@
+import { useEffect } from "react";
 import PaymentSuccessImage from "../../assets/payment_success.png";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { postPurchases } from "../../redux/actions";
 
 const PaymentSuccess = () => {
+	const purchase = JSON.parse(window.localStorage.getItem("orderPurchase"));
+	const dispatch = useDispatch();
+	
+	useEffect(() => {
+		return () => dispatch(postPurchases(purchase));
+	}, []);
+
 	return (
 		<div className="w-full flex mt-20">
 			<div className="w-full flex flex-col justify-center items-center">
