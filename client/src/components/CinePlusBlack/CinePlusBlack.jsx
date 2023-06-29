@@ -15,7 +15,6 @@ function CinePlusBlack() {
     price: 1199,
   };
 
-  // 1405701014-0a63b4fe-9128-4d71-b3f8-840e535775b8
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (!userData) {
@@ -38,11 +37,8 @@ function CinePlusBlack() {
         ],
         totalPrice: subBlack.price,
       };
+      window.localStorage.setItem("orderPurchase", JSON.stringify(orderPurchase));
       window.location.href = data.init_point;
-      window.localStorage.setItem(
-        "orderPurchase",
-        JSON.stringify(orderPurchase)
-      );
     }
   };
 

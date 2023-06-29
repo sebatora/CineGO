@@ -23,6 +23,7 @@ import {
   DELETE_SUBSCRIPTION,
   FORGOT_PASSWORD_USER,
   POST_PURCHASES,
+  GET_USER_BY_ID,
   // ERROR
 } from "./action-type";
 
@@ -110,6 +111,18 @@ export const filterOrder = (info) => {
     return dispatch({ type: FILTER_ORDER, payload: data });
   };
 };
+
+// Busca un usuario
+export const getUserById = (userId) => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.get(`/users/${userId}`);
+      return dispatch({ type: GET_USER_BY_ID, payload: data });
+    } catch (error) {
+      return error.message;
+    }
+  };
+}
 
 // Crea un nuevo usuario
 export const postUser = (newUser) => {

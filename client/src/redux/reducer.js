@@ -21,6 +21,7 @@ import {
   SAVE_CART,
   PUT_SUBSCRIPTION,
   DELETE_SUBSCRIPTION,
+  GET_USER_BY_ID,
   // ERROR
 } from "./action-type";
 
@@ -110,6 +111,13 @@ const rootReducer = (state = initialState, { type, payload }) => {
         ...state,
         allMovies: payload,
       };
+    }
+
+    case GET_USER_BY_ID: {
+      return {
+        ...state,
+        userData: payload,
+      }
     }
 
     case POST_USER: {

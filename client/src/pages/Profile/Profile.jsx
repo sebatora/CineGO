@@ -27,7 +27,7 @@ function Profile() {
           >
             <span
               className={
-                activeComponent === "profileChange" && "text-light-700"
+                activeComponent === "profileChange" ? "text-light-700" : ""
               }
             >
               Perfil
@@ -43,7 +43,7 @@ function Profile() {
           >
             <span
               className={
-                activeComponent === "profileSubscription" && "text-light-700"
+                activeComponent === "profileSubscription" ? "text-light-700" : ""
               }
             >
               Suscripción
@@ -60,7 +60,7 @@ function Profile() {
             >
               <span
                 className={
-                  activeComponent === "profileSecurity" && "text-light-700"
+                  activeComponent === "profileSecurity" ? "text-light-700" : ""
                 }
               >
                 Seguridad
@@ -77,7 +77,7 @@ function Profile() {
           >
             <span
               className={
-                activeComponent === "profileRecord" && "text-light-700"
+                activeComponent === "profileRecord" ? "text-light-700" : ""
               }
             >
               Compras

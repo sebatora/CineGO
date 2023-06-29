@@ -29,7 +29,6 @@ function CandyCarrito({ addCart, productCount, setProductCount }) {
       dispatch(removeAllCartCandy(name));
       window.localStorage.removeItem("cart");
       setProductCount(productCount - nombre.count);
-      
       localStorage.setItem("productCount", productCount - nombre.count);
     } else {
       dispatch(removeOneCartCandy(name));
@@ -48,6 +47,18 @@ function CandyCarrito({ addCart, productCount, setProductCount }) {
         return;
       }
       const { data } = await axios.post("/payment", { cart, userData });
+      console.log(data);
+      const items = data.items.map(item => ({
+        itemId: "",
+        price: item.unit_price,
+        quantity,
+        type,
+      }))
+      const orderPurchase = {
+        userId: userData.id,
+        items,
+        totalPrice: total
+      }
       Swal.fire({
         title: "¿Estás seguro que no deseas realizar ningun cambio?",
         showDenyButton: true,
@@ -55,14 +66,15 @@ function CandyCarrito({ addCart, productCount, setProductCount }) {
         confirmButtonColor: '#38b000',
         confirmButtonText: 'Si estoy seguro!',
         denyButtonText: `Cancelar`
-     }).then((result) => {
+      }).then((result) => {
         if (result.isConfirmed) {
+          window.localStorage.setItem("orderPurchase", JSON.stringify(orderPurchase));
           window.localStorage.removeItem("productCount");
           window.localStorage.removeItem("cart");
           window.localStorage.removeItem("movie");
           window.location.href = data.init_point;
         }
-     });
+      });
 
     } catch (error) {
       console.error(error);
