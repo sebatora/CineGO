@@ -2,12 +2,10 @@ import axios from "axios";
 import React from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { FaCheck } from "react-icons/fa";
-import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 function CinePlusBlack() {
   const userData = JSON.parse(window.localStorage.getItem("user"));
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const subBlack = {
@@ -15,7 +13,6 @@ function CinePlusBlack() {
     price: 1199,
   };
 
-  // 1405701014-0a63b4fe-9128-4d71-b3f8-840e535775b8
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (!userData) {
