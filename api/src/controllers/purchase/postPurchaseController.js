@@ -1,8 +1,13 @@
 const { Purchase, User, Show, Candy, Movie } = require("../../db");
 
-const postPurchaseController = async (userId, items, totalPrice) => {
+const postPurchaseController = async (
+  userId,
+  items,
+  totalPrice,
+  orderNumber
+) => {
   try {
-    const purchase = await Purchase.create({ userId, totalPrice });
+    const purchase = await Purchase.create({ userId, totalPrice, orderNumber });
     const purchasedItems = [];
 
     // Iterar sobre los items comprados
