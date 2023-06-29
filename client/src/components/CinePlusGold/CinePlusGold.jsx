@@ -44,7 +44,7 @@ function CinePlusGold() {
               ${subGold.price} por mes
             </span>
           </div>
-          <div className="h-[280px] flex flex-col justify-between p-4 border-4 border-yellow-300 rounded-b-xl">
+          <div className="h-[280px] flex flex-col justify-between p-4 border-2 border-yellow-300 rounded-b-xl">
             <ul className="m-0 p-0">
               <li className="flex justify-around m-2">
                 <div className="w-4/5">
