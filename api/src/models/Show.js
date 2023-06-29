@@ -1,7 +1,9 @@
 const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
-  sequelize.define("show", {
+  sequelize.define(
+    "show",
+    {
       id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -23,11 +25,15 @@ module.exports = (sequelize) => {
       },
       type: {
         type: DataTypes.STRING,
-        allowNull: false,
+        defaultValue: "show",
       },
       stock: {
         type: DataTypes.INTEGER,
         allowNull: false,
+      },
+      language: {
+        type: DataTypes.STRING,
+        defaultValue: "Subtitulada",
       },
     },
     { timestamps: false }

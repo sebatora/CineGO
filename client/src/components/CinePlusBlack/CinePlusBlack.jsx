@@ -2,12 +2,10 @@ import axios from "axios";
 import React from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { FaCheck } from "react-icons/fa";
-import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 function CinePlusBlack() {
   const userData = JSON.parse(window.localStorage.getItem("user"));
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const subBlack = {
