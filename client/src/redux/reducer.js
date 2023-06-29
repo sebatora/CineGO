@@ -53,7 +53,6 @@ const initialState = {
       description: "Incluye 2 entradas + Tarjeta Virtual.",
     },
   ],
-  orderPurchase: "",
 };
 
 const rootReducer = (state = initialState, { type, payload }) => {
@@ -302,13 +301,6 @@ const rootReducer = (state = initialState, { type, payload }) => {
         ...state,
         cart: payload,
       };
-    }
-
-    case POST_PURCHASE_ORDER: {
-      return {
-        ...state,
-        orderPurchase: payload,
-      }
     }
 
     default:

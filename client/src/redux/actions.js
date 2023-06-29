@@ -263,13 +263,6 @@ export const saveCart = (cart) => {
 };
 
 // PURCHASE
-export const postPurchaseOrder = (orderId) => {
-  return {
-    type: POST_PURCHASE_ORDER,
-    payload: orderId,
-  };
-};
-
 export const postPurchases = (purchase) => {
   return async (dispatch) => {
     try {
