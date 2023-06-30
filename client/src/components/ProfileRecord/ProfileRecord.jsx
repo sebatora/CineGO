@@ -5,7 +5,6 @@ import { getUserById } from "../../redux/actions";
 function ProfileRecord() {
   const userData = JSON.parse(window.localStorage.getItem("user"));
   const dispatch = useDispatch();
-  console.log(userData);
 
   useEffect(() => {
     dispatch(getUserById(userData.id));
@@ -14,7 +13,7 @@ function ProfileRecord() {
   return (
     <div className="h-screen">
       <h2 className="w-full flex items-center justify-center h-16 bg-light-200 dark:bg-slate-800">Historial de Compras</h2>
-      {!userData.purchases.length ? (
+      {!userData?.purchases?.length ? (
         <div className="w-full mt-60 flex justify-center items-center">
           <h1>Aún no has realizado compras</h1>
         </div>
