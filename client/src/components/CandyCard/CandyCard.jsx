@@ -1,7 +1,7 @@
 function CandyCard({ name, description, price, image, addCart }) {
 
   return (
-    <div className="w-full md:w-1/2 lg:w-1/2 xl:w-1/3 p-4 my-0 mx-0 grid grid-cols-3">
+    <div className="w-full md:w-1/2 lg:w-1/2 xl:w-1/3 p-4 my-0 mx-0 grid grid-cols-3 ">
       <div className="w-60 h-80 mx-auto rounded overflow-hidden shadow-lg bg-primary-50 dark:bg-dark-950 dark:shadow-gray-700 transform hover:scale-105 transition-transform duration-300 flex flex-col">
         <div className="flex justify-center items-center h-40">
           <img src={image} alt={name} className="w-24 h-24 object-cover" />
