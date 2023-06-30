@@ -51,13 +51,13 @@ function App() {
       top: 0,
       behavior: "smooth",
     });
-    /*     if(location.pathname !== "/payment_success"){
+    if(location.pathname !== "/payment_success"){
 			window.localStorage.removeItem("orderPurchase");
-		} */
+		}
   }, [location]);
 
   useEffect(() => {
-    userData.isAdmin && navigate("/dashboard");
+    userData?.isAdmin && navigate("/dashboard");
   }, [navigate]);
 
   return (

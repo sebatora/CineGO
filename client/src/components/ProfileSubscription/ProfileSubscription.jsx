@@ -45,7 +45,7 @@ function ProfileSubscription() {
   };
 
   return (
-    <div className="mb-10">
+    <div className="h-screen">
       <h2 className="w-full flex items-center justify-center h-16 bg-light-200 dark:bg-slate-800">
         Suscripción
       </h2>

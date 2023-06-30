@@ -35,11 +35,8 @@ function CinePlusBlack() {
         ],
         totalPrice: subBlack.price,
       };
+      window.localStorage.setItem("orderPurchase", JSON.stringify(orderPurchase));
       window.location.href = data.init_point;
-      window.localStorage.setItem(
-        "orderPurchase",
-        JSON.stringify(orderPurchase)
-      );
     }
   };
 

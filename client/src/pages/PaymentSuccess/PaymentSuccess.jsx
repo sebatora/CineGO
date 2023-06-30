@@ -9,7 +9,7 @@ const PaymentSuccess = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    return () => dispatch(postPurchases(purchase));
+    dispatch(postPurchases(purchase));
   }, []);
 
   return (
