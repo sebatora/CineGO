@@ -24,6 +24,7 @@ import {
   FORGOT_PASSWORD_USER,
   POST_PURCHASES,
   GET_USER_BY_ID,
+  POST_ALL_TICKETS,
   // ERROR
 } from "./action-type";
 
@@ -232,6 +233,13 @@ export const getCandy = () => {
     } catch (error) {
       return error.message;
     }
+  };
+};
+
+export const postAllTickets = (tickets) => {
+  return {
+    type: POST_ALL_TICKETS,
+    payload: tickets,
   };
 };
 
