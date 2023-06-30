@@ -1,7 +1,9 @@
 const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
-  sequelize.define("movie", {
+  sequelize.define(
+    "movie",
+    {
       id: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -49,6 +51,11 @@ module.exports = (sequelize) => {
         type: DataTypes.BOOLEAN,
         allowNull: false,
         defaultValue: true,
+      },
+      language: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        defaultValue: "Español",
       },
     },
     { timestamps: false }

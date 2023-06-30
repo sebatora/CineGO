@@ -31,10 +31,10 @@ module.exports = (sequelize) => {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
-      language: {
-        type: DataTypes.STRING,
-        defaultValue: "Subtitulada",
-      },
+      // language: {
+      //   type: DataTypes.STRING,
+      //   defaultValue: "Subtitulada",
+      // },
     },
     { timestamps: false }
   );
