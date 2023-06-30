@@ -28,6 +28,7 @@ const postPurchaseController = async (
           name: movie.title,
           quantity,
           price,
+          type,
         };
       } else if (type === "candy") {
         // El item es un Candy
@@ -40,6 +41,7 @@ const postPurchaseController = async (
           name: candy.name,
           quantity,
           price,
+          type,
         };
       } else if (type === "subscription") {
         const subscriptionUser = await User.findByPk(userId);
@@ -50,6 +52,7 @@ const postPurchaseController = async (
           name: `Subscription ${cinePlus}`,
           quantity,
           price,
+          type,
         };
       }
       purchasedItems.push(itemDetails);
