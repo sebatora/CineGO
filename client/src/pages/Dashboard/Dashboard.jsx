@@ -37,7 +37,7 @@ const Dashboard = () => {
 			>
 				<h6
 				className={
-					activeComponent === "subscriptionNumber" && "text-light-700"
+					activeComponent === "subscriptionNumber" ? "text-light-700" : ""
 				}
 				>
 				Suscriptores
@@ -53,7 +53,7 @@ const Dashboard = () => {
 			>
 				<h6
 				className={
-					activeComponent === "subscriptionDivision" && "text-light-700"
+					activeComponent === "subscriptionDivision" ? "text-light-700" : ""
 				}
 				>
 				Tipo de suscripciones
@@ -75,7 +75,7 @@ const Dashboard = () => {
 			>
 				<h6
 				className={
-					activeComponent === "saleGeneral" && "text-light-700"
+					activeComponent === "saleGeneral" ? "text-light-700" : ""
 				}
 				>
 				Compras
@@ -91,7 +91,7 @@ const Dashboard = () => {
 			>
 				<h6
 				className={
-					activeComponent === "saleTicket" && "text-light-700"
+					activeComponent === "saleTicket" ? "text-light-700" : ""
 				}
 				>
 				Entradas
@@ -107,7 +107,7 @@ const Dashboard = () => {
 			>
 				<h6
 				className={
-					activeComponent === "saleCandy" && "text-light-700"
+					activeComponent === "saleCandy" ? "text-light-700" : ""
 				}
 				>
 				Candy
@@ -123,7 +123,7 @@ const Dashboard = () => {
 			>
 				<h6
 				className={
-					activeComponent === "saleMovies" && "text-light-700"
+					activeComponent === "saleMovies" ? "text-light-700" : ""
 				}
 				>
 				Peliculas
@@ -139,7 +139,7 @@ const Dashboard = () => {
 			>
 				<h6
 				className={
-					activeComponent === "saleSubscription" && "text-light-700"
+					activeComponent === "saleMovies" ? "text-light-700" : ""
 				}
 				>
 				Suscripciones
@@ -161,7 +161,7 @@ const Dashboard = () => {
 			>
 				<h6
 				className={
-					activeComponent === "movieScores" && "text-light-700"
+					activeComponent === "movieScores" ? "text-light-700" : ""
 				}
 				>
 				Puntuacion de peliculas
@@ -177,7 +177,7 @@ const Dashboard = () => {
 			>
 				<h6
 				className={
-					activeComponent === "webVisits" && "text-light-700"
+					activeComponent === "webVisits" ? "text-light-700" : ""
 				}
 				>
 				Visitas web
