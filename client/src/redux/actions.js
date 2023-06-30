@@ -25,6 +25,9 @@ import {
   POST_PURCHASES,
   GET_USER_BY_ID,
   POST_ALL_TICKETS,
+  POST_CANDY,
+  DELETE_CANDY,
+  PUT_CANDY,
   // ERROR
 } from "./action-type";
 
@@ -224,18 +227,6 @@ export const logoutUser = () => {
   return { type: LOGOUT_USER };
 };
 
-//Trae todos los productos candy
-export const getCandy = () => {
-  return async (dispatch) => {
-    try {
-      const { data } = await axios.get(`/candy`);
-      return dispatch({ type: GET_CANDY, payload: data });
-    } catch (error) {
-      return error.message;
-    }
-  };
-};
-
 export const postAllTickets = (tickets) => {
   return {
     type: POST_ALL_TICKETS,
@@ -263,6 +254,50 @@ export const removeOneCart = (name) => {
     payload: name,
   };
 };
+
+//Trae todos los productos candy
+export const getCandy = () => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.get(`/candy`);
+      return dispatch({ type: GET_CANDY, payload: data });
+    } catch (error) {
+      return error.message;
+    }
+  };
+};
+
+//Crea un producto en candy
+export const postCandy = (newCandy) => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.post(`/candy`, newCandy);
+      return dispatch({ type: POST_CANDY, payload: data });
+    } catch (error) {
+      return error.message;
+    }
+  }
+}
+
+//Elimina un producto de candy
+export const deleteCandy = (name) => {
+  return async (dispatch) => {
+    const { data } = await axios.delete(`/candy`, name);
+    return dispatch({ type: DELETE_CANDY, payload: data });
+  }
+}
+
+//Modificar un producto de candy
+export const putCandy = (name) => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.put(`/canyd`, name);
+      return dispatch({ type: PUT_CANDY, payload: data });
+    } catch (error) {
+      return error.message;
+    }
+  }
+}
 
 export const addCartCandy = (name) => {
   return {
