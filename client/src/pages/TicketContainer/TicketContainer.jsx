@@ -4,6 +4,7 @@ import Ticket from "../../components/Ticket/Ticket";
 import Cart from "../../components/Cart/Cart";
 import {
   addCart,
+  postAllTickets,
   removeAllCart,
   removeOneCart,
   saveCart,
@@ -14,15 +15,33 @@ import { Toaster, toast } from "react-hot-toast";
 const TicketContainer = () => {
   const userData = JSON.parse(window.localStorage.getItem("user"));
   const storedMovie = JSON.parse(window.localStorage.getItem("movie"));
-  const purchase = JSON.parse(window.localStorage.getItem("orderPurchase"));
+  const tickets = [
+    {
+      id: storedMovie.id,
+      idTicket: 1,
+      name: "Entrada General",
+      image: "https://static.cinemarkhoyts.com.ar/Images/TicketTypeImage/1687.png",
+      price: 200,
+      description: "Entrada Promocional No acumulable con otras promociones. Lunes y martes.",
+      type: "show"
+    },
+    {
+      id: storedMovie.id,
+      idTicket: 2,
+      name: "Entrada CineFan",
+      image: "https://static.cinemarkhoyts.com.ar/Images/TicketTypeImage/1667.png",
+      price: 290,
+      description: "Incluye 2 entradas + Tarjeta Virtual.",
+      type: "show"
+    },
+  ]
 
   const dispatch = useDispatch();
-  const product = useSelector((state) => state.productTicket);
   const cart = useSelector((state) => state.cart);
   const [productCount, setProductCount] = useState(0);
 
-  const cinefan = product.filter((name) => name.name === "Entrada CineFan");
-  const general = product.filter((name) => name.name === "Entrada General");
+  const cinefan = tickets.filter((ticket) => ticket.name === "Entrada CineFan");
+  const general = tickets.filter((ticket) => ticket.name === "Entrada General");
 
   const addToCard = (name) => {
     if (productCount >= 5) {
@@ -55,6 +74,7 @@ const TicketContainer = () => {
   const total = subtotal + servicio;
 
   useEffect(() => {
+    dispatch(postAllTickets(tickets));
     const storedCart = window.localStorage.getItem("cart");
     if (storedCart) {
       dispatch(saveCart(JSON.parse(storedCart)));
@@ -74,10 +94,10 @@ const TicketContainer = () => {
         <div className="flex items-center justify-center mt-20">
           <div className="w-full flex flex-col items-center">
             <h4 className="mb-4">Sumate a cineFan</h4>
-            {cinefan?.map(({ id, name, description, price, image }) => (
+            {cinefan?.map(({ idTicket, name, description, price, image }) => (
               <Ticket
-                key={id}
-                id={id}
+                key={idTicket}
+                idTicket={idTicket}
                 name={name}
                 description={description}
                 price={price}
@@ -88,10 +108,10 @@ const TicketContainer = () => {
           </div>
           <div className="w-full flex flex-col items-center">
             <h4 className="mb-4">General</h4>
-            {general?.map(({ id, name, description, price, image }) => (
+            {general?.map(({ idTicket, name, description, price, image }) => (
               <Ticket
-                key={id}
-                id={id}
+                key={idTicket}
+                idTicket={idTicket}
                 name={name}
                 description={description}
                 price={price}
