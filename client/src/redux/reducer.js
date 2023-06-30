@@ -23,6 +23,9 @@ import {
   DELETE_SUBSCRIPTION,
   GET_USER_BY_ID,
   POST_ALL_TICKETS,
+  POST_CANDY,
+  PUT_CANDY,
+  DELETE_CANDY,
   // ERROR
 } from "./action-type";
 
@@ -145,8 +148,27 @@ const rootReducer = (state = initialState, { type, payload }) => {
     case GET_CANDY: {
       return {
         ...state,
-        allCandy: payload,
+        allCandy: payload
       };
+    }
+
+    case POST_CANDY: {
+      return {
+        ...state
+      }
+    }
+
+    case PUT_CANDY: {
+      return {
+        ...state,
+        allCandy: payload
+      }
+    }
+
+    case DELETE_CANDY: {
+      return {
+        ...state
+      }
     }
 
     case POST_ALL_TICKETS: {

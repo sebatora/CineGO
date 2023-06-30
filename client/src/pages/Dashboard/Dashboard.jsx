@@ -158,21 +158,6 @@ const Dashboard = () => {
             </button>
             <button
               className={`mx-2 p-1 mb-1 rounded-sm text-start ${
-                activeComponent === "saleMovies" && "bg-slate-800 font-bold text-white"
-              }`}
-              onClick={() => handleButtonClick("saleMovies")}
-              disabled={activeComponent === "saleMovies"}
-            >
-              <h6
-                className={
-                  `text-white`
-                }
-              >
-                Películas
-              </h6>
-            </button>
-            <button
-              className={`mx-2 p-1 mb-1 rounded-sm text-start ${
                 activeComponent === "saleSubscription" &&
                 "bg-slate-800 font-bold text-white"
               }`}
@@ -254,13 +239,12 @@ const Dashboard = () => {
       <div className="w-4/5 ml-auto">
         {activeComponent === "saleGeneral" && <SaleGeneral />}
         {activeComponent === "saleTicket" && <SaleTickets />}
-        {activeComponent === "saleCandy" && <SaleCandy />}
-        {activeComponent === "saleMovies" && <SaleMovies />}
-        {activeComponent === "saleSubscription" && <SaleSubscription />}
-        {activeComponent === "subscriptionNumber" && <SubscriptionNumber />}
-        {activeComponent === "subscriptionDivision" && <SubscriptionDivision />}
-        {activeComponent === "movieScores" && <MovieScores />}
-        {activeComponent === "webVisits" && <WebVisits />}
+        {activeComponent === "saleCandy" && <SaleCandy/>}
+        {activeComponent === "saleSubscription" && <SaleSubscription/>}
+        {activeComponent === "subscriptionNumber" && <SubscriptionNumber/>}
+        {activeComponent === "subscriptionDivision" && <SubscriptionDivision/>}
+        {activeComponent === "movieScores" && <MovieScores/>}
+        {activeComponent === "webVisits" && <WebVisits/>}
       </div>
     </div>
   );

@@ -4,7 +4,7 @@ import cloudinary from "cloudinary-core";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-function SaleCandy() {
+function CreateCandy() {
   const [uploadedPhoto, setUploadedPhoto] = useState("");
   const cl = new cloudinary.Cloudinary({ cloud_name: "dhyqgl7ie" });
 
@@ -77,20 +77,9 @@ function SaleCandy() {
           onSubmit={handleSubmit(onSubmit)}
         >
           <h1 className="pb-4 ml-3">Agregar producto</h1>
-					<div className="flex flex-col mb-4 items-center">
-						<select className="border rounded-md p-1 w-96">
-							<option value='none'>Categoría</option>
-							<option value='combos'>Combos</option>
-							<option value='pochoclos'>Pochoclos</option>
-							<option value='bebidas'>Bebidas</option>
-							<option value='snacks'>Snacks</option>
-							<option value='cafeteria'>Cafetería</option>
-							<option value='golosinas'>Golosinas</option>
-						</select>
-					</div>
           <div className="flex flex-col mb-4 items-center">
             <input
-              className="border rounded-md p-1 w-96"
+              className="border rounded-md p-2 w-96"
               type="text"
               placeholder="Ingresar nombre del producto"
               {...register("name", {
@@ -109,7 +98,7 @@ function SaleCandy() {
           </div>
           <div className="flex flex-col mb-4 items-center">
             <input
-              className="border rounded-md p-1 w-96"
+              className="border rounded-md p-2 w-96"
               type="text"
               placeholder="Ingresar precio del producto"
               {...register("price", {
@@ -130,7 +119,7 @@ function SaleCandy() {
             <textarea
               className="w-96 resize-none overflow-auto p-2 rounded-md"
               name="description"
-              rows={2}
+              rows={3}
               placeholder="Descripción del producto..."
               {...register("description", {
                 required: "La descripción es requerida",
@@ -197,4 +186,4 @@ const schema = yup.object().shape({
     .required('El email es requerido'),
 });
 
-export default SaleCandy;
+export default CreateCandy;
