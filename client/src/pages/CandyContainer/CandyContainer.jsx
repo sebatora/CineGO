@@ -63,7 +63,7 @@ function CandyContainer() {
       ) : (
         <div className="w-full flex">
           <Toaster />
-          <div className="w-2/3 mt-20 flex flex-col items-center ">
+          <div className="w-2/3 mt-20 flex flex-col items-center px-14 pb-14 ">
             <h2>Combos</h2>
             <div className="flex flex-wrap justify-center">
               {combos.map(({ id, name, description, price, image }) => (
