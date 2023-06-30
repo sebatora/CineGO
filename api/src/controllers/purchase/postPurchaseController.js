@@ -18,7 +18,7 @@ const postPurchaseController = async (
       if (type === "show") {
         // El item es un Show
         const show = await Show.findByPk(itemId);
-        const movie = await Movie.findByPk(show.movieId);
+        const movie = await Movie.findByPk(itemId);
         console.log(movie.title);
         show.stock -= quantity;
         await show.save();

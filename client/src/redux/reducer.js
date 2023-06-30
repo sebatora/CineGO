@@ -22,6 +22,7 @@ import {
   PUT_SUBSCRIPTION,
   DELETE_SUBSCRIPTION,
   GET_USER_BY_ID,
+  POST_ALL_TICKETS,
   // ERROR
 } from "./action-type";
 
@@ -34,24 +35,7 @@ const initialState = {
   userData: {},
   allCandy: [],
   cart: [],
-  productTicket: [
-    {
-      id: 1,
-      name: "Entrada General",
-      image: "https://static.cinemarkhoyts.com.ar/Images/TicketTypeImage/1687.png",
-      price: 200,
-      description: "Entrada Promocional No acumulable con otras promociones. Lunes y martes.",
-      type: "show"
-    },
-    {
-      id: 2,
-      name: "Entrada CineFan",
-      image: "https://static.cinemarkhoyts.com.ar/Images/TicketTypeImage/1667.png",
-      price: 290,
-      description: "Incluye 2 entradas + Tarjeta Virtual.",
-      type: "show"
-    },
-  ],
+  productTicket: [],
 };
 
 const rootReducer = (state = initialState, { type, payload }) => {
@@ -163,6 +147,13 @@ const rootReducer = (state = initialState, { type, payload }) => {
         ...state,
         allCandy: payload,
       };
+    }
+
+    case POST_ALL_TICKETS: {
+      return {
+        ...state,
+        productTicket: payload
+      }
     }
 
     case ADD_TO_CART: {
