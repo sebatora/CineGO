@@ -33,7 +33,7 @@ let capsEntries = entries.map((entry) => [
 ]);
 sequelize.models = Object.fromEntries(capsEntries);
 
-const { Movie, Genre, User, Show, Candy, Purchase } = sequelize.models;
+const { Movie, Genre, User, Show, Candy, Purchase, Raiting } = sequelize.models;
 
 Movie.belongsToMany(Genre, { through: "movie_genre", timestamps: false });
 Genre.belongsToMany(Movie, { through: "movie_genre", timestamps: false });
@@ -45,6 +45,14 @@ Show.belongsTo(Movie, {
   foreignKey: "movieId",
 });
 
+Movie.hasMany(Raiting, {
+  foreignKey: "movieRaiting",
+  as: "raitings",
+});
+
+Raiting.belongsTo(Movie, {
+  foreignKey: "movieRaiting",
+});
 //relación entre Purchase y User
 User.hasMany(Purchase, {
   foreignKey: "userId",
