@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import SaleGeneral from "../../components/Admin/AdminVentas/SaleGeneral";
-import SaleTickets from "../../components/Admin/AdminVentas/SaleTicket";
+import PostMovieAdmin from "../../components/Admin/AdminVentas/PostMovieAdmin";
 import SaleCandy from "../../components/Admin/AdminVentas/SaleCandy";
 import SaleSubscription from "../../components/Admin/AdminVentas/SaleSubscription";
 import SubscriptionNumber from "../../components/Admin/AdminSubscription/SubscriptionNumber";
@@ -84,14 +84,14 @@ const Dashboard = () => {
           </button>
           <button
             className={`w-24 my-4 text-start ${
-              activeComponent === "saleTicket" &&
+              activeComponent === "PostMovieAdmin" &&
               "font-bold border-light-700 dark:border-dark-700 ml-2 scale-105"
             }`}
-            onClick={() => handleButtonClick("saleTicket")}
-            disabled={activeComponent === "saleTicket"}
+            onClick={() => handleButtonClick("PostMovieAdmin")}
+            disabled={activeComponent === "PostMovieAdmin"}
           >
             <h6
-              className={activeComponent === "saleTicket" && "text-light-700"}
+              className={activeComponent === "PostMovieAdmin" && "text-light-700"}
             >
               Entradas
             </h6>
@@ -163,7 +163,7 @@ const Dashboard = () => {
       </div>
       <div className="w-4/5 ml-auto">
         {activeComponent === "saleGeneral" && <SaleGeneral />}
-        {activeComponent === "saleTicket" && <SaleTickets />}
+        {activeComponent === "PostMovieAdmin" && <PostMovieAdmin />}
         {activeComponent === "saleCandy" && <SaleCandy />}
         {activeComponent === "saleSubscription" && <SaleSubscription />}
         {activeComponent === "subscriptionNumber" && <SubscriptionNumber />}
