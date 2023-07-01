@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react'
 import { getCandy } from '../../../redux/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import { Spinner } from '@chakra-ui/react';
+import CreateCandy from '../AdminCreate/CreateCandy';
 
 const DataCandy = () => {
 	const [loading, setLoading] = useState(true);
+	const [activeForm, setActiveForm] = useState(false);
   const allCandy = useSelector(state => state.allCandy);
 
   const dispatch = useDispatch();
@@ -14,15 +16,6 @@ const DataCandy = () => {
     setLoading(false);
   }, []);
 
-	// name: 'Combo Mega Recargado',
-  //     description: 
-  //       '1 Balde pop + 2 gaseosas 24oz + 1 golosina sin eleccion + 1 recarga de balde. Imagen a modo ilustrativo.',
-  //     category: 'combos',
-  //     price: 250,
-  //     image: 
-  //       'https://res.cloudinary.com/dhyqgl7ie/image/upload/v1687876321/Imagen%20Candy/1_-_Combo_mega_Recargado_woddir.png',
-  //     stock: 150,
-
 	return (
 		<>
 			{loading ? (
@@ -31,14 +24,13 @@ const DataCandy = () => {
 				<div className='w-full'>
 					<h2 className='dark:text-black'>Candy</h2>
 					<div className='absolute right-0 top-0 m-2 bg-green-500 rounded-md p-2'>
-						<button>
+						<button onClick={() => setActiveForm(true)}>
 							Crear
 						</button>
 					</div>
 					<table className="w-full text-center mt-4 bg-slate-400">
 						<thead>
 							<tr className="h-16 font-bold text-xl">
-								<th>Imagen</th>
 								<th>Nombre</th>
 								<th>Descripción</th>
 								<th>Categoría</th>
@@ -48,7 +40,6 @@ const DataCandy = () => {
 						<tbody>
 							{allCandy.map((candy, index) => (
 								<tr className={`h-12 ${index % 2 === 0 ? "bg-light-200 dark:bg-light-200" : "bg-slate-200 dark:bg-slate-200"}`} key={index}>
-									<td><img src={candy.image} alt={candy.name} /></td>
 									<td>{candy.name}</td>
 									<td>{candy.description}</td>
 									<td>{candy.category}</td>
@@ -69,6 +60,7 @@ const DataCandy = () => {
 							))}
 						</tbody>
 					</table>
+					{activeForm && <CreateCandy setActiveForm={setActiveForm} />}
 				</div>
 			)}
 		</>

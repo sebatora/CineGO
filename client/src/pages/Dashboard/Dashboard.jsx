@@ -3,8 +3,6 @@ import SaleGeneral from "../../components/Admin/AdminVentas/SaleGeneral";
 import SaleTicket from "../../components/Admin/AdminVentas/SaleTicket";
 import SaleCandy from "../../components/Admin/AdminVentas/SaleCandy";
 import SaleSubscription from "../../components/Admin/AdminVentas/SaleSubscription";
-import SubscriptionNumber from "../../components/Admin/AdminSubscription/SubscriptionNumber";
-import SubscriptionDivision from "../../components/Admin/AdminSubscription/SubscriptionDivision";
 import MovieScores from "../../components/Admin/AdminVisitas/MovieScores";
 import WebVisits from "../../components/Admin/AdminVisitas/WebVisits";
 import { useDispatch } from "react-redux";
@@ -69,61 +67,6 @@ const Dashboard = () => {
         )}
 
         <div className="h-4/5 flex flex-col justify-between pt-4">
-          {/* Suscripciones */}
-          {/* <div className="flex flex-col">
-          <span
-              className="p-2 text-white uppercase text-xs"
-            >
-              Suscripciones
-            </span>
-
-            <button
-              className={`mx-2 p-1 mb-1 rounded-sm text-start ${
-                activeComponent === "subscriptionNumber" &&
-                "bg-slate-800 font-bold text-white"
-              }`}
-              onClick={() => handleButtonClick("subscriptionNumber")}
-              disabled={activeComponent === "subscriptionNumber"}
-            >
-              <h6
-                className={
-                  `text-white`
-                }
-              >
-                Suscriptores
-              </h6>
-            </button>
-            <button
-              className={`mx-2 p-1 mb-1 rounded-sm text-start ${
-                activeComponent === "subscriptionDivision" &&
-                "bg-slate-800 font-bold text-white"
-              }`}
-              onClick={() => handleButtonClick("subscriptionDivision")}
-              disabled={activeComponent === "subscriptionDivision"}
-            >
-              <h6
-                className={
-                  `text-white`
-                }
-              >
-                Tipo de suscripciones
-              </h6>
-            </button>
-          </div> */}
-
-          {/* Dashboard */}
-          {/* <div className="flex flex-col">
-            <button
-              className={`mx-2 p-1 mb-1 rounded-sm text-start ${
-                activeComponent === "dataMovies" &&
-                "bg-slate-800 font-bold text-white"
-              }`}
-              onClick={() => handleButtonClick("dataMovies")}
-              disabled={activeComponent === "dataMovies"}
-            >
-              <h6 className={`text-white`}>Dashboard</h6>
-            </button>
-          </div> */}
 
           {/* Data */}
           <div className="flex flex-col">
@@ -263,8 +206,6 @@ const Dashboard = () => {
         {activeComponent === "saleTicket" && <SaleTicket />}
         {activeComponent === "saleCandy" && <SaleCandy />}
         {activeComponent === "saleSubscription" && <SaleSubscription />}
-        {activeComponent === "subscriptionNumber" && <SubscriptionNumber />}
-        {activeComponent === "subscriptionDivision" && <SubscriptionDivision />}
         {activeComponent === "movieScores" && <MovieScores />}
         {activeComponent === "webVisits" && <WebVisits />}
       </div>
