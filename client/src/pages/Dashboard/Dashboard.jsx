@@ -14,6 +14,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import DataMovies from "../../components/Admin/AdminData/DataMovies";
 import DataCandy from "../../components/Admin/AdminData/DataCandy";
+import DataUsers from "../../components/Admin/AdminData/DataUsers";
 
 const Dashboard = () => {
   const [activeComponent, setActiveComponent] = useState("adminVentas");
@@ -137,6 +138,7 @@ const Dashboard = () => {
             >
               <h6 className={`text-white`}>Películas</h6>
             </button>
+
             <button
               className={`mx-2 p-1 mb-1 rounded-sm text-start ${
                 activeComponent === "dataCandy" &&
@@ -146,6 +148,17 @@ const Dashboard = () => {
               disabled={activeComponent === "dataCandy"}
             >
               <h6 className={`text-white`}>Candy</h6>
+            </button>
+
+            <button
+              className={`mx-2 p-1 mb-1 rounded-sm text-start ${
+                activeComponent === "dataUsers" &&
+                "bg-slate-800 font-bold text-white"
+              }`}
+              onClick={() => handleButtonClick("dataUsers")}
+              disabled={activeComponent === "dataUsers"}
+            >
+              <h6 className={`text-white`}>Usuarios</h6>
             </button>
           </div>
 
@@ -245,6 +258,7 @@ const Dashboard = () => {
       <div className="w-4/5 ml-auto">
         {activeComponent === "dataMovies" && <DataMovies />}
         {activeComponent === "dataCandy" && <DataCandy />}
+        {activeComponent === "dataUsers" && <DataUsers />}
         {activeComponent === "saleGeneral" && <SaleGeneral />}
         {activeComponent === "saleTicket" && <SaleTicket />}
         {activeComponent === "saleCandy" && <SaleCandy />}
