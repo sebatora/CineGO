@@ -18,53 +18,68 @@ export default {
           "0%": { color: "black" },
           "50%": { color: "white" },
           "100%": { color: "black" },
-        }
+        },
+        cardMovieAnimate: {
+          "0%": {
+            transform: "translateY(100%) scaleY(0)",
+            transformOrigin: "top",
+          },
+          "50%": {
+            transform: "translateY(50%) scaleY(0.5)",
+            transformOrigin: "top",
+          },
+          "100%": {
+            transform: "translateY(0%) scaleY(1)",
+            transformOrigin: "top",
+          },
+        },
       },
       animation: {
         tambaleo: "tambaleo 1.5s infinite",
-        colorAnimation: "colorAnimation 1s infinite"
+        colorAnimation: "colorAnimation 1s infinite",
+        cardMovieAnimate: "cardMovieAnimate .4s linear",
       },
       colors: {
-        'primary': {
-          '50': '#f1f3ff',
-          '100': '#e6eaff',
-          '200': '#d0d8ff',
-          '300': '#abb7ff',
-          '400': '#7b87ff',
-          '500': '#464dff',
-          '600': '#2420ff',
-          '700': '#140ef3',
-          '800': '#100bcc',
-          '900': '#100ca6',
-          '950': '#03045e',
-        },   
-        'light': {
-          '50': '#f6f6f7',
-          '100': '#e0e5e7',
-          '200': '#c2c9cd',
-          '300': '#9ba7ad',
-          '400': '#76828b',
-          '500': '#5b6871',
-          '600': '#485159',
-          '700': '#3c4349',
-          '800': '#33373c',
-          '900': '#2d3034',
-          '950': '#212529',
+        primary: {
+          50: "#f1f3ff",
+          100: "#e6eaff",
+          200: "#d0d8ff",
+          300: "#abb7ff",
+          400: "#7b87ff",
+          500: "#464dff",
+          600: "#2420ff",
+          700: "#140ef3",
+          800: "#100bcc",
+          900: "#100ca6",
+          950: "#03045e",
         },
-        'dark': {
-          '50': '#fff729',
-          '100': '#ffba0a',
-          '200': '#faa405',
-          '300': '#f48d06',
-          '400': '#e75b04',
-          '500': '#de2e02',
-          '600': '#d10000',
-          '700': '#9c0207',
-          '800': '#6c040e',
-          '900': '#370617',
-          '950': '#03071c',
-        },  
-        
+        light: {
+          50: "#f6f6f7",
+          100: "#e0e5e7",
+          200: "#c2c9cd",
+          300: "#9ba7ad",
+          400: "#76828b",
+          500: "#5b6871",
+          600: "#485159",
+          700: "#3c4349",
+          800: "#33373c",
+          900: "#2d3034",
+          950: "#212529",
+        },
+        dark: {
+          50: "#fff729",
+          100: "#ffba0a",
+          200: "#faa405",
+          300: "#f48d06",
+          400: "#e75b04",
+          500: "#de2e02",
+          600: "#d10000",
+          700: "#9c0207",
+          800: "#6c040e",
+          900: "#370617",
+          950: "#03071c",
+        },
+
         tremor: {
           brand: {
             faint: "#eff6ff", // blue-50
@@ -129,12 +144,16 @@ export default {
       boxShadow: {
         // light
         "tremor-input": "0 1px 2px 0 rgb(0 0 0 / 0.05)",
-        "tremor-card": "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
-        "tremor-dropdown": "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
+        "tremor-card":
+          "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
+        "tremor-dropdown":
+          "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
         // dark
         "dark-tremor-input": "0 1px 2px 0 rgb(0 0 0 / 0.05)",
-        "dark-tremor-card": "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
-        "dark-tremor-dropdown": "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
+        "dark-tremor-card":
+          "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
+        "dark-tremor-dropdown":
+          "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
       },
       borderRadius: {
         "tremor-small": "0.375rem",
@@ -147,7 +166,6 @@ export default {
         "tremor-title": ["1.125rem", { lineHeight: "1.75rem" }],
         "tremor-metric": ["1.875rem", { lineHeight: "2.25rem" }],
       },
-
     },
   },
   safelist: [
@@ -183,5 +201,4 @@ export default {
     require("tailwindcss-animated"),
     require("@headlessui/tailwindcss"),
   ],
-}
-
+};
