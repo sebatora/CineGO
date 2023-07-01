@@ -5,7 +5,7 @@ const postCandy = async ({ name, description, category, price, image }) => {
     throw new Error("Faltan datos");
 
   const candyExists = await Candy.findOne({ where: {name} });
-  if (candyExists) throw Error('Ya existe un producto con este nombre');
+  if (candyExists) throw Error('Ya existe un producto con este nombre')
 
   const createdCandy = await Candy.create({
     name, 

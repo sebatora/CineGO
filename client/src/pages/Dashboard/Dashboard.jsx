@@ -7,6 +7,7 @@ import SubscriptionNumber from "../../components/Admin/AdminSubscription/Subscri
 import SubscriptionDivision from "../../components/Admin/AdminSubscription/SubscriptionDivision";
 import MovieScores from "../../components/Admin/AdminVisitas/MovieScores";
 import WebVisits from "../../components/Admin/AdminVisitas/WebVisits";
+import { Toaster } from "react-hot-toast";
 
 const Dashboard = () => {
   const [activeComponent, setActiveComponent] = useState("adminVentas");
@@ -17,6 +18,7 @@ const Dashboard = () => {
 
   return (
     <div className="w-full flex">
+	<Toaster />
       <div className="w-1/5 bg-light-300 dark:bg-slate-900">
         <h1 className="w-full mt-5 ml-5">Bienvenido</h1>
         <div className="w-3/4 p-4 flex flex-col">

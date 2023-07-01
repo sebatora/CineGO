@@ -657,6 +657,7 @@ const dataAllGenres = [
     name: "Western",
   },
 ];
+
 const dataAllCandy = [
   {
     name: "Combo Mega Recargado",
