@@ -28,7 +28,7 @@ function MovieCard({ id, title, image, clasification, duration }) {
       >
         <Link className="w-full h-full" to={`/detail/${id}`}>
           <img
-            className="w-full h-full absolute rounded-md border border-solid border-black"
+            className="w-full h-full absolute rounded-sm border border-solid border-black dark:border-solid dark:border-red-600"
             src={image}
             alt={title}
             style={{ filter: isHovered ? "blur(2px) " : "none" }}
@@ -36,7 +36,7 @@ function MovieCard({ id, title, image, clasification, duration }) {
           <div
             className={`w-full h-full p-2 absolute bottom-0 overflow-hidden flex flex-col justify-center items-center text-center bg-black bg-opacity-80 transition-opacity duration-500 ease-linear ${
               isHovered
-                ? "animate-cardMovieAnimate rounded-md border border-solid border-black"
+                ? "animate-cardMovieAnimate rounded-sm border border-solid border-black dark:border-solid dark:border-red-600"
                 : "opacity-0"
             }`}
           >
