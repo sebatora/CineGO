@@ -1,6 +1,6 @@
 const { Movie, Genre, Show } = require("../../db")
 
-const getPutMoviesController = async ({id, title, description, image, actors, director, duration, release_date, trailer, clasification, activeMovie, genres}) => {
+const putMovie = async ({id, title, description, image, actors, director, duration, release_date, trailer, clasification, activeMovie, genres}) => {
 
   // Buscar pelicula por id 
   const movie = await Movie.findOne({ where: { id: Number(id) },
@@ -37,11 +37,11 @@ const getPutMoviesController = async ({id, title, description, image, actors, di
 
   await movie.save()
 
-  const updateGenre = genres.map(genre => genre.name);
-  console.log(updateGenre);
-  const movieGenres = await Genre.findAll({ where: { name: updateGenre } });
+  // const updateGenre = genres.map(genre => genre.name);
+  // console.log(updateGenre);
+  // const movieGenres = await Genre.findAll({ where: { name: updateGenre } });
 
   return (movie);
 };
 
-module.exports = getPutMoviesController;
+module.exports = putMovie;
