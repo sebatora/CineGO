@@ -28,6 +28,7 @@ import {
   POST_CANDY,
   DELETE_CANDY,
   PUT_CANDY,
+  GET_USERS,
   // ERROR
 } from "./action-type";
 
@@ -113,6 +114,18 @@ export const filterOrder = (info) => {
   return async (dispatch) => {
     const { data } = await axios.post(`/order`, info);
     return dispatch({ type: FILTER_ORDER, payload: data });
+  };
+};
+
+// Trae los usuarios
+export const getUsers = () => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.get(`/users`);
+      return dispatch({ type: GET_USERS, payload: data });
+    } catch (error) {
+      return error.message;
+    }
   };
 };
 

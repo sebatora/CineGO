@@ -14,6 +14,7 @@ export const PUT_MOVIE = "PUT_MOVIE";
 export const DELETE_MOVIE = "DELETE_MOVIE";
 
 // RUTAS DE USUARIOS
+export const GET_USERS = "GET_USERS";
 export const GET_USER_BY_ID = "GET_USER_BY_ID";
 export const POST_USER = "POST_USER";
 export const PUT_USER = "PUT_USER";

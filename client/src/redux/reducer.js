@@ -26,6 +26,7 @@ import {
   POST_CANDY,
   PUT_CANDY,
   DELETE_CANDY,
+  GET_USERS,
   // ERROR
 } from "./action-type";
 
@@ -35,6 +36,7 @@ const initialState = {
   movieById: {},
   movieByIdCopy: {},
   allGenres: [],
+  allUsers: [],
   userData: {},
   allCandy: [],
   cart: [],
@@ -97,6 +99,13 @@ const rootReducer = (state = initialState, { type, payload }) => {
         ...state,
         allMovies: payload,
       };
+    }
+
+    case GET_USERS: {
+      return {
+        ...state,
+        allUsers: payload,
+      }
     }
 
     case GET_USER_BY_ID: {
