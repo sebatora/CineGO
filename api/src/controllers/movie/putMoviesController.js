@@ -1,29 +1,47 @@
-const { Movie } = require("../../db")
+const { Movie, Genre, Show } = require("../../db")
 
-const getPutMoviesController = async (movieId, newData) => {
-   // Verificar que se proporcione el id de la pelicula
-   if(!movieId) throw new Error("Faltan datos");
+const getPutMoviesController = async ({id, title, description, image, actors, director, duration, release_date, trailer, clasification, activeMovie, genres}) => {
 
-   // Buscar pelicula por id 
-   const movie = await Movie.findOne({ where: { id: movieId } });
-   // Verificar si la pelicula existe
-   if(!movie) throw new Error("Película no encontrada");
-   // Acualizar los datos de la película con los nuevos valores
-   movie.title = newData.title || movie.title;
-   movie.description = newData.description || movie.description;
-   movie.image = newData.image || movie.image;
-   movie.actors = newData.actors || movie.actors;
-   movie.director = newData.director || movie.director;
-   movie.duration = newData.duration || movie.duration;
-   movie.release_date = newData.release_date || movie.release_date;
-   movie.trailer = newData.trailer || movie.trailer;
-   movie.clasification = newData.clasification|| movie.clasification;
-    
-   await movie.save()
+  // Buscar pelicula por id 
+  const movie = await Movie.findOne({ where: { id: Number(id) },
+    include: [
+    {
+      model: Genre,
+      attributes: ["name"],
+      through: {
+        attributes: [],
+      },
+    },
+    {
+      model: Show,
+      as: "shows",
+      attributes: ["id", "date", "hour", "type", "stock"],
+    },
+  ],
+  });
 
-   
-   return "La película fue actualizada con éxito";
-   
+  // Verificar si la pelicula existe
+  if(!movie) throw new Error("Película no encontrada");
+
+  // Acualizar los datos de la película con los nuevos valores
+  movie.title = title || movie.title;
+  movie.description = description || movie.description;
+  movie.image = image || movie.image;
+  movie.actors = actors || movie.actors;
+  movie.director = director || movie.director;
+  movie.duration = duration || movie.duration;
+  movie.release_date = release_date || movie.release_date;
+  movie.trailer = trailer || movie.trailer;
+  movie.clasification = clasification|| movie.clasification;
+  movie.activeMovie = activeMovie|| movie.activeMovie;
+
+  await movie.save()
+
+  const updateGenre = genres.map(genre => genre.name);
+  console.log(updateGenre);
+  const movieGenres = await Genre.findAll({ where: { name: updateGenre } });
+
+  return (movie);
 };
 
 module.exports = getPutMoviesController;

@@ -14,10 +14,10 @@ routerMovie.get("/:id", handlerGetMovieById);
 // Ruta para crear peliculas
 routerMovie.post("/", handlerPostMovie);
 
+// Ruta para modificar películas
+routerMovie.put("/:id", handlerPutMovie);
+
 // Ruta interna para crear todas las peliculas de la data
 routerMovie.post("/bulkCreate", handlerPostBulkMovies);
-
-// Ruta para modificar películas
-routerMovie.put("/", handlerPutMovie);
 
 module.exports = routerMovie;
