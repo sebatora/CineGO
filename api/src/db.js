@@ -45,14 +45,6 @@ Show.belongsTo(Movie, {
   foreignKey: "movieId",
 });
 
-Movie.hasMany(Raiting, {
-  foreignKey: "movieRaiting",
-  as: "raitings",
-});
-
-Raiting.belongsTo(Movie, {
-  foreignKey: "movieRaiting",
-});
 //relación entre Purchase y User
 User.hasMany(Purchase, {
   foreignKey: "userId",
