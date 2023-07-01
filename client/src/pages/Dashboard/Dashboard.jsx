@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import SaleGeneral from "../../components/Admin/AdminVentas/SaleGeneral";
-import SaleTickets from "../../components/Admin/AdminVentas/SaleTicket";
+import PostMovieAdmin from "../../components/Admin/AdminVentas/PostMovieAdmin";
 import SaleCandy from "../../components/Admin/AdminVentas/SaleCandy";
 import SaleSubscription from "../../components/Admin/AdminVentas/SaleSubscription";
 import SubscriptionNumber from "../../components/Admin/AdminSubscription/SubscriptionNumber";
@@ -109,6 +109,21 @@ const Dashboard = () => {
           <span
               className="p-2 text-white uppercase text-xs"
             >
+
+              Compras
+            </h6>
+          </button>
+          <button
+            className={`w-24 my-4 text-start ${
+              activeComponent === "PostMovieAdmin" &&
+              "font-bold border-light-700 dark:border-dark-700 ml-2 scale-105"
+            }`}
+            onClick={() => handleButtonClick("PostMovieAdmin")}
+            disabled={activeComponent === "PostMovieAdmin"}
+          >
+            <h6
+              className={activeComponent === "PostMovieAdmin" && "text-light-700"}
+
               Ventas
             </span>
             <button
@@ -117,6 +132,7 @@ const Dashboard = () => {
               }`}
               onClick={() => handleButtonClick("saleGeneral")}
               disabled={activeComponent === "saleGeneral"}
+
             >
               <h6
                 className={
@@ -238,13 +254,15 @@ const Dashboard = () => {
       </div>
       <div className="w-4/5 ml-auto">
         {activeComponent === "saleGeneral" && <SaleGeneral />}
-        {activeComponent === "saleTicket" && <SaleTickets />}
-        {activeComponent === "saleCandy" && <SaleCandy/>}
-        {activeComponent === "saleSubscription" && <SaleSubscription/>}
-        {activeComponent === "subscriptionNumber" && <SubscriptionNumber/>}
-        {activeComponent === "subscriptionDivision" && <SubscriptionDivision/>}
-        {activeComponent === "movieScores" && <MovieScores/>}
-        {activeComponent === "webVisits" && <WebVisits/>}
+
+        {activeComponent === "PostMovieAdmin" && <PostMovieAdmin />}
+        {activeComponent === "saleCandy" && <SaleCandy />}
+        {activeComponent === "saleSubscription" && <SaleSubscription />}
+        {activeComponent === "subscriptionNumber" && <SubscriptionNumber />}
+        {activeComponent === "subscriptionDivision" && <SubscriptionDivision />}
+        {activeComponent === "movieScores" && <MovieScores />}
+        {activeComponent === "webVisits" && <WebVisits />}
+
       </div>
     </div>
   );
