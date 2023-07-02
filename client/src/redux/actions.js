@@ -186,10 +186,10 @@ export const postUser = (newUser) => {
 };
 
 // Modifica a un usuario
-export const putUser = (user) => {
+export const putUser = (dataUser) => {
   return async (dispatch) => {
     try {
-      const { data } = await axios.put(`/users`, user);
+      const { data } = await axios.put(`/users`, dataUser);
       return dispatch({ type: PUT_USER, payload: data });
     } catch (error) {
       return error.message;

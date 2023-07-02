@@ -16,11 +16,11 @@ const schema = yup.object().shape({
     .required("El título es requerido"),
   description: yup
     .string()
-    .matches(/^([A-Za-z,:;.]+\s?){1,140}$/, "máx 140 caracteres")
+    .matches(/^.{1,140}$/, "máx 140 caracteres")
     .required("La descripción es requerida"),
   actors: yup
     .string()
-    .matches(/^([A-Za-z,:;.]+\s?){1,140}$/, "máx 140 caracteres")
+    .matches(/^.{1,140}$/, "máx 140 caracteres")
     .required("Los actores son requeridos"),
   director: yup
     .string()
@@ -108,6 +108,7 @@ const CreateMovie = ({ setActiveForm }) => {
         image: uploadedPhoto,
         genres: input.genres, // Agrega los géneros seleccionados al objeto de datos
       };
+      console.log(movieData);
 
       const handleReset = () => {
         setUploadedPhoto("");
@@ -211,12 +212,31 @@ const CreateMovie = ({ setActiveForm }) => {
 
         <div className="w-full flex justify-center py-2">
           <div className="flex flex-col mx-6">
-            <input
+            {/* <input
               className="border rounded-sm p-1 w-60"
               type="text"
               placeholder="Clasificación"
               {...register("clasification")}
-            />
+            /> */}
+            <select
+              className="border rounded-sm p-1 w-60 flex flex-col"
+              name="clasification"
+              value={watch("clasification")}
+              {...register("clasification")}
+            >
+              <option value="clasification" disabled>
+                Clasificación
+              </option>
+              <option className="dark:text-black" value="ATP">
+                ATP
+              </option>
+              <option className="dark:text-black" value="+13">
+                +13
+              </option>
+              <option className="dark:text-black" value="+16">
+                +16
+              </option>
+            </select>
             {errors.clasification && (
               <span className="mt-2 text-red-600 dark:text-red-600 text-base">
                 {errors.clasification.message}
@@ -280,7 +300,43 @@ const CreateMovie = ({ setActiveForm }) => {
                 {errors.trailer.message}
               </span>
             )}
+            <div className="flex flex-col mt-2">
+              <select
+                className="border rounded-sm p-1 w-60 flex flex-col"
+                onChange={(e) => handleSelect(e)}
+                name="genres"
+                value={watch("genres")}
+              >
+                <option className="flex flex-col" value="">
+                  Géneros
+                </option>
+                {genres?.map((t) => (
+                  <option
+                    className="flex flex-col "
+                    key={t.id}
+                    name="genres"
+                    value={t.name}
+                  >
+                    {t.name}
+                  </option>
+                ))}
+              </select>
+              <div className="flex flex-col mt-2">
+                {selectedGenres.map((genre) => (
+                  <div className="flex items-center" key={genre}>
+                    <h6 className="flex flex-col">{genre}</h6>
+                    <button
+                      className="text-black p-2"
+                      onClick={() => handleDelete(genre)}
+                    >
+                      <FontAwesomeIcon icon={faTimes} />
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
+
           <div className="flex flex-col mx-6">
             <textarea
               className="border rounded-sm p-1 w-60 resize-none"
@@ -294,44 +350,6 @@ const CreateMovie = ({ setActiveForm }) => {
                 {errors.description.message}
               </span>
             )}
-          </div>
-        </div>
-
-        <div className="w-full flex -mt-11 ml-6 py-1">
-          <div className="flex flex-col mx-6 ">
-            <select
-              className="border rounded-sm p-1 w-60 -mt-6 ml-5 flex flex-col"
-              onChange={(e) => handleSelect(e)}
-              name="genres"
-              value={watch("genres")}
-            >
-              <option className="flex flex-col" value="">
-                Géneros
-              </option>
-              {genres?.map((t) => (
-                <option
-                  className="flex flex-col "
-                  key={t.id}
-                  name="genres"
-                  value={t.name}
-                >
-                  {t.name}
-                </option>
-              ))}
-            </select>
-            <div className="flex flex-wrap mt-3 ml-7">
-              {selectedGenres.map((genre) => (
-                <div className="flex items-center" key={genre}>
-                  <h6 className="flex flex-col">{genre}</h6>
-                  <button
-                    className=" text-black px-2 py-1 ml-1 mr-5"
-                    onClick={() => handleDelete(genre)}
-                  >
-                    <FontAwesomeIcon icon={faTimes} />
-                  </button>
-                </div>
-              ))}
-            </div>
           </div>
         </div>
 
@@ -353,7 +371,7 @@ const CreateMovie = ({ setActiveForm }) => {
               )
             )}
           </div>
-          <div className="w-full flex justify-center mt-4 mb-6">
+          <div className="flex justify-center m-6">
             <button
               className="bg-primary-600 hover:bg-primary-500 py-4 px-10 w-92 text-white font-semibold"
               type="button"
