@@ -7,6 +7,8 @@ import { Switch } from '@headlessui/react';
 const DataUsers = () => {
 	const [loading, setLoading] = useState(true);
   const allUsers = useSelector((state) => state.allUsers);
+	const [currentPage, setCurrentPage] = useState(0);
+	const [countPage, setCountPage] = useState(1);
   const dispatch = useDispatch();
 
 	const handleToggle = (userId, activeUser) => {
@@ -15,6 +17,24 @@ const DataUsers = () => {
 		}, 100);
 		dispatch(putUser(userId, { activeUser: `${!activeUser}` }));
 	};
+
+	const pagination = () => {
+		return allUsers.slice(currentPage, currentPage + 8);
+	}
+
+	const nextPage = () => {
+		if(allUsers.length > currentPage + 8){
+      setCurrentPage(currentPage + 8);
+      setCountPage(countPage + 1);
+    }
+	}
+
+	const prevPage = () => {
+		if(currentPage > 0){
+			setCurrentPage(currentPage - 8);
+      setCountPage(countPage - 1)
+		}
+	}
 
   useEffect(() => {
     dispatch(getUsers());
@@ -50,9 +70,9 @@ const DataUsers = () => {
 								</tr>
 							</thead>
 							<tbody>
-								{allUsers.map((user, index) => (
+								{pagination().map((user, index) => (
 									<tr className={`h-12 ${index % 2 === 0 ? "bg-slate-100" : "bg-slate-300"}`} key={index}>
-										<td><img className="w-15 h-20" src={user.image} alt={user.firstName} /></td>
+										<td className='flex justify-center'><img className="w-16 h-16" src={user.image} alt={user.firstName} /></td>
 										<td>{user.firstName}</td>
 										<td>{user.lastName}</td>
 										<td>{user.email}</td>
@@ -81,6 +101,19 @@ const DataUsers = () => {
 								))}
 							</tbody>
 						</table>
+						<div className="w-full flex justify-center items-center pt-4">
+							<button onClick={prevPage} className="bg-light-200 rounded-md p-1 mx-2" type="text">
+								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" className="w-5 h-5 stroke-black">
+									<path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+								</svg>
+							</button>
+							<span className="">{countPage}</span>
+							<button onClick={nextPage} className="bg-light-200 rounded-md p-1 mx-2" type="text">
+								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" className="w-5 h-5 stroke-black">
+									<path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+								</svg>
+							</button>
+						</div>
 					</div>
 				</div>
 			)}
