@@ -3,11 +3,11 @@ const nodemailer = require("nodemailer");
 const path = require("path");
 const bcrypt = require("bcryptjs");
 
-const putUserData = async (userId, firstName, lastName, email, password, image) => {
-  if (!userId) throw new Error("Faltan datos");
+const putUserData = async (id, firstName, lastName, email, password, image, activeUser) => {
+  if (!id) throw new Error("Faltan datos");
 
   // Verificamos que el usuario exista
-  const user = await User.findOne({ where: { id: userId } });
+  const user = await User.findOne({ where: { id } });
   if (!user) {
     throw new Error("Usuario no encontrado");
   }
@@ -17,6 +17,7 @@ const putUserData = async (userId, firstName, lastName, email, password, image) 
   user.lastName = lastName || user.lastName;
   user.email = email || user.email;
   user.image = image || user.image;
+  user.activeUser = activeUser || user.activeUser;
   if (password) {
     const passwordHash = await bcrypt.hash(password, 10);
     user.password = passwordHash;

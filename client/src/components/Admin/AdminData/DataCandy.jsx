@@ -72,6 +72,7 @@ const DataCandy = () => {
 						<table className="w-full text-center bg-slate-400 rounded-sm">
 							<thead>
 								<tr className="h-10 font-bold text-md">
+									<th>Imagen</th>
 									<th>Nombre</th>
 									<th>Categoría</th>
 									<th>Precio</th>
@@ -83,6 +84,7 @@ const DataCandy = () => {
 							<tbody>
 								{pagination().map((candy, index) => (
 									<tr className={`h-12 ${index % 2 === 0 ? "bg-slate-100" : "bg-slate-300"}`} key={index}>
+										<td className='flex justify-center'><img className='w-14 h-14' src={candy.image} alt={candy.name} /></td>
 										<td>{candy.name}</td>
 										<td>{candy.category}</td>
 										<td>{candy.price}</td>
