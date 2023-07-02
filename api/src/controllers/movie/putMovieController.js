@@ -58,7 +58,8 @@ const putMovie = async ({
   // Actualizar los shows de la película
   if (shows) {
     const newShows = await Show.findAll({ where: { id: shows } });
-    await movie.setShows(newShows);
+    await movie.setShows(newShows); // id show // date // hour //
+    //en el front cuando vayas a editar una movie, se muestra la lista de shows // se selecciona el show especficio para obtener el ID del show // seleccionar fecha y hora // recibir la ifnormacion en el back y editar el show
   }
 
   // Guardar los cambios en la película

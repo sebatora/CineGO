@@ -1,4 +1,6 @@
 const getFilterGenre = require("../../controllers/order/getFilterGenre");
+const filterPurchasesByProductName = require("../../controllers/purchase/filterPurchaseByProductName");
+const filterPurchasesByType = require("../../controllers/purchase/filterPurchaseByType");
 const getAllPurchases = require("../../controllers/purchase/getAllPurchasesController");
 const orderPurchaseAscending = require("../../controllers/purchase/orderPurchaseAscending");
 const orderPurchaseDescending = require("../../controllers/purchase/orderPurchaseDescending");
@@ -22,12 +24,13 @@ const handlerFilterPurchases = async (req, res) => {
     }
     if (type) {
       const filteredCopy = filtered;
-      //   filtered = await CONTROLADOR QUE FILTRARA POR TYPE - CANDY - SHOW - SUBSCRIPTION (filteredCopy, type);
+      console.log("Entro a filtar por type");
+      filtered = await filterPurchasesByType(filteredCopy, type);
     }
 
     if (productName) {
       const filteredCopy = filtered;
-      //   filtered = await CONTROLADOR QUE FILTRARA POR NOMBRE DEL PRODUCTO (filteredCopy, productName);
+      filtered = await filterPurchasesByProductName(filteredCopy, productName);
     }
     return res.status(200).json(filtered);
   } catch (error) {
