@@ -188,7 +188,6 @@ const CreateCandy = ({ setActiveForm }) => {
 							type="button"
 							id="btn-photo"
 						>
-							{" "}
 							Subir foto
 						</button>
 					</div>

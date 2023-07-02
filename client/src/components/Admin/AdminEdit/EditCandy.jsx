@@ -61,7 +61,7 @@ const EditCandy = ({ setActiveForm, candyFound }) => {
 	}
 
 	useEffect(() => {
-    const boton_photo = document.querySelector("#btn-photo");
+    const boton_photo = document.querySelector("#btn-photo-edit");
     boton_photo.addEventListener("click", handleUploadPhoto);
   }, []);
 
@@ -167,9 +167,8 @@ const EditCandy = ({ setActiveForm, candyFound }) => {
 						<button
 							className="bg-primary-600 hover:bg-primary-500 py-2 px-6 w-92 ml-12 text-white font-semibold rounded-md"
 							type="button"
-							id="btn-photo"
+							id="btn-photo-edit"
 						>
-							{" "}
 							Cambiar foto
 						</button>
 					</div>
