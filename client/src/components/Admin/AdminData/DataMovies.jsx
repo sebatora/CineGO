@@ -8,6 +8,8 @@ import { Switch } from "@headlessui/react";
 const DataMovies = () => {
 	const [loading, setLoading] = useState(true);
 	const [activeForm, setActiveForm] = useState(false);
+	const [currentPage, setCurrentPage] = useState(0);
+	const [countPage, setCountPage] = useState(1);
   const allMovies = useSelector((state) => state.allMovies);
 
   const dispatch = useDispatch();
@@ -18,6 +20,24 @@ const DataMovies = () => {
 		}, 100);
 		dispatch(putMovie(movieId, { activeMovie: `${!activeMovie}` }));
 	};	
+
+	const pagination = () => {
+		return allMovies.slice(currentPage, currentPage + 8);
+	}
+
+	const nextPage = () => {
+		if(allMovies.length > currentPage + 8){
+      setCurrentPage(currentPage + 8);
+      setCountPage(countPage + 1);
+    }
+	}
+
+	const prevPage = () => {
+		if(currentPage > 0){
+			setCurrentPage(currentPage - 8);
+      setCountPage(countPage - 1)
+		}
+	}
 
   useEffect(() => {
     dispatch(getMovies());
@@ -43,6 +63,7 @@ const DataMovies = () => {
 						<table className="w-full text-center bg-slate-400 rounded-sm">
 							<thead>
 								<tr className="h-10 font-bold text-md">
+									<th>Imagen</th>
 									<th>Título</th>
 									<th>Duración</th>
 									<th>Estreno</th>
@@ -52,8 +73,9 @@ const DataMovies = () => {
 								</tr>
 							</thead>
 							<tbody>
-								{allMovies.map((movie, index) => (
+								{pagination().map((movie, index) => (
 									<tr className={`h-12 ${index % 2 === 0 ? "bg-slate-100" : "bg-slate-300"}`} key={index}>
+										<td className='flex justify-center'><img className='w-11 h-14' src={movie.image} alt={movie.title} /></td>
 										<td>{movie.title}</td>
 										<td>{movie.duration}</td>
 										<td>{movie.release_date}</td>
@@ -82,6 +104,19 @@ const DataMovies = () => {
 								))}
 							</tbody>
 						</table>
+						<div className="w-full flex justify-center items-center pt-4">
+							<button onClick={prevPage} className="bg-light-200 rounded-md p-1 mx-2" type="text">
+								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" className="w-5 h-5 stroke-black">
+									<path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+								</svg>
+							</button>
+							<span className="dark:text-black">{countPage}</span>
+							<button onClick={nextPage} className="bg-light-200 rounded-md p-1 mx-2" type="text">
+								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" className="w-5 h-5 stroke-black">
+									<path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+								</svg>
+							</button>
+						</div>
 					</div>
 					{activeForm && <CreateMovie setActiveForm={setActiveForm} />}
 				</div>

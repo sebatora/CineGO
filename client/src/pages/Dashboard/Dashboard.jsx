@@ -50,7 +50,7 @@ const Dashboard = () => {
   }, []);
 
   return (
-    <div className="w-full h-full flex bg-light-100 dark:bg-light-100">
+    <div className="w-full h-full flex">
       <Toaster />
       <div className="w-1/5 fixed h-screen bg-slate-900 dark:bg-slate-900">
         {/* Profile */}
@@ -200,7 +200,7 @@ const Dashboard = () => {
           </button>
         </div>
       </div>
-      <div className="w-4/5 ml-auto">
+      <div className="w-4/5 min-h-screen ml-auto bg-light-100 dark:bg-light-100">
         {activeComponent === "saleGeneral" && <SaleGeneral />}
         {activeComponent === "saleTicket" && <SaleTicket />}
         {activeComponent === "saleCandy" && <SaleCandy />}
