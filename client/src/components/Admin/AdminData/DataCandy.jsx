@@ -117,7 +117,7 @@ const DataCandy = () => {
 									<path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
 								</svg>
 							</button>
-							<span className="">{countPage}</span>
+							<span className="dark:text-black">{countPage}</span>
 							<button onClick={nextPage} className="bg-light-200 rounded-md p-1 mx-2" type="text">
 								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" className="w-5 h-5 stroke-black">
 									<path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
