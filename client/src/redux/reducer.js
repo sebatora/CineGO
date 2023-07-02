@@ -28,6 +28,7 @@ import {
   DELETE_CANDY,
   GET_USERS,
   PUT_MOVIE,
+  POST_RATING,
   // ERROR
 } from "./action-type";
 
@@ -334,6 +335,12 @@ const rootReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         cart: payload,
+      };
+    }
+
+    case POST_RATING: {
+      return {
+        ...state,
       };
     }
 

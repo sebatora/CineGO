@@ -12,6 +12,7 @@ const routerSubscription = require("./routes/subscription.routes.js");
 const routerPayment = require("./routes/payment.routes.js");
 const routerResetPassword = require("./routes/resetpass.routes.js");
 const routerPurchase = require("./routes/purchase.routes.js");
+const routerRating = require("./routes/rating.routes.js");
 const allBulk = require("./routes/allBulkCreate.routes.js");
 
 const app = express();
@@ -31,6 +32,7 @@ app.use("/subscription", routerSubscription);
 app.use("/payment", routerPayment);
 app.use("/reset", routerResetPassword);
 app.use("/purchase", routerPurchase);
+app.use("/rating", routerRating);
 app.use("/create-proyect", allBulk);
 
 module.exports = app;

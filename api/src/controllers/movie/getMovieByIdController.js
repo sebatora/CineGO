@@ -1,4 +1,4 @@
-const { Movie, Genre, Show } = require("../../db");
+const { Movie, Genre, Show, Rating } = require("../../db");
 
 const getMovieById = async (id) => {
   if (!id) throw new Error("Faltan datos para la busqueda (id)");
@@ -17,6 +17,11 @@ const getMovieById = async (id) => {
         as: "shows",
         attributes: ["id", "date", "hour", "type", "stock"],
       },
+      {
+        model: Rating,
+        as: "ratings",
+        attributes: ["id", "count"]
+      }
     ],
   });
   if (movie === null) {
