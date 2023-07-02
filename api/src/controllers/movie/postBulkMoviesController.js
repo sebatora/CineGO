@@ -18,13 +18,13 @@ const postBulkMovies = async () => {
     const movieShows = movieData.shows || [];
 
     for (const showData of movieShows) {
-      await Show.create({
-        movieId: movie.id,
+      const show = await Show.create({
         date: showData.date,
         hour: showData.hour,
         type: showData.type,
         stock: showData.stock,
       });
+      await movie.addShow(show); // Relaciona el show con la película
     }
   }
 
