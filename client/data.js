@@ -83,62 +83,62 @@ export const subscriptions = [
 
 export const candySales = [
   {
-    mes: "Enero",
+    month: "Enero",
     quantity: 75,
     total: 5260 
   },
   {
-    mes: "Febrero",
+    month: "Febrero",
     quantity: 50,
     total: 3000
   },
   {
-    mes: "Marzo",
+    month: "Marzo",
     quantity: 30,
     total: 1750
   },
   {
-    mes: "Abril",
+    month: "Abril",
     quantity: 30,
     total:  1750
   },
   {
-    mes: "Mayo",
+    month: "Mayo",
     quantity: 30,
     total:  1750
   },
   {
-    mes: "Junio",
+    month: "Junio",
     quantity: 100,
     total: 12560
   },
   {
-    mes: "Julio",
+    month: "Julio",
     quantity: 100,
     total: 12560
   },
   {
-    mes: "Agosto",
+    month: "Agosto",
     quantity: 30,
     total: 1450
   },
   {
-    mes: "Septiembre",
+    month: "Septiembre",
     quantity: 30,
     total: 1450
   },
   {
-    mes: "Octubre",
+    month: "Octubre",
     quantity: 40,
     total:  3075
   },
   {
-    mes: "Noviembre",
+    month: "Noviembre",
     quantity: 85,
     total: 8459
   },
   {
-    mes: "Diciembre",
+    month: "Diciembre",
     quantity: 90,
     total: 10895
   },
@@ -147,77 +147,296 @@ export const candySales = [
 export const ventasCandy = [
   {
     date: "Jan",
-    Candy: 5260,
+    quantity: 75,
+    total: 5260
   },
   {
     date: "Feb",
-    Candy: 3000,
+    quantity: 50,
+    total: 3000
   },
   {
     date: "Mar",
-    Candy: 1750,
+    quantity: 30,
+    total: 1750
   },
   {
     date: "Apr",
-    Candy: 1755,
+    quantity: 30,
+    total:  1750
   },
   {
     date: "May",
-    Candy: 1745,
+    quantity: 70,
+    total:  1750
   },
   {
     date: "Jun",
-    Candy: 12560,
+    quantity: 100,
+    total: 12560
   },
   {
     date: "Jul",
-    Candy: 13052,
+    quantity: 100,
+    total: 12560
   },
   {
     date: "Aug",
-    Candy: 1455,
+    quantity: 30,
+    total: 1450
   },
   {
     date: "Sep",
-    Candy: 1486,
+    quantity: 30,
+    total: 1450
   },
   {
     date: "Oct",
-    Candy: 3075,
+    quantity: 40,
+    total:  3075
   },
   {
     date: "Nov",
-    Candy: 8459,
+    quantity: 85,
+    total: 8459
   },
   {
     date: "Dec",
-    Candy: 10895,
+    quantity: 90,
+    total: 10895
   },
 ];
 
 export const apartSales = [
   {
-    category: "combos",
+    category: "Combos",
     quantity: 1530,
   },
   {
-    category: "pochoclos",
+    category: "Pochoclos",
     quantity: 2450,
   },
   {
-    category: "bebidas",
+    category: "Bebidas",
     quantity: 2235,
   },
   {
-    category: "snacks",
+    category: "Snacks",
     quantity: 1234,
   },
   {
-    category: "cafetería",
+    category: "Cafetería",
     quantity: 500,
   },
   {
-    category: "golosinas",
+    category: "Golosinas",
     quantity: 987,
   }
+];
+
+export const ticketSales = [
+  {
+    month: "Enero",
+    quantity: 11540,
+    total: 1990650
+  },
+  {
+    month: "Febrero",
+    quantity: 10244,
+    total: 1767090
+  },
+  {
+    month: "Marzo",
+    quantity: 5520,
+    total: 952200
+  },
+  {
+    month: "Abril",
+    quantity: 6742,
+    total: 1162995
+  },
+  {
+    month: "Mayo",
+    quantity: 7126,
+    total: 1229235
+  },
+  {
+    month: "Junio",
+    quantity: 16560,
+    total: 2856600
+  },
+  {
+    month: "Julio",
+    quantity: 18452,
+    total: 3182970
+  },
+  {
+    month: "Agosto",
+    quantity: 7452,
+    total: 1285470
+  },
+  {
+    month: "Septiembre",
+    quantity: 5424,
+    total: 935640
+  },
+  {
+    month: "Octubre",
+    quantity: 6788,
+    total: 1170930
+  },
+  {
+    month: "Noviembre",
+    quantity: 13456,
+    total: 2321160
+  },
+  {
+    month: "Diciembre",
+    quantity: 10896,
+    total: 1879560
+  },
+];
+
+export const ventasTicket = [
+  {
+    date: "Jan",
+    quantity: 11540,
+    total: 1990650
+  },
+  {
+    date: "Feb",
+    quantity: 10244,
+    total: 1767090
+  },
+  {
+    date: "Mar",
+    quantity: 5520,
+    total: 952200
+  },
+  {
+    date: "Apr",
+    quantity: 6742,
+    total: 1162995
+  },
+  {
+    date: "May",
+    quantity: 7126,
+    total: 1229235
+  },
+  {
+    date: "Jun",
+    quantity: 16560,
+    total: 2856600
+  },
+  {
+    date: "Jul",
+    quantity: 18452,
+    total: 3182970
+  },
+  {
+    date: "Aug",
+    quantity: 7452,
+    total: 1285470
+  },
+  {
+    date: "Sep",
+    quantity: 5424,
+    total: 935640
+  },
+  {
+    date: "Oct",
+    quantity: 6788,
+    total: 1170930
+  },
+  {
+    date: "Nov",
+    quantity: 13456,
+    total: 2321160
+  },
+  {
+    date: "Dec",
+    quantity: 10896,
+    total: 1879560
+  },
+];
+
+export const apartSalesTickets = [
+  {
+    category: "Estandar",
+    quantity: 84140,
+  },
+  {
+    category: "Gold",
+    quantity: 48080,
+  },
+  {
+    category: "Black",
+    quantity: 12020,
+  }
+];
+
+export const chartdataBlack = [
+  {
+    date: "Jan 22",
+    SemiAnalysis: 2890,
+    "Black": 2338,
+  },
+  {
+    date: "Feb 22",
+    SemiAnalysis: 2756,
+    "Black": 2103,
+  },
+  {
+    date: "Mar 22",
+    SemiAnalysis: 3322,
+    "Black": 2194,
+  },
+  {
+    date: "Apr 22",
+    SemiAnalysis: 3470,
+    "Black": 2108,
+  },
+  {
+    date: "May 22",
+    SemiAnalysis: 3475,
+    "Black": 1812,
+  },
+  {
+    date: "Jun 22",
+    SemiAnalysis: 3129,
+    "Black": 1726,
+  },
+];
+
+export const chartdataGold = [
+  {
+    date: "Jan 22",
+    SemiAnalysis: 2890,
+    "Gold": 23,
+  },
+  {
+    date: "Feb 22",
+    SemiAnalysis: 2756,
+    "Gold": 2103,
+  },
+  {
+    date: "Mar 22",
+    SemiAnalysis: 3322,
+    "Gold": 2194,
+  },
+  {
+    date: "Apr 22",
+    SemiAnalysis: 3470,
+    "Gold": 2108,
+  },
+  {
+    date: "May 22",
+    SemiAnalysis: 3475,
+    "Gold": 1812,
+  },
+  {
+    date: "Jun 22",
+    SemiAnalysis: 3129,
+    "Gold": 1726,
+  },
 ];

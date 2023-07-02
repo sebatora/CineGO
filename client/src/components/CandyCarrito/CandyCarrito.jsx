@@ -22,6 +22,7 @@ function CandyCarrito({ addCart, productCount, setProductCount }) {
   const subtotal = cart.reduce((acc, el) => acc + parseFloat(el.price), 0);
   const servicio = subtotal * 0.1;
   const total = subtotal + servicio;
+  const valueFormatter = (number) => number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
   const delRemoveCart = (name, all = false) => {
     if (all) {
@@ -124,7 +125,7 @@ function CandyCarrito({ addCart, productCount, setProductCount }) {
               </div>
               <div className="flex items-center my-2 ml-auto">
                 <p className="mr-1 mt-0 text-sm font-bold text-gray-700 dark:text-white">
-                  $ {item.price.toLocaleString("es-Us")}
+                  $ {valueFormatter(item.price)}
                 </p>
                 <button
                   onClick={() => delRemoveCart(item.name)}
@@ -146,13 +147,13 @@ function CandyCarrito({ addCart, productCount, setProductCount }) {
         </div>
 
         <div className="px-2 pt-2 font-bold text-sm mb-1 text-gray-700 dark:text-white">
-          Subtotal: $ {subtotal.toLocaleString("en-US")}
+          Subtotal: $ {valueFormatter(subtotal)}
         </div>
         <div className="px-2 font-bold text-sm mb-1 text-gray-700 dark:text-white">
-          Cargo por servicio candy: $ {servicio.toLocaleString("en-US")}
+          Cargo por servicio candy: $ {valueFormatter(servicio)}
         </div>
         <div className="px-2 font-bold text-lg mb-1 text-gray-700 dark:text-white">
-          <p>TOTAL: $ {total.toLocaleString("en-US")} </p>
+          <p>TOTAL: $ {valueFormatter(total)} </p>
         </div>
         <div className="px-4 py-3 mb-2 flex justify-center items-center">
           <Link to={`${!userData ? "/login" : "/candy"}`}>
