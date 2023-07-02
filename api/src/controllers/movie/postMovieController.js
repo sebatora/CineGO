@@ -1,4 +1,4 @@
-const { Movie, Genre, Show } = require("../../db.js");
+const { Movie, Genre, Show } = require("../../db");
 
 const postMovie = async (
   title,
