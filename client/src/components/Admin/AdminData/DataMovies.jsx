@@ -34,7 +34,7 @@ const DataMovies = () => {
 					<div className='absolute right-0 top-0 m-4'>
 						<button className='flex items-center bg-light-200 rounded-md p-2' onClick={() => setActiveForm(true)}>
 							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeWidth="1.5" className="w-6 h-6 stroke-black">
-								<path strokelinecap="round" strokelinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+								<path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
 							</svg>
 							<p className='text-sm dark:text-black'>Añadir</p>
 						</button>
@@ -47,6 +47,8 @@ const DataMovies = () => {
 									<th>Duración</th>
 									<th>Estreno</th>
 									<th>Clasificación</th>
+									<th></th>
+									<th className='w-24 pr-2'>Habilitado</th>
 								</tr>
 							</thead>
 							<tbody>

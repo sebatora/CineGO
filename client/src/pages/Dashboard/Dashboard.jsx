@@ -9,7 +9,7 @@ import { useDispatch } from "react-redux";
 import { logoutUser } from "../../redux/actions";
 import { useAuth } from "../../context/authContext";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-hot-toast";
+import { Toaster, toast } from "react-hot-toast";
 import DataMovies from "../../components/Admin/AdminData/DataMovies";
 import DataCandy from "../../components/Admin/AdminData/DataCandy";
 import DataUsers from "../../components/Admin/AdminData/DataUsers";
@@ -51,6 +51,7 @@ const Dashboard = () => {
 
   return (
     <div className="w-full h-full flex bg-light-100 dark:bg-light-100">
+      <Toaster />
       <div className="w-1/5 fixed h-screen bg-slate-900 dark:bg-slate-900">
         {/* Profile */}
         {userData && (
