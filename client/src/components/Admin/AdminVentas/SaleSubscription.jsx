@@ -1,6 +1,6 @@
 import React from 'react';
 import {Card, Table, Title, TableHead, TableRow, TableHeaderCell, TableBody, TableCell, Badge, AreaChart} from "@tremor/react";
-import subscriptions from "../../../../data";
+import {subscriptions} from "../../../../data";
 
 const chartdataBlack = [
   {
@@ -72,7 +72,7 @@ const SaleSubscription = () => {
     <> 
       <div style={{}}>
 
-        <Card className='bg-blue-200 overflow-y-auto max-w-5xl ml-20 mt-5'>
+        <Card className='bg-blue-200 overflow-y-auto max-w-5xl ml-7 mt-5'>
             <Title className="text-2xl font-bold text-center mb-2">Cantidad de suscripciones</Title>
             <Table className="w-full border-collapse border border-gray-300 min-w-full  max-h-64">
                 <TableHead className="bg-gray-100 sticky top-0">
