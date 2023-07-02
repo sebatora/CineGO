@@ -29,6 +29,7 @@ import {
   DELETE_CANDY,
   PUT_CANDY,
   GET_USERS,
+  PUT_MOVIE,
   // ERROR
 } from "./action-type";
 
@@ -106,6 +107,14 @@ export const deleteMovie = (id) => {
   return async (dispatch) => {
     const { data } = await axios.delete(`/movies/${id}`);
     return dispatch({ type: DELETE_MOVIE, payload: data });
+  };
+};
+
+// Edita una pelicula
+export const putMovie = (idMovie, dataMovie) => {
+  return async (dispatch) => {
+    const { data } = await axios.put(`/movies/${idMovie}`, dataMovie);
+    return dispatch({ type: PUT_MOVIE, payload: data });
   };
 };
 
@@ -301,10 +310,10 @@ export const deleteCandy = (name) => {
 }
 
 //Modificar un producto de candy
-export const putCandy = (name) => {
+export const putCandy = (idCandy, dataCandy) => {
   return async (dispatch) => {
     try {
-      const { data } = await axios.put(`/canyd`, name);
+      const { data } = await axios.put(`/candy/${idCandy}`, dataCandy);
       return dispatch({ type: PUT_CANDY, payload: data });
     } catch (error) {
       return error.message;

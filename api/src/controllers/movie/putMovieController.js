@@ -41,7 +41,7 @@ const putMovie = async ({id, title, description, image, actors, director, durati
   // console.log(updateGenre);
   // const movieGenres = await Genre.findAll({ where: { name: updateGenre } });
 
-  return (movie);
+  return movie;
 };
 
 module.exports = putMovie;

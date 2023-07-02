@@ -27,6 +27,7 @@ import {
   PUT_CANDY,
   DELETE_CANDY,
   GET_USERS,
+  PUT_MOVIE,
   // ERROR
 } from "./action-type";
 
@@ -83,6 +84,12 @@ const rootReducer = (state = initialState, { type, payload }) => {
     }
 
     case POST_MOVIE: {
+      return {
+        ...state,
+      };
+    }
+
+    case PUT_MOVIE: {
       return {
         ...state,
       };
@@ -170,7 +177,6 @@ const rootReducer = (state = initialState, { type, payload }) => {
     case PUT_CANDY: {
       return {
         ...state,
-        allCandy: payload
       }
     }
 

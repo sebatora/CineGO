@@ -63,8 +63,6 @@ const CreateCandy = ({ setActiveForm }) => {
         image: uploadedPhoto,
       };
 
-      console.log(candyData);
-
       const handleReset = () => {
         setUploadedPhoto("");
         reset();

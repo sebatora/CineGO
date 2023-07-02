@@ -1,4 +1,4 @@
-const { Movie, Genre, Show } = require("../../db.js");
+const { Movie, Genre, Show } = require("../../db");
 
 const postMovie = async (title, description, image, actors, director, duration, release_date, trailer, clasification, genres, shows) => {
   if (!title || !description || !image || !actors || !director || !duration || !release_date || !trailer || !clasification || !genres.length || !shows.length) throw Error("Faltan datos");
