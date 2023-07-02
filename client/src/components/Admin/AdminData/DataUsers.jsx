@@ -10,6 +10,7 @@ const DataUsers = () => {
 	const [currentPage, setCurrentPage] = useState(0);
 	const [countPage, setCountPage] = useState(1);
   const dispatch = useDispatch();
+	const orderAllUsers = allUsers.sort((a, b) => b.id - a.id);
 
 	const handleToggle = (userId, activeUser) => {
 		setTimeout(() => {
@@ -19,11 +20,11 @@ const DataUsers = () => {
 	};
 
 	const pagination = () => {
-		return allUsers.slice(currentPage, currentPage + 8);
+		return orderAllUsers.slice(currentPage, currentPage + 8);
 	}
 
 	const nextPage = () => {
-		if(allUsers.length > currentPage + 8){
+		if(orderAllUsers.length > currentPage + 8){
       setCurrentPage(currentPage + 8);
       setCountPage(countPage + 1);
     }

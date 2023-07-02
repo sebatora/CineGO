@@ -13,7 +13,7 @@ const DataCandy = () => {
 	const [currentPage, setCurrentPage] = useState(0);
 	const [countPage, setCountPage] = useState(1);
   const allCandy = useSelector(state => state.allCandy);
-	const orderAllCandy = allCandy.sort((a, b) => a.id - b.id);
+	const orderAllCandy = allCandy.sort((a, b) => b.id - a.id);
 
   const dispatch = useDispatch();
 
