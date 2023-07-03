@@ -21,7 +21,7 @@ const SaleCandy = () => {
       <div style={{}}>
         <Card className="bg-blue-200 overflow-y-auto max-w-5xl ml-7 mt-3 mb-1 ">
           <Title className="text-2xl font-bold text-center mb-2">
-            Cantidad de productos vendidos
+            Listado de productos vendidos
           </Title>
           <Table className="w-full border-collapse border border-gray-300 min-w-full max-h-40 dark:border-gray-500">
             <TableHead className="bg-gray-100 sticky top-0 dark:bg-dark-tremor-brand-faint ">
