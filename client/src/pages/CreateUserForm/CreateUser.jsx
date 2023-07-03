@@ -117,6 +117,7 @@ const CreateUser = ({ theme }) => {
               </span>
             )}
           </div>
+          
           <div className="flex flex-col mx-6 ">
             <input
               className="border rounded-sm p-3 w-60"
@@ -325,6 +326,7 @@ const schema = yup.object().shape({
   password: yup
     .string()
     .required('La contraseña es requerida')
+    .oneOf([yup.ref('password'), null], 'Las contraseñas no coinciden')
     .min(6, 'Mínimo 6 caracteres'),
   confirmPassword: yup
     .string()

@@ -12,8 +12,10 @@ const getAllMovies = async () => {
       },
       {
         model: Show,
-        as: "shows",
         attributes: ["id", "date", "hour", "type", "stock"],
+        through: {
+          attributes: [],
+        },
       },
     ],
   });

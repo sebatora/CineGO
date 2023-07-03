@@ -21,6 +21,7 @@ const postPurchaseController = async (
         const movie = await Movie.findByPk(itemId);
         console.log(movie.title);
         show.stock -= quantity;
+        console.log(show.stock);
         await show.save();
         await purchase.addShow(show, { through: { price, quantity } });
         itemDetails = {
