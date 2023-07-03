@@ -83,7 +83,7 @@ function Detail() {
 
   return (
     <>
-      {!detail.id ? (
+      {!detail.id || detail.activeMovie === false  ? (
         <Error404 />
       ) : (
         <div className="w-full flex flex-col mt-20 p-10">
