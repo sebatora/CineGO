@@ -3,7 +3,7 @@ const bcrypt = require("bcryptjs");
 const nodemailer = require("nodemailer");
 const path = require("path");
 
-const postUser = async ({ firstName, lastName, email, password, image }) => {
+const postUser = async ({ firstName, lastName, email, password, image, isAdmin }) => {
   if (!firstName || !lastName || !email || !password)
     throw new Error("Faltan datos");
 
@@ -21,6 +21,7 @@ const postUser = async ({ firstName, lastName, email, password, image }) => {
     lastName,
     email,
     password: passwordHash,
+    isAdmin
   };
 
   if (image !== "") {

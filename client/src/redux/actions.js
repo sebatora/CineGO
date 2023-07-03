@@ -32,6 +32,8 @@ import {
   PUT_MOVIE,
   POST_RATING,
   GET_PURCHASES,
+  GET_CANDY_BY_NAME,
+
   // ERROR
 } from "./action-type";
 
@@ -285,6 +287,18 @@ export const getCandy = () => {
     try {
       const { data } = await axios.get(`/candy`);
       return dispatch({ type: GET_CANDY, payload: data });
+    } catch (error) {
+      return error.message;
+    }
+  };
+};
+
+// Trae los candy por nombre
+export const getCandyByName = (name) => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.get(`/candy?name=${name}`);
+      return dispatch({ type: GET_CANDY_BY_NAME, payload: data });
     } catch (error) {
       return error.message;
     }
