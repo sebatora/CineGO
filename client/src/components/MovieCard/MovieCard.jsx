@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import cinego_blanco from "../../assets/cinego_blanco_logo.png";
-import cinego_negro from "../../assets/cinego_negro_logo.png";
+import ReactStars from "react-stars";
 
-function MovieCard({ id, title, image, clasification, duration }) {
+function MovieCard({ id, title, image, clasification, duration, ratings }) {
   const [isHovered, setIsHovered] = useState(false);
+  const countRating = ratings.map(rating => rating.count);
+  const sum = countRating.reduce((accumulator, currentValue) => Number(accumulator) + Number(currentValue), 0);
+  const average = sum / countRating.length;
 
   const handleMouseEnter = () => {
     setIsHovered(true);
@@ -28,7 +31,7 @@ function MovieCard({ id, title, image, clasification, duration }) {
       >
         <Link className="w-full h-full" to={`/detail/${id}`}>
           <img
-            className="w-full h-full absolute rounded-sm border border-solid border-black dark:border-solid dark:border-red-600"
+            className="w-full h-full absolute rounded-sm"
             src={image}
             alt={title}
             style={{ filter: isHovered ? "blur(2px) " : "none" }}
@@ -36,8 +39,8 @@ function MovieCard({ id, title, image, clasification, duration }) {
           <div
             className={`w-full h-full p-2 absolute bottom-0 overflow-hidden flex flex-col justify-center items-center text-center bg-black bg-opacity-80 transition-opacity duration-500 ease-linear ${
               isHovered
-                ? "animate-cardMovieAnimate rounded-sm border border-solid border-black dark:border-solid dark:border-red-600"
-                : "opacity-0"
+                ? "animate-cardMovieAnimateHover"
+                : "animate-cardMovieAnimateNoHover opacity-0"
             }`}
           >
             <img
@@ -58,6 +61,12 @@ function MovieCard({ id, title, image, clasification, duration }) {
                     Clasificación: {clasification}
                   </p>
                 </div>
+                  <ReactStars
+                    className="w-full flex justify-center"
+                    value={average}
+                    size={20}
+                    edit={false}
+                  />
               </div>
             </div>
           </div>

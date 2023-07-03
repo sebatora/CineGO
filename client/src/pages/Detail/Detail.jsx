@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import ReactStars from "react-stars";
 import Error404 from "../../pages/Error404/Error404";
-import { cleanDetail, getMovieById } from "../../redux/actions";
+import { cleanDetail, getMovieById, postRating } from "../../redux/actions";
 
 function Detail() {
   const detail = useSelector((state) => state.movieById);
@@ -18,7 +18,7 @@ function Detail() {
 
   const handleClick = (day) => {
     if (selectedDay === day) {
-      setSelectedDay(null); // Si se hace clic nuevamente en el mismo día, se deselecciona
+      setSelectedDay(null);
     } else {
       setSelectedDay(day);
     }
@@ -27,6 +27,13 @@ function Detail() {
   const handleClickType = (type) => {
     setSelectedType(type);
   };
+
+  const handleChangeRating = count => {
+    if(userData.email){
+      dispatch(postRating({ movieId: detail.id, count }));
+      setRating(count);
+    }
+  }
 
   useEffect(() => {
     dispatch(getMovieById(id));
@@ -62,10 +69,10 @@ function Detail() {
     <>
       {!detail.id ? (
         <Error404 />
-      ) : (
+      ) : ( 
         <div className="w-full flex flex-col mt-20 p-10">
           <div className="w-full flex">
-            <div className="w-96 h-fit flex flex-col items-center border border-light-200">
+            <div className="w-96 h-fit flex flex-col items-center">
               <div className="w-full relative">
                 <img
                   className="w-full h-[350px]"
@@ -94,25 +101,24 @@ function Detail() {
                 </div>
               </div>
               <ReactStars
-                className="w-full flex justify-center p-4 border-b border-b-light-200"
+                className="w-full flex justify-center p-4"
                 count={5}
                 size={30}
-                half={false}
                 value={rating}
-                onChange={(newRating) => setRating(newRating)}
+                onChange={handleChangeRating}
               />
               <ul className="w-full">
-                <li className="border-b border-b-light-200 p-2">
+                <li className="p-2">
                   <h4>Género:</h4>
                   <p className="text-sm">
                     {detail.genres?.map((genre) => genre.name).join(" - ")}
                   </p>
                 </li>
-                <li className="border-b border-b-light-200 p-2">
+                <li className="p-2">
                   <h4>Director:</h4>
                   <p className="text-sm">{detail.director}</p>
                 </li>
-                <li className="border-b border-b-light-200 p-2">
+                <li className="p-2">
                   <h4>Actores:</h4>
                   <p className="text-sm">{detail.actors}</p>
                 </li>

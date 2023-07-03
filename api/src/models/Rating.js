@@ -11,9 +11,8 @@ module.exports = (sequelize) => {
         autoIncrement: true,
       },
       count: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.DECIMAL,
         allowNull: false,
-        unique: true,
       },
     },
     { timestamps: false }
