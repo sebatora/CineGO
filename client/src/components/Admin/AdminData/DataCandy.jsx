@@ -79,7 +79,7 @@ const DataCandy = () => {
 					</div>
 					<div className='w-full p-2 border'>
 						<div className='w-full flex items-center mb-2'>
-							<input className='w-full rounded appearance-none bg-slate-100 py-1 px-2 focus:outline-slate-400' type="text" onChange={handleChangeName} placeholder='Buscar película' />
+							<input className='w-full rounded appearance-none bg-slate-100 py-1 px-2 focus:outline-slate-400' type="text" onChange={handleChangeName} placeholder='Buscar candy' />
 							<span className='absolute right-4'>
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
