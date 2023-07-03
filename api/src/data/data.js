@@ -843,8 +843,94 @@ const dataAllCandy = [
   },
 ];
 
+const dataAllUsers = [
+  {
+    firstName: "ADMIN",
+    lastName: "ADMIN",
+    email: "admin@admin.com",
+    password: "admin",
+    image: "",
+    cinePlus: "",
+    isAdmin: "true",
+  },
+  {
+    firstName: "JORGE ANDRES",
+    lastName: "DAZA VEGA",
+    email: "jdaza@mail.com",
+    password: "abc123",
+    image: "https://res.cloudinary.com/dhyqgl7ie/image/upload/v1688397486/About/Jor_uv77yc.jpg",
+    cinePlus: "",
+  },
+  {
+    firstName: "CAMILA",
+    lastName: "MANITA",
+    email: "cmanita@mail.com",
+    password: "abc123",
+    image: "https://res.cloudinary.com/dhyqgl7ie/image/upload/v1688397486/About/Cami_tqxspq.jpg",
+    cinePlus: "Black",
+  },
+  {
+    firstName: "ANDREA",
+    lastName: "BULDORINI",
+    email: "abuldorini@mail.com",
+    password: "abc123",
+    image: "https://res.cloudinary.com/dhyqgl7ie/image/upload/v1688397486/About/Andy_gyemap.jpg",
+    cinePlus: "Black",
+  },
+  {
+    firstName: "SEBASTIAN ARIEL",
+    lastName: "TORANZO",
+    email: "storanzo@mail.com",
+    password: "abc123",
+    image: "https://res.cloudinary.com/dhyqgl7ie/image/upload/v1688397487/About/Seba_b9jcas.jpg",
+    cinePlus: "Gold",
+  },
+  {
+    firstName: "MAURICIO",
+    lastName: "MONZON",
+    email: "mmonzon@mail.com",
+    password: "abc123",
+    image: "",
+    cinePlus: "",
+  },
+  {
+    firstName: "PERCY",
+    lastName: "HUANCA",
+    email: "phuanca@mail.com",
+    password: "abc123",
+    image: "https://res.cloudinary.com/dhyqgl7ie/image/upload/v1688397486/About/Percy_q1mxxn.jpg",
+    cinePlus: "",
+  },
+  {
+    firstName: "MATIAS",
+    lastName: "MEDINA",
+    email: "mmedina@mail.com",
+    password: "abc123",
+    image: "https://res.cloudinary.com/dhyqgl7ie/image/upload/v1688397486/About/Maty_aupho3.jpg",
+    cinePlus: "Gold",
+  },
+  {
+    firstName: "FRANCO",
+    lastName: "BOGADO",
+    email: "fbogado@mail.com",
+    password: "abc123",
+    image: "https://res.cloudinary.com/dhyqgl7ie/image/upload/v1688397486/About/Fran_p5nicv.jpg",
+    cinePlus: "Gold",
+  },
+  {
+    firstName: "DANIEL",
+    lastName: "ZAPATA",
+    email: "dzapata@mail.com",
+    password: "abc123",
+    image: "https://res.cloudinary.com/dhyqgl7ie/image/upload/v1688397899/About/Dani_msqmev.jpg",
+    cinePlus: "Black",
+    isAdmin: "true"
+  },
+]
+
 module.exports = {
   dataAllMovies,
   dataAllGenres,
   dataAllCandy,
+  dataAllUsers
 };
