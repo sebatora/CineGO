@@ -30,6 +30,7 @@ import {
   PUT_CANDY,
   GET_USERS,
   PUT_MOVIE,
+  POST_RATING,
   // ERROR
 } from "./action-type";
 
@@ -360,3 +361,15 @@ export const postPurchases = (purchase) => {
     }
   };
 };
+
+// Rating
+export const postRating = (rating) => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.post(`/rating`, rating);
+      return dispatch({ type: POST_RATING, payload: data });
+    } catch (error) {
+      return error.message;
+    }
+  };
+}

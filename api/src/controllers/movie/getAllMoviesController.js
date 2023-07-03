@@ -1,4 +1,4 @@
-const { Movie, Genre, Show } = require("../../db");
+const { Movie, Genre, Show, Rating } = require("../../db");
 
 const getAllMovies = async () => {
   const allMovies = await Movie.findAll({
@@ -16,6 +16,11 @@ const getAllMovies = async () => {
         through: {
           attributes: [],
         },
+      },
+      {
+        model: Rating,
+        as: "ratings",
+        attributes: ["id", "count"],
       },
     ],
   });

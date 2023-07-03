@@ -19,7 +19,7 @@ export default {
           "50%": { color: "white" },
           "100%": { color: "black" },
         },
-        cardMovieAnimate: {
+        cardMovieAnimateHover: {
           "0%": {
             transform: "translateY(100%) scaleY(0)",
             transformOrigin: "top",
@@ -33,11 +33,26 @@ export default {
             transformOrigin: "top",
           },
         },
+        cardMovieAnimateNoHover: {
+          "0%": {
+            transform: "translateY(0%) scaleY(1)",
+            transformOrigin: "top",
+          },
+          "50%": {
+            transform: "translateY(50%) scaleY(0.5)",
+            transformOrigin: "top",
+          },
+          "100%": {
+            transform: "translateY(100%) scaleY(0)",
+            transformOrigin: "top",
+          },
+        },
       },
       animation: {
         tambaleo: "tambaleo 1.5s infinite",
         colorAnimation: "colorAnimation 1s infinite",
-        cardMovieAnimate: "cardMovieAnimate .4s linear",
+        cardMovieAnimateHover: "cardMovieAnimateHover .5s linear",
+        cardMovieAnimateNoHover: "cardMovieAnimateNoHover 1s linear",
       },
       colors: {
         primary: {

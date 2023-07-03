@@ -56,7 +56,7 @@ Show.belongsToMany(Movie, {
 
 Movie.hasMany(Rating, {
   foreignKey: "movieRating",
-  as: "raitings",
+  as: "ratings",
 });
 
 Rating.belongsTo(Movie, {
