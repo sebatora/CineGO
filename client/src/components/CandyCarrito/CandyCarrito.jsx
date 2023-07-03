@@ -17,8 +17,6 @@ function CandyCarrito({ addCart, productCount, setProductCount }) {
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 
-  console.log(cart);
-
   const subtotal = cart.reduce((acc, el) => acc + parseFloat(el.price), 0);
   const servicio = subtotal * 0.1;
   const total = subtotal + servicio;
