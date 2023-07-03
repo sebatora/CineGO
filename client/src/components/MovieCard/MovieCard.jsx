@@ -39,8 +39,8 @@ function MovieCard({ id, title, image, clasification, duration, ratings }) {
           <div
             className={`w-full h-full p-2 absolute bottom-0 overflow-hidden flex flex-col justify-center items-center text-center bg-black bg-opacity-80 transition-opacity duration-500 ease-linear ${
               isHovered
-                ? "animate-cardMovieAnimate rounded-sm"
-                : "opacity-0"
+                ? "animate-cardMovieAnimateHover"
+                : "animate-cardMovieAnimateNoHover opacity-0"
             }`}
           >
             <img
