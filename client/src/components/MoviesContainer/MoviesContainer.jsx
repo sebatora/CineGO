@@ -13,6 +13,11 @@ function MoviesContainer() {
   const allMovies = useSelector((state) => state.allMovies);
 
   const moviesActive = allMovies.filter((active) => active.activeMovie === true);
+
+  const genresActive = moviesActive.forEach(movie => {
+    movie.genres.forEach(genre => genre.name)
+  });
+
   const dispatch = useDispatch();
 
   useEffect(() => {
