@@ -18,7 +18,7 @@ const TicketContainer = () => {
   const tickets = [
     {
       id: storedMovie.id,
-      showId: storedMovie.showId,
+      showId: storedMovie.showId.id,
       idTicket: 1,
       name: "Entrada General",
       image:
@@ -30,7 +30,7 @@ const TicketContainer = () => {
     },
     {
       id: storedMovie.id,
-      showId: storedMovie.showId,
+      showId: storedMovie.showId.id,
       idTicket: 2,
       name: "Entrada CineFan",
       image:
