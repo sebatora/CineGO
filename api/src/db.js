@@ -37,12 +37,21 @@ const { Movie, Genre, User, Show, Candy, Purchase, Rating } = sequelize.models;
 
 Movie.belongsToMany(Genre, { through: "movie_genre", timestamps: false });
 Genre.belongsToMany(Movie, { through: "movie_genre", timestamps: false });
-Movie.hasMany(Show, {
+// POr si se rompio fue culpa de maty y aca vuelven arregarlo :) *
+/* Movie.hasMany(Show, {
   foreignKey: "movieId",
   as: "shows",
 });
 Show.belongsTo(Movie, {
   foreignKey: "movieId",
+}); */
+Movie.belongsToMany(Show, {
+  through: "movieShow",
+  timestamps: false,
+});
+Show.belongsToMany(Movie, {
+  through: "movieShow",
+  timestamps: false,
 });
 
 Movie.hasMany(Rating, {

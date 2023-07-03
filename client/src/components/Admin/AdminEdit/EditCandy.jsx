@@ -1,18 +1,16 @@
-import React, { useEffect, useRef, useState } from "react";
-import { useForm } from "react-hook-form";
+import { useEffect, useRef, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
 import cloudinary from "cloudinary-core";
-import * as yup from "yup";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { getCandy, postCandy } from "../../../redux/actions";
 import { toast } from 'react-toastify';
-import { useDispatch } from "react-redux";
+import { getCandy, putCandy } from '../../../redux/actions';
 
-const CreateCandy = ({ setActiveForm }) => {
-  const dispatch = useDispatch();
-  const [uploadedPhoto, setUploadedPhoto] = useState("");
+const EditCandy = ({ setActiveForm, candyFound }) => {
+	const dispatch = useDispatch();
+  const [uploadedPhoto, setUploadedPhoto] = useState(candyFound.image);
   const cl = new cloudinary.Cloudinary({ cloud_name: "dhyqgl7ie" });
-
   const form = useRef();
+
   const {
     register,
     handleSubmit,
@@ -21,16 +19,15 @@ const CreateCandy = ({ setActiveForm }) => {
 		watch
   } = useForm({
     defaultValues: {
-      name: "",
-      price: null,
-      description: "",
-      image: "",
-      category: ""
+      name: candyFound.name,
+      price: candyFound.price,
+      description: candyFound.description,
+      image: candyFound.image,
+      category: candyFound.category
     },
-		resolver: yupResolver(schema),
   });
 
-  const handleUploadPhoto = () => {
+	const handleUploadPhoto = () => {
     const widget_cloudinary = window.cloudinary.createUploadWidget(
       {
         cloudName: "dhyqgl7ie",
@@ -42,7 +39,7 @@ const CreateCandy = ({ setActiveForm }) => {
       (err, result) => {
         if (!err && result && result.event === "success") {
           const photoUrl = result.info.secure_url;
-          setUploadedPhoto(photoUrl); // Almacenar la URL de la foto subida
+          setUploadedPhoto(photoUrl);
           toast("Imagen subida con éxito");
         }
       }
@@ -51,46 +48,30 @@ const CreateCandy = ({ setActiveForm }) => {
     widget_cloudinary.open();
   };
 
-  const onSubmit = async (data) => {
-    try {
-      // Agregar la URL de la foto al objeto de datos antes de enviarlo
-      const candyData = {
-        name: data.name,
-        price: Number(data.price),
-        description: data.description,
-        category: data.category,
-        image: uploadedPhoto,
-      };
+	const onSubmit = data => {
+		try {
+			dispatch(putCandy(candyFound.id, data));
+			setTimeout(() => {
+				dispatch(getCandy());
+			}, 500);
+			setActiveForm(false);
+		} catch (error) {
+			toast.error(error)
+		}
+	}
 
-      const handleReset = () => {
-        setUploadedPhoto("");
-        reset();
-      }
-
-      dispatch(postCandy(candyData));
-      handleReset();
-      setTimeout(() => {
-        dispatch(getCandy());
-      }, 1000);
-      setActiveForm(false);
-      toast.success("Producto creado")
-    } catch (error) {
-      toast.error(error);
-    }
-  };
-
-  useEffect(() => {
-    const boton_photo = document.querySelector("#btn-photo");
+	useEffect(() => {
+    const boton_photo = document.querySelector("#btn-photo-edit");
     boton_photo.addEventListener("click", handleUploadPhoto);
   }, []);
 
-  return (
-    <>
-      <div
+	return (
+		<>
+			<div
         className="w-full fixed top-0 left-0 bottom-0 right-0 z-10 bg-black/80"
         onClick={() => setActiveForm(false)}
       ></div>
-      <div className="w-full h-full flex justify-center p-8">
+			<div className="w-full h-full flex justify-center p-8">
         <form
           className="w-[40%] fixed top-0 left-0 bottom-0 right-0 z-20 flex flex-col bg-light-300 dark:bg-slate-900 p-6 mx-auto my-10 rounded-md"
           ref={form}
@@ -113,10 +94,10 @@ const CreateCandy = ({ setActiveForm }) => {
               />
             </svg>
           </button>
-          <h1 className="pb-4 ml-3">Agregar producto</h1>
+          <h1 className="pb-4 ml-3">Editar producto</h1>
 					<div className="flex flex-col mb-4 items-center">
-						<select className="border rounded-md p-1 w-96" name="Categoría" defaultValue="none" {...register("category")}>
-							<option value='none' disabled>Categoría</option>
+						<select className="border rounded-md p-1 w-96" name='category' {...register("category")}>
+							<option value='category' disabled>Categoría</option>
 							<option value='combos'>Combos</option>
 							<option value='pochoclos'>Pochoclos</option>
 							<option value='bebidas'>Bebidas</option>
@@ -186,37 +167,22 @@ const CreateCandy = ({ setActiveForm }) => {
 						<button
 							className="bg-primary-600 hover:bg-primary-500 py-2 px-6 w-92 ml-12 text-white font-semibold rounded-md"
 							type="button"
-							id="btn-photo"
+							id="btn-photo-edit"
 						>
-							Subir foto
+							Cambiar foto
 						</button>
 					</div>
 
           <button
-            className=" bg-primary-600 hover:bg-primary-500 p-4 mt-2 text-white font-semibold rounded-md"
+            className="bg-primary-600 hover:bg-primary-500 p-4 mt-2 text-white font-semibold rounded-md"
             type="submit"
           >
-            Enviar
+            Guardar
           </button>
         </form>
       </div>
-    </>
-  );
+		</>
+	)
 }
 
-const schema = yup.object().shape({
-  name: yup
-    .string()
-    .matches(/^[A-Za-z\s]+$/, 'Solo letras máx 18 caracteres')
-    .required('El nombre es requerido'),
-  price: yup
-    .string()
-    .matches(/^[0-9]{1,18}$/, 'Solo numeros')
-    .required('El precio es requerido'),
-  description: yup
-    .string()
-    // .matches(/^([A-Za-z0-9,:;.]+\s?){1,140}$/, 'máx 140 caracteres')
-    .required('La descripción es requerida'),
-});
-
-export default CreateCandy;
+export default EditCandy

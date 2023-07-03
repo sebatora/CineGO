@@ -9,13 +9,13 @@ import { useDispatch } from "react-redux";
 import { logoutUser } from "../../redux/actions";
 import { useAuth } from "../../context/authContext";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-hot-toast";
+import { Toaster, toast } from "react-hot-toast";
 import DataMovies from "../../components/Admin/AdminData/DataMovies";
 import DataCandy from "../../components/Admin/AdminData/DataCandy";
 import DataUsers from "../../components/Admin/AdminData/DataUsers";
 
 const Dashboard = () => {
-  const [activeComponent, setActiveComponent] = useState("adminVentas");
+  const [activeComponent, setActiveComponent] = useState("saleGeneral");
   const userData = JSON.parse(window.localStorage.getItem("user"));
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -50,7 +50,8 @@ const Dashboard = () => {
   }, []);
 
   return (
-    <div className="w-full h-full flex bg-light-100 dark:bg-light-100">
+    <div className="w-full h-full flex">
+      <Toaster />
       <div className="w-1/5 fixed h-screen bg-slate-900 dark:bg-slate-900">
         {/* Profile */}
         {userData && (
@@ -67,44 +68,6 @@ const Dashboard = () => {
         )}
 
         <div className="h-4/5 flex flex-col justify-between pt-4">
-
-          {/* Data */}
-          <div className="flex flex-col">
-            <span className="p-2 text-white uppercase text-xs">Data</span>
-            <button
-              className={`mx-2 p-1 mb-1 rounded-sm text-start ${
-                activeComponent === "dataMovies" &&
-                "bg-slate-800 font-bold text-white"
-              }`}
-              onClick={() => handleButtonClick("dataMovies")}
-              disabled={activeComponent === "dataMovies"}
-            >
-              <h6 className={`text-white`}>Películas</h6>
-            </button>
-
-            <button
-              className={`mx-2 p-1 mb-1 rounded-sm text-start ${
-                activeComponent === "dataCandy" &&
-                "bg-slate-800 font-bold text-white"
-              }`}
-              onClick={() => handleButtonClick("dataCandy")}
-              disabled={activeComponent === "dataCandy"}
-            >
-              <h6 className={`text-white`}>Candy</h6>
-            </button>
-
-            <button
-              className={`mx-2 p-1 mb-1 rounded-sm text-start ${
-                activeComponent === "dataUsers" &&
-                "bg-slate-800 font-bold text-white"
-              }`}
-              onClick={() => handleButtonClick("dataUsers")}
-              disabled={activeComponent === "dataUsers"}
-            >
-              <h6 className={`text-white`}>Usuarios</h6>
-            </button>
-          </div>
-
           {/* Ventas */}
           <div className="flex flex-col">
             <span className="p-2 text-white uppercase text-xs">Ventas</span>
@@ -149,6 +112,44 @@ const Dashboard = () => {
               <h6 className={`text-white`}>Suscripciones</h6>
             </button>
           </div>
+          
+          {/* Data */}
+          <div className="flex flex-col">
+            <span className="p-2 text-white uppercase text-xs">Data</span>
+            <button
+              className={`mx-2 p-1 mb-1 rounded-sm text-start ${
+                activeComponent === "dataMovies" &&
+                "bg-slate-800 font-bold text-white"
+              }`}
+              onClick={() => handleButtonClick("dataMovies")}
+              disabled={activeComponent === "dataMovies"}
+            >
+              <h6 className={`text-white`}>Películas</h6>
+            </button>
+
+            <button
+              className={`mx-2 p-1 mb-1 rounded-sm text-start ${
+                activeComponent === "dataCandy" &&
+                "bg-slate-800 font-bold text-white"
+              }`}
+              onClick={() => handleButtonClick("dataCandy")}
+              disabled={activeComponent === "dataCandy"}
+            >
+              <h6 className={`text-white`}>Candy</h6>
+            </button>
+
+            <button
+              className={`mx-2 p-1 mb-1 rounded-sm text-start ${
+                activeComponent === "dataUsers" &&
+                "bg-slate-800 font-bold text-white"
+              }`}
+              onClick={() => handleButtonClick("dataUsers")}
+              disabled={activeComponent === "dataUsers"}
+            >
+              <h6 className={`text-white`}>Usuarios</h6>
+            </button>
+          </div>
+
           {/* Visitas */}
           <div className="flex flex-col">
             <span className="p-2 text-white uppercase text-xs">
@@ -175,6 +176,7 @@ const Dashboard = () => {
               <h6 className={`text-white`}>Visitas web</h6>
             </button>
           </div>
+
           <button
             onClick={handleLogout}
             className="flex items-center justify-center gap-1 pb-4"
@@ -198,14 +200,14 @@ const Dashboard = () => {
           </button>
         </div>
       </div>
-      <div className="w-4/5 ml-auto">
-        {activeComponent === "dataMovies" && <DataMovies />}
-        {activeComponent === "dataCandy" && <DataCandy />}
-        {activeComponent === "dataUsers" && <DataUsers />}
+      <div className="w-4/5 min-h-screen ml-auto bg-light-100 dark:bg-light-100">
         {activeComponent === "saleGeneral" && <SaleGeneral />}
         {activeComponent === "saleTicket" && <SaleTicket />}
         {activeComponent === "saleCandy" && <SaleCandy />}
         {activeComponent === "saleSubscription" && <SaleSubscription />}
+        {activeComponent === "dataMovies" && <DataMovies />}
+        {activeComponent === "dataCandy" && <DataCandy />}
+        {activeComponent === "dataUsers" && <DataUsers />}
         {activeComponent === "movieScores" && <MovieScores />}
         {activeComponent === "webVisits" && <WebVisits />}
       </div>

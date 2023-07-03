@@ -11,7 +11,7 @@ function ProfileRecord() {
   }, []);
 
   return (
-    <div className="h-screen">
+    <div className="min-h-screen pb-10">
       <h2 className="w-full flex items-center justify-center h-16 bg-light-200 dark:bg-slate-800">Historial de Compras</h2>
       {!userData?.purchases?.length ? (
         <div className="w-full mt-60 flex justify-center items-center">
