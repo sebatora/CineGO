@@ -29,8 +29,8 @@ function Detail() {
   };
 
   const handleChangeRating = count => {
-    if(rating < 0){
-      dispatch(postRating({ movieId: detail.id, count }))
+    if(userData.email){
+      dispatch(postRating({ movieId: detail.id, count }));
       setRating(count);
     }
   }
