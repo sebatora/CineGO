@@ -1,73 +1,50 @@
-import React from "react";
-import style from "./ProfileRecord.module.css";
-import { FaExclamationCircle } from "react-icons/fa";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { getUserById } from "../../redux/actions";
 
 function ProfileRecord() {
-  return (
-    <div className={style.container}>
-      <h2 className="w-full flex items-center justify-center h-16 bg-light-200 dark:bg-slate-800">
-        Suscripción
-      </h2>
-      <main>
-        <div>
-          <h1>Hola "Nombre del usuario".</h1>
-          <h2>Mirá tus ultimos movimientos</h2>
-          <div>
-            <FaExclamationCircle />
-            <p>
-              Tu membresía y puntos vencen el "Fecha de cuando se suscribio + 30
-              dias".
-            </p>
-          </div>
-        </div>
-        <div>
-          <h3>Detalle de movimientos</h3>
-          <table className="tabla">
-            <thead>
-              <tr>
-                <th>Fecha</th>
-                <th>Detalle(Pelicula)</th>
-                <th>Entradas</th>
-                <th>Pesos ($)</th>
-                <th>Puntos utilizados</th>
-                <th>Puntos ganados</th>
-                <th>Entradas disponibles</th>
-                <th>Puntos disponibles</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Datos</td>
-                <td>Datos</td>
-                <td>Datos</td>
-                <td>Datos</td>
-                <td>Datos</td>
-                <td>Datos</td>
-                <td>Datos</td>
-                <td>Datos</td>
-              </tr>
-            </tbody>
+  const userData = JSON.parse(window.localStorage.getItem("user"));
+  const dispatch = useDispatch();
 
-            {/* Lo comento para tenerlo de ejemplo luego */}
-            {/*             <tbody>
-              {datos.map((fila, index) => (
-                <tr key={index}>
-                  <td>{fila.fecha}</td>
-                  <td>{fila.cine}</td>
-                  <td>{fila.detalle}</td>
-                  <td>{fila.transaccion}</td>
-                  <td>{fila.entradas}</td>
-                  <td>{fila.cineFanPesos}</td>
-                  <td>{fila.puntosUtilizados}</td>
-                  <td>{fila.puntosGanados}</td>
-                  <td>{fila.entradasDisponibles}</td>
-                  <td>{fila.puntosDisponibles}</td>
-                </tr>
-              ))}
-            </tbody> */}
-          </table>
+  useEffect(() => {
+    dispatch(getUserById(userData.id));
+  }, []);
+
+  return (
+    <div className="min-h-screen pb-10">
+      <h2 className="w-full flex items-center justify-center h-16 bg-light-200 dark:bg-slate-800">Historial de Compras</h2>
+      {!userData?.purchases?.length ? (
+        <div className="w-full mt-60 flex justify-center items-center">
+          <h1>Aún no has realizado compras</h1>
         </div>
-      </main>
+      ) : (
+        <table className="text-center w-10/12 mx-auto mt-10">
+          <thead>
+            <tr className="h-16 font-bold text-xl dark:text-white bg-light-400 dark:bg-slate-900">
+              <th>Fecha</th>
+              <th>Detalle</th>
+              <th>Cantidad</th>
+              <th>Precio Unitario</th>
+              <th>Total (ARS)</th>
+            </tr>
+          </thead>
+          <tbody>
+            {userData?.purchases && userData?.purchases.map((purchase) => (
+              purchase.items.map((item, index) => {
+                return (
+                  <tr className={`h-12 ${index % 2 === 0 ? "dark:text-light-200 bg-light-200 dark:bg-slate-600" : "dark:text-light-200 bg-light-300 dark:bg-slate-800"}`} key={index}>
+                    <td>{purchase.purchase_date.slice(0, 10)}</td>
+                    <td>{item.name}</td>
+                    <td>{item.quantity}</td>
+                    <td>{item.price ? item.price / item.quantity : purchase.totalPrice}</td>
+                    <td>{item.price ? item.price : purchase.totalPrice}</td>
+                  </tr>
+                )
+              })
+            ))}
+          </tbody>
+        </table>
+      )}
     </div>
   );
 }

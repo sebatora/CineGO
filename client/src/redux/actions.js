@@ -22,10 +22,23 @@ import {
   PUT_SUBSCRIPTION,
   DELETE_SUBSCRIPTION,
   FORGOT_PASSWORD_USER,
+  POST_PURCHASES,
+  GET_USER_BY_ID,
+  POST_ALL_TICKETS,
+  POST_CANDY,
+  DELETE_CANDY,
+  PUT_CANDY,
+  GET_USERS,
+  PUT_MOVIE,
+  POST_RATING,
+  GET_PURCHASES,
+  GET_CANDY_BY_NAME,
+
   // ERROR
 } from "./action-type";
 
 import axios from "axios";
+import Swal from "sweetalert2";
 
 // Trae todas las peliculas
 export const getMovies = () => {
@@ -101,6 +114,14 @@ export const deleteMovie = (id) => {
   };
 };
 
+// Edita una pelicula
+export const putMovie = (idMovie, dataMovie) => {
+  return async (dispatch) => {
+    const { data } = await axios.put(`/movies/${idMovie}`, dataMovie);
+    return dispatch({ type: PUT_MOVIE, payload: data });
+  };
+};
+
 // Filtra y ordena
 export const filterOrder = (info) => {
   return async (dispatch) => {
@@ -108,6 +129,31 @@ export const filterOrder = (info) => {
     return dispatch({ type: FILTER_ORDER, payload: data });
   };
 };
+
+// Trae los usuarios
+export const getUsers = () => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.get(`/users`);
+      return dispatch({ type: GET_USERS, payload: data });
+    } catch (error) {
+      return error.message;
+    }
+  };
+};
+
+// Busca un usuario
+export const getUserById = (userId) => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.get(`/users/${userId}`);
+      window.localStorage.setItem("user", JSON.stringify(data));
+      return dispatch({ type: GET_USER_BY_ID, payload: data });
+    } catch (error) {
+      return error.message;
+    }
+  };
+}
 
 // Crea un nuevo usuario
 export const postUser = (newUser) => {
@@ -122,12 +168,20 @@ export const postUser = (newUser) => {
       // }
 
       const { data } = await axios.post(`/users`, newUser);
-      alert(data)
+      Swal.fire({
+        html: `<strong>${data}</strong> `,
+        icon: "success",
+      });
+
       return dispatch({ type: POST_USER, payload: data });
     } catch (error) {
       if (error.response.status === 404) {
         let errorData = error.response.data.error;
-        alert(errorData);
+        Swal.fire({
+          html: `<strong>${errorData}</strong> `,
+          icon: "error",
+        });
+
         //  return dispatch({type:ERROR, payload: errorData})
       }
     }
@@ -135,10 +189,10 @@ export const postUser = (newUser) => {
 };
 
 // Modifica a un usuario
-export const putUser = (user) => {
+export const putUser = (dataUser) => {
   return async (dispatch) => {
     try {
-      const { data } = await axios.put(`/users`, user);
+      const { data } = await axios.put(`/users`, dataUser);
       return dispatch({ type: PUT_USER, payload: data });
     } catch (error) {
       return error.message;
@@ -199,15 +253,10 @@ export const logoutUser = () => {
   return { type: LOGOUT_USER };
 };
 
-//Trae todos los productos candy
-export const getCandy = () => {
-  return async (dispatch) => {
-    try {
-      const { data } = await axios.get(`/candy`);
-      return dispatch({ type: GET_CANDY, payload: data });
-    } catch (error) {
-      return error.message;
-    }
+export const postAllTickets = (tickets) => {
+  return {
+    type: POST_ALL_TICKETS,
+    payload: tickets,
   };
 };
 
@@ -231,6 +280,62 @@ export const removeOneCart = (name) => {
     payload: name,
   };
 };
+
+//Trae todos los productos candy
+export const getCandy = () => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.get(`/candy`);
+      return dispatch({ type: GET_CANDY, payload: data });
+    } catch (error) {
+      return error.message;
+    }
+  };
+};
+
+// Trae los candy por nombre
+export const getCandyByName = (name) => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.get(`/candy?name=${name}`);
+      return dispatch({ type: GET_CANDY_BY_NAME, payload: data });
+    } catch (error) {
+      return error.message;
+    }
+  };
+};
+
+//Crea un producto en candy
+export const postCandy = (newCandy) => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.post(`/candy`, newCandy);
+      return dispatch({ type: POST_CANDY, payload: data });
+    } catch (error) {
+      return error.message;
+    }
+  }
+}
+
+//Elimina un producto de candy
+export const deleteCandy = (name) => {
+  return async (dispatch) => {
+    const { data } = await axios.delete(`/candy`, name);
+    return dispatch({ type: DELETE_CANDY, payload: data });
+  }
+}
+
+//Modificar un producto de candy
+export const putCandy = (idCandy, dataCandy) => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.put(`/candy/${idCandy}`, dataCandy);
+      return dispatch({ type: PUT_CANDY, payload: data });
+    } catch (error) {
+      return error.message;
+    }
+  }
+}
 
 export const addCartCandy = (name) => {
   return {
@@ -259,3 +364,38 @@ export const saveCart = (cart) => {
     payload: cart,
   };
 };
+
+// PURCHASE
+export const postPurchases = (purchase) => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.post(`/purchase`, purchase);
+      return dispatch({ type: POST_PURCHASES, payload: data });
+    } catch (error) {
+      return error.message;
+    }
+  };
+};
+
+export const getPurchases = () => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.get(`/purchase`);
+      return dispatch({ type: GET_PURCHASES, payload: data})
+    } catch (error) {
+      return error.message;
+    }
+  }
+}
+
+// Rating
+export const postRating = (rating) => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.post(`/rating`, rating);
+      return dispatch({ type: POST_RATING, payload: data });
+    } catch (error) {
+      return error.message;
+    }
+  };
+}

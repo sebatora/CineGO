@@ -3,7 +3,13 @@ const bcrypt = require("bcrypt");
 const nodemailer = require("nodemailer");
 const path = require("path");
 
-const postResetPasswordController = async (firstName, email) => {
+const postResetPassword = async ( email, firstName) => {
+  // Convertir el correo electrónico a minúsculas
+  email = email.toLowerCase();
+
+  // Convertir el nombre a minúsculas y capitalizar la primera letra
+  firstName = firstName.toUpperCase();
+
   // Generamos una nueva contraseña de manera aleatoria
   const newPassword = generateRandomPassword();
 
@@ -90,8 +96,23 @@ const sendPasswordByEmail = (email, newPassword, firstName) => {
             <img src="cid:correoCineGo.jpg" alt="Logo" />
           </div>
           <h1 class="message">Hola, ¡${firstName}!</h1>
-          <p class="message">Acá está tu nueva contraseña:</p>
+          <p class="message">Hemos completado el proceso de restablecimiento de tu contraseña en Cinego. ¡Aquí tienes tu nueva contraseña, lista para que vuelvas a disfrutar de nuestros servicios!</p>
           <p class="message"><strong>${newPassword}</strong></p>
+          <td valign="middle" align="center" style="text-align: center; padding: 0px 20px 40px 415px;">
+            <!-- Button : BEGIN -->
+            <table role="presentation" align="center" cellspacing="0" cellpadding="0" border="0" class="center-on-narrow">
+              <tr>
+                <td style="text-align: center;">
+                  <div class="center" style="border-radius: 50px; background: #2420ff; text-align: center;" class="button-td">
+                    <a href="https://cine-go-ten.vercel.app" style="background: #2420ff; border: 15px solid #2420ff; font-family: 'Montserrat', sans-serif; font-size: 14px; line-height: 1.1; text-align: center; text-decoration: none; display: block; border-radius: 50px; font-weight: bold;" class="button-a">
+                      <span style="color:white;" class="button-link">&nbsp;&nbsp;&nbsp;&nbsp;Ir a CineGo&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    </a>
+                  </div>
+                </td>
+              </tr>
+            </table>
+            <!-- Button : END -->
+          </td>
         </body>
       </html>
     `,
@@ -114,6 +135,6 @@ const sendPasswordByEmail = (email, newPassword, firstName) => {
   });
 };
 
-module.exports = postResetPasswordController;
+module.exports = postResetPassword;
 
 // ACTUALIZACION DE CORREO OCUPEN ESE

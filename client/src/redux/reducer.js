@@ -21,6 +21,17 @@ import {
   SAVE_CART,
   PUT_SUBSCRIPTION,
   DELETE_SUBSCRIPTION,
+  GET_USER_BY_ID,
+  POST_ALL_TICKETS,
+  POST_CANDY,
+  PUT_CANDY,
+  DELETE_CANDY,
+  GET_USERS,
+  PUT_MOVIE,
+  POST_RATING,
+  GET_PURCHASES,
+  GET_CANDY_BY_NAME,
+
   // ERROR
 } from "./action-type";
 
@@ -30,29 +41,12 @@ const initialState = {
   movieById: {},
   movieByIdCopy: {},
   allGenres: [],
+  allUsers: [],
   userData: {},
   allCandy: [],
   cart: [],
-  productTicket: [
-    {
-      id: 1,
-      name: "Entrada General",
-      image:
-        "https://static.cinemarkhoyts.com.ar/Images/TicketTypeImage/1687.png",
-      price: 200,
-      description:
-        "Entrada Promocional No acumulable con otras promociones. Lunes y martes.",
-    },
-    {
-      id: 2,
-      name: "Entrada CineFan",
-      image:
-        "https://static.cinemarkhoyts.com.ar/Images/TicketTypeImage/1667.png",
-      price: 290,
-      description: "Incluye 2 entradas + Tarjeta Virtual.",
-    },
-  ],
-  // errData:null,
+  productTicket: [],
+  allPurchases: []
 };
 
 const rootReducer = (state = initialState, { type, payload }) => {
@@ -100,6 +94,12 @@ const rootReducer = (state = initialState, { type, payload }) => {
       };
     }
 
+    case PUT_MOVIE: {
+      return {
+        ...state,
+      };
+    }
+
     case DELETE_MOVIE: {
       return {
         ...state,
@@ -111,6 +111,20 @@ const rootReducer = (state = initialState, { type, payload }) => {
         ...state,
         allMovies: payload,
       };
+    }
+
+    case GET_USERS: {
+      return {
+        ...state,
+        allUsers: payload,
+      }
+    }
+
+    case GET_USER_BY_ID: {
+      return {
+        ...state,
+        userData: payload,
+      }
     }
 
     case POST_USER: {
@@ -155,8 +169,40 @@ const rootReducer = (state = initialState, { type, payload }) => {
     case GET_CANDY: {
       return {
         ...state,
+        allCandy: payload
+      };
+    }
+
+    case GET_CANDY_BY_NAME: {
+      return {
+        ...state,
         allCandy: payload,
       };
+    }
+
+    case POST_CANDY: {
+      return {
+        ...state
+      }
+    }
+
+    case PUT_CANDY: {
+      return {
+        ...state,
+      }
+    }
+
+    case DELETE_CANDY: {
+      return {
+        ...state
+      }
+    }
+
+    case POST_ALL_TICKETS: {
+      return {
+        ...state,
+        productTicket: payload
+      }
     }
 
     case ADD_TO_CART: {
@@ -303,12 +349,18 @@ const rootReducer = (state = initialState, { type, payload }) => {
       };
     }
 
-    // case ERROR : {
-    //   return{
-    //     ...state,
-    //     errData: payload
-    //   }
-    // }
+    case POST_RATING: {
+      return {
+        ...state,
+      };
+    }
+
+    case GET_PURCHASES: {
+      return {
+        ...state,
+        allPurchases: payload
+      }
+    }
 
     default:
       return { ...state };

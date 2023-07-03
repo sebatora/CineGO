@@ -27,8 +27,22 @@ function CinePlusGold() {
         subscription: subGold,
         userData,
       });
+      const orderPurchase = {
+        userId: userData.id,
+        items: [
+          {
+            cinePlus: "Gold",
+            quantity: 1,
+            type: "subscription",
+          },
+        ],
+        totalPrice: subGold.price,
+      };
       window.location.href = data.init_point;
-      dispatch(putUserSubscription({ id: userData.id, cinePlus: "Gold" }));
+      window.localStorage.setItem(
+        "orderPurchase",
+        JSON.stringify(orderPurchase)
+      );
     }
   };
 
@@ -44,14 +58,14 @@ function CinePlusGold() {
               ${subGold.price} por mes
             </span>
           </div>
-          <div className="h-[280px] flex flex-col justify-between p-4 border-4 border-yellow-300 rounded-b-xl">
+          <div className="h-[280px] flex flex-col justify-between p-4 border-2 border-yellow-300 rounded-b-xl">
             <ul className="m-0 p-0">
               <li className="flex justify-around m-2">
                 <div className="w-4/5">
                   <h3 className="m-0 text-sm font-bold">
-                    2 Entradas Mensuales CinePlus
+                    2 Entradas Mensuales
                   </h3>
-                  <p className="m-0 text-xs font-normal">GRATIS!</p>
+                  <p className="m-0 text-xs font-normal">GRATIS</p>
                 </div>
                 <FaCheck className="dark:text-white" />
               </li>
@@ -76,7 +90,7 @@ function CinePlusGold() {
                 <div className="w-4/5">
                   <h3 className="m-0 text-sm font-bold">20% Off</h3>
                   <p className="m-0 text-xs font-normal">
-                    en todas las compras!
+                    *En todas tus compras
                   </p>
                 </div>
                 <FaCheck className="dark:text-white" />
@@ -84,9 +98,9 @@ function CinePlusGold() {
             </ul>
             <button
               onClick={handleSubmit}
-              className="w-7/12 mx-auto bg-yellow-300 hover:bg-yellow-200 my-2 p-2 rounded-xl text-base font-bold"
+              className="w-7/12 mx-auto bg-yellow-300 hover:bg-yellow-200 my-8 p-2 rounded-xl"
             >
-              ¡Quiero suscribirme!
+              <span className="text-base font-bold">¡Quiero suscribirme!</span>
             </button>
           </div>
         </div>

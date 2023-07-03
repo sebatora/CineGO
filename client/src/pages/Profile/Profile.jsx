@@ -14,11 +14,11 @@ function Profile() {
 
   return (
     <div className="w-full flex mt-12">
-      <div className="w-1/5 h-[500px] mb-52 rounded-br-[150px] bg-light-300 dark:bg-slate-900">
-        <h1 className="w-full mt-5 ml-5">Perfil</h1>
+      <div className="w-1/5 bg-light-300 dark:bg-slate-900">
+        <h1 className="w-full mt-5 ml-5">Bienvenido</h1>
         <div className="w-3/4 p-4">
           <button
-            className={`w-40 my-4 text-start ${
+            className={`w-16 my-4 text-start ${
               activeComponent === "profileChange" &&
               "font-bold border-b-4 border-light-700 dark:border-dark-700 ml-2 scale-105"
             }`}
@@ -27,14 +27,14 @@ function Profile() {
           >
             <span
               className={
-                activeComponent === "profileChange" && "text-light-700"
+                activeComponent === "profileChange" ? "text-light-700" : ""
               }
             >
-              Modificar Perfil
+              Perfil
             </span>
           </button>
           <button
-            className={`w-52 my-4 text-start ${
+            className={`w-28 my-4 text-start ${
               activeComponent === "profileSubscription" &&
               "font-bold border-b-4 border-light-700 dark:border-dark-700 ml-2 scale-105"
             }`}
@@ -43,10 +43,10 @@ function Profile() {
           >
             <span
               className={
-                activeComponent === "profileSubscription" && "text-light-700"
+                activeComponent === "profileSubscription" ? "text-light-700" : ""
               }
             >
-              Modificar Suscripción
+              Suscripción
             </span>
           </button>
           {userData.password && (
@@ -60,7 +60,7 @@ function Profile() {
             >
               <span
                 className={
-                  activeComponent === "profileSecurity" && "text-light-700"
+                  activeComponent === "profileSecurity" ? "text-light-700" : ""
                 }
               >
                 Seguridad
@@ -68,7 +68,7 @@ function Profile() {
             </button>
           )}
           <button
-            className={`w-48 my-4 text-start ${
+            className={`w-24 my-4 text-start ${
               activeComponent === "profileRecord" &&
               "font-bold border-b-4 border-light-700 dark:border-dark-700 ml-2 scale-105"
             }`}
@@ -77,10 +77,10 @@ function Profile() {
           >
             <span
               className={
-                activeComponent === "profileRecord" && "text-light-700"
+                activeComponent === "profileRecord" ? "text-light-700" : ""
               }
             >
-              Historial de compras
+              Compras
             </span>
           </button>
         </div>

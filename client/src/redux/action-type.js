@@ -14,6 +14,8 @@ export const PUT_MOVIE = "PUT_MOVIE";
 export const DELETE_MOVIE = "DELETE_MOVIE";
 
 // RUTAS DE USUARIOS
+export const GET_USERS = "GET_USERS";
+export const GET_USER_BY_ID = "GET_USER_BY_ID";
 export const POST_USER = "POST_USER";
 export const PUT_USER = "PUT_USER";
 export const DELETE_USER = "DELETE_USER";
@@ -23,11 +25,16 @@ export const FORGOT_PASSWORD_USER = "FORGOT_PASSWORD_USER";
 
 // RUTAS DE CANDY
 export const GET_CANDY = "GET_CANDY";
+export const GET_CANDY_BY_NAME = "GET_CANDY_BY_NAME";
+export const POST_CANDY = "POST_CANDY";
+export const PUT_CANDY = "PUT_CANDY";
+export const DELETE_CANDY = "DELETE_CANDY";
 export const ADD_TO_CART_CANDY = "ADD_TO_CART_CANDY";
 export const REMOVE_ALL_CART_CANDY = "REMOVE_ALL_CART_CANDY";
 export const REMOVE_ONE_CANDY = "REMOVE_ONE_CANDY";
 
 // RUTAS DEL CARRITO TICKET
+export const POST_ALL_TICKETS = "POST_ALL_TICKETS";
 export const ADD_TO_CART = "ADD_TO_CART";
 export const SAVE_CART = "SAVE_CART";
 export const REMOVE_ALL_CART = "REMOVE_ALL_CART";
@@ -37,4 +44,10 @@ export const REMOVE_ONE_CART = "REMOVE_ONE_CART";
 export const PUT_SUBSCRIPTION = "PUT_SUBSCRIPTION";
 export const DELETE_SUBSCRIPTION = "DELETE_SUBSCRIPTION";
 
-// export const ERROR = "ERROR";
+
+// RUTAS PURCHASE
+export const POST_PURCHASES = "POST_PURCHASES";
+export const GET_PURCHASES = "GET_PURCHASES";
+
+// RUTAS RATING
+export const POST_RATING = "POST_RATING";

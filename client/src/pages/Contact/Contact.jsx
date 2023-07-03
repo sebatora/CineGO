@@ -39,7 +39,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="mt-20 px-10 py-4 flex">
+    <div className="my-20 mx-10 px-10 py-4 flex">
       <Toaster />
       <form
         className="w-[40%] flex flex-col bg-light-300 dark:bg-slate-900 p-6 rounded-l-lg"
@@ -116,8 +116,9 @@ const Contact = () => {
       <MapContainer
         className="w-2/3 h-[570px] z-10"
         center={[-34.61315, -58.37723]}
-        zoom={10}
+        zoom={13}
         scrollWheelZoom={false}
+
       >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

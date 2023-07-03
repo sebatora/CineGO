@@ -27,6 +27,9 @@ module.exports = (sequelize) => {
         allowNull: false,
         defaultValue: [],
       },
+      orderNumber: {
+        type: DataTypes.STRING,
+      },
     },
     { timestamps: false }
   );

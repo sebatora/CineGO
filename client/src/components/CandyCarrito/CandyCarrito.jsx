@@ -10,6 +10,8 @@ import { GoTrash } from "react-icons/go";
 import { Toaster, toast } from "react-hot-toast";
 import { Link } from "react-router-dom";
 
+import Swal from "sweetalert2";
+
 function CandyCarrito({ addCart, productCount, setProductCount }) {
   const userData = JSON.parse(window.localStorage.getItem("user"));
   const cart = useSelector((state) => state.cart);
@@ -18,16 +20,22 @@ function CandyCarrito({ addCart, productCount, setProductCount }) {
   const subtotal = cart.reduce((acc, el) => acc + parseFloat(el.price), 0);
   const servicio = subtotal * 0.1;
   const total = subtotal + servicio;
+  const valueFormatter = (number) =>
+    number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
   const delRemoveCart = (name, all = false) => {
     if (all) {
+      let nombre = cart.find((product) => product.name === name);
+
       dispatch(removeAllCartCandy(name));
       window.localStorage.removeItem("cart");
-      setProductCount(0);
+      setProductCount(productCount - nombre.count);
+      localStorage.setItem("productCount", productCount - nombre.count);
     } else {
       dispatch(removeOneCartCandy(name));
       window.localStorage.removeItem("cart");
       setProductCount(productCount - 1);
+      localStorage.setItem("productCount", productCount - 1);
     }
   };
 
@@ -40,9 +48,37 @@ function CandyCarrito({ addCart, productCount, setProductCount }) {
         return;
       }
       const { data } = await axios.post("/payment", { cart, userData });
-      window.location.href = data.init_point;
-      window.localStorage.removeItem("cart");
-      window.localStorage.removeItem("movie");
+      const items = cart.map((product) => ({
+        itemId: product.id,
+        showId: product.showId,
+        price: product.price,
+        quantity: product.count,
+        type: product.type,
+      }));
+      const orderPurchase = {
+        userId: userData.id,
+        items,
+        totalPrice: total,
+      };
+      Swal.fire({
+        title: "¿Estás seguro que no deseas realizar ningun cambio?",
+        showDenyButton: true,
+        cancelButtonColor: "#ef233c",
+        confirmButtonColor: "#38b000",
+        confirmButtonText: "¡Si, estoy seguro!",
+        denyButtonText: `Cancelar`,
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.localStorage.setItem(
+            "orderPurchase",
+            JSON.stringify(orderPurchase)
+          );
+          window.localStorage.removeItem("productCount");
+          window.localStorage.removeItem("cart");
+          window.localStorage.removeItem("movie");
+          window.location.href = data.init_point;
+        }
+      });
     } catch (error) {
       console.error(error);
       toast.error("Debes ingresar a tu cuenta primero", {
@@ -89,7 +125,7 @@ function CandyCarrito({ addCart, productCount, setProductCount }) {
               </div>
               <div className="flex items-center my-2 ml-auto">
                 <p className="mr-1 mt-0 text-sm font-bold text-gray-700 dark:text-white">
-                  $ {item.price.toLocaleString("es-Us")}
+                  $ {valueFormatter(item.price)}
                 </p>
                 <button
                   onClick={() => delRemoveCart(item.name)}
@@ -111,13 +147,13 @@ function CandyCarrito({ addCart, productCount, setProductCount }) {
         </div>
 
         <div className="px-2 pt-2 font-bold text-sm mb-1 text-gray-700 dark:text-white">
-          Subtotal: $ {subtotal.toLocaleString("en-US")}
+          Subtotal: $ {valueFormatter(subtotal)}
         </div>
         <div className="px-2 font-bold text-sm mb-1 text-gray-700 dark:text-white">
-          Cargo por servicio candy: $ {servicio.toLocaleString("en-US")}
+          Cargo por servicio candy: $ {valueFormatter(servicio)}
         </div>
         <div className="px-2 font-bold text-lg mb-1 text-gray-700 dark:text-white">
-          <p>TOTAL: $ {total.toLocaleString("en-US")} </p>
+          <p>TOTAL: $ {valueFormatter(total)} </p>
         </div>
         <div className="px-4 py-3 mb-2 flex justify-center items-center">
           <Link to={`${!userData ? "/login" : "/candy"}`}>

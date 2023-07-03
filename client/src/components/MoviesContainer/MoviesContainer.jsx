@@ -12,6 +12,12 @@ function MoviesContainer() {
   const [loading, setLoading] = useState(true);
   const allMovies = useSelector((state) => state.allMovies);
 
+  const moviesActive = allMovies.filter((active) => active.activeMovie === true);
+
+  const genresActive = moviesActive.forEach(movie => {
+    movie.genres.forEach(genre => genre.name)
+  });
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -25,17 +31,15 @@ function MoviesContainer() {
       {loading ? (
         <Spinner />
       ) : (
-        <div className="w-full mt-8">
-          <div className="w-full pl-24">
-            <div className="w-4/5 flex justify-items ">
-              <Filter />
-              <SearchBar />
-            </div>
+        <div className="w-11/12 mt-8">
+          <div className="w-full flex justify-center ">
+            <Filter />
+            <SearchBar />
           </div>
           <div className="w-full flex flex-wrap justify-center">
-            {allMovies.length ? (
-              allMovies.map(
-                ({ id, title, image, genres, clasification, duration }) => (
+            {moviesActive.length ? (
+              moviesActive.map(
+                ({ id, title, image, genres, clasification, duration, ratings }) => (
                   <MovieCard
                     key={id}
                     id={id}
@@ -44,6 +48,7 @@ function MoviesContainer() {
                     clasification={clasification}
                     duration={duration}
                     image={image}
+                    ratings={ratings}
                   />
                 )
               )

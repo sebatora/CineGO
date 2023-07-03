@@ -2,36 +2,67 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import Ticket from "../../components/Ticket/Ticket";
 import Cart from "../../components/Cart/Cart";
-import { addCart, removeAllCart, removeOneCart, saveCart } from "../../redux/actions";
+import {
+  addCart,
+  postAllTickets,
+  removeAllCart,
+  removeOneCart,
+  saveCart,
+} from "../../redux/actions";
 import React, { useEffect, useState } from "react";
 import { Toaster, toast } from "react-hot-toast";
 
 const TicketContainer = () => {
   const userData = JSON.parse(window.localStorage.getItem("user"));
   const storedMovie = JSON.parse(window.localStorage.getItem("movie"));
+  const tickets = [
+    {
+      id: storedMovie.id,
+      showId: storedMovie.showId.id,
+      idTicket: 1,
+      name: "Entrada General",
+      image:
+        "https://static.cinemarkhoyts.com.ar/Images/TicketTypeImage/1687.png",
+      price: 200,
+      description:
+        "Entrada Promocional No acumulable con otras promociones. Lunes y martes.",
+      type: "show",
+    },
+    {
+      id: storedMovie.id,
+      showId: storedMovie.showId.id,
+      idTicket: 2,
+      name: "Entrada CineFan",
+      image:
+        "https://static.cinemarkhoyts.com.ar/Images/TicketTypeImage/1667.png",
+      price: 290,
+      description: "Incluye 2 entradas + Tarjeta Virtual.",
+      type: "show",
+    },
+  ];
+
   const dispatch = useDispatch();
-  const product = useSelector((state) => state.productTicket);
   const cart = useSelector((state) => state.cart);
   const [productCount, setProductCount] = useState(0);
 
-  const cinefan = product.filter((name) => name.name === "Entrada CineFan");
-  const general = product.filter((name) => name.name === "Entrada General");
+  const cinefan = tickets.filter((ticket) => ticket.name === "Entrada CineFan");
+  const general = tickets.filter((ticket) => ticket.name === "Entrada General");
 
   const addToCard = (name) => {
     if (productCount >= 5) {
       toast.error("Has alcanzado el límite de 5 productos en tu carrito.", {
-        duration: 3000
+        duration: 3000,
       });
       return;
     }
     dispatch(addCart(name));
     toast.success("Producto agregado al carrito", {
-      duration: 2000
+      duration: 2000,
     });
     setProductCount(productCount + 1);
   };
 
-const delRemoveCart = (name, all = false) => {
+  const delRemoveCart = (name, all = false) => {
     if (all) {
       dispatch(removeAllCart(name));
       window.localStorage.removeItem("cart");
@@ -44,10 +75,11 @@ const delRemoveCart = (name, all = false) => {
   };
 
   const subtotal = cart.reduce((acc, el) => acc + parseFloat(el.price), 0);
-  const servicio = subtotal * 0.10;
+  const servicio = subtotal * 0.1;
   const total = subtotal + servicio;
 
   useEffect(() => {
+    dispatch(postAllTickets(tickets));
     const storedCart = window.localStorage.getItem("cart");
     if (storedCart) {
       dispatch(saveCart(JSON.parse(storedCart)));
@@ -55,22 +87,22 @@ const delRemoveCart = (name, all = false) => {
   }, []);
 
   useEffect(() => {
-    if(cart.length) {
+    if (cart.length) {
       window.localStorage.setItem("cart", JSON.stringify(cart));
     }
   }, [cart]);
 
   return (
     <div className="mt-16 flex">
-      <Toaster /> 
+      <Toaster />
       <div className="w-2/3 flex flex-col">
         <div className="flex items-center justify-center mt-20">
           <div className="w-full flex flex-col items-center">
             <h4 className="mb-4">Sumate a cineFan</h4>
-            {cinefan?.map(({ id, name, description, price, image }) => (
+            {cinefan?.map(({ idTicket, name, description, price, image }) => (
               <Ticket
-                key={id}
-                id={id}
+                key={idTicket}
+                idTicket={idTicket}
                 name={name}
                 description={description}
                 price={price}
@@ -81,10 +113,10 @@ const delRemoveCart = (name, all = false) => {
           </div>
           <div className="w-full flex flex-col items-center">
             <h4 className="mb-4">General</h4>
-            {general?.map(({ id, name, description, price, image }) => (
+            {general?.map(({ idTicket, name, description, price, image }) => (
               <Ticket
-                key={id}
-                id={id}
+                key={idTicket}
+                idTicket={idTicket}
                 name={name}
                 description={description}
                 price={price}
@@ -121,7 +153,7 @@ const delRemoveCart = (name, all = false) => {
                 count={item.count}
                 delRemoveCart={delRemoveCart}
                 addToCard={addToCard}
-                productCount={productCount} 
+                productCount={productCount}
                 setProductCount={setProductCount}
               />
             ))}
@@ -129,13 +161,13 @@ const delRemoveCart = (name, all = false) => {
 
           <div>
             <div className="px-2 pt-2 font-bold text-sm mb-1 text-gray-700 dark:text-white">
-              Subtotal: $ {subtotal.toLocaleString('en-US')}
+              Subtotal: $ {subtotal.toLocaleString("en-US")}
             </div>
             <div className="px-2 font-bold text-sm mb-1 text-gray-700 dark:text-white">
-              Cargo por servicio candy: $ {servicio.toLocaleString('en-US')}
+              Cargo por servicio candy: $ {servicio.toLocaleString("en-US")}
             </div>
             <div className="px-2 font-bold text-lg mb-1 text-gray-700 dark:text-white">
-              <p>TOTAL: $ {total.toLocaleString('en-US')}</p>
+              <p>TOTAL: $ {total.toLocaleString("en-US")}</p>
             </div>
           </div>
           <Link to={`${!userData ? "/login" : "/candy"}`}>

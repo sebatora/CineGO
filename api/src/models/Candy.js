@@ -1,7 +1,9 @@
 const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
-  sequelize.define("candy", {
+  sequelize.define(
+    "candy",
+    {
       id: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -11,6 +13,7 @@ module.exports = (sequelize) => {
       name: {
         type: DataTypes.STRING,
         allowNull: false,
+        unique: true,
       },
       description: {
         type: DataTypes.STRING,
@@ -38,6 +41,10 @@ module.exports = (sequelize) => {
         type: DataTypes.BOOLEAN,
         allowNull: false,
         defaultValue: true,
+      },
+      type: {
+        type: DataTypes.STRING,
+        defaultValue: "candy",
       },
     },
     { timestamps: false }

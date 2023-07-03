@@ -45,7 +45,7 @@ function ProfileSubscription() {
   };
 
   return (
-    <div className="mb-10">
+    <div className="h-screen">
       <h2 className="w-full flex items-center justify-center h-16 bg-light-200 dark:bg-slate-800">
         Suscripción
       </h2>
@@ -79,21 +79,21 @@ function ProfileSubscription() {
           </div>
         </div>
       ) : (
-        <div className="flex items-center justify-center">
-          <div className="flex flex-col items-center mt-24">
+        <div className="">
+          <div className="flex flex-col items-center mt-2">
             <h3 className="mb-4 font-bold">Tenes el plan mas tocho de todos</h3>
-            <div>
+            <div className="flex">
               <TextAnimation word={userData.cinePlus.toUpperCase()} />
               <button
                 onClick={handleSubmit}
-                className="w-96 h-20 flex justify-center items-center bg-dark-400 mb-6 rounded-md text-3xl"
+                className="w-96 h-20 flex justify-center items-center bg-dark-400 mb-6 rounded-md text-3xl mx-2 font-bold"
               >
                 Cancelar suscripción
               </button>
             </div>
-            <div className="flex">
+          </div>
+          <div className="flex">
               <CinePlusGold />
-            </div>
           </div>
         </div>
       )}
