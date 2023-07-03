@@ -65,7 +65,7 @@ function CandyCarrito({ addCart, productCount, setProductCount }) {
         showDenyButton: true,
         cancelButtonColor: "#ef233c",
         confirmButtonColor: "#38b000",
-        confirmButtonText: "Si estoy seguro!",
+        confirmButtonText: "¡Si, estoy seguro!",
         denyButtonText: `Cancelar`,
       }).then((result) => {
         if (result.isConfirmed) {
