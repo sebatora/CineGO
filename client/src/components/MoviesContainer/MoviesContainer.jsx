@@ -26,11 +26,9 @@ function MoviesContainer() {
         <Spinner />
       ) : (
         <div className="w-11/12 mt-8">
-          <div className="w-full pl-24">
-            <div className="w-4/5 flex justify-items ">
-              <Filter />
-              <SearchBar />
-            </div>
+          <div className="w-full flex justify-center ">
+            <Filter />
+            <SearchBar />
           </div>
           <div className="w-full flex flex-wrap justify-center">
             {allMovies.length ? (

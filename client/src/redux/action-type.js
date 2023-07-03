@@ -25,6 +25,7 @@ export const FORGOT_PASSWORD_USER = "FORGOT_PASSWORD_USER";
 
 // RUTAS DE CANDY
 export const GET_CANDY = "GET_CANDY";
+export const GET_CANDY_BY_NAME = "GET_CANDY_BY_NAME";
 export const POST_CANDY = "POST_CANDY";
 export const PUT_CANDY = "PUT_CANDY";
 export const DELETE_CANDY = "DELETE_CANDY";
