@@ -12,6 +12,7 @@ function MoviesContainer() {
   const [loading, setLoading] = useState(true);
   const allMovies = useSelector((state) => state.allMovies);
 
+  const moviesActive = allMovies.filter((active) => active.activeMovie === true);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -31,8 +32,8 @@ function MoviesContainer() {
             <SearchBar />
           </div>
           <div className="w-full flex flex-wrap justify-center">
-            {allMovies.length ? (
-              allMovies.map(
+            {moviesActive.length ? (
+              moviesActive.map(
                 ({ id, title, image, genres, clasification, duration, ratings }) => (
                   <MovieCard
                     key={id}
