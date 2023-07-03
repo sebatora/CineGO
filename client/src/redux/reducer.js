@@ -29,6 +29,7 @@ import {
   GET_USERS,
   PUT_MOVIE,
   POST_RATING,
+  GET_CANDY_BY_NAME,
   // ERROR
 } from "./action-type";
 
@@ -166,6 +167,13 @@ const rootReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         allCandy: payload
+      };
+    }
+
+    case GET_CANDY_BY_NAME: {
+      return {
+        ...state,
+        allCandy: payload,
       };
     }
 
