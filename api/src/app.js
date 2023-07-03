@@ -13,6 +13,7 @@ const routerPayment = require("./routes/payment.routes.js");
 const routerResetPassword = require("./routes/resetpass.routes.js");
 const routerPurchase = require("./routes/purchase.routes.js");
 const allBulk = require("./routes/allBulkCreate.routes.js");
+const routerShow = require("./routes/show.routes.js")
 
 const app = express();
 
@@ -32,5 +33,6 @@ app.use("/payment", routerPayment);
 app.use("/reset", routerResetPassword);
 app.use("/purchase", routerPurchase);
 app.use("/create-proyect", allBulk);
+app.use("/shows", routerShow);
 
 module.exports = app;
