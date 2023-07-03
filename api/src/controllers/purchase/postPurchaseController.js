@@ -12,16 +12,14 @@ const postPurchaseController = async (
 
     // Iterar sobre los items comprados
     for (const item of items) {
-      const { type, itemId, price, quantity, cinePlus } = item;
+      const { type, itemId, price, quantity, cinePlus, showId } = item;
       let itemDetails;
       // Restar la cantidad comprada del stock correspondiente (Show o Candy)
       if (type === "show") {
         // El item es un Show
-        const show = await Show.findByPk(itemId);
+        const show = await Show.findByPk(showId);
         const movie = await Movie.findByPk(itemId);
-        console.log(movie.title);
         show.stock -= quantity;
-        console.log(show.stock);
         await show.save();
         await purchase.addShow(show, { through: { price, quantity } });
         itemDetails = {
