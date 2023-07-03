@@ -113,7 +113,7 @@ const CreateCandy = ({ setActiveForm }) => {
               />
             </svg>
           </button>
-          <h1 className="pb-4 ml-3">Agregar producto</h1>
+          <h3 className="pb-4 ml-3">Agregar producto</h3>
 					<div className="flex flex-col mb-4 items-center">
 						<select className="border rounded-md p-1 w-96" name="Categoría" defaultValue="none" {...register("category")}>
 							<option value='none' disabled>Categoría</option>
@@ -133,7 +133,7 @@ const CreateCandy = ({ setActiveForm }) => {
               {...register("name")}
             />
             {errors.name && (
-              <span className="text-red-600 dark:text-red-600">
+              <span className="text-red-600 dark:text-red-600 text-xs">
                 {errors.name.message}
               </span>
             )}
@@ -146,7 +146,7 @@ const CreateCandy = ({ setActiveForm }) => {
               {...register("price")}
             />
             {errors.price && (
-              <span className="text-red-600 dark:text-red-600">
+              <span className="text-red-600 dark:text-red-600 text-xs">
                 {errors.price.message}
               </span>
             )}
@@ -160,7 +160,7 @@ const CreateCandy = ({ setActiveForm }) => {
               {...register("description")}
             />
             {errors.description && (
-              <span className="text-red-600 dark:text-red-600">
+              <span className="text-red-600 dark:text-red-600 text-xs">
                 {errors.description.message}
               </span>
             )}
