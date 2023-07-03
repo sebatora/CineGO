@@ -7,6 +7,7 @@ import { cleanDetail, getMovieById, postRating } from "../../redux/actions";
 
 function Detail() {
   const detail = useSelector((state) => state.movieById);
+  const storedMovie = JSON.parse(window.localStorage.getItem("movie"));
   const userData = JSON.parse(window.localStorage.getItem("user"));
   const [activeTrailer, setActiveTrailer] = useState(false);
   const dispatch = useDispatch();
@@ -30,7 +31,15 @@ function Detail() {
       setSelectedShow(null);
     } else {
       setSelectedShow(show);
-      detail.showId = show.id;
+      const storedMovie = JSON.parse(window.localStorage.getItem("movie"));
+      if (storedMovie) {
+        const updatedMovie = {
+          ...storedMovie,
+          showId: show,
+        };
+        window.localStorage.setItem("movie", JSON.stringify(updatedMovie));
+      }
+
       console.log(show);
     }
   };
