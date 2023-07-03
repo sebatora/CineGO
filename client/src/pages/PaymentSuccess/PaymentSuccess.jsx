@@ -10,6 +10,8 @@ const PaymentSuccess = () => {
 
   useEffect(() => {
     dispatch(postPurchases(purchase));
+    // Filtrar por type=suscription
+    // Despues hacer un disatch de putUser para actualizar el estado global
   }, []);
 
   return (

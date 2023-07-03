@@ -27,19 +27,22 @@ function CinePlusGold() {
         subscription: subGold,
         userData,
       });
-      const orderPurchase = { 
-        userId: userData.id, 
+      const orderPurchase = {
+        userId: userData.id,
         items: [
           {
             cinePlus: "Gold",
             quantity: 1,
-            type: "subscription"
-          }
+            type: "subscription",
+          },
         ],
-        totalPrice: subGold.price
-      }
+        totalPrice: subGold.price,
+      };
       window.location.href = data.init_point;
-      window.localStorage.setItem("orderPurchase", JSON.stringify(orderPurchase));
+      window.localStorage.setItem(
+        "orderPurchase",
+        JSON.stringify(orderPurchase)
+      );
     }
   };
 
