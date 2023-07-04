@@ -53,7 +53,7 @@ const Contact = () => {
     <div className="my-20 mx-10 px-10 py-4 flex h-[80vh]">
       <Toaster />
       <form
-        className="w-[600px] min-h-[700px] h-full relative flex flex-col justify-around p-4 bg-light-50 dark:bg-transparent dark:shadow-[0_0_10px_0px_#fff] rounded"
+        className="w-[600px] min-h-[500px] h-full relative flex flex-col justify-around p-4 bg-light-50 dark:bg-transparent dark:shadow-[0_0_10px_0px_#fff] rounded"
         ref={form}
         onSubmit={handleSubmit(sendMessage)}
       >
