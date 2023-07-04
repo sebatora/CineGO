@@ -1,5 +1,7 @@
+const metricsHandler = require("../handlers/metrics/metricsHandler");
+
 const routerMetrics = require("express").Router();
 
-routerMetrics.get("/", );
+routerMetrics.post("/", metricsHandler);
 
 module.exports = routerMetrics;
