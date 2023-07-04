@@ -57,7 +57,7 @@ function ProfileRecord() {
             </tr>
           </thead>
           <tbody className="divide-y dark:divide-slate-400">
-            {purchases.map((purchase) =>
+            {pagination().map((purchase) =>
               purchase.items.map((item, index) => {
                 return (
                   <tr
@@ -80,7 +80,7 @@ function ProfileRecord() {
           </tbody>
         </table>
       )}
-      {purchases.length ? (
+      {purchases?.length ? (
         <div className="w-full flex justify-center items-center pt-4">
           <button
             onClick={prevPage}
