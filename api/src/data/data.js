@@ -850,7 +850,6 @@ const dataAllUsers = [
     email: "admin@admin.com",
     password: "admin",
     image: "",
-    cinePlus: "",
     isAdmin: "true",
   },
   {
@@ -859,7 +858,6 @@ const dataAllUsers = [
     email: "jdaza@mail.com",
     password: "abc123",
     image: "https://res.cloudinary.com/dhyqgl7ie/image/upload/v1688397486/About/Jor_uv77yc.jpg",
-    cinePlus: "",
   },
   {
     firstName: "CAMILA",
@@ -891,7 +889,6 @@ const dataAllUsers = [
     email: "mmonzon@mail.com",
     password: "abc123",
     image: "",
-    cinePlus: "",
   },
   {
     firstName: "PERCY",
@@ -899,7 +896,6 @@ const dataAllUsers = [
     email: "phuanca@mail.com",
     password: "abc123",
     image: "https://res.cloudinary.com/dhyqgl7ie/image/upload/v1688397486/About/Percy_q1mxxn.jpg",
-    cinePlus: "",
   },
   {
     firstName: "MATIAS",
