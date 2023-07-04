@@ -51,12 +51,14 @@ const TicketContainer = () => {
 
   const addToCard = (name) => {
     if (productCount >= 5) {
+      toast.dismiss();
       toast.error("Has alcanzado el límite de 5 productos en tu carrito.", {
         duration: 3000,
       });
       return;
     }
     dispatch(addCart(name));
+    toast.dismiss();
     toast.success("Producto agregado al carrito", {
       duration: 2000,
     });
