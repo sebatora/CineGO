@@ -55,6 +55,7 @@ function CandyCarrito({ addCart, productCount, setProductCount }) {
         quantity: product.count,
         type: product.type,
       }));
+
       const orderPurchase = {
         userId: userData.id,
         items,

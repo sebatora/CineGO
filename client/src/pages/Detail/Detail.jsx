@@ -60,23 +60,7 @@ function Detail() {
     if (!userData) {
       navigate("/login");
     } else {
-      const orderPurchase = {
-        userId: userData.id,
-        items: [
-          {
-            itemId: id,
-            quantity: null,
-            price: null,
-            type: "show",
-          },
-        ],
-        totalPrice: null,
-      };
       navigate("/ticket");
-      window.localStorage.setItem(
-        "orderPurchase",
-        JSON.stringify(orderPurchase)
-      );
     }
   };
 
