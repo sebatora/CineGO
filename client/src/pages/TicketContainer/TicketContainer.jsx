@@ -60,18 +60,23 @@ const TicketContainer = () => {
     toast.success("Producto agregado al carrito", {
       duration: 2000,
     });
+    localStorage.setItem("productCount", productCount + 1);
     setProductCount(productCount + 1);
   };
 
   const delRemoveCart = (name, all = false) => {
     if (all) {
+      let nombre = cart.find((product) => product.name === name);
+
       dispatch(removeAllCart(name));
       window.localStorage.removeItem("cart");
-      setProductCount(0);
+      setProductCount(productCount - nombre.count);
+      localStorage.setItem("productCount", productCount - nombre.count)
     } else {
       dispatch(removeOneCart(name));
       window.localStorage.removeItem("cart");
       setProductCount(productCount - 1);
+      localStorage.setItem("productCount", productCount - 1);
     }
   };
 
@@ -98,6 +103,13 @@ const TicketContainer = () => {
     }
   }, []);
 
+  useEffect(() => {
+    const storeProductCount = localStorage.getItem("productCount");
+  
+    if (storeProductCount) {
+      setProductCount(Number(storeProductCount));
+    }
+  }, []);
   useEffect(() => {
     if (cart.length) {
       window.localStorage.setItem("cart", JSON.stringify(cart));
