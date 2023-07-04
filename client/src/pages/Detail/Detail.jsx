@@ -39,8 +39,6 @@ function Detail() {
         };
         window.localStorage.setItem("movie", JSON.stringify(updatedMovie));
       }
-
-      console.log(show);
     }
   };
 
@@ -83,7 +81,7 @@ function Detail() {
 
   return (
     <>
-      {!detail.id || detail.activeMovie === false  ? (
+      {!detail.id || detail.activeMovie === false ? (
         <Error404 />
       ) : (
         <div className="w-full flex flex-col mt-20 p-10">

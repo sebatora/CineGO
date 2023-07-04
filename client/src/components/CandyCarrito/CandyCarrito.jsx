@@ -50,7 +50,7 @@ function CandyCarrito({ addCart, productCount, setProductCount }) {
       const { data } = await axios.post("/payment", { cart, userData });
       const items = cart.map((product) => ({
         itemId: product.id,
-        showId: product.showId,
+        showId: product.showId ? product.showId : null,
         price: product.price,
         quantity: product.count,
         type: product.type,
