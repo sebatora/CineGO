@@ -7,7 +7,7 @@ import WebVisits from "../../components/Admin/AdminVisitas/WebVisits";
 import { useDispatch } from "react-redux";
 import { logoutUser } from "../../redux/actions";
 import { useAuth } from "../../context/authContext";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Toaster, toast } from "react-hot-toast";
 import DataMovies from "../../components/Admin/AdminData/DataMovies";
 import DataCandy from "../../components/Admin/AdminData/DataCandy";
@@ -67,6 +67,10 @@ const Dashboard = () => {
         )}
 
         <div className="h-4/5 flex flex-col justify-between pt-4">
+          {/* Home */}
+          <Link to="/" className="mx-2 p-1 mb-1 rounded-sm text-start">
+            <h6 className="text-white">🎬 Home</h6>
+          </Link>
           {/* Ventas */}
           <div className="flex flex-col">
             <div className="flex items-center p-2">
