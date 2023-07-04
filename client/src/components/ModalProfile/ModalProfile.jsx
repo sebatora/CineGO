@@ -30,12 +30,12 @@ const ModalProfile = ({ setActiveModal, userData }) => {
   };
 
   return (
-    <div className="w-96 h-40 flex flex-col top-12 right-0 bg-light-100 dark:bg-dark-950 absolute uppercase border border-t-0 border-black dark:border-white dark:border-opacity-70 border-opacity-10 rounded-bl-md">
-      <h3 className="my-4 flex justify-center select-none">
-        ¡Bienvenido {userData.firstName}!
+    <div className="w-96 h-40 flex flex-col top-12 right-0 bg-light-100 dark:bg-dark-950 absolute border border-t-0 border-black dark:border-white dark:border-opacity-70 border-opacity-10 rounded-bl-md">
+      <h3 className="my-4 flex justify-center select-none uppercase">
+        ¡Bienvenido!
       </h3>
       <Link
-        to="/profile"
+        to={`${userData.isAdmin ? "/dashboard" : "/profile"}`}
         className="flex mb-4 justify-center items-center gap-1"
       >
         {userData.photoUrl ? (
@@ -59,7 +59,7 @@ const ModalProfile = ({ setActiveModal, userData }) => {
             />
           </svg>
         )}
-        <span>Mi Cuenta</span>
+        <span>Panel de Control</span>
       </Link>
       <button
         onClick={handleLogout}

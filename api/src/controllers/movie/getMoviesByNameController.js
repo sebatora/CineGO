@@ -6,7 +6,7 @@ const getMoviesByName = async (name) => {
   const moviesByName = await Movie.findAll({
     where: {
       title: {
-        [Op.iLike]: `${name}%`
+        [Op.iLike]: `%${name}%`
       }
     }
   });

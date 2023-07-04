@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getCandy, putCandy } from '../../../redux/actions';
+import { getCandy, getCandyByName, putCandy } from '../../../redux/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import { Spinner } from '@chakra-ui/react';
 import CreateCandy from '../AdminCreate/CreateCandy';
@@ -11,6 +11,7 @@ const DataCandy = () => {
   const [activeForm, setActiveForm] = useState(false);
   const [activeEdit, setActiveEdit] = useState(false);
   const [candyFound, setCandyFound] = useState({});
+  const [candyName, setCandyName] = useState("");
   const [currentPage, setCurrentPage] = useState(0);
   const [countPage, setCountPage] = useState(1);
   const allCandy = useSelector((state) => state.allCandy);
@@ -49,10 +50,18 @@ const DataCandy = () => {
     }
   };
 
+  const handleChangeName = event => {
+		setCandyName(event.target.value);
+	}
+
   useEffect(() => {
     dispatch(getCandy());
     setLoading(false);
   }, []);
+
+  useEffect(() => {
+    dispatch(getCandyByName(candyName));
+  }, [dispatch, candyName]);
 
   return (
     <>
@@ -70,6 +79,24 @@ const DataCandy = () => {
             </button>
           </div>
           <div className='w-full p-2 border'>
+            <div className='w-full flex items-center mb-2'>
+							<input className='w-full rounded appearance-none bg-slate-100 py-1 px-2 focus:outline-slate-400' type="text" onChange={handleChangeName} placeholder='Buscar candy' />
+							<span className='absolute right-4'>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									fill="none"
+									viewBox="0 0 24 24"
+									strokeWidth="1.5"
+									className="w-6 h-6 stroke-light-400"
+								>
+									<path
+										strokeLinecap="round"
+										strokeLinejoin="round"
+										d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+									/>
+								</svg>
+							</span>
+						</div>
             <table className='w-full text-center bg-slate-400 rounded-sm'>
               <thead>
                 <tr className='h-10 font-bold text-md'>

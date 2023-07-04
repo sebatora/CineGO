@@ -5,7 +5,7 @@ const getCandiesByName = async (name) => {
   const candyByName = await Candy.findAll({
     where: {
       name: {
-        [Op.iLike]: `${name}%`
+        [Op.iLike]: `%${name}%`
       }
     }
   });
