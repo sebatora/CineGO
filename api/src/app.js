@@ -37,6 +37,6 @@ app.use("/purchase", routerPurchase);
 app.use("/rating", routerRating);
 app.use("/create-proyect", allBulk);
 app.use("/shows", routerShow);
-app.use("/metric", routerMetrics);
+app.use("/metrics", routerMetrics);
 
 module.exports = app;
