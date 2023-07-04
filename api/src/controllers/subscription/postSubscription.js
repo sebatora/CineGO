@@ -16,8 +16,12 @@ const postSubscription = async ({ subscription, userData }) => {
       email: userData.email,
     },
     back_urls: {
-				success: "https://cine-go-ten.vercel.app/payment_success" || "http://localhost:3000/payment_success",
-				failure: "https://cine-go-ten.vercel.app/payment_failure" || "http://localhost:3000/payment_failure",
+
+      /* 		success: "https://cine-go-ten.vercel.app/payment_success" || "http://localhost:3000/payment_success",
+				failure: "https://cine-go-ten.vercel.app/payment_failure" || "http://localhost:3000/payment_failure", */
+      success: "http://localhost:3000/payment_success",
+      failure: "http://localhost:3000/payment_failure",
+
       pending: "",
     },
     auto_return: "approved",

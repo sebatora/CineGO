@@ -38,7 +38,7 @@ const SaleCandy = () => {
 
   return (
     <>
-      <div style={{}}>
+        <div className="bg-gradient-to-r from-blue-400 via-pink-400 to-red-400 overflow-y-auto max-w-7xl">
         <Card className="bg-blue-200 overflow-y-auto max-w-5xl ml-7 mt-3 mb-1 ">
           <Title className="text-2xl font-bold text-center mb-2">
             Listado de productos vendidos
@@ -91,9 +91,9 @@ const SaleCandy = () => {
         </Card>
       </div>
 
-      <div style={{ display: "flex" }}>
+         <div className="flex h-screen bg-gradient-to-r from-blue-400 via-pink-400 to-red-400 overflow-y-auto">
         <div>
-          <Card className="bg-blue-200 max-w-2xl mx-1 m-5">
+          <Card className="bg-blue-200 max-w-4xl mx-1 ml-7 my-10 max-h-96">
             <Title className="font-bold">Grafico de ventas de Candy</Title>
             <AreaChart
               className="h-56 mt-5"
