@@ -66,10 +66,13 @@ const Dashboard = () => {
           </div>
         )}
 
-        <div className="h-4/5 flex flex-col justify-between pt-4">
+        <div className="h-4/5 flex flex-col justify-between pt-4 relative">
           {/* Home */}
-          <Link to="/" className="mx-2 p-1 mb-1 rounded-sm text-start">
-            <h6 className="text-white">🎬 Home</h6>
+          <Link
+            to="/"
+            className="mx-2 p-1 mb-1 rounded-sm text-start absolute top-[-120px] left-[10px] w-[100px] h-[50px] bg-blue-400 flex items-center font-bold "
+          >
+            <h6 className="text-black">🎬 Home</h6>
           </Link>
           {/* Ventas */}
           <div className="flex flex-col">
