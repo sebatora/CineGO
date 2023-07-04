@@ -15,6 +15,7 @@ export const useAuth = () => {
 
 export const AuthProvider = ({ children }) => {
 	const [user, setUser] = useState({});
+	const [loading, setLoading] = useState(false);
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 
@@ -53,7 +54,7 @@ export const AuthProvider = ({ children }) => {
 	}, []);
 
 	return (
-		<authContext.Provider value={{ user, loginWithGoogle, logout }}>
+		<authContext.Provider value={{ user, loginWithGoogle, logout, loading, setLoading }}>
 			{children}
 		</authContext.Provider>
 	)

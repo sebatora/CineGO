@@ -27,11 +27,11 @@ function MoviesContainer() {
         <Spinner />
       ) : (
         <div className="w-11/12 mt-8">
-          <div className="w-full flex justify-center ">
+          <div className="w-full flex justify-center my-2">
             <Filter />
             <SearchBar />
           </div>
-          <div className="w-full flex flex-wrap justify-center">
+          <div className="w-full flex flex-wrap justify-center my-4">
             {moviesActive.length ? (
               moviesActive.map(
                 ({ id, title, image, genres, clasification, duration, ratings }) => (
