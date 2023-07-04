@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast, { Toaster } from "react-hot-toast";
 import { useDispatch } from "react-redux";
@@ -9,6 +9,7 @@ import { loginUser } from "../../redux/actions";
 import Spinner from "../../components/Spinner/Spinner";
 
 const Login = () => {
+  const userData = JSON.parse(window.localStorage.getItem("user"));
   const [showPwd, setShowPwd] = useState(false);
   const {
     register,
@@ -26,21 +27,11 @@ const Login = () => {
   const { loginWithGoogle, loading, setLoading } = useAuth();
 
   const onSubmit = (data) => {
+    setLoading(true);
     try {
-      setLoading(true);
-      const response = dispatch(loginUser(data));
-
-      if (typeof response === "string") {
-        toast.error(response);
-      } else {
-        reset();
-        navigate("/");
-        toast.success("Inicio de sesión exitoso");
-      }
+      dispatch(loginUser(data));
     } catch (error) {
-      toast.error(
-        "Ocurrió un error al iniciar sesión. Por favor, intenta nuevamente."
-      );
+      toast.error(error)
     } finally {
       setLoading(false);
     }
@@ -57,6 +48,13 @@ const Login = () => {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    if(userData?.email){
+      toast.success("Inicio de sesión exitoso");
+      navigate("/");
+    }
+  }, [userData]);
 
   return (
     <>
