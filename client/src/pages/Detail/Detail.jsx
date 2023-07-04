@@ -22,6 +22,7 @@ function Detail() {
       setSelectedDay(null);
     } else {
       setSelectedDay(day);
+      setSelectedShow(null);
       console.log(day);
     }
   };
@@ -39,8 +40,6 @@ function Detail() {
         };
         window.localStorage.setItem("movie", JSON.stringify(updatedMovie));
       }
-
-      console.log(show);
     }
   };
 
@@ -61,29 +60,13 @@ function Detail() {
     if (!userData) {
       navigate("/login");
     } else {
-      const orderPurchase = {
-        userId: userData.id,
-        items: [
-          {
-            itemId: id,
-            quantity: null,
-            price: null,
-            type: "show",
-          },
-        ],
-        totalPrice: null,
-      };
       navigate("/ticket");
-      window.localStorage.setItem(
-        "orderPurchase",
-        JSON.stringify(orderPurchase)
-      );
     }
   };
 
   return (
     <>
-      {!detail.id || detail.activeMovie === false  ? (
+      {!detail.id || detail.activeMovie === false ? (
         <Error404 />
       ) : (
         <div className="w-full flex flex-col mt-20 p-10">
@@ -156,35 +139,45 @@ function Detail() {
               <div className="w-4/5 mb-6 flex flex-col">
                 <div>
                   <h3>Shows</h3>
-                  <div className="flex items-center justify-between">
+                  <div className="flex items-center justify-start">
                     {detail.shows
                       ?.map((show) => show.date)
                       .filter(
                         (date, index, array) => array.indexOf(date) === index
                       )
                       .map((date) => (
-                        <button
-                          key={date}
-                          onClick={() => handleClickDate(date)}
-                          className={selectedDay === date ? "selected" : ""}
-                        >
-                          {date}
-                        </button>
+                        <div className="w-[150px] h-[50px] flex items-center justify-center">
+                          <button
+                            key={date}
+                            onClick={() => handleClickDate(date)}
+                            className={
+                              selectedDay === date
+                                ? "selected  bg-black p-2 m-1 mr-3 border-2  border-gray-600 rounded-lg text-white text-xl font-bold"
+                                : "bg-slate-300 p-2 m-1 mr-3 border-2 border-gray-600 rounded-lg text-xl font-bold"
+                            }
+                          >
+                            {date}
+                          </button>
+                        </div>
                       ))}
                   </div>
                 </div>
                 {selectedDay && (
                   <div>
                     <h4>Horarios:</h4>
-                    <div className="">
+                    <div className="flex items-start">
                       {detail.shows
                         ?.filter((show) => show.date === selectedDay)
                         .map((show) => (
                           <div
                             key={show.id}
                             onClick={() => handleClickShow(show)}
+                            className={
+                              selectedShow === show
+                                ? "w-[100px] h-[50px] flex items-center justify-center bg-black p-2 m-1 mr-3 border-2   border-gray-600 rounded-lg text-white text-xl font-bold"
+                                : "w-[100px] h-[50px] flex items-center justify-center  bg-slate-300 p-2 m-1 mr-3 border-2  border-gray-600 rounded-lg text-xl font-bold"
+                            }
                           >
-                            <h2>Show ID: {show.id}</h2>
                             <button>{show.hour}</button>
                           </div>
                         ))}
@@ -196,8 +189,13 @@ function Detail() {
               <div className="mt-8 mb-10 flex justify-center">
                 <button
                   onClick={handleSubmit}
-                  className="bg-primary-600 hover:bg-primary-500 text-white border-none px-4 py-2 text-center text-base rounded cursor-pointer"
+                  className={
+                    selectedShow
+                      ? "bg-primary-600 hover:bg-primary-500  text-white border-none px-4 py-2 text-center text-base rounded cursor-pointer animate-colorAnimation font-bold"
+                      : "bg-primary-100  text-black border  border-gray-600 px-4 py-2 text-center text-base rounded"
+                  }
                   type="submit"
+                  disabled={!selectedShow}
                 >
                   ¡Comprar entradas!
                 </button>

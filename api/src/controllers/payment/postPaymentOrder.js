@@ -26,9 +26,9 @@ const postPaymentOrder = async ({ cart, userData }) => {
 			auto_return: "approved",
 		});
 
-		if(!response) throw new Error("Error al crear orden");
+  if (!response) throw new Error("Error al crear orden");
 
-		return response.body;
-}
+  return response.body;
+};
 
 module.exports = postPaymentOrder;
