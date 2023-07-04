@@ -113,7 +113,7 @@ const DataCandy = () => {
 									<tr className={`h-12 ${index % 2 === 0 ? "bg-slate-100" : "bg-slate-300"}`} key={index}>
 										<td className='flex justify-center'><img className='w-14 h-14' src={candy.image} alt={candy.name} /></td>
 										<td>{candy.name}</td>
-										<td>{candy.category}</td>
+										<td>{candy.category = candy.category.charAt(0).toUpperCase() + candy.category.slice(1)}</td>
 										<td>{candy.price}</td>
 										<td>{candy.stock}</td>
 										<td>

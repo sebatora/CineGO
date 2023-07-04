@@ -24,9 +24,9 @@ const WebVisits = () => {
             <script src="https://counter3.optistats.ovh/private/counter.js?c=szg62sd1uazdbrn18fw7e9w57xtyw197&down=async" async />
           </Helmet>
           <h1 className="heading text-3xl font-bold text-gray-800 mb-4 dark:text-gray-800">Contador de visitas CineGo</h1>
-          <a className="flex justify-center items-center mb-6" href="https://www.contadorvisitasgratis.com" title="contador de visitas">
+          <button className="w-full flex justify-center items-center mb-6" title="contador de visitas" disabled>
             <img src="https://counter3.optistats.ovh/private/contadorvisitasgratis.php?c=szg62sd1uazdbrn18fw7e9w57xtyw197" border="0" title="visitas" alt="contador de visitas" />
-          </a>
+          </button>
         </div>
       </div>
     </div>

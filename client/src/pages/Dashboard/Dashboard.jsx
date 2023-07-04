@@ -85,7 +85,7 @@ const Dashboard = () => {
               onClick={() => handleButtonClick("saleGeneral")}
               disabled={activeComponent === "saleGeneral"}
             >
-              <h6 className={`text-white`}>Compras</h6>
+              <h6 className={`text-white`}>General</h6>
             </button>
             <button
               className={`mx-2 p-1 mb-1 rounded-sm text-start ${
