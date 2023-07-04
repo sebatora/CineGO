@@ -23,12 +23,14 @@ function CandyContainer() {
 
   const addCart = (name) => {
     if (productCount >= 5) {
+      toast.dismiss() // limpiar la alerta existente si hay alguna 
       toast.error("Has alcanzado el límite de 5 productos en tu carrito.", {
         duration: 3000,
       });
       return;
     }
     dispatch(addCartCandy(name));
+    toast.dismiss() // limpiar la alerta existente si hay alguna 
     toast.success("Producto agregado al carrito", {
       duration: 2000,
     });
