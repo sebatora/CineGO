@@ -63,9 +63,9 @@ const SaleSubscription = () => {
               <Tab className="px-4 py-2 text-white rounded-lg">Gold</Tab>
             </TabList> 
 
-        
-               <TabPanels className='dark:border-gray-500'>
-                <div className="flex justify-center">
+            <TabPanels className='dark:border-gray-500'>
+              <TabPanel>
+                 <div className="flex justify-center">
                   <Card className="bg-blue-200 max-w-4xl mx-1 ml-5 my-6 max-h-80">
                     <Title className="font-bold text-2xl mb-4">Gráfico de suscripciones Black</Title>
 
@@ -79,7 +79,7 @@ const SaleSubscription = () => {
                     />
                   </Card>
                 </div>
-              
+              </TabPanel>  
               <TabPanel>
                 <div className="flex justify-center" >
                   <Card className="bg-indigo-200 max-w-4xl mx-1 ml-5 my-6 max-h-80 rounded-lg shadow-lg">
