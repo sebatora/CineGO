@@ -1,14 +1,15 @@
-const getAllCandy = require("./getAllCandyController");
+const { Candy } = require("../../db");
+const { Op } = require("sequelize");
 
-const getCandiesByName = async (name) => {
+const getCandyByName = async (name) => {
+  const candyByName = await Candy.findAll({
+    where: {
+      name: {
+        [Op.iLike]: `%${name}%`,
+      },
+    },
+  });
+  return candyByName;
+};
 
-// Lo hago asi para que pueda buscar cuando incluye la letra o palabra
-  const allCandies = await getAllCandy()
-  const candiesByName = allCandies.filter(candy => candy.name.toLowerCase().includes(name.toLowerCase()))
-
-  if(candiesByName.length === 0) throw Error("No hay dulces con ese nombre")
-
-  return candiesByName;
-}
-
-module.exports = getCandiesByName;
+module.exports = getCandyByName;

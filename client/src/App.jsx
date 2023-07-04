@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import { AuthProvider } from "./context/authContext";
 
-axios.defaults.baseURL = import.meta.env.APIURL;
+axios.defaults.baseURL = "https://cinego-production.up.railway.app";
 // axios.defaults.baseURL = "http://localhost:3001";
 
 // Components
@@ -51,14 +51,10 @@ function App() {
       top: 0,
       behavior: "smooth",
     });
-    if(location.pathname !== "/payment_success"){
-			window.localStorage.removeItem("orderPurchase");
-		}
+    if (location.pathname !== "/payment_success") {
+      window.localStorage.removeItem("orderPurchase");
+    }
   }, [location]);
-
-  useEffect(() => {
-    userData?.isAdmin && navigate("/dashboard");
-  }, [navigate]);
 
   return (
     <div className="w-full h-full min-h-screen bg-light-100 dark:bg-dark-950 flex flex-col">

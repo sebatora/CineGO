@@ -43,7 +43,7 @@ const DataUsers = () => {
   }, []);
 
 	return (
-		<>
+		<div className='h-screen flex justify-center items-center'>
 			{loading ? (
 				<Spinner />
 			) : (
@@ -110,7 +110,7 @@ const DataUsers = () => {
 					</div>
 				</div>
 			)}
-		</>
+		</div>
 	)
 }
 

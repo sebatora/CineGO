@@ -18,7 +18,11 @@ const SearchBar = () => {
 
   return (
     <div className="w-full flex ml-8">
-      <button className="mx-2" onClick={() => setActiveSearch(!activeSearch)} style={{ cursor: "default" }}>
+      <button
+        className="mx-2"
+        onClick={() => setActiveSearch(!activeSearch)}
+        style={{ cursor: "default" }}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -35,14 +39,14 @@ const SearchBar = () => {
       </button>
 
       <input
-        className="w-3/4 appearance-none bg-transparent focus:border-b-2 dark:focus:border-b-white dark:text-white focus:outline-none focus:border-black py-1 px-2 placeholder:text-black"
+        className="w-3/4 appearance-none bg-transparent focus:border-b-2 dark:focus:border-b-white dark:text-white focus:outline-none focus:border-black py-1 px-2 placeholder:text-black dark:placeholder:text-white"
         type="search"
         name="search"
         onChange={handleChange}
         placeholder="Buscar película"
       />
-  </div>
-);
+    </div>
+  );
 };
 
 export default SearchBar;

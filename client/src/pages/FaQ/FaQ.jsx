@@ -42,15 +42,15 @@ const FaQ = () => {
 
   return (
     <div className="max-w-2xl mx-auto px-2 py-20 mt-10">
-    <h2 className="text-3xl font-bold mb-16">Preguntas Frecuentes</h2>
+    <h2 className="text-3xl mb-16 flex justify-center">Preguntas Frecuentes</h2>
     <div className="space-y-6">
       {questions.map((q) => (
         <div key={q.id} className="border border-gray-400 p-5 rounded-lg">
           <button
-            className="flex justify-between w-full hover:text-light-400"
+            className="flex justify-between w-full dark:text-white dark:hover:text-light-300 hover:text-light-400"
             onClick={() => toggleQuestion(q.id)}
           >
-            <span className="text-base hover:text-light-400">{q.question}</span>
+            <span className="text-base dark:text-white text-justify  dark:hover:text-light-300 hover:text-light-400">{q.question}</span>
             <svg
               className={`h-6 w-6 ${
                 activeQuestion === q.id ? "transform rotate-180" : ""
@@ -69,7 +69,7 @@ const FaQ = () => {
           </button>
           {activeQuestion === q.id && (
             <div className="mt-4 text-justify">
-              <p className="text-base">{q.answer}</p>
+              <p className="text-sm font-medium">{q.answer}</p>
             </div>
           )}
         </div>
