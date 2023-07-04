@@ -29,7 +29,7 @@ const SaleSubscription = () => {
 
   return (
     <> 
-      <div className=' flex justify-center'>
+      <div className=' flex justify-center bg-gradient-to-r from-blue-400 via-pink-400 to-red-400 overflow-y-auto max-w-7xl'>
         <Card className='bg-blue-200 overflow-y-auto max-w-5xl mt-5'>
             <Title className="text-2xl font-bold text-center mb-2">Cantidad de suscripciones</Title>
             <Table className="w-full border-collapse border border-gray-300 min-w-full  max-h-40 dark:border-gray-500">
@@ -52,19 +52,23 @@ const SaleSubscription = () => {
             </Table>
         </Card>
       </div>
-      <div className="flex justify-center ">
+
+      <div className="flex justify-center bg-gradient-to-r from-blue-400 via-pink-400 to-red-400 overflow-y-auto max-w-7xl">
         <Card className=' dark:bg-dark-tremor-brand-muted overflow-y-auto max-w-5xl mt-5 bg-gradient-to-br from-indigo-500 to-blue-200 rounded-lg shadow-lg  '>
         <Title className="font-bold text-4xl">Suscripciones </Title>
+
           <TabGroup>
             <TabList className="mt-4 space-x-4">
               <Tab className="px-4 py-2 text-white rounded-lg">Black</Tab>
               <Tab className="px-4 py-2 text-white rounded-lg">Gold</Tab>
             </TabList> 
-            <TabPanels className='dark:border-gray-500'>
-              <TabPanel >
-                <div className="flex justify-center ">
-                  <Card className="from-indigo-200 to-blue-200 max-w-4xl m-1 p-5 ">
-                    <Title className="font-bold text-2xl mb-4">Gráfico de suscripción Black</Title>
+
+        
+               <TabPanels className='dark:border-gray-500'>
+                <div className="flex justify-center">
+                  <Card className="bg-blue-200 max-w-4xl mx-1 ml-5 my-6 max-h-80">
+                    <Title className="font-bold text-2xl mb-4">Gráfico de suscripciones Black</Title>
+
                     <AreaChart
                       key={1}
                       className="h-56"
@@ -78,8 +82,10 @@ const SaleSubscription = () => {
               </TabPanel>
               <TabPanel>
                 <div className="flex justify-center" >
-                  <Card className="from-indigo-200 to-blue-200 max-w-4xl m-1 p-5 rounded-lg shadow-lg">
-                    <Title className="font-bold text-2xl mb-4">Gráfico de suscripción Gold</Title>
+
+                  <Card className="bg-indigo-200 max-w-4xl mx-1 ml-5 my-6 max-h-80 rounded-lg shadow-lg">
+                    <Title className="font-bold text-2xl mb-4">Gráfico de subscripciones Gold</Title>
+
                     <AreaChart
                       className="h-56"
                       data={gold}

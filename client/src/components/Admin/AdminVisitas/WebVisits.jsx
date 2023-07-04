@@ -17,7 +17,7 @@ const WebVisits = () => {
   }, []);
 
   return (
-    <div className="h-screen flex justify-center items-center bg-gradient-to-r from-blue-500 via-pink-500 to-red-500">
+    <div className="h-screen flex justify-center items-center bg-gradient-to-r from-blue-400 via-pink-400 to-red-400">
       <div className="form_main bg-white p-6 rounded-lg shadow relative overflow-hidden">
         <div className="absolute w-96 h-96 bg-blue-300 transform rotate-45 -left-60 bottom-10 z-1 rounded-3xl shadow-md"></div>
         <div id="counter" className="relative z-10">
