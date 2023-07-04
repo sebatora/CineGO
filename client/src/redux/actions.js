@@ -33,6 +33,7 @@ import {
   POST_RATING,
   GET_PURCHASES,
   GET_CANDY_BY_NAME,
+  GET_METRICS,
 
   // ERROR
 } from "./action-type";
@@ -365,18 +366,19 @@ export const saveCart = (cart) => {
   };
 };
 
-// PURCHASE
-export const postPurchases = (purchase) => {
+//METRICAS
+export const getMetrics = () => {
   return async (dispatch) => {
     try {
-      const { data } = await axios.post(`/purchase`, purchase);
-      return dispatch({ type: POST_PURCHASES, payload: data });
+      const { data } = await axios.get(`/metrics`);
+      return dispatch({ type: GET_METRICS, payload: data})
     } catch (error) {
       return error.message;
     }
-  };
-};
+  }
+}
 
+// PURCHASE
 export const getPurchases = () => {
   return async (dispatch) => {
     try {
@@ -387,6 +389,17 @@ export const getPurchases = () => {
     }
   }
 }
+
+export const postPurchases = (purchase) => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.post(`/purchase`, purchase);
+      return dispatch({ type: POST_PURCHASES, payload: data });
+    } catch (error) {
+      return error.message;
+    }
+  };
+};
 
 // Rating
 export const postRating = (rating) => {
