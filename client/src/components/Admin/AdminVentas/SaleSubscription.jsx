@@ -5,7 +5,7 @@ import {subscriptions, chartdataBlack, chartdataGold} from "../../../../data";
 const SaleSubscription = () => {
   return (
     <> 
-      <div style={{}}>
+       <div className="bg-gradient-to-r from-blue-400 via-pink-400 to-red-300 overflow-y-auto max-w-7xl ">
 
         <Card className='bg-blue-200 overflow-y-auto max-w-5xl ml-7 mt-5'>
             <Title className="text-2xl font-bold text-center mb-2">Cantidad de suscripciones</Title>
@@ -35,8 +35,8 @@ const SaleSubscription = () => {
             </Table>
         </Card>
       </div>
-      <div style={{display: "flex"}}>
-        <Card className='bg-blue-200 max-w-xl m-5'>
+      <div className="flex h-screen bg-gradient-to-r from-blue-400 via-pink-400 to-red-400 overflow-y-auto">
+        <Card className='bg-blue-200 max-w-4xl mx-1 ml-7 my-10 max-h-96'>
           <Title className='font-bold '>Grafico de subscripciones Black</Title>
           <AreaChart
             className="h-56 mt-4"
@@ -46,7 +46,7 @@ const SaleSubscription = () => {
             colors={["indigo", "cyan"]}
           />
         </Card>
-        <Card className='bg-blue-200 max-w-xl m-5'>
+        <Card className='bg-blue-200 max-w-xs mx-1 my-10 max-h-96'>
           <Title className='font-bold '> Grafico de subscripciones Gold</Title>
           <AreaChart
             className="h-56 mt-4"

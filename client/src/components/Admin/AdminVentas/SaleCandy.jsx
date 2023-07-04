@@ -18,7 +18,7 @@ const valueFormatter = (number) => `$ ${number.toString().replace(/\B(?=(\d{3})+
 const SaleCandy = () => {
   return (
     <>
-      <div style={{}}>
+          <div className="bg-gradient-to-r from-blue-400 via-pink-400 to-red-300 overflow-y-auto max-w-7xl">
         <Card className="bg-blue-200 overflow-y-auto max-w-5xl ml-7 mt-3 mb-1 ">
           <Title className="text-2xl font-bold text-center mb-2">
             Listado de productos vendidos
@@ -59,8 +59,8 @@ const SaleCandy = () => {
         </Card>
       </div>
 
-      <div style={{ display: "flex" }}>
-        <Card className="bg-blue-200 max-w-2xl m-5">
+      <div className="flex h-screen bg-gradient-to-r from-blue-400 via-pink-400 to-red-300 overflow-y-auto">
+        <Card className="bg-blue-200 max-w-4xl mx-1 ml-7 my-10 max-h-96">
           <Title className="font-bold ">Grafico de ventas de Candy</Title>
           <AreaChart
             className="h-56 mt-5"
@@ -70,7 +70,7 @@ const SaleCandy = () => {
             colors={["indigo","cyan"]}
           />
         </Card>
-        <Card className="bg-blue-200 max-w-sm m-5">
+        <Card className="bg-blue-200 max-w-xs mx-1 my-10 max-h-96">
           <Title className="font-bold mb-14">Grafico de ventas por producto</Title>
           <DonutChart 
             data={apartSales}

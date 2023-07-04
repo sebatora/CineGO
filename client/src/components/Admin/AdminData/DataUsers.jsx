@@ -43,7 +43,7 @@ const DataUsers = () => {
   }, []);
 
 	return (
-		<>
+		<div className='h-screen flex justify-center items-center bg-gradient-to-r from-blue-400 via-pink-400 to-red-400'>
 			{loading ? (
 				<Spinner />
 			) : (
@@ -110,7 +110,7 @@ const DataUsers = () => {
 					</div>
 				</div>
 			)}
-		</>
+		</div>
 	)
 }
 
