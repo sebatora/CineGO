@@ -5,7 +5,7 @@ import cloudinary from "cloudinary-core";
 import { toast } from 'react-toastify';
 import { getCandy, putCandy } from '../../../redux/actions';
 
-const EditCandy = ({ setActiveForm, candyFound }) => {
+const EditCandy = ({ setActiveEdit, candyFound }) => {
 	const dispatch = useDispatch();
   const [uploadedPhoto, setUploadedPhoto] = useState(candyFound.image);
   const cl = new cloudinary.Cloudinary({ cloud_name: "dhyqgl7ie" });
@@ -54,7 +54,7 @@ const EditCandy = ({ setActiveForm, candyFound }) => {
 			setTimeout(() => {
 				dispatch(getCandy());
 			}, 500);
-			setActiveForm(false);
+			setActiveEdit(false);
 		} catch (error) {
 			toast.error(error)
 		}
@@ -69,7 +69,7 @@ const EditCandy = ({ setActiveForm, candyFound }) => {
 		<>
 			<div
         className="w-full fixed top-0 left-0 bottom-0 right-0 z-10 bg-black/80"
-        onClick={() => setActiveForm(false)}
+        onClick={() => setActiveEdit(false)}
       ></div>
 			<div className="w-full h-full flex justify-center p-8">
         <form
@@ -80,7 +80,7 @@ const EditCandy = ({ setActiveForm, candyFound }) => {
           <button
             type="button"
             className="absolute right-0 top-0 m-4"
-            onClick={() => setActiveForm(false)}
+            onClick={() => setActiveEdit(false)}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

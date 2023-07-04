@@ -18,23 +18,28 @@ const TicketContainer = () => {
   const tickets = [
     {
       id: storedMovie.id,
+      showId: storedMovie.showId.id,
       idTicket: 1,
       name: "Entrada General",
-      image: "https://static.cinemarkhoyts.com.ar/Images/TicketTypeImage/1687.png",
+      image:
+        "https://static.cinemarkhoyts.com.ar/Images/TicketTypeImage/1687.png",
       price: 200,
-      description: "Entrada Promocional No acumulable con otras promociones. Lunes y martes.",
-      type: "show"
+      description:
+        "Entrada Promocional No acumulable con otras promociones. Lunes y martes.",
+      type: "show",
     },
     {
       id: storedMovie.id,
+      showId: storedMovie.showId.id,
       idTicket: 2,
       name: "Entrada CineFan",
-      image: "https://static.cinemarkhoyts.com.ar/Images/TicketTypeImage/1667.png",
+      image:
+        "https://static.cinemarkhoyts.com.ar/Images/TicketTypeImage/1667.png",
       price: 290,
       description: "Incluye 2 entradas + Tarjeta Virtual.",
-      type: "show"
+      type: "show",
     },
-  ]
+  ];
 
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);

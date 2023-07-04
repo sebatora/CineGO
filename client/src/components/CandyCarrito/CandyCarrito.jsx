@@ -10,7 +10,7 @@ import { GoTrash } from "react-icons/go";
 import { Toaster, toast } from "react-hot-toast";
 import { Link } from "react-router-dom";
 
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
 
 function CandyCarrito({ addCart, productCount, setProductCount }) {
   const userData = JSON.parse(window.localStorage.getItem("user"));
@@ -20,13 +20,13 @@ function CandyCarrito({ addCart, productCount, setProductCount }) {
   const subtotal = cart.reduce((acc, el) => acc + parseFloat(el.price), 0);
   const servicio = subtotal * 0.1;
   const total = subtotal + servicio;
-  const valueFormatter = (number) => number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  const valueFormatter = (number) =>
+    number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
   const delRemoveCart = (name, all = false) => {
     if (all) {
+      let nombre = cart.find((product) => product.name === name);
 
-      let nombre = cart.find(product => product.name === name)
-      
       dispatch(removeAllCartCandy(name));
       window.localStorage.removeItem("cart");
       setProductCount(productCount - nombre.count);
@@ -48,35 +48,37 @@ function CandyCarrito({ addCart, productCount, setProductCount }) {
         return;
       }
       const { data } = await axios.post("/payment", { cart, userData });
-      const items = cart.map(product => ({
+      const items = cart.map((product) => ({
         itemId: product.id,
+        showId: product.showId,
         price: product.price,
         quantity: product.count,
         type: product.type,
-      }))
-      console.log(items);
+      }));
       const orderPurchase = {
         userId: userData.id,
         items,
-        totalPrice: total
-      }
+        totalPrice: total,
+      };
       Swal.fire({
         title: "¿Estás seguro que no deseas realizar ningun cambio?",
         showDenyButton: true,
-        cancelButtonColor: '#ef233c',
-        confirmButtonColor: '#38b000',
-        confirmButtonText: 'Si estoy seguro!',
-        denyButtonText: `Cancelar`
+        cancelButtonColor: "#ef233c",
+        confirmButtonColor: "#38b000",
+        confirmButtonText: "¡Si, estoy seguro!",
+        denyButtonText: `Cancelar`,
       }).then((result) => {
         if (result.isConfirmed) {
-          window.localStorage.setItem("orderPurchase", JSON.stringify(orderPurchase));
+          window.localStorage.setItem(
+            "orderPurchase",
+            JSON.stringify(orderPurchase)
+          );
           window.localStorage.removeItem("productCount");
           window.localStorage.removeItem("cart");
           window.localStorage.removeItem("movie");
           window.location.href = data.init_point;
         }
       });
-
     } catch (error) {
       console.error(error);
       toast.error("Debes ingresar a tu cuenta primero", {

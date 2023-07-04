@@ -29,7 +29,9 @@ import {
   GET_USERS,
   PUT_MOVIE,
   POST_RATING,
+  GET_PURCHASES,
   GET_CANDY_BY_NAME,
+
   // ERROR
 } from "./action-type";
 
@@ -44,6 +46,7 @@ const initialState = {
   allCandy: [],
   cart: [],
   productTicket: [],
+  allPurchases: []
 };
 
 const rootReducer = (state = initialState, { type, payload }) => {
@@ -350,6 +353,13 @@ const rootReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
       };
+    }
+
+    case GET_PURCHASES: {
+      return {
+        ...state,
+        allPurchases: payload
+      }
     }
 
     default:

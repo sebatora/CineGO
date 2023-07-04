@@ -12,7 +12,7 @@ import { faTimes } from "@fortawesome/free-solid-svg-icons";
 const schema = yup.object().shape({
   title: yup
     .string()
-    .matches(/^([A-Za-z]+\s?){1,18}$/, "Solo letras máx 18 caracteres")
+    .matches(/^([A-Za-z]+\s?){1,30}$/, "Solo letras máx 30 caracteres")
     .required("El título es requerido"),
   description: yup
     .string()
@@ -30,7 +30,9 @@ const schema = yup.object().shape({
     .string()
     .matches(/^[0-9]+$/, "Solo números")
     .required("Duración requerida"),
-  release_date: yup.string().required("Fecha de estreno requerida"),
+  release_date: yup
+  .string()
+  .required("Fecha de estreno requerida"),
   trailer: yup
     .string()
     .url("Ingrese una URL válida para el tráiler")
@@ -170,7 +172,7 @@ const CreateMovie = ({ setActiveForm }) => {
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
-            className="w-8 h-8 fill-red-600"
+            className="w-8 h-8 fill-red-600 text-xs"
           >
             <path
               fillRule="evenodd"
@@ -189,7 +191,7 @@ const CreateMovie = ({ setActiveForm }) => {
               {...register("title")}
             />
             {errors.title && (
-              <span className="mt-2 text-red-600 dark:text-red-600 text-base">
+              <span className="mt-2 text-red-600 dark:text-red-600 text-xs">
                 {errors.title.message}
               </span>
             )}
@@ -203,7 +205,7 @@ const CreateMovie = ({ setActiveForm }) => {
               {...register("actors")}
             />
             {errors.actors && (
-              <span className="mt-2 text-red-600 dark:text-red-600 text-base">
+              <span className="mt-2 text-red-600 dark:text-red-600 text-xs">
                 {errors.actors.message}
               </span>
             )}
@@ -238,7 +240,7 @@ const CreateMovie = ({ setActiveForm }) => {
               </option>
             </select>
             {errors.clasification && (
-              <span className="mt-2 text-red-600 dark:text-red-600 text-base">
+              <span className="mt-2 text-red-600 dark:text-red-600 text-xs">
                 {errors.clasification.message}
               </span>
             )}
@@ -251,7 +253,7 @@ const CreateMovie = ({ setActiveForm }) => {
               {...register("director")}
             />
             {errors.director && (
-              <span className="mt-2 text-red-600 dark:text-red-600 text-base">
+              <span className="mt-2 text-red-600 dark:text-red-600 text-xs">
                 {errors.director.message}
               </span>
             )}
@@ -267,7 +269,7 @@ const CreateMovie = ({ setActiveForm }) => {
               {...register("duration")}
             />
             {errors.duration && (
-              <span className="mt-2 text-red-600 dark:text-red-600 text-base">
+              <span className="mt-2 text-red-600 dark:text-red-600 text-xs">
                 {errors.duration.message}
               </span>
             )}
@@ -280,7 +282,7 @@ const CreateMovie = ({ setActiveForm }) => {
               {...register("release_date")}
             />
             {errors.release_date && (
-              <span className="mt-2 text-red-600 dark:text-red-600 text-base">
+              <span className="mt-2 text-red-600 dark:text-red-600 text-xs">
                 {errors.release_date.message}
               </span>
             )}
@@ -296,7 +298,7 @@ const CreateMovie = ({ setActiveForm }) => {
               {...register("trailer")}
             />
             {errors.trailer && (
-              <span className="mt-2 text-red-600 dark:text-red-600 text-base">
+              <span className="mt-2 text-red-600 dark:text-red-600 text-xs">
                 {errors.trailer.message}
               </span>
             )}
@@ -321,7 +323,8 @@ const CreateMovie = ({ setActiveForm }) => {
                   </option>
                 ))}
               </select>
-              <div className="flex flex-col mt-2">
+              <div className="flex flex-wrap mt-2">
+               
                 {selectedGenres.map((genre) => (
                   <div className="flex items-center" key={genre}>
                     <h6 className="flex flex-col">{genre}</h6>
@@ -333,7 +336,7 @@ const CreateMovie = ({ setActiveForm }) => {
                     </button>
                   </div>
                 ))}
-              </div>
+                </div>
             </div>
           </div>
 
@@ -346,7 +349,7 @@ const CreateMovie = ({ setActiveForm }) => {
               {...register("description")}
             />
             {errors.description && (
-              <span className="mt-2 text-red-600 dark:text-red-600 text-base">
+              <span className="mt-2 text-red-600 dark:text-red-600 text-xs">
                 {errors.description.message}
               </span>
             )}

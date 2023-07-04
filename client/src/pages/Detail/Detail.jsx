@@ -7,33 +7,49 @@ import { cleanDetail, getMovieById, postRating } from "../../redux/actions";
 
 function Detail() {
   const detail = useSelector((state) => state.movieById);
+  const storedMovie = JSON.parse(window.localStorage.getItem("movie"));
   const userData = JSON.parse(window.localStorage.getItem("user"));
   const [activeTrailer, setActiveTrailer] = useState(false);
   const dispatch = useDispatch();
   const { id } = useParams();
   const [rating, setRating] = useState(0);
   const [selectedDay, setSelectedDay] = useState(null);
-  const [selectedType, setSelectedType] = useState(null);
+  const [selectedShow, setSelectedShow] = useState(null);
   const navigate = useNavigate();
 
-  const handleClick = (day) => {
+  const handleClickDate = (day) => {
     if (selectedDay === day) {
       setSelectedDay(null);
     } else {
       setSelectedDay(day);
+      console.log(day);
     }
   };
 
-  const handleClickType = (type) => {
-    setSelectedType(type);
+  const handleClickShow = (show) => {
+    if (selectedShow === show) {
+      setSelectedShow(null);
+    } else {
+      setSelectedShow(show);
+      const storedMovie = JSON.parse(window.localStorage.getItem("movie"));
+      if (storedMovie) {
+        const updatedMovie = {
+          ...storedMovie,
+          showId: show,
+        };
+        window.localStorage.setItem("movie", JSON.stringify(updatedMovie));
+      }
+
+      console.log(show);
+    }
   };
 
-  const handleChangeRating = count => {
-    if(userData.email){
+  const handleChangeRating = (count) => {
+    if (userData.email) {
       dispatch(postRating({ movieId: detail.id, count }));
       setRating(count);
     }
-  }
+  };
 
   useEffect(() => {
     dispatch(getMovieById(id));
@@ -69,7 +85,7 @@ function Detail() {
     <>
       {!detail.id || detail.activeMovie === false  ? (
         <Error404 />
-      ) : ( 
+      ) : (
         <div className="w-full flex flex-col mt-20 p-10">
           <div className="w-full flex">
             <div className="w-96 h-fit flex flex-col items-center">
@@ -149,7 +165,7 @@ function Detail() {
                       .map((date) => (
                         <button
                           key={date}
-                          onClick={() => handleClick(date)}
+                          onClick={() => handleClickDate(date)}
                           className={selectedDay === date ? "selected" : ""}
                         >
                           {date}
@@ -159,38 +175,20 @@ function Detail() {
                 </div>
                 {selectedDay && (
                   <div>
-                    <h4>Tipos:</h4>
-                    <div className="flex items-center justify-between">
+                    <h4>Horarios:</h4>
+                    <div className="">
                       {detail.shows
                         ?.filter((show) => show.date === selectedDay)
-                        .map((show) => show.type)
-                        .filter(
-                          (type, index, array) => array.indexOf(type) === index
-                        )
-                        .map((type) => (
-                          <button
-                            key={type}
-                            onClick={() => handleClickType(type)}
-                            className={selectedType === type ? "selected" : ""}
+                        .map((show) => (
+                          <div
+                            key={show.id}
+                            onClick={() => handleClickShow(show)}
                           >
-                            {type}
-                          </button>
+                            <h2>Show ID: {show.id}</h2>
+                            <button>{show.hour}</button>
+                          </div>
                         ))}
                     </div>
-                  </div>
-                )}
-                {selectedType && (
-                  <div>
-                    <h4>Horarios:</h4>
-                    {detail.shows
-                      ?.filter(
-                        (show) =>
-                          show.date === selectedDay &&
-                          show.type === selectedType
-                      )
-                      .map((show) => (
-                        <button key={show.id}>{show.hour}</button>
-                      ))}
                   </div>
                 )}
               </div>

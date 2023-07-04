@@ -31,7 +31,9 @@ import {
   GET_USERS,
   PUT_MOVIE,
   POST_RATING,
+  GET_PURCHASES,
   GET_CANDY_BY_NAME,
+
   // ERROR
 } from "./action-type";
 
@@ -374,6 +376,17 @@ export const postPurchases = (purchase) => {
     }
   };
 };
+
+export const getPurchases = () => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.get(`/purchase`);
+      return dispatch({ type: GET_PURCHASES, payload: data})
+    } catch (error) {
+      return error.message;
+    }
+  }
+}
 
 // Rating
 export const postRating = (rating) => {
