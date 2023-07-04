@@ -1,11 +1,9 @@
-import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom" ;
 
 const PrivateRouteAdmin = ({ children }) => {
-	const userData = useSelector(state => state.userData);
+	const userData = JSON.parse(window.localStorage.getItem("user"));
 
-	// return userData?.isAdmin ? children : <Navigate to="/" />
-	return children
+	return userData?.isAdmin ? children : <Navigate to="/" />
 }
 
 export default PrivateRouteAdmin
