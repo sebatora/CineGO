@@ -928,9 +928,38 @@ const dataAllUsers = [
   },
 ]
 
+const dataAllPurchases = [
+  {
+    "userId": 2,
+    "items": [
+      {
+        "itemId": 1,
+        "price": 10,
+        "quantity": 2,
+        "type": "show"
+      },
+      {
+        "itemId": 1,
+        "price": 5,
+        "quantity": 3,
+        "type": "candy"
+      },
+      {
+        "itemId": null,
+        "cinePlus": "Black",
+        "price": 5,
+        "quantity": 1,
+        "type": "subscription"
+      }
+    ],
+    "totalPrice": 40
+  }
+]
+
 module.exports = {
   dataAllMovies,
   dataAllGenres,
   dataAllCandy,
-  dataAllUsers
+  dataAllUsers,
+  dataAllPurchases
 };
