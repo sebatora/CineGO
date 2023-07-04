@@ -70,7 +70,7 @@ const Dashboard = () => {
           {/* Home */}
           <Link
             to="/"
-            className="mx-2 p-1 mb-1 rounded-sm text-start absolute top-[-120px] left-[10px] w-[100px] h-[50px] bg-yellow-300 flex items-center font-bold "
+            className="mx-2 p-1 mb-1 rounded-sm text-start absolute top-[-120px] left-[10px] w-[100px] h-[50px] bg-blue-400 flex items-center font-bold "
           >
             <h6 className="text-black">🎬 Home</h6>
           </Link>
