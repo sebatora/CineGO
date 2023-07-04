@@ -79,10 +79,9 @@ const SaleSubscription = () => {
                     />
                   </Card>
                 </div>
-              </TabPanel>
+              
               <TabPanel>
                 <div className="flex justify-center" >
-
                   <Card className="bg-indigo-200 max-w-4xl mx-1 ml-5 my-6 max-h-80 rounded-lg shadow-lg">
                     <Title className="font-bold text-2xl mb-4">Gráfico de subscripciones Gold</Title>
 
