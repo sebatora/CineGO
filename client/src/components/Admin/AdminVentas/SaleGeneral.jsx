@@ -10,7 +10,6 @@ import {
   TableHeaderCell,
   TableBody,
   TableCell,
-  AreaChart
 } from "@tremor/react";
 
 const valueFormatter = (number) => `$ ${number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}`;
@@ -19,13 +18,6 @@ function SaleGeneral() {
 
   const allPurchases = useSelector((state) => state.allPurchases);
   const dispatch = useDispatch();
-
-  const data = allPurchases.flatMap((item) =>
-    item.items.map((item) => ({
-      type: item.type,
-      quantity: item.quantity,
-    }))
-  );
 
   useEffect(() => {
     dispatch(getPurchases());
@@ -82,23 +74,6 @@ function SaleGeneral() {
                 <TableCell className="py-2 px-16 border-b text-center dark:border-gray-500 dark:text-gray-400">
                   {item.id}
                 </TableCell>
-                {/* <TableCell className="py-2 px-2 border-b text-center dark:border-gray-500 dark:text-gray-400">
-                  {item.items.length > 0 ? item.items[0].name : ''}
-                </TableCell>
-                <TableCell className="py-2 px-10 border-b text-center dark:border-gray-500 dark:text-gray-400">
-                  {item.items.length > 0 ? item.items[0].quantity : ''}
-                </TableCell>
-                <TableCell className="py-2 px-12 border-b text-center dark:border-gray-500 dark:text-gray-400">
-                  {valueFormatter(item.items.length > 0 ? item.items[0].quantity * item.items[0].price : '')}                </TableCell>
-                <TableCell className="py-2 px-4 border-b text-center dark:border-gray-500 dark:text-gray-400">
-                  {item.items.length > 1 ? item.items[1].name : ''}
-                </TableCell>
-                <TableCell className="py-2 px-10 border-b text-center dark:border-gray-500 dark:text-gray-400">
-                  {item.items.length > 1 ? item.items[1].quantity : ''}
-                </TableCell>
-                <TableCell className="py-2 px-12 border-b text-center dark:border-gray-500 dark:text-gray-400">
-                  {valueFormatter(item.items.length > 0 ? item.items[1].quantity * item.items[1].price : '')}
-                </TableCell> */}
                 <TableCell className="py-2 px-16 border-b text-center dark:border-gray-500 dark:text-gray-400">
                   {valueFormatter(item.items.length > 0 ? item.items[0].quantity * item.items[0].price + item.items[1].quantity * item.items[1].price : '')}
                 </TableCell>

@@ -31,6 +31,7 @@ import {
   POST_RATING,
   GET_PURCHASES,
   GET_CANDY_BY_NAME,
+  GET_METRICS,
 
   // ERROR
 } from "./action-type";
@@ -46,7 +47,8 @@ const initialState = {
   allCandy: [],
   cart: [],
   productTicket: [],
-  allPurchases: []
+  allPurchases: [],
+  allMetrics: []
 };
 
 const rootReducer = (state = initialState, { type, payload }) => {
@@ -359,6 +361,13 @@ const rootReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         allPurchases: payload
+      }
+    }
+
+    case GET_METRICS: {
+      return {
+        ...state,
+        allMetrics: payload
       }
     }
 
