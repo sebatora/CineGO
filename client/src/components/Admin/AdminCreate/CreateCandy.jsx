@@ -115,7 +115,10 @@ const CreateCandy = ({ setActiveForm }) => {
           </button>
           <h3 className="pb-4 ml-3">Agregar producto</h3>
 					<div className="flex flex-col mb-4 items-center">
-						<select className="border rounded-md p-1 w-96" name="Categoría" defaultValue="none" {...register("category")}>
+						<select className="border rounded-md p-1 w-96" 
+            name="Categoría" 
+           
+            {...register("category")}>
 							<option value='none' disabled>Categoría</option>
 							<option value='combos'>Combos</option>
 							<option value='pochoclos'>Pochoclos</option>
@@ -124,7 +127,13 @@ const CreateCandy = ({ setActiveForm }) => {
 							<option value='cafeteria'>Cafetería</option>
 							<option value='golosinas'>Golosinas</option>
 						</select>
+            {errors.category && (
+              <span className="text-red-600 dark:text-red-600 text-xs">
+                {errors.category.message}
+              </span>
+              )}
 					</div>
+          
           <div className="flex flex-col mb-4 items-center">
             <input
               className="border rounded-md p-1 w-96"
@@ -191,7 +200,11 @@ const CreateCandy = ({ setActiveForm }) => {
 							Subir foto
 						</button>
 					</div>
-
+          {errors.image && (
+            <span className="text-red-600 dark:text-red-600 text-xs">
+              {errors.image.message}
+            </span>
+            )}
           <button
             className=" bg-primary-600 hover:bg-primary-500 p-4 mt-2 text-white font-semibold rounded-md"
             type="submit"
@@ -208,15 +221,22 @@ const schema = yup.object().shape({
   name: yup
     .string()
     .matches(/^[A-Za-z\s]+$/, 'Solo letras máx 18 caracteres')
-    .required('El nombre es requerido'),
+    .required('Nombre requerido'),
   price: yup
     .string()
-    .matches(/^[0-9]{1,18}$/, 'Solo numeros')
-    .required('El precio es requerido'),
+    .matches(/^[0-9]{1,18}$/, 'Solo números')
+    .required('Precio requerido'),
   description: yup
     .string()
-    // .matches(/^([A-Za-z0-9,:;.]+\s?){1,140}$/, 'máx 140 caracteres')
-    .required('La descripción es requerida'),
+    // .matches(/^([A-Za-z0-9,:;.]+\s?){1,140}$/, 'Máx 140 caracteres')
+    .required('Descripción requerida'),
+  category: yup
+    .string()
+    .required('Categoría requerida'),
+  image: yup
+    .string()
+    .required('Foto requerida'),
 });
+
 
 export default CreateCandy;
