@@ -18,7 +18,7 @@ const TicketContainer = () => {
   const tickets = [
     {
       id: storedMovie.id,
-      showId: storedMovie?.showId.id,
+      showId: storedMovie.showId.id,
       idTicket: 1,
       name: "Entrada General",
       image:
@@ -30,7 +30,7 @@ const TicketContainer = () => {
     },
     {
       id: storedMovie.id,
-      showId: storedMovie?.showId.id,
+      showId: storedMovie.showId.id,
       idTicket: 2,
       name: "Entrada CineFan",
       image:
@@ -71,7 +71,7 @@ const TicketContainer = () => {
       dispatch(removeAllCart(name));
       window.localStorage.removeItem("cart");
       setProductCount(productCount - nombre.count);
-      localStorage.setItem("productCount", productCount - nombre.count)
+      localStorage.setItem("productCount", productCount - nombre.count);
     } else {
       dispatch(removeOneCart(name));
       window.localStorage.removeItem("cart");
@@ -105,7 +105,7 @@ const TicketContainer = () => {
 
   useEffect(() => {
     const storeProductCount = localStorage.getItem("productCount");
-  
+
     if (storeProductCount) {
       setProductCount(Number(storeProductCount));
     }
