@@ -51,14 +51,10 @@ function App() {
       top: 0,
       behavior: "smooth",
     });
-    if(location.pathname !== "/payment_success"){
-			window.localStorage.removeItem("orderPurchase");
-		}
+    if (location.pathname !== "/payment_success") {
+      window.localStorage.removeItem("orderPurchase");
+    }
   }, [location]);
-
-  useEffect(() => {
-    userData?.isAdmin && navigate("/dashboard");
-  }, [navigate]);
 
   return (
     <div className="w-full h-full min-h-screen bg-light-100 dark:bg-dark-950 flex flex-col">
