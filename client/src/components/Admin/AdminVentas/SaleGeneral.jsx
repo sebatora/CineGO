@@ -29,7 +29,7 @@ function SaleGeneral() {
 
   return (
     <>
-       <div className='h-screen flex justify-center items-center bg-gradient-to-r from-blue-400 via-pink-400 to-red-400'>
+       <div className='h-screen overflow-y-auto bg-gradient-to-r from-blue-400 via-pink-400 to-red-400'>
         <Card className="bg-blue-200 overflow-y-auto max-w-5xl ml-7 mt-3 mb-1 ">
           <Title className="text-2xl font-bold text-center mb-2">
             Lista de ventas
