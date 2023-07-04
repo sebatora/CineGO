@@ -4,6 +4,14 @@ import { Toaster, toast } from "react-hot-toast";
 import { useForm } from "react-hook-form";
 import { MapContainer, Marker, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
+import marker from "../../assets/location_icon.png";
+
+const myIcon = new L.Icon({
+  iconUrl: marker,
+  iconRetinaUrl: marker,
+  popupAnchor: [-0, -0],
+  iconSize: [20, 30],
+});
 
 const Contact = () => {
   const { VITE_SERVICE_ID, VITE_TEMPLATE_ID, VITE_PUBLIC_KEY } = import.meta
@@ -118,13 +126,12 @@ const Contact = () => {
         center={[-34.61315, -58.37723]}
         zoom={13}
         scrollWheelZoom={false}
-
       >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <Marker position={[-34.61315, -58.37723]}></Marker>
+        <Marker position={[-34.61315, -58.37723]} icon={myIcon}></Marker>
       </MapContainer>
     </div>
   );

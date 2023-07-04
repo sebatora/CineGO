@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Ticket from "../../components/Ticket/Ticket";
 import Cart from "../../components/Cart/Cart";
 import {
@@ -18,7 +18,7 @@ const TicketContainer = () => {
   const tickets = [
     {
       id: storedMovie.id,
-      showId: storedMovie.showId.id,
+      showId: storedMovie?.showId.id,
       idTicket: 1,
       name: "Entrada General",
       image:
@@ -30,7 +30,7 @@ const TicketContainer = () => {
     },
     {
       id: storedMovie.id,
-      showId: storedMovie.showId.id,
+      showId: storedMovie?.showId.id,
       idTicket: 2,
       name: "Entrada CineFan",
       image:
@@ -44,6 +44,7 @@ const TicketContainer = () => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
   const [productCount, setProductCount] = useState(0);
+  const navigate = useNavigate();
 
   const cinefan = tickets.filter((ticket) => ticket.name === "Entrada CineFan");
   const general = tickets.filter((ticket) => ticket.name === "Entrada General");
@@ -71,6 +72,17 @@ const TicketContainer = () => {
       dispatch(removeOneCart(name));
       window.localStorage.removeItem("cart");
       setProductCount(productCount - 1);
+    }
+  };
+
+  const handleClick = () => {
+    if (!userData) {
+      navigate("/login");
+    }
+    if (!cart.length) {
+      toast.error("Agrega elementos al carrito");
+    } else {
+      navigate("/candy");
     }
   };
 
@@ -129,7 +141,7 @@ const TicketContainer = () => {
       </div>
 
       <div className="w-1/3 mt-6 mb-10 flex flex-col items-center">
-        <div className="w-80 mx-auto rounded shadow-lg bg-primary-50 dark:bg-black dark:shadow-gray-700 flex flex-col ">
+        <div className="w-80 mx-auto rounded shadow-lg bg-primary-50 dark:bg-dark-950 dark:shadow-gray-700 flex flex-col ">
           {storedMovie && (
             <div className="w-full flex flex-col items-center py-2">
               <img
@@ -170,11 +182,14 @@ const TicketContainer = () => {
               <p>TOTAL: $ {total.toLocaleString("en-US")}</p>
             </div>
           </div>
-          <Link to={`${!userData ? "/login" : "/candy"}`}>
-            <button className="w-80 bg-primary-600 hover:bg-primary-500 text-white font-bold py-3 px-10 rounded text-xs">
+          <div className="px-4 py-3 mb-2 flex justify-center items-center">
+            <button
+              className="w-80 bg-primary-600 hover:bg-primary-500 text-white font-bold py-3 px-10 rounded text-xs"
+              onClick={handleClick}
+            >
               Siguiente
             </button>
-          </Link>
+          </div>
         </div>
       </div>
     </div>

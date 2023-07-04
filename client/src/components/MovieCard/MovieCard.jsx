@@ -5,9 +5,12 @@ import ReactStars from "react-stars";
 
 function MovieCard({ id, title, image, clasification, duration, ratings }) {
   const [isHovered, setIsHovered] = useState(false);
-  const countRating = ratings.map(rating => rating.count);
-  const sum = countRating.reduce((accumulator, currentValue) => Number(accumulator) + Number(currentValue), 0);
-  const average = sum / countRating.length;
+  const countRating = ratings?.map((rating) => rating.count);
+  const sum = countRating?.reduce(
+    (accumulator, currentValue) => Number(accumulator) + Number(currentValue),
+    0
+  );
+  const average = sum / countRating?.length;
 
   const handleMouseEnter = () => {
     setIsHovered(true);
@@ -18,7 +21,7 @@ function MovieCard({ id, title, image, clasification, duration, ratings }) {
   };
 
   return (
-    <div className="w-52 h-72 mx-4 my-8">
+    <div className="w-52 h-72 m-4">
       <div
         className={`w-full h-full relative group transition duration-500 ease-in 
     ${
@@ -61,12 +64,12 @@ function MovieCard({ id, title, image, clasification, duration, ratings }) {
                     Clasificación: {clasification}
                   </p>
                 </div>
-                  <ReactStars
-                    className="w-full flex justify-center"
-                    value={average}
-                    size={20}
-                    edit={false}
-                  />
+                <ReactStars
+                  className="w-full flex justify-center"
+                  value={average}
+                  size={20}
+                  edit={false}
+                />
               </div>
             </div>
           </div>
