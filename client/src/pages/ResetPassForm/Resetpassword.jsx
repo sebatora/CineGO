@@ -31,12 +31,14 @@ const Resetpassword = ({ theme }) => {
       const response = await dispatch(forgotPassUser(data));
 
       if (typeof response === "string") {
-        toast.error("Los datos son incorrectos. Por favor, intenta nuevamente.");
+        toast.error(
+          "Los datos son incorrectos. Por favor, intenta nuevamente."
+        );
       } else {
         reset();
         navigate("/login");
         toast.success("Su nueva contraseña fue enviada", {
-          duration: 2000
+          duration: 2000,
         });
       }
     } finally {
@@ -50,21 +52,17 @@ const Resetpassword = ({ theme }) => {
       {loading ? (
         <Spinner />
       ) : (
-        <div className="w-full h-full flex justify-center p-10">
+        <div className="w-full h-full min-h-screen flex justify-center items-center pt-12">
           <form
-            className="w-[500px] h-[550px] flex flex-col justify-center items-center p-10 border border-black dark:border-white rounded"
+            className="w-[400px] h-full relative flex flex-col p-6 bg-light-50 dark:bg-transparent dark:shadow-[0_0_10px_0px_#fff] rounded"
             onSubmit={handleSubmit(onSubmit)}
-            style={{ marginTop: "100px" }}
           >
-            {theme === "dark" ? (
-              <img className="w-40" src={logoBlanco} alt="CineGO" />
-            ) : (
-              <img className="w-40" src={logoNegro} alt="CineGO" />
-            )}
-            <h1 className="mt-2 mb-4">Ingresá tus datos</h1>
-            <div className="flex flex-col mb-4 items-center">
+            <h2 className="w-full flex justify-center mb-6 mt-4">
+              Ingresa tus datos
+            </h2>
+            <div className="flex flex-col mb-4">
               <input
-                className="border rounded-sm p-4 w-96"
+                className="py-2 px-3 rounded w-full"
                 type="text"
                 placeholder="Ingresa tu email"
                 {...register("email", {
@@ -78,9 +76,9 @@ const Resetpassword = ({ theme }) => {
               )}
             </div>
 
-            <div className="flex flex-col mb-4 items-center">
+            <div className="flex flex-col mb-4">
               <input
-                className="border rounded-sm p-4 w-96"
+                className="py-2 px-3 rounded w-full"
                 type="firstName"
                 placeholder="Ingresa tu nombre"
                 {...register("firstName", {
@@ -95,7 +93,7 @@ const Resetpassword = ({ theme }) => {
             </div>
 
             <button
-              className="bg-primary-600 hover:bg-primary-500 py-4 px-10 w-96 text-white font-semibold"
+              className="w-full rounded py-2 px-3 bg-primary-600 hover:bg-primary-500 text-white font-semibold"
               type="submit"
             >
               Resetear contraseña

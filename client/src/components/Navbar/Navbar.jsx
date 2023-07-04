@@ -95,8 +95,12 @@ function Navbar({ theme, setTheme }) {
             </Link>
           ) : (
             <button
+              className="flex justify-center items-center"
               onClick={() => setActiveModal(!activeModal)}
             >
+              <span className="text-sm mr-2">
+                {userData.firstName} {userData.lastName}
+              </span>
               <img
                 className="w-7 rounded-full"
                 src={userData.image}
