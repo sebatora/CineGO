@@ -62,7 +62,7 @@ function CandyCarrito({ addCart, productCount, setProductCount }) {
         totalPrice: total,
       };
       Swal.fire({
-        title: "¿Estás seguro que no deseas realizar ningun cambio?",
+        title: "¿Estás seguro de continuar?",
         showDenyButton: true,
         cancelButtonColor: "#ef233c",
         confirmButtonColor: "#38b000",

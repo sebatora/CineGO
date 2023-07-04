@@ -5,6 +5,9 @@ import { useForm } from "react-hook-form";
 import { MapContainer, Marker, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import marker from "../../assets/location_icon.png";
+import { Link } from "react-router-dom";
+import facebook from "../../assets/contacto/facebook.png";
+import instagram from "../../assets/contacto/instagram.png";
 
 const myIcon = new L.Icon({
   iconUrl: marker,
@@ -47,18 +50,18 @@ const Contact = () => {
   };
 
   return (
-    <div className="my-20 mx-10 px-10 py-4 flex">
+    <div className="my-20 mx-10 px-10 py-4 flex h-[80vh]">
       <Toaster />
       <form
-        className="w-[600px] min-h-[500px] h-full relative flex flex-col p-4 bg-light-50 dark:bg-transparent dark:shadow-[0_0_10px_0px_#fff] rounded"
+        className="w-[600px] min-h-[500px] h-full relative flex flex-col justify-around p-4 bg-light-50 dark:bg-transparent dark:shadow-[0_0_10px_0px_#fff] rounded"
         ref={form}
         onSubmit={handleSubmit(sendMessage)}
       >
         <h2 className="pb-3">Contacto</h2>
-        <div className={`flex flex-col ${errors.name ? "mb-0" : "mb-2"}`}>
+        <div className={`flex flex-col ${errors.name ? "mb-0" : "mb-4"}`}>
           <label htmlFor="name">Nombre</label>
           <input
-            className="py-2 px-3 rounded w-full"
+            className="py-4 px-3 rounded w-full"
             name="name"
             type="text"
             placeholder="Ingresa tu nombre"
@@ -76,10 +79,10 @@ const Contact = () => {
             </span>
           )}
         </div>
-        <div className={`flex flex-col ${errors.email ? "mb-0" : "mb-2"}`}>
+        <div className={`flex flex-col ${errors.email ? "mb-0" : "mb-4"}`}>
           <label htmlFor="email">Email</label>
           <input
-            className="py-2 px-3 rounded w-full"
+            className="py-4 px-3 rounded w-full"
             name="email"
             type="email"
             placeholder="Ingresa tu email"
@@ -97,7 +100,7 @@ const Contact = () => {
             </span>
           )}
         </div>
-        <div className={`flex flex-col ${errors.message ? "mb-0" : "mb-2"}`}>
+        <div className={`flex flex-col ${errors.message ? "mb-0" : "mb-4"}`}>
           <label htmlFor="message">Mensaje</label>
           <textarea
             className="resize-none overflow-auto py-2 px-3 rounded w-full"
@@ -115,15 +118,43 @@ const Contact = () => {
           )}
         </div>
         <button
-          className="w-full rounded py-2 px-3 mt-3 bg-primary-600 hover:bg-primary-500 text-white font-semibold"
+          className="w-full rounded py-4 px-3 mt-3 bg-primary-600 hover:bg-primary-500 text-white font-semibold"
           type="submit"
         >
           Enviar
         </button>
+
+        <div className="w-full p-2 text-center">
+          <h3>Nuestras redes</h3>
+          <div className="flex justify-center">
+            <Link
+              to={"https://www.facebook.com/profile.php?id=100094046721114"}
+              target="_blank"
+              className="animate-tambaleo"
+            >
+              <img
+                src={facebook}
+                alt="facebook"
+                className="w-[60px]  ml-10 mr-10 mt-2"
+              />
+            </Link>
+            <Link
+              to={"https://www.instagram.com/cinego75/"}
+              target="_blank"
+              className="animate-tambaleo"
+            >
+              <img
+                src={instagram}
+                alt="instagram"
+                className="w-[60px]  ml-10 mr-10 mt-2"
+              />
+            </Link>
+          </div>
+        </div>
       </form>
       <div className="w-full h-full flex items-center justify-center">
         <MapContainer
-          className="w-[600px] h-[500px] z-10"
+          className="min-w-[600px] w-full min-h-[500px] h-full z-10 ml-8"
           center={[-34.61315, -58.37723]}
           zoom={13}
           scrollWheelZoom={false}

@@ -74,7 +74,9 @@ const CreateUser = ({ theme }) => {
       toast("Usuario creado correctamente");
       navigate("/login");
     } catch (error) {
-      toast.error(error);
+      toast.error(error, {
+        duration: 1000,
+      });
     }
   };
 

@@ -16,7 +16,7 @@ function Profile() {
     <div className="w-full flex mt-12">
       <div className="w-1/5 flex flex-col bg-light-300 dark:bg-slate-900">
         <h1 className="w-full mt-5 ml-5">Bienvenido</h1>
-        <div className="w-3/4 p-4">
+        <div className="w-full flex flex-col p-4">
           <button
             className={`w-16 my-4 text-start ${
               activeComponent === "profileChange" &&
