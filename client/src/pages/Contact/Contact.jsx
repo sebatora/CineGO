@@ -50,7 +50,7 @@ const Contact = () => {
     <div className="my-20 mx-10 px-10 py-4 flex">
       <Toaster />
       <form
-        className="w-[40%] flex flex-col bg-light-300 dark:bg-slate-900 p-6 rounded-l-lg"
+        className="w-[600px] min-h-[500px] h-full relative flex flex-col p-4 bg-light-50 dark:bg-transparent dark:shadow-[0_0_10px_0px_#fff] rounded"
         ref={form}
         onSubmit={handleSubmit(sendMessage)}
       >
@@ -58,7 +58,7 @@ const Contact = () => {
         <div className={`flex flex-col ${errors.name ? "mb-0" : "mb-2"}`}>
           <label htmlFor="name">Nombre</label>
           <input
-            className="border rounded-sm p-2"
+            className="py-2 px-3 rounded w-full"
             name="name"
             type="text"
             placeholder="Ingresa tu nombre"
@@ -71,7 +71,7 @@ const Contact = () => {
             })}
           />
           {errors.name && (
-            <span className="text-red-600 dark:text-red-600">
+            <span className="text-red-600 dark:text-red-600 text-base">
               {errors.name.message}
             </span>
           )}
@@ -79,7 +79,7 @@ const Contact = () => {
         <div className={`flex flex-col ${errors.email ? "mb-0" : "mb-2"}`}>
           <label htmlFor="email">Email</label>
           <input
-            className="border rounded-sm p-2"
+            className="py-2 px-3 rounded w-full"
             name="email"
             type="email"
             placeholder="Ingresa tu email"
@@ -92,7 +92,7 @@ const Contact = () => {
             })}
           />
           {errors.email && (
-            <span className="text-red-600 dark:text-red-600">
+            <span className="text-red-600 dark:text-red-600 text-base">
               {errors.email.message}
             </span>
           )}
@@ -100,39 +100,41 @@ const Contact = () => {
         <div className={`flex flex-col ${errors.message ? "mb-0" : "mb-2"}`}>
           <label htmlFor="message">Mensaje</label>
           <textarea
-            className="resize-none overflow-auto p-2 rounded-sm"
+            className="resize-none overflow-auto py-2 px-3 rounded w-full"
             name="message"
-            rows={8}
+            rows={7}
             placeholder="Déjanos tu mensaje..."
             {...register("message", {
               required: "El mensaje es requerido",
             })}
           ></textarea>
           {errors.message && (
-            <span className="text-red-600 dark:text-red-600">
+            <span className="text-red-600 dark:text-red-600 text-base">
               {errors.message.message}
             </span>
           )}
         </div>
         <button
-          className="bg-primary-600 hover:bg-primary-500 p-4 mt-2 text-white font-semibold"
+          className="w-full rounded py-2 px-3 mt-3 bg-primary-600 hover:bg-primary-500 text-white font-semibold"
           type="submit"
         >
           Enviar
         </button>
       </form>
-      <MapContainer
-        className="w-2/3 h-[570px] z-10"
-        center={[-34.61315, -58.37723]}
-        zoom={13}
-        scrollWheelZoom={false}
-      >
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-        <Marker position={[-34.61315, -58.37723]} icon={myIcon}></Marker>
-      </MapContainer>
+      <div className="w-full h-full flex items-center justify-center">
+        <MapContainer
+          className="w-[600px] h-[500px] z-10"
+          center={[-34.61315, -58.37723]}
+          zoom={13}
+          scrollWheelZoom={false}
+        >
+          <TileLayer
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          />
+          <Marker position={[-34.61315, -58.37723]} icon={myIcon}></Marker>
+        </MapContainer>
+      </div>
     </div>
   );
 };

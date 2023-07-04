@@ -37,8 +37,7 @@ const SaleSubscription = () => {
                   <TableRow>
                     <TableHeaderCell className="py-2 px-4 font-semibold text-left border-b dark:text-gray-400">Nombre</TableHeaderCell>
                     <TableHeaderCell className="py-2 px-4 font-semibold text-left border-b dark:text-gray-400">Email</TableHeaderCell>
-                    <TableHeaderCell className="py-2 px-4 font-semibold text-left border-b dark:text-gray-400">Subscripción</TableHeaderCell>
-                    <TableHeaderCell className="py-2 px-4 font-semibold text-left border-b dark:text-gray-400">Estado</TableHeaderCell>
+                    <TableHeaderCell className="py-2 px-4 font-semibold text-left border-b dark:text-gray-400">Suscripción</TableHeaderCell>
                   </TableRow>
                 </TableHead> 
                 <TableBody key={1}>
@@ -47,26 +46,29 @@ const SaleSubscription = () => {
                       <TableCell className="py-2 px-4 border-b dark:border-gray-500 dark:text-gray-400">{item.firstName}</TableCell>
                       <TableCell className="py-2 px-4 border-b dark:border-gray-500 dark:text-gray-400">{item.email}</TableCell>
                       <TableCell className="py-2 px-4 border-b dark:border-gray-500 dark:text-gray-400">{item.cinePlus}</TableCell>
-                      <TableCell className="py-2 px-4 border-b dark:border-gray-500 dark:text-gray-900"><Badge className='bg-green-300 dark:bg-green-500' color="green" >{item.activePlus}</Badge></TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
             </Table>
         </Card>
       </div>
+
       <div className="flex justify-center bg-gradient-to-r from-blue-400 via-pink-400 to-red-400 overflow-y-auto max-w-7xl">
-        <Card className='overflow-y-auto max-w-5xl mt-4 bg-gradient-to-br from-indigo-300 to-blue-200 mb-6 rounded-lg shadow-lg'>
-        <Title className="font-bold text-4xl">Subscripciones </Title>
+        <Card className=' dark:bg-dark-tremor-brand-muted overflow-y-auto max-w-5xl mt-5 bg-gradient-to-br from-indigo-500 to-blue-200 rounded-lg shadow-lg  '>
+        <Title className="font-bold text-4xl">Suscripciones </Title>
+
           <TabGroup>
             <TabList className="mt-4 space-x-4">
               <Tab className="px-4 py-2 text-white rounded-lg">Black</Tab>
               <Tab className="px-4 py-2 text-white rounded-lg">Gold</Tab>
             </TabList> 
-            <TabPanels>
-              <TabPanel>
+
+        
+               <TabPanels className='dark:border-gray-500'>
                 <div className="flex justify-center">
                   <Card className="bg-blue-200 max-w-4xl mx-1 ml-5 my-6 max-h-80">
                     <Title className="font-bold text-2xl mb-4">Gráfico de suscripciones Black</Title>
+
                     <AreaChart
                       key={1}
                       className="h-56"
@@ -80,8 +82,10 @@ const SaleSubscription = () => {
               </TabPanel>
               <TabPanel>
                 <div className="flex justify-center" >
-                  <Card className="bg-blue-200 max-w-4xl mx-1 ml-5 my-6 max-h-80 rounded-lg shadow-lg">
+
+                  <Card className="bg-indigo-200 max-w-4xl mx-1 ml-5 my-6 max-h-80 rounded-lg shadow-lg">
                     <Title className="font-bold text-2xl mb-4">Gráfico de subscripciones Gold</Title>
+
                     <AreaChart
                       className="h-56"
                       data={gold}
