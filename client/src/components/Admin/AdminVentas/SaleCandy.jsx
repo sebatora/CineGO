@@ -18,7 +18,7 @@ const valueFormatter = (number) => `$ ${number.toString().replace(/\B(?=(\d{3})+
 const SaleCandy = () => {
   return (
     <>
-        <div className="bg-gradient-to-r from-blue-400 via-pink-400 to-red-300 overflow-y-auto max-w-7xl">
+        <div className="bg-gradient-to-r from-blue-400 via-pink-400 to-red-400 overflow-y-auto max-w-7xl">
         <Card className="bg-blue-200 overflow-y-auto max-w-5xl ml-7 mt-3 mb-1 ">
           <Title className="text-2xl font-bold text-center mb-2">
             Listado de productos vendidos
@@ -59,7 +59,7 @@ const SaleCandy = () => {
         </Card>
       </div>
 
-      <div className="flex h-screen bg-gradient-to-r from-blue-400 via-pink-400 to-red-300 overflow-y-auto">
+      <div className="flex h-screen bg-gradient-to-r from-blue-400 via-pink-400 to-red-400 overflow-y-auto">
         <Card className="bg-blue-200 max-w-4xl mx-1 ml-7 my-10 max-h-96">
           <Title className="font-bold ">Grafico de ventas de Candy</Title>
           <AreaChart
