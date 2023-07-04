@@ -930,29 +930,222 @@ const dataAllUsers = [
 
 const dataAllPurchases = [
   {
-    "userId": 2,
+    "userId": 5,
+    "items": [
+      {
+        "itemId": null,
+        "cinePlus": "Black",
+        "price": 1199,
+        "quantity": 1,
+        "type": "subscription"
+      }
+    ],
+    "totalPrice": 1199
+  },
+  {
+    "userId": 5,
+    "items": [
+      {
+        "itemId": 4,
+        "price": 200,
+        "quantity": 2,
+        "type": "show"
+      },
+      {
+        "itemId": 9,
+        "price": 40,
+        "quantity": 3,
+        "type": "candy"
+      }
+    ],
+    "totalPrice": 520
+  },
+  {
+    "userId": 6,
     "items": [
       {
         "itemId": 1,
-        "price": 10,
+        "price": 200,
         "quantity": 2,
         "type": "show"
       },
       {
         "itemId": 1,
-        "price": 5,
+        "price": 250,
         "quantity": 3,
         "type": "candy"
+      }
+    ],
+    "totalPrice": 1150
+  },
+  {
+    "userId": 2,
+    "items": [
+      {
+        "itemId": 8,
+        "price": 200,
+        "quantity": 2,
+        "type": "show"
       },
       {
+        "itemId": 2,
+        "price": 450,
+        "quantity": 1,
+        "type": "candy"
+      }
+    ],
+    "totalPrice": 850
+  },
+  {
+    "userId":9,
+    "items": [
+      {
+        "itemId": 11,
+        "price": 200,
+        "quantity": 2,
+        "type": "show"
+      }
+    ],
+    "totalPrice": 400
+  },
+  {
+    "userId": 8,
+    "items": [
+      {
+        "itemId": 12,
+        "price": 200,
+        "quantity": 2,
+        "type": "show"
+      },
+      {
+        "itemId": 4,
+        "price": 120,
+        "quantity": 3,
+        "type": "candy"
+      }
+    ],
+    "totalPrice": 760
+  },
+  {
+    "userId": 8,
+    "items": [
+      {
+        "itemId": 12,
+        "price": 200,
+        "quantity": 1,
+        "type": "show"
+      }
+    ],
+    "totalPrice": 200
+  },
+  {
+    "userId": 7,
+    "items": [
+      {
         "itemId": null,
-        "cinePlus": "Black",
-        "price": 5,
+        "cinePlus": "Gold",
+        "price": 499,
         "quantity": 1,
         "type": "subscription"
       }
     ],
-    "totalPrice": 40
+    "totalPrice": 499
+  },
+  {
+    "userId": 7,
+    "items": [
+      {
+        "itemId": 12,
+        "price": 200,
+        "quantity": 2,
+        "type": "show"
+      },
+      {
+        "itemId": 4,
+        "price": 120,
+        "quantity": 3,
+        "type": "candy"
+      }
+    ],
+    "totalPrice": 760
+  },
+  {
+    "userId": 3,
+    "items": [
+      {
+        "itemId": 4,
+        "price": 200,
+        "quantity": 2,
+        "type": "show"
+      },
+      {
+        "itemId": 9,
+        "price": 40,
+        "quantity": 2,
+        "type": "candy"
+      }
+    ],
+    "totalPrice": 480
+  },
+  {
+    "userId": 4,
+    "items": [
+      {
+        "itemId": 1,
+        "price": 200,
+        "quantity": 2,
+        "type": "show"
+      },
+      {
+        "itemId": 3,
+        "price": 150,
+        "quantity": 1,
+        "type": "candy"
+      },
+      {
+        "itemId": 4,
+        "price": 120,
+        "quantity": 1,
+        "type": "candy"
+      }
+    ],
+    "totalPrice": 670
+  },
+  {
+    "userId": 6,
+    "items": [
+      {
+        "itemId": 8,
+        "price": 200,
+        "quantity": 4,
+        "type": "show"
+      },
+      {
+        "itemId": 2,
+        "price": 450,
+        "quantity": 1,
+        "type": "candy"
+      }
+    ],
+    "totalPrice": 1250
+  },
+  {
+    "userId": 10,
+    "items": [
+      {
+        "itemId": 5,
+        "price": 200,
+        "quantity": 4,
+        "type": "show"
+      },
+      {
+        "itemId": 2,
+        "price": 450,
+        "quantity": 1,
+        "type": "candy"
+      }
+    ],
+    "totalPrice": 1250
   }
 ]
 
