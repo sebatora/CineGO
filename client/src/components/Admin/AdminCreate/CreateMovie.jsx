@@ -13,19 +13,19 @@ const schema = yup.object().shape({
   title: yup
     .string()
     .matches(/^([A-Za-z]+\s?){1,30}$/, "Solo letras máx 30 caracteres")
-    .required("título requerido"),
+    .required("El título es requerido"),
   description: yup
     .string()
     .matches(/^.{1,140}$/, "máx 140 caracteres")
-    .required("Descripción requerida"),
+    .required("La descripción es requerida"),
   actors: yup
     .string()
     .matches(/^.{1,140}$/, "máx 140 caracteres")
-    .required("Actores requeridos"),
+    .required("Los actores son requeridos"),
   director: yup
     .string()
     .matches(/^([A-Za-z]+\s?){1,18}$/, "Solo letras máx 18 caracteres")
-    .required("Director requerido"),
+    .required("El director es requerido"),
   duration: yup
     .string()
     .matches(/^[0-9]+$/, "Solo números")
@@ -37,16 +37,7 @@ const schema = yup.object().shape({
     .string()
     .url("Ingrese una URL válida para el tráiler")
     .required("Tráiler requerido"),
-  clasification: yup
-    .string()
-    .required("Clasificación requerida"),
-  image: yup
-    .string()
-    .required('Foto requerida'),
-  genres: yup
-    .array()
-    .min(1, "Seleccionar al menos un género")
-    .required("Géneros requeridos"),
+  clasification: yup.string().required("Clasificacion requerida"),
 });
 
 const CreateMovie = ({ setActiveForm }) => {
@@ -161,10 +152,6 @@ const CreateMovie = ({ setActiveForm }) => {
       genres: prevInput.genres.filter((g) => g !== genre),
     }));
   };
-
-  const handleReset = () => {
-    setValue("genres", ""); // Actualiza el valor seleccionado a una cadena vacía
-  }
 
   return (
     <>
@@ -319,13 +306,12 @@ const CreateMovie = ({ setActiveForm }) => {
               <select
                 className="border rounded-sm p-1 w-60 flex flex-col"
                 onChange={(e) => handleSelect(e)}
-                onClick={() => handleReset()}
                 name="genres"
                 value={watch("genres")}
               >
-                <option className="flex flex-col" value="" disabled>
-                {selectedGenres.length === 0 ? "Géneros" : selectedGenres[0]}
-              </option>
+                <option className="flex flex-col" value="">
+                  Géneros
+                </option>
                 {genres?.map((t) => (
                   <option
                     className="flex flex-col "
@@ -351,13 +337,7 @@ const CreateMovie = ({ setActiveForm }) => {
                   </div>
                 ))}
                 </div>
-                 {errors.genres && (
-                  <span className="mt-2 text-red-600 dark:text-red-600 text-xs">
-                    {errors.genres.message}
-                  </span>
-                )}
             </div>
-    
           </div>
 
           <div className="flex flex-col mx-6">
@@ -404,11 +384,6 @@ const CreateMovie = ({ setActiveForm }) => {
               Subir foto
             </button>
           </div>
-          {errors.image && (
-          <span className="text-red-600 dark:text-red-600 text-xs">
-            {errors.image.message}
-          </span>
-             )}
         </div>
         <div className="w-full flex justify-center mt-4">
           <button
