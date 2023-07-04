@@ -116,6 +116,7 @@ const SaleCandy = () => {
             </Table>
           </Card>
         </div>
+      </div>
     </>
   );
 };
