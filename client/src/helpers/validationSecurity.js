@@ -30,23 +30,23 @@ export function validateForm(user) {
     return false;
   }
 
-  if (password.length < 8) {
+  if (password.length < 6) {
     Swal.fire({
       icon: "error",
       title: "Oops...",
-      text: "¡La contraseña debe tener al menos 8 caracteres!",
+      text: "¡La contraseña debe tener al menos 6 caracteres!",
     });
     return false;
   }
 
-  if (!/[A-Z]/.test(password)) {
-    Swal.fire({
-      icon: "error",
-      title: "Oops...",
-      text: "¡La contraseña debe contener al menos una letra mayúscula!",
-    });
-    return false;
-  }
+  // if (!/[A-Z]/.test(password)) {
+  //   Swal.fire({
+  //     icon: "error",
+  //     title: "Oops...",
+  //     text: "¡La contraseña debe contener al menos una letra mayúscula!",
+  //   });
+  //   return false;
+  // }
 
   return true;
 }

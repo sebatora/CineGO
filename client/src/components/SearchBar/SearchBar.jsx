@@ -16,7 +16,7 @@ const SearchBar = () => {
   }, [dispatch, name]);
 
   return (
-    <div className="lg:w-2/3 relative flex items-center mx-6 mb-4 lg:mb-0 md:mx-20 lg:mx-12">
+    <div className="lg:w-1/3 relative flex items-center mx-6 mb-4 lg:mb-0 md:mx-20 lg:mx-12 lg:mr-40">
       <div className="absolute right-2">
         <svg
           xmlns="http://www.w3.org/2000/svg"

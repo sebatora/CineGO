@@ -34,9 +34,10 @@ function ProfileSecurity() {
         title: "Vas a cambiar tu contraseña. ¿Estás seguro?",
         text: "Tendrás que volver a iniciar sesión",
         icon: "warning",
-        showCancelButton: true,
+        showDenyButton: true,
         confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
+        denyButtonColor: "#d33",
+        denyButtonText: "Cancelar",
         confirmButtonText: "¡Sí!",
       }).then((result) => {
         if (result.isConfirmed) {
