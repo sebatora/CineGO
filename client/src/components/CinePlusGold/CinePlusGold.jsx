@@ -21,7 +21,7 @@ function CinePlusGold() {
       navigate("/login");
     } else if (userData.cinePlus === "Gold") {
       toast.dismiss();
-      toast.error("Ya estas suscripto a este plan");
+      toast.error("Ya estás suscripto a un plan");
       return;
     } else if (userData.cinePlus !== "Estandar") {
       toast.dismiss();
