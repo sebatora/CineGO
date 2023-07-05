@@ -128,7 +128,7 @@ const TicketContainer = () => {
   }, [cart]);
 
   return (
-    <div className="mt-16 flex">
+    <div className="w-full h-[90vh] mt-16 flex">
       <Toaster />
       <div className="w-2/3 flex flex-col">
         <div className="flex items-center justify-center mt-20">
