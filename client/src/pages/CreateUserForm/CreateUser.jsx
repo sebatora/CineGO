@@ -81,7 +81,7 @@ const CreateUser = ({ theme }) => {
   };
 
   return (
-    <div className="w-full h-full flex justify-center items-center p-20 pb-16">
+    <div className="w-full h-full min-h-screen flex justify-center items-center pt-12">
       <form
         className="w-[600px] h-full relative flex flex-col p-4 bg-light-50 dark:bg-transparent dark:shadow-[0_0_10px_0px_#fff] rounded"
         onSubmit={handleSubmit(onSubmit)}

@@ -45,7 +45,7 @@ function ProfileChange() {
       {
         cloudName: "dhyqgl7ie",
         uploadPreset: "a2i0wk5f",
-        sources: ['local'],
+        sources: ["local"],
         resourceType: ["image"],
         clientAllowedFormats: ["image"],
       },
@@ -69,13 +69,14 @@ function ProfileChange() {
     };
     if (user.firstName || user.lastName || user.email || savePic.image) {
       Swal.fire({
-        title: "Vas a modificar tus datos. Estas seguro?",
-        text: "Tendras que volver a iniciar sesion",
+        title: "Vas a modificar tus datos. ¿Estás seguro?",
+        text: "Tendrás que volver a iniciar sesión",
         icon: "warning",
-        showCancelButton: true,
+        showDenyButton: true,
         confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Si!",
+        denyButtonColor: "#d33",
+        denyButtonText: "Cancelar",
+        confirmButtonText: "¡Sí!",
       }).then((result) => {
         if (result.isConfirmed) {
           dispatch(putUser(savePic));
@@ -93,7 +94,7 @@ function ProfileChange() {
             "Modificaste tus datos. Volve a iniciar sesion",
             "success"
           ).then(() => {
-            window.location.href = "/login"; 
+            window.location.href = "/login";
           });
         }
       });
@@ -106,13 +107,21 @@ function ProfileChange() {
     }
   };
 
-
   return (
     <div className="w-full h-screen">
-      <h2 className="w-full flex items-center justify-center h-16 bg-light-200 dark:bg-slate-800">Perfil</h2>
-      <form className="w-full flex flex-col items-center" onSubmit={handleSubmit}>
+      <h2 className="w-full flex items-center justify-center h-16 bg-light-200 dark:bg-slate-800">
+        Perfil
+      </h2>
+      <form
+        className="w-full flex flex-col items-center"
+        onSubmit={handleSubmit}
+      >
         <div className="w-full flex flex-col items-center my-6">
-          <img className="w-32 rounded-full" src={uploadedPhoto || userData.image} alt="Profile" />
+          <img
+            className="w-32 rounded-full"
+            src={uploadedPhoto || userData.image}
+            alt="Profile"
+          />
           {!disabled && (
             <button
               type="button"
@@ -131,7 +140,11 @@ function ProfileChange() {
                 Nombre:
               </label>
               <input
-                className={`p-2 mb-2 rounded-md ${disabled ? "bg-light-200 placeholder:text-light-400 dark:bg-slate-900" : ""}`}
+                className={`p-2 mb-2 rounded-md ${
+                  disabled
+                    ? "bg-light-200 placeholder:text-light-400 dark:bg-slate-900"
+                    : ""
+                }`}
                 type="text"
                 name="firstName"
                 value={user.firstName}
@@ -156,7 +169,11 @@ function ProfileChange() {
                 Apellido:
               </label>
               <input
-                className={`p-2 mb-2 rounded-md ${disabled ? "bg-light-200 placeholder:text-light-400 dark:bg-slate-900" : ""}`}
+                className={`p-2 mb-2 rounded-md ${
+                  disabled
+                    ? "bg-light-200 placeholder:text-light-400 dark:bg-slate-900"
+                    : ""
+                }`}
                 type="text"
                 name="lastName"
                 value={user.lastName}
@@ -183,7 +200,11 @@ function ProfileChange() {
                 Email:
               </label>
               <input
-                className={`p-2 mb-2 rounded-md ${disabled ? "bg-light-200 placeholder:text-light-400 dark:bg-slate-900" : ""}`}
+                className={`p-2 mb-2 rounded-md ${
+                  disabled
+                    ? "bg-light-200 placeholder:text-light-400 dark:bg-slate-900"
+                    : ""
+                }`}
                 type="text"
                 name="email"
                 value={user.email}
@@ -220,7 +241,11 @@ function ProfileChange() {
           </div>
         </div>
         {!disabled && (
-          <button className="w-40 mt-10 py-2 rounded-md font-bold bg-green-500 hover:bg-green-600" type="submit" disabled={disabled}>
+          <button
+            className="w-40 mt-10 py-2 rounded-md font-bold bg-green-500 hover:bg-green-600"
+            type="submit"
+            disabled={disabled}
+          >
             Guardar
           </button>
         )}
