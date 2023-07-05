@@ -82,7 +82,7 @@ function Detail() {
       {!detail.id || detail.activeMovie === false ? (
         <Error404 />
       ) : (
-        <div className="w-full flex flex-col mt-20 p-10">
+        <div className="w-full flex flex-col p-20">
           <Toaster />
           <div className="w-full flex">
             <div className="w-96 h-fit flex flex-col items-center">
@@ -123,7 +123,7 @@ function Detail() {
               <ul className="w-full">
                 <li className="p-2">
                   <h4 className="text-2xl">Género:</h4>
-                  <p className="text-base my-1">
+                  <p className="text-md my-1">
                     {detail.genres?.map((genre) => genre.name).join(" - ")}
                   </p>
                 </li>
@@ -152,7 +152,7 @@ function Detail() {
               </div>
               <div className="w-4/5 mb-6 flex flex-col">
                 <div className="my-2">
-                  <h3 className="text-3xl">Funciones</h3>
+                  <h3>Funciones</h3>
                   <div className="flex items-center justify-start">
                     {detail.shows
                       ?.map((show) => show.date)
@@ -160,14 +160,11 @@ function Detail() {
                         (date, index, array) => array.indexOf(date) === index
                       )
                       .map((date) => (
-                        <div className="w-[150px] h-[80px] mx-4 my-4 flex items-center justify-center">
+                        <div className="my-4 flex items-center">
                           <button
                             key={date}
                             onClick={() => handleClickDate(date)}
-                            className={
-                              selectedDay === date
-                                ? "w-full h-full selected  bg-black p-2 m-1 mr-3 border-2  border-gray-600 rounded-lg text-white text-xl font-bold"
-                                : "w-full h-full bg-slate-200 p-2 m-1 mr-3 border-2 border-gray-600 rounded-lg text-xl font-bold"
+                            className={`py-4 px-5 m-1 mr-3 font-bold rounded-md shadow-md dark:shadow-dark-700 hover:scale-105 dark:text-white ${selectedDay === date ? "text-white bg-primary-600 hover:bg-primary-500 shadow-none dark:bg-dark-700 hover:dark:bg-dark-600 border-none" : ""}`
                             }
                           >
                             {date}
@@ -178,7 +175,7 @@ function Detail() {
                 </div>
                 {selectedDay && (
                   <div className="my-2">
-                    <h4 className="text-3xl">Horarios:</h4>
+                    <h3>Horarios:</h3>
                     <div className="flex items-start">
                       {detail.shows
                         ?.filter((show) => show.date === selectedDay)
@@ -186,13 +183,11 @@ function Detail() {
                           <div
                             key={show.id}
                             onClick={() => handleClickShow(show)}
-                            className={
-                              selectedShow === show
-                                ? "w-[150px] h-[80px] mx-4 my-4 flex items-center justify-center bg-black p-2 m-1 mr-3 border-2   border-gray-600 rounded-lg text-white text-xl font-bold cursor-pointer"
-                                : "w-[150px] h-[80px] mx-4 my-4 flex items-center justify-center  bg-slate-200 p-2 m-1 mr-3 border-2  border-gray-600 rounded-lg text-xl font-bold cursor-pointer"
-                            }
+                            className="my-4 flex items-center"
                           >
-                            <button>{show.hour}</button>
+                            <button
+                              className={`py-4 px-5 m-1 mr-3 font-bold rounded-md shadow-md dark:shadow-dark-700 hover:scale-105 dark:text-white ${selectedShow === show ? "text-white bg-primary-600 hover:bg-primary-500 shadow-none dark:bg-dark-700 hover:dark:bg-dark-600 border-none" : ""}`}
+                            >{show.hour}</button>
                           </div>
                         ))}
                     </div>
@@ -200,13 +195,13 @@ function Detail() {
                 )}
               </div>
 
-              <div className="mt-16 mb-10 flex justify-center">
+              <div className="flex justify-center">
                 <button
                   onClick={handleSubmit}
                   className={
                     selectedShow
-                      ? "w-[250px] h-[80px] bg-primary-600 hover:bg-primary-500  text-white border-none px-4 py-2 text-center text-2xl rounded cursor-pointer animate-tambaleo font-bold dark:shadow-xl shadow-xl shadow-light-600  dark:shadow-red-600 dark:bg-red-700"
-                      : "w-[250px] h-[80px] bg-slate-200 text-black border  border-gray-600 px-4 py-2 text-center text-2xl rounded font-bold"
+                      ? "bg-primary-600 hover:bg-primary-500  text-white border-none px-7 py-4 text-center text-2xl rounded cursor-pointer animate-tambaleo font-bold dark:shadow-xl shadow-xl shadow-light-600  dark:shadow-red-600 dark:bg-red-700"
+                      : "bg-slate-200 text-black shadow-md px-7 py-4 text-center text-2xl rounded font-bold"
                   }
                   type="submit"
                   disabled={!selectedShow}
@@ -219,7 +214,7 @@ function Detail() {
           {activeTrailer && (
             <div className="w-full h-screen fixed top-0 left-0 bottom-0 right-0 z-50 bg-black/90 flex justify-center items-center">
               <iframe
-                className="w-3/4 h-96"
+                className="w-3/4 h-1/2"
                 src={detail.trailer}
                 title="YouTube video player"
                 frameborder="0"
