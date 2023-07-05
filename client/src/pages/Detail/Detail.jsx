@@ -123,36 +123,36 @@ function Detail() {
               <ul className="w-full">
                 <li className="p-2">
                   <h4 className="text-2xl">Género:</h4>
-                  <p className="text-sm my-1">
+                  <p className="text-base my-1">
                     {detail.genres?.map((genre) => genre.name).join(" - ")}
                   </p>
                 </li>
                 <li className="p-2">
                   <h4 className="text-2xl">Director:</h4>
-                  <p className="text-sm my-1">{detail.director}</p>
+                  <p className="text-base my-1">{detail.director}</p>
                 </li>
                 <li className="p-2">
                   <h4 className="text-2xl">Actores:</h4>
-                  <p className="text-sm my-1">{detail.actors}</p>
+                  <p className="text-base my-1">{detail.actors}</p>
                 </li>
                 <li className="p-2">
                   <h4 className="text-2xl">Duración:</h4>
-                  <p className="text-sm my-1">{detail.duration} min</p>
+                  <p className="text-base my-1">{detail.duration} min</p>
                 </li>
               </ul>
             </div>
 
             <div className="w-full flex flex-col ml-20">
-              <h2 className="w-4/5 pb-4 border-b-4 border-b-light-300 dark:border-b-dark-700">
+              <h2 className="w-4/5 pb-4 border-b-4 border-b-light-300 dark:border-b-dark-700 text-5xl">
                 {detail.title}
               </h2>
               <div className="w-4/5 mb-6">
-                <h3 className="my-4">Sinopsis</h3>
-                <p className="text-base">{detail.description}</p>
+                <h3 className="my-4 text-4xl">Sinopsis</h3>
+                <p className="text-xl">{detail.description}</p>
               </div>
               <div className="w-4/5 mb-6 flex flex-col">
-                <div>
-                  <h3>Funciones</h3>
+                <div className="my-2">
+                  <h3 className="text-3xl">Funciones</h3>
                   <div className="flex items-center justify-start">
                     {detail.shows
                       ?.map((show) => show.date)
@@ -177,8 +177,8 @@ function Detail() {
                   </div>
                 </div>
                 {selectedDay && (
-                  <div>
-                    <h4>Horarios:</h4>
+                  <div className="my-2">
+                    <h4 className="text-3xl">Horarios:</h4>
                     <div className="flex items-start">
                       {detail.shows
                         ?.filter((show) => show.date === selectedDay)
@@ -200,7 +200,7 @@ function Detail() {
                 )}
               </div>
 
-              <div className="mt-8 mb-10 flex justify-center">
+              <div className="mt-16 mb-10 flex justify-center">
                 <button
                   onClick={handleSubmit}
                   className={
