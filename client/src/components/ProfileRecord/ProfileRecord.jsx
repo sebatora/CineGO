@@ -33,7 +33,9 @@ function ProfileRecord() {
   };
 
   useEffect(() => {
-    dispatch(getUserById(userData.id));
+    if(userData?.id){
+      dispatch(getUserById(userData.id));
+    }
   }, []);
 
   return (
