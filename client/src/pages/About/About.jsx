@@ -50,7 +50,8 @@ const About = () => {
       linkedinIcon: iconoIn,
       githubIcon: iconoGit,
       iconoCv: iconoCv,
-      cvUrl: "https://drive.google.com/file/d/1TiElcIJXrdAOWVrMgrImwQM_Or8KZXMZ/view?usp=sharing"
+      cvUrl:
+        "https://drive.google.com/file/d/1TiElcIJXrdAOWVrMgrImwQM_Or8KZXMZ/view?usp=sharing",
     },
     {
       name: "Camila Manita",
@@ -183,7 +184,7 @@ const About = () => {
   ));
 
   return (
-    <div className="w-full h-[100vh] mt-28">
+    <div className="w-full mt-28">
       <h1 className="mb-6 text-4xl font-semibold text-center text-gray-700">
         ¿QUIENES SOMOS?
       </h1>
