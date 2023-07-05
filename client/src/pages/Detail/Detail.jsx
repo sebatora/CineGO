@@ -4,10 +4,10 @@ import { useNavigate, useParams } from "react-router-dom";
 import ReactStars from "react-stars";
 import Error404 from "../../pages/Error404/Error404";
 import { cleanDetail, getMovieById, postRating } from "../../redux/actions";
+import { Toaster, toast } from "react-hot-toast";
 
 function Detail() {
   const detail = useSelector((state) => state.movieById);
-  const storedMovie = JSON.parse(window.localStorage.getItem("movie"));
   const userData = JSON.parse(window.localStorage.getItem("user"));
   const [activeTrailer, setActiveTrailer] = useState(false);
   const dispatch = useDispatch();
@@ -44,7 +44,13 @@ function Detail() {
   };
 
   const handleChangeRating = (count) => {
-    if (userData.email) {
+    if (!userData) {
+      toast.dismiss(); // Limpiar la alerta existente si hay alguna
+      toast.error("Inicia sesión para poder valorar", {
+        duration: 3000,
+      });
+      return;
+    } else {
       dispatch(postRating({ movieId: detail.id, count }));
       setRating(count);
     }
@@ -54,6 +60,13 @@ function Detail() {
     dispatch(getMovieById(id));
     return () => dispatch(cleanDetail());
   }, [id, dispatch]);
+
+  useEffect(() => {
+    if (detail.shows && detail.shows.length > 0) {
+      const firstDay = detail.shows[0].date;
+      handleClickDate(firstDay);
+    }
+  }, [detail.shows]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -70,6 +83,7 @@ function Detail() {
         <Error404 />
       ) : (
         <div className="w-full flex flex-col mt-20 p-10">
+          <Toaster />
           <div className="w-full flex">
             <div className="w-96 h-fit flex flex-col items-center">
               <div className="w-full relative">
@@ -138,7 +152,7 @@ function Detail() {
               </div>
               <div className="w-4/5 mb-6 flex flex-col">
                 <div>
-                  <h3>Shows</h3>
+                  <h3>Funciones</h3>
                   <div className="flex items-center justify-start">
                     {detail.shows
                       ?.map((show) => show.date)
