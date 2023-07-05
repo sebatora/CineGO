@@ -58,15 +58,15 @@ function CinePlusGold() {
       <div className="w-96 mt-2 rounded-lg relative">
         <div className="">
           <div className="h-20 grid items-center bg-yellow-300 border-2 border-yellow-300 rounded-t-xl">
-            <h2 className="font-bold mx-auto text-white dark:text-black">
-              Cine Plus Black
+            <h2 className="font-bold mx-auto text-black dark:text-white">
+              Cine Plus Gold
             </h2>
             {pathname !== "/profile" ? (
-              <span className="font-bold mx-auto text-white dark:text-black">
+              <span className="font-bold mx-auto text-black dark:text-white">
                 ${subGold.price} por mes
               </span>
             ) : userData.cinePlus === "Estandar" ? (
-              <span className="font-bold mx-auto text-white dark:text-black">
+              <span className="font-bold mx-auto text-black dark:text-white">
                 ${subGold.price} por mes
               </span>
             ) : (
