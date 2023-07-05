@@ -60,6 +60,10 @@ function CinePlusBlack() {
               <span className="font-bold mx-auto text-white dark:text-black">
                 ${subBlack.price} por mes
               </span>
+            ) : userData.cinePlus === "Estandar" ? (
+              <span className="font-bold mx-auto text-white dark:text-black">
+                ${subBlack.price} por mes
+              </span>
             ) : (
               ""
             )}
