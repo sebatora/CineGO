@@ -57,7 +57,7 @@ const Login = () => {
 
   useEffect(() => {
     if(userData?.email){
-      toast.success("Inicio de sesión exitoso");
+     // toast.success("Inicio de sesión exitoso");
       navigate("/");
     }
   }, [userData]);
