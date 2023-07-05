@@ -5,6 +5,36 @@ import cloudinary from "cloudinary-core";
 import { toast } from "react-toastify";
 import { getMovies, putMovie, getGenres } from "../../../redux/actions";
 import { useSelector } from "react-redux";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+
+const schema = yup.object().shape({
+  title: yup
+    .string()
+    .matches(/^([A-Za-z]+\s?){1,30}$/, "Solo letras máx 30 caracteres")
+    .required("El título es requerido"),
+  description: yup
+    .string()
+    .required("La descripción es requerida"),
+  actors: yup
+    .string()
+    .matches(/^.{1,140}$/, "máx 140 caracteres")
+    .required("Los actores son requeridos"),
+  director: yup
+    .string()
+    .matches(/^([A-Za-z]+\s?){1,18}$/, "Solo letras máx 18 caracteres")
+    .required("El director es requerido"),
+  duration: yup
+    .string()
+    .matches(/^[0-9]+$/, "Solo números")
+    .required("Duración requerida"),
+  release_date: yup.string().required("Fecha de estreno requerida"),
+  trailer: yup
+    .string()
+    .url("Ingrese una URL válida para el tráiler")
+    .required("Tráiler requerido"),
+  clasification: yup.string().required("Clasificacion requerida"),
+});
 
 const EditMovie = ({ setActiveEdit, movieFound }) => {
   const dispatch = useDispatch();
@@ -32,6 +62,7 @@ const EditMovie = ({ setActiveEdit, movieFound }) => {
       description: movieFound.description,
       genres: movieFound.genres,
     },
+    resolver: yupResolver(schema),
   });
 
   const handleUploadPhoto = () => {
@@ -97,7 +128,7 @@ const EditMovie = ({ setActiveEdit, movieFound }) => {
       ></div>
       <div className="w-full h-full flex justify-center p-8">
         <form
-          className="w-[35%] fixed top-0 left-0 bottom-0 right-0 z-20 flex flex-col bg-slate-600 p-6 mx-auto my-10 rounded-md"
+          className="w-[50%] fixed top-0 left-0 bottom-0 right-0 z-20 flex flex-col bg-slate-600 p-6 mx-auto my-10 rounded-md"
           ref={form}
           onSubmit={handleSubmit(onSubmit)}
         >
@@ -153,142 +184,163 @@ const EditMovie = ({ setActiveEdit, movieFound }) => {
                 </span>
               )}
             </div>
-            <div className="flex justify-around mb-6">
-              <div className="flex flex-col w-72">
-                <label className="">Actores</label>
 
-                <input
-                  className="border rounded-md p-1"
-                  type="text"
-                  placeholder="Ingresar actores"
-                  {...register("actors", {
-                    pattern: /^[\w\s.,]{1,140}$/,
-                  })}
-                />
-                {errors.actors && errors.actors.type === "pattern" && (
-                  <span className="text-red-600 dark:text-red-600 text-sm">
-                    Máx 140 caracteres.
-                  </span>
-                )}
-              </div>
-              <div className="flex flex-col w-72">
-                <label className="">Director</label>
+            <div className="w-full flex space-x-4">
+              <div className="w-2/3">
+                <div className="flex justify-around mb-6 space-x-4">
+                  <div className="w-full flex flex-col">
+                    <label className="">Actores</label>
 
-                <input
-                  className="border rounded-md p-1"
-                  type="text"
-                  placeholder="Ingresar director"
-                  {...register("director", {
-                    pattern: /^[\w\s.,]{1,18}$/,
-                  })}
-                />
-                {errors.director && errors.director.type === "pattern" && (
-                  <span className="text-red-600 dark:text-red-600 text-sm">
-                    Máx 18 caracteres.
-                  </span>
-                )}
-              </div>
-            </div>
-            <div className="flex justify-around mb-6">
-              <div className="flex flex-col w-72">
-                <label className="">Duración</label>
-                <input
-                  className="border rounded-md p-1"
-                  type="text"
-                  placeholder="Ingresar duracion"
-                  {...register("duration", {
-                    pattern: /^[0-9]+$/,
-                  })}
-                />
-
-                {errors.duration && errors.duration.type === "pattern" && (
-                  <span className="text-red-600 dark:text-red-600 text-sm">
-                    Solo números.
-                  </span>
-                )}
-              </div>
-              <div className="flex flex-col w-72">
-                <label className="">Estreno</label>
-
-                <input
-                  className="border rounded-md p-1"
-                  type="text"
-                  placeholder="Ingresar fecha de estreno"
-                  {...register("release_date", {
-                    pattern: /^\d{4}[-\/]\d{2}[-\/]\d{2}$/,
-                  })}
-                />
-
-                {errors.release_date &&
-                  errors.release_date.type === "pattern" && (
-                    <span className="text-red-600 dark:text-red-600 text-sm">
-                      El formato: aaaa/mm/dd
-                    </span>
-                  )}
-              </div>
-            </div>
-            <div className="flex justify-around mb-6">
-              <div className="flex flex-col w-72">
-                <select
-                  className="border rounded-md p-1"
-                  name="clasification"
-                  value={watch("clasification")}
-                  {...register("clasification")}
-                >
-                  <option value="clasification" disabled>
-                    Clasificación
-                  </option>
-                  <option className="dark:text-black" value="ATP">
-                    ATP
-                  </option>
-                  <option className="dark:text-black" value="+13">
-                    +13
-                  </option>
-                  <option className="dark:text-black" value="+16">
-                    +16
-                  </option>
-                </select>
-                {errors.clasification && (
-                  <span className="mt-2 text-red-600 dark:text-red-600 text-base">
-                    {errors.clasification.message}
-                  </span>
-                )}
-              </div>
-
-              <div className="flex flex-col w-72">
-                <div className="relative">
-                  <select
-                    {...register("genres")}
-                    className="border rounded-sm p-1 w-72 mb-2 flex flex-col"
-                    onChange={(e) => handleSelect(e)}
-                    value={selectedGenres}
-                  >
-                    <option value="genres">Géneros</option>
-                    {genres.map((genre) => (
-                      <option key={genre.id} value={genre.name}>
-                        {genre.name}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-                <div>
-                  <div className="">
-                    {selectedGenres.map((genre) => (
-                      <span
-                        key={genre}
-                        className="bg-gray-200 text-gray-700 font-semibold py-1 px-1 ml-1 rounded-md mr-2 dark:text-gray-700 text-xs"
-                      >
-                        {genre}
-                        <button
-                          className="text-red-500 hover:text-red-700 ml-2 "
-                          onClick={() => handleDelete(genre)}
-                        >
-                          X
-                        </button>
+                    <input
+                      className="border rounded-md p-1"
+                      type="text"
+                      placeholder="Ingresar actores"
+                      {...register("actors", {
+                        pattern: /^[\w\s.,]{1,140}$/,
+                      })}
+                    />
+                    {errors.actors && errors.actors.type === "pattern" && (
+                      <span className="text-red-600 dark:text-red-600 text-sm">
+                        Máx 140 caracteres.
                       </span>
-                    ))}
+                    )}
+                  </div>
+                  <div className="w-full flex flex-col">
+                    <label className="">Director</label>
+
+                    <input
+                      className="border rounded-md p-1"
+                      type="text"
+                      placeholder="Ingresar director"
+                      {...register("director", {
+                        pattern: /^[\w\s.,]{1,18}$/,
+                      })}
+                    />
+                    {errors.director && errors.director.type === "pattern" && (
+                      <span className="text-red-600 dark:text-red-600 text-sm">
+                        Máx 18 caracteres.
+                      </span>
+                    )}
                   </div>
                 </div>
+                <div className="flex justify-around mb-6 space-x-4">
+                  <div className="w-full flex flex-col">
+                    <label className="">Duración</label>
+                    <input
+                      className="border rounded-md p-1"
+                      type="text"
+                      placeholder="Ingresar duracion"
+                      {...register("duration", {
+                        pattern: /^[0-9]+$/,
+                      })}
+                    />
+
+                    {errors.duration && errors.duration.type === "pattern" && (
+                      <span className="text-red-600 dark:text-red-600 text-sm">
+                        Solo números.
+                      </span>
+                    )}
+                  </div>
+                  <div className="w-full flex flex-col">
+                    <label className="">Estreno</label>
+
+                    <input
+                      className="border rounded-md p-1"
+                      type="text"
+                      placeholder="Ingresar fecha de estreno"
+                      {...register("release_date", {
+                        pattern: /^\d{4}[-\/]\d{2}[-\/]\d{2}$/,
+                      })}
+                    />
+
+                    {errors.release_date &&
+                      errors.release_date.type === "pattern" && (
+                        <span className="text-red-600 dark:text-red-600 text-sm">
+                          El formato: aaaa/mm/dd
+                        </span>
+                      )}
+                  </div>
+                </div>
+                <div className="flex justify-around mb-6 space-x-4">
+                  <div className="w-full flex flex-col">
+                    <select
+                      className="border rounded-md p-1"
+                      name="clasification"
+                      value={watch("clasification")}
+                      {...register("clasification")}
+                    >
+                      <option value="clasification" disabled>
+                        Clasificación
+                      </option>
+                      <option className="dark:text-black" value="ATP">
+                        ATP
+                      </option>
+                      <option className="dark:text-black" value="+13">
+                        +13
+                      </option>
+                      <option className="dark:text-black" value="+16">
+                        +16
+                      </option>
+                    </select>
+                    {errors.clasification && (
+                      <span className="mt-2 text-red-600 dark:text-red-600 text-base">
+                        {errors.clasification.message}
+                      </span>
+                    )}
+                  </div>
+
+                  <div className="w-full flex flex-col">
+                    <div className="w-full flex flex-col mb-2">
+                      <select
+                        {...register("genres")}
+                        className="border rounded-md p-1"
+                        onChange={(e) => handleSelect(e)}
+                        value={selectedGenres}
+                      >
+                        <option value="genres">Géneros</option>
+                        {genres.map((genre) => (
+                          <option key={genre.id} value={genre.name}>
+                            {genre.name}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                    <div>
+                      <div className="">
+                        {selectedGenres.map((genre) => (
+                          <span
+                            key={genre}
+                            className="bg-gray-200 text-gray-700 font-semibold py-1 px-1 ml-1 rounded-md mr-2 dark:text-gray-700 text-xs"
+                          >
+                            {genre}
+                            <button
+                              className="text-red-500 hover:text-red-700 ml-2 "
+                              onClick={() => handleDelete(genre)}
+                            >
+                              X
+                            </button>
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="w-1/3">
+                <label className="pb-1">Descripción</label>
+                <textarea
+                  className="border rounded-sm p-1 w-60 resize-none"
+                  rows={8}
+                  type="text"
+                  placeholder="Descripción"
+                  {...register("description")}
+                />
+                {errors.description && (
+                  <span className="mt-2 text-red-600 dark:text-red-600 text-xs">
+                    {errors.description.message}
+                  </span>
+                )}
               </div>
             </div>
 
