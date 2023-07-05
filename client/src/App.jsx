@@ -4,8 +4,8 @@ import { useSelector } from "react-redux";
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import { AuthProvider } from "./context/authContext";
 
-// axios.defaults.baseURL = "https://cinego-production.up.railway.app";
-axios.defaults.baseURL = "http://localhost:3001";
+axios.defaults.baseURL = "https://cinego-production.up.railway.app";
+// axios.defaults.baseURL = "http://localhost:3001";
 
 // Components
 import Footer from "./components/Footer/Footer";
