@@ -35,6 +35,7 @@ function CinePlusBlack() {
             cinePlus: "Black",
             quantity: 1,
             type: "subscription",
+            price: 1199
           },
         ],
         totalPrice: subBlack.price,

@@ -39,6 +39,7 @@ function CinePlusGold() {
             cinePlus: "Gold",
             quantity: 1,
             type: "subscription",
+            price: 499
           },
         ],
         totalPrice: subGold.price,
