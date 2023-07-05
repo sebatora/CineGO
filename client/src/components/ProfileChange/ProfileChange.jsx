@@ -72,10 +72,11 @@ function ProfileChange() {
         title: "Vas a modificar tus datos. ¿Estás seguro?",
         text: "Tendrás que volver a iniciar sesión",
         icon: "warning",
-        showCancelButton: true,
+        showDenyButton: true,
         confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Si!",
+        denyButtonColor: "#d33",
+        denyButtonText: "Cancelar",
+        confirmButtonText: "¡Sí!",
       }).then((result) => {
         if (result.isConfirmed) {
           dispatch(putUser(savePic));
