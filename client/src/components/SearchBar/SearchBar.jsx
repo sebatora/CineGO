@@ -17,12 +17,8 @@ const SearchBar = () => {
   }, [dispatch, name]);
 
   return (
-    <div className="w-full flex ml-8">
-      <button
-        className="mx-2"
-        onClick={() => setActiveSearch(!activeSearch)}
-        style={{ cursor: "default" }}
-      >
+    <div className="lg:w-2/3 relative flex items-center mx-6 mb-4 lg:mb-0 md:mx-20 lg:mx-12">
+      <div className="absolute right-2">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -36,10 +32,10 @@ const SearchBar = () => {
             d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
           />
         </svg>
-      </button>
+      </div>
 
       <input
-        className="w-3/4 appearance-none bg-transparent focus:border-b-2 dark:focus:border-b-white dark:text-white focus:outline-none focus:border-black py-1 px-2 placeholder:text-black dark:placeholder:text-white"
+        className="w-full bg-transparent border border-light-500 rounded-xl py-2 px-3 placeholder:text-black dark:placeholder:text-white"
         type="search"
         name="search"
         onChange={handleChange}

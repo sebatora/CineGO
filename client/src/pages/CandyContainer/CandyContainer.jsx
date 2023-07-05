@@ -22,9 +22,9 @@ function CandyContainer() {
   const golosinas = candyProduct.filter((product) => product.category === "golosinas");
 
   const addCart = (name) => {
-    if (productCount >= 5) {
+    if (productCount >= 10) {
       toast.dismiss(); // Limpiar la alerta existente si hay alguna
-      toast.error("Has alcanzado el límite de 5 productos en tu carrito.", {
+      toast.error("Has alcanzado el límite de 10 productos en tu carrito.", {
         duration: 3000,
       });
       return;

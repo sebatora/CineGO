@@ -18,14 +18,14 @@ const Carousel = ({ images }) => {
   };
 
   return (
-    <div className="w-3/4 h-[420px] relative overflow-hidden flex flex-col items-center mt-2">
-      <div className="w-11/12 h-11/12 rounded-md">
+    <div className="w-full px-4 md:w-3/4 h-[250px] md:h-[420px] relative overflow-hidden flex flex-col items-center mt-2">
+      <div className="w-full h-full">
         {images.map((image, index) => (
           <img
             key={index}
             src={image}
             alt={`Image ${index + 1}`}
-            className={`absolute top-0 left-0 opac w-full h-full opacity-0 transition-opacity duration-500 ease-in-out ${
+            className={`absolute w-full h-full opacity-0 transition-opacity duration-500 ease-in-out ${
               index === currentImageIndex ? "opacity-100" : ""
             }`}
           />

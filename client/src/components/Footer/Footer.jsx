@@ -9,8 +9,8 @@ import "@fortawesome/fontawesome-free/css/all.css";
 function Footer({ theme }) {
   return (
     <footer className="w-full border-t border-t-light-200 dark:border-t-light-900">
-      <div className="w-full flex justify-evenly">
-        <div className="w-1/4 flex pl-12">
+      <div className="w-full flex lg:justify-evenly">
+        <div className="w-1/4 hidden lg:flex pl-12">
           <Link className="w-40" to="/">
             {theme === "dark" ? (
               <img src={cinego_blanco} alt="CineGO" />
@@ -19,38 +19,38 @@ function Footer({ theme }) {
             )}
           </Link>
         </div>
-        <div className="w-3/4 flex items-center">
-          <span className="p-6 text-sm">
+        <div className="w-full flex-wrap lg:w-3/4 flex items-center justify-center lg:justify-start py-2 md:p-0">
+          <span className="p-2 md:p-4 lg:p-6 text-sm">
             <Link className="hover:text-light-400" to="/">
               Cartelera
             </Link>
           </span>
-          <span className="p-6 text-sm">
+          <span className="p-2 md:p-4 lg:p-6 text-sm">
             <Link className="hover:text-light-400" to="/candy">
               Candy
             </Link>
           </span>
-          <span className="p-6 text-sm">
+          <span className="p-2 md:p-4 lg:p-6 text-sm">
             <Link className="hover:text-light-400" to="/cinePlus">
               CinePlus
             </Link>
           </span>
-          <span className="p-6 text-sm">
+          <span className="p-2 md:p-4 lg:p-6 text-sm">
             <Link className="hover:text-light-400" to="/faq">
               FAQ
             </Link>
           </span>
-          <span className="p-6 text-sm">
+          <span className="p-2 md:p-4 lg:p-6 text-sm">
             <Link className="hover:text-light-400" to="/contact">
               Contacto
             </Link>
           </span>
-          <span className="p-6 text-sm">
+          <span className="p-2 md:p-4 lg:p-6 text-sm">
             <Link className="hover:text-light-400" to="/about">
               Desarrolladores
             </Link>
           </span>
-          <span className="p-6 text-sm">
+          <span className="p-2 md:p-4 lg:p-6 text-sm">
             <Link
               className="hover:text-light-400"
               to="https://github.com/sebatora/CineGO"

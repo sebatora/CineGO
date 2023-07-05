@@ -63,15 +63,15 @@ const DataMovies = () => {
   }, [dispatch, movieName]);
 
   return (
-    <div className="h-screen flex justify-center items-center">
+    <div className="min-h-screen flex justify-center">
       {loading ? (
         <Spinner />
       ) : (
         <div className="w-full">
-          <h3 className="dark:text-black p-4">Películas</h3>
-          <div className="absolute right-0 top-0 m-4">
+          <div className="w-full flex justify-between items-center">
+            <h3 className="dark:text-black p-4">Películas</h3>
             <button
-              className="flex items-center bg-light-200 rounded-md p-2"
+              className="flex items-center bg-light-200 rounded-md p-2 m-2"
               onClick={() => setActiveForm(true)}
             >
               <svg
@@ -89,10 +89,10 @@ const DataMovies = () => {
               <p className="text-sm dark:text-black">Añadir</p>
             </button>
           </div>
-          <div className="w-full p-2 border">
+          <div className="w-full p-2">
             <div className="w-full flex items-center mb-2">
               <input
-                className="w-full rounded appearance-none bg-slate-100 py-1 px-2 focus:outline-slate-400"
+                className="w-full rounded appearance-none bg-slate-200 py-1 px-2 focus:outline-slate-400"
                 type="text"
                 onChange={handleChangeName}
                 placeholder="Buscar película"

@@ -23,7 +23,6 @@ function Detail() {
     } else {
       setSelectedDay(day);
       setSelectedShow(null);
-      console.log(day);
     }
   };
 
@@ -138,7 +137,7 @@ function Detail() {
               </div>
               <div className="w-4/5 mb-6 flex flex-col">
                 <div>
-                  <h3>Shows</h3>
+                  <h4 className="mb-1">Funciones</h4>
                   <div className="flex items-center justify-start">
                     {detail.shows
                       ?.map((show) => show.date)
@@ -146,15 +145,13 @@ function Detail() {
                         (date, index, array) => array.indexOf(date) === index
                       )
                       .map((date) => (
-                        <div className="w-[150px] h-[50px] flex items-center justify-center">
+                        <div className="flex items-center justify-center">
                           <button
                             key={date}
                             onClick={() => handleClickDate(date)}
-                            className={
-                              selectedDay === date
-                                ? "selected  bg-black p-2 m-1 mr-3 border-2  border-gray-600 rounded-lg text-white text-xl font-bold"
-                                : "bg-slate-300 p-2 m-1 mr-3 border-2 border-gray-600 rounded-lg text-xl font-bold"
-                            }
+                            className={`px-3 py-2 m-1 mr-3 font-bold rounded-lg dark:text-white hover:scale-105 shadow hover:shadow-light-500 hover:dark:bg-slate-600 ${
+                              selectedDay === date ? "bg-blue-600 hover:bg-blue-500 dark:bg-dark-700 hover:dark:bg-dark-600" : "bg-light-200 dark:bg-slate-800"
+                            }`}
                           >
                             {date}
                           </button>
@@ -164,7 +161,7 @@ function Detail() {
                 </div>
                 {selectedDay && (
                   <div>
-                    <h4>Horarios:</h4>
+                    <h4 className="my-1">Horarios:</h4>
                     <div className="flex items-start">
                       {detail.shows
                         ?.filter((show) => show.date === selectedDay)
@@ -172,11 +169,9 @@ function Detail() {
                           <div
                             key={show.id}
                             onClick={() => handleClickShow(show)}
-                            className={
-                              selectedShow === show
-                                ? "w-[100px] h-[50px] flex items-center justify-center bg-black p-2 m-1 mr-3 border-2   border-gray-600 rounded-lg text-white text-xl font-bold"
-                                : "w-[100px] h-[50px] flex items-center justify-center  bg-slate-300 p-2 m-1 mr-3 border-2  border-gray-600 rounded-lg text-xl font-bold"
-                            }
+                            className={`flex items-center justify-center px-3 py-2 m-1 mr-3 font-bold rounded-lg dark:text-white hover:scale-105 shadow hover:shadow-light-500 hover:dark:bg-slate-600 ${
+                              selectedShow === show ? "bg-blue-600 hover:bg-blue-500 dark:bg-dark-700 hover:dark:bg-dark-600" : "bg-light-200 dark:bg-slate-800"
+                            }`}
                           >
                             <button>{show.hour}</button>
                           </div>

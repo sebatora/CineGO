@@ -28,8 +28,8 @@ function MoviesContainer() {
       {loading ? (
         <Spinner />
       ) : (
-        <div className="w-11/12 mt-8">
-          <div className="w-full flex justify-center my-2">
+        <div className="w-full lg:w-11/12 mt-8">
+          <div className="w-full flex flex-col lg:flex-row justify-center my-2">
             <Filter />
             <SearchBar />
           </div>

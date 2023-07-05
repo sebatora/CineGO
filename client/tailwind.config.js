@@ -94,8 +94,17 @@ export default {
           900: "#370617",
           950: "#03071c",
         },
+      },
+    },
+  },
+  plugins: [
+    require("tailwindcss-animated"),
+    require("@headlessui/tailwindcss"),
+  ],
+};
 
-        tremor: {
+/*
+tremor: {
           brand: {
             faint: "#eff6ff", // blue-50
             muted: "#bfdbfe", // blue-200
@@ -211,9 +220,5 @@ export default {
       pattern:
         /^(fill-(?:slate|gray|zinc|neutral|stone|red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose)-(?:50|100|200|300|400|500|600|700|800|900|950))$/,
     },
-  ],
-  plugins: [
-    require("tailwindcss-animated"),
-    require("@headlessui/tailwindcss"),
-  ],
-};
+  ]
+*/

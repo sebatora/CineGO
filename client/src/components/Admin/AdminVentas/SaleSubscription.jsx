@@ -29,7 +29,7 @@ const SaleSubscription = () => {
 
   return (
     <> 
-      <div className=' flex justify-center bg-gradient-to-r from-blue-400 via-pink-400 to-red-400 overflow-y-auto max-w-7xl'>
+      <div className=' flex justify-center overflow-y-auto'>
         <Card className='bg-blue-200 overflow-y-auto max-w-5xl mt-5'>
             <Title className="text-2xl font-bold text-center mb-2">Cantidad de suscripciones</Title>
             <Table className="w-full border-collapse border border-gray-300 min-w-full  max-h-40 dark:border-gray-500">
@@ -53,7 +53,7 @@ const SaleSubscription = () => {
         </Card>
       </div>
 
-      <div className="flex justify-center bg-gradient-to-r from-blue-400 via-pink-400 to-red-400 overflow-y-auto max-w-7xl">
+      <div className="flex justify-center overflow-y-auto">
         <Card className=' dark:bg-dark-tremor-brand-muted overflow-y-auto max-w-5xl mt-5 bg-gradient-to-br from-indigo-500 to-blue-200 rounded-lg shadow-lg  '>
         <Title className="font-bold text-4xl">Suscripciones </Title>
 

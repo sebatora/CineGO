@@ -50,7 +50,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="my-20 mx-10 px-10 py-4 flex h-[80vh]">
+    <div className="h-full my-20 mx-10 px-10 py-4 flex">
       <Toaster />
       <form
         className="w-[600px] min-h-[500px] h-full relative flex flex-col justify-around p-4 bg-light-50 dark:bg-transparent dark:shadow-[0_0_10px_0px_#fff] rounded"
@@ -61,7 +61,7 @@ const Contact = () => {
         <div className={`flex flex-col ${errors.name ? "mb-0" : "mb-4"}`}>
           <label htmlFor="name">Nombre</label>
           <input
-            className="py-4 px-3 rounded w-full"
+            className="py-2 px-3 rounded w-full"
             name="name"
             type="text"
             placeholder="Ingresa tu nombre"
@@ -82,7 +82,7 @@ const Contact = () => {
         <div className={`flex flex-col ${errors.email ? "mb-0" : "mb-4"}`}>
           <label htmlFor="email">Email</label>
           <input
-            className="py-4 px-3 rounded w-full"
+            className="py-2 px-3 rounded w-full"
             name="email"
             type="email"
             placeholder="Ingresa tu email"
@@ -118,7 +118,7 @@ const Contact = () => {
           )}
         </div>
         <button
-          className="w-full rounded py-4 px-3 mt-3 bg-primary-600 hover:bg-primary-500 text-white font-semibold"
+          className="w-full rounded py-2 px-3 mt-3 bg-primary-600 hover:bg-primary-500 text-white font-semibold"
           type="submit"
         >
           Enviar
@@ -135,7 +135,7 @@ const Contact = () => {
               <img
                 src={facebook}
                 alt="facebook"
-                className="w-[60px]  ml-10 mr-10 mt-2"
+                className="w-12 ml-10 mr-10 mt-2"
               />
             </Link>
             <Link
@@ -146,7 +146,7 @@ const Contact = () => {
               <img
                 src={instagram}
                 alt="instagram"
-                className="w-[60px]  ml-10 mr-10 mt-2"
+                className="w-12 ml-10 mr-10 mt-2"
               />
             </Link>
           </div>
@@ -154,7 +154,7 @@ const Contact = () => {
       </form>
       <div className="w-full h-full flex items-center justify-center">
         <MapContainer
-          className="min-w-[600px] w-full min-h-[500px] h-full z-10 ml-8"
+          className="min-w-[600px] w-full min-h-[640px] h-full z-10 ml-8"
           center={[-34.61315, -58.37723]}
           zoom={13}
           scrollWheelZoom={false}
