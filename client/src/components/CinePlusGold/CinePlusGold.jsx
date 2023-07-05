@@ -12,7 +12,7 @@ function CinePlusGold() {
   const navigate = useNavigate();
 
   const subGold = {
-    type: "Cine Plus Gold",
+    type: "Gold",
     price: 499,
   };
 
@@ -21,7 +21,9 @@ function CinePlusGold() {
     if (!userData) {
       navigate("/login");
     } else if (userData.cinePlus === "Gold") {
-      toast.error("Ya estas suscripto a esta plan");
+      toast.dismiss();
+      toast.error("Ya estas suscripto a este plan");
+      return;
     } else {
       const { data } = await axios.post("/subscription", {
         subscription: subGold,
@@ -58,14 +60,14 @@ function CinePlusGold() {
               ${subGold.price} por mes
             </span>
           </div>
-          <div className="h-[280px] flex flex-col justify-between p-4 border-2 border-yellow-300 rounded-b-xl">
+          <div className="h-80 flex flex-col justify-between p-4 border-2 border-yellow-300 rounded-b-xl">
             <ul className="m-0 p-0">
               <li className="flex justify-around m-2">
                 <div className="w-4/5">
                   <h3 className="m-0 text-sm font-bold">
                     2 Entradas Mensuales
                   </h3>
-                  <p className="m-0 text-xs font-normal">GRATIS</p>
+                  <p className="m-0 text-xs font-normal">*Se retira en mesa de entrada</p>
                 </div>
                 <FaCheck className="dark:text-white" />
               </li>
@@ -75,6 +77,7 @@ function CinePlusGold() {
                     Regalo de bienvenida
                   </h3>
                   <p className="m-0 text-xs font-normal">*Por única vez.</p>
+                  <p className="m-0 text-xs font-normal">*Se retira en mesa de entrada.</p>
                 </div>
                 <FaCheck className="dark:text-white" />
               </li>
@@ -98,7 +101,7 @@ function CinePlusGold() {
             </ul>
             <button
               onClick={handleSubmit}
-              className="w-7/12 mx-auto bg-yellow-300 hover:bg-yellow-200 my-8 p-2 rounded-xl"
+              className="w-7/12 mx-auto bg-yellow-300 hover:bg-yellow-200 p-2 -mb-10 rounded-xl"
             >
               <span className="text-base font-bold">¡Quiero suscribirme!</span>
             </button>

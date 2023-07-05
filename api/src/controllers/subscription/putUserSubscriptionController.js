@@ -1,13 +1,13 @@
 const { User } = require("../../db")
 
-const putUserSubscriptionController = async (userId, cinePlus) => {
+const putUserSubscriptionController = async (id, cinePlus) => {
     
-    if(!userId) throw new Error("Faltan datos")
+    if(!id) throw new Error("Faltan datos")
 
      // verificamos que usuario exista
      //findOne = verifica si el usuario existe en la base de datos
      //{ where: { id: userId } } = es un objeto que especifica los criterios de busqueda, busca que id sea === al valor de userId
-     const user = await User.findOne({ where: { id: userId } });
+     const user = await User.findOne({ where: { id } });
         if(!user) {
           throw new Error("Usuario no encontrado");
         }
