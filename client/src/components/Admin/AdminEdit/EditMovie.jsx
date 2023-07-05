@@ -1,11 +1,10 @@
-import { useEffect, useRef, useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
+import { useEffect, useRef, useState } from "react";
+import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
 import cloudinary from "cloudinary-core";
-import { toast } from 'react-toastify';
-import { getMovies, putMovie, getGenres } from '../../../redux/actions';
-import { useSelector } from 'react-redux';
-
+import { toast } from "react-toastify";
+import { getMovies, putMovie, getGenres } from "../../../redux/actions";
+import { useSelector } from "react-redux";
 
 const EditMovie = ({ setActiveEdit, movieFound }) => {
   const dispatch = useDispatch();
@@ -19,7 +18,7 @@ const EditMovie = ({ setActiveEdit, movieFound }) => {
     register,
     handleSubmit,
     formState: { errors },
-    watch
+    watch,
   } = useForm({
     defaultValues: {
       title: movieFound.title,
@@ -74,20 +73,20 @@ const EditMovie = ({ setActiveEdit, movieFound }) => {
   }, []);
 
   const handleSelect = (e) => {
-	const newGenre = e.target.value;
-	if (selectedGenres.includes(newGenre)) {
-	  alert("Ya has seleccionado este género");
-	  return;
-	}
-	setSelectedGenres([...selectedGenres, newGenre]);
+    const newGenre = e.target.value;
+    if (selectedGenres.includes(newGenre)) {
+      alert("Ya has seleccionado este género");
+      return;
+    }
+    setSelectedGenres([...selectedGenres, newGenre]);
   };
-  
+
   const handleDelete = (genre) => {
-	setSelectedGenres(selectedGenres.filter((g) => g !== genre));
+    setSelectedGenres(selectedGenres.filter((g) => g !== genre));
   };
-  
+
   useEffect(() => {
-	dispatch(getGenres());
+    dispatch(getGenres());
   }, [dispatch]);
 
   return (
@@ -98,7 +97,7 @@ const EditMovie = ({ setActiveEdit, movieFound }) => {
       ></div>
       <div className="w-full h-full flex justify-center p-8">
         <form
-          className="w-[40%] fixed top-0 left-0 bottom-0 right-0 z-20 flex flex-col bg-light-300 dark:bg-slate-900 p-6 mx-auto my-10 rounded-md"
+          className="w-[40%] fixed top-0 left-0 bottom-0 right-0 z-20 flex flex-col bg-slate-600 p-6 mx-auto my-10 rounded-md"
           ref={form}
           onSubmit={handleSubmit(onSubmit)}
         >
@@ -119,191 +118,206 @@ const EditMovie = ({ setActiveEdit, movieFound }) => {
               />
             </svg>
           </button>
-          <h1 className="pb-1 ml-3">Editar película</h1>
-          <div className="flex flex-col mb-4 items-center">
-            <input
-              className="border rounded-md p-1 w-9/12"
-              type="text"
-              placeholder="Ingresar título de la película"
-			  {...register("title", {
-				maxLength: 30
-			  })}
-            />
-			{errors.title && errors.title.type === "maxLength" && (
-			<span className="text-red-600 dark:text-red-600 text-sm">
-				El título no puede exceder los 30 caracteres.
-			</span>
-			)}
+          <h1 className="pb-1 ml-3 mb-6">Editar película</h1>
+          <div className="w-[90%] mx-auto">
+            <div className="flex flex-col mb-6">
+              <label className="">Nombre</label>
+              <input
+                className="border rounded-md p-1 w-full"
+                type="text"
+                placeholder="Ingresar título de la película"
+                {...register("title", {
+                  maxLength: 30,
+                })}
+              />
+              {errors.title && errors.title.type === "maxLength" && (
+                <span className="text-red-600 dark:text-red-600 text-sm">
+                  El título no puede exceder los 30 caracteres.
+                </span>
+              )}
+            </div>
+            <div className="flex flex-col mb-6">
+              <label className="">Trailer</label>
 
-          </div>
-		  <div className="flex flex-col mb-4 items-center">
-            <input
-              className="border rounded-md p-1 w-9/12"
-              type="text"
-              placeholder="Ingresar trailer"
-              {...register("trailer",{
-				pattern: /^(ftp|http|https):\/\/[^ "]+$/,
-			  })}
-            />
-            {errors.trailer && errors.trailer.type === "pattern" && (
-			<span className="text-red-600 dark:text-red-600 text-sm">
-				Ingrese una URL válida para el tráiler.
-			</span>
-			)}
-          </div>
-		  <div className="flex">
-		  <div className="flex flex-col mb-4 items-center">
-            <input
-              className="border rounded-md mr-4 ml-16 p-1 w-44"
-              type="text"
-              placeholder="Ingresar actores"
-              {...register("actors", {
-				pattern: /^[\w\s.,]{1,140}$/
-			  })}
-            />
-             {errors.actors && errors.actors.type === "pattern" && (
-			<span className="text-red-600 dark:text-red-600 text-sm">
-				Máx 140 caracteres.
-			</span>
-			)}
-          </div>
-		  <div className="flex flex-col mb-4 items-center">
-            <input
-              className="border rounded-md p-1 w-44"
-              type="text"
-              placeholder="Ingresar director"
-              {...register("director", {
-				pattern: /^[\w\s.,]{1,18}$/
-			  })}
-            />
-           {errors.director && errors.director.type === "pattern" && (
-			<span className="text-red-600 dark:text-red-600 text-sm">
-				Máx 18 caracteres.
-			</span>
-			)}
-          </div>
-		  </div>
-		  <div className="flex">
-		  <div className="flex flex-col mb-4 mr-4 ml-10 items-center">
-            <input
-              className="border rounded-md ml-6 p-1 w-44"
-              type="text"
-              placeholder="Ingresar duracion"
-              {...register("duration", {
-				pattern: /^[0-9]+$/
-			  })}
-            />
-            {errors.duration && errors.duration.type === "pattern" && (
-			<span className="text-red-600 dark:text-red-600 text-sm">
-				Solo números.
-			</span>
-			)}
-          </div>
-		  <div className="flex flex-col mb-4 items-center">
-            <input
-              className="border rounded-md p-1 w-44"
-              type="text"
-              placeholder="Ingresar fecha de estreno"
-              {...register("release_date", {
-				pattern: /^\d{4}[-\/]\d{2}[-\/]\d{2}$/
-			  })}
-            />
-            {errors.release_date && errors.release_date.type === "pattern" && (
-			<span className="text-red-600 dark:text-red-600 text-sm">
-				El formato: aaaa/mm/dd
-			</span>
-			)}
-          </div>
-		  </div>
-		  <div className="flex">
-		  <div className="flex flex-col mb-4 ml-10 mr-2 items-center">
-		  <select
-              className="border rounded-sm mr-2 p-1 ml-6 w-44 flex flex-col"
-              name="clasification"
-              value={watch("clasification")}
-              {...register("clasification")}
-            >
-              <option value="clasification" disabled>
-                Clasificación
-              </option>
-              <option className="dark:text-black" value="ATP">
-                ATP
-              </option>
-              <option className="dark:text-black" value="+13">
-                +13
-              </option>
-              <option className="dark:text-black" value="+16">
-                +16
-              </option>
-            </select>
-            {errors.clasification && (
-              <span className="mt-2 text-red-600 dark:text-red-600 text-base">
-                {errors.clasification.message}
-              </span>
-            )}
-          </div>
-          
-		  <div className="flex flex-col mb-4 items-center">
-			<div className="relative">
-				<select
-				{...register('genres')}
-				className="border rounded-sm p-1 w-44 mb-2 flex flex-col"
-				onChange={(e) => handleSelect(e)}
-				value={selectedGenres}
-				>
-				<option value="genres">Géneros</option>
-				{genres.map((genre) => (
-					<option key={genre.id} value={genre.name}>
-					{genre.name}
-					</option>
-				))}
-				</select>
-					</div>
-					<div>
-            <div className="">
-			{selectedGenres.map((genre) => (
-			<span
-				key={genre}
-				className="bg-gray-200 text-gray-700 font-semibold py-1 px-1 ml-1 rounded-md mr-2 dark:text-gray-700 text-xs"
-			>
-				{genre}
-				<button
-				className="text-red-500 hover:text-red-700 ml-2 "
-				onClick={() => handleDelete(genre)}
-				>
-				X
-				</button>
-			</span>
-			))}
-      </div>
-			</div>
-			</div>
-			</div>
-          <div className="w-full justify-center my-6 flex flex-row items-center">
-            <div className="w-[100px] h-[100px] flex justify-center items-start rounded-md border-[3px] border-gray-500">
-              {uploadedPhoto ? (
-                <img
-                  src={uploadedPhoto}
-                  alt="Movie Poster"
-                  className="w-full h-full object-cover rounded-md"
+              <input
+                className="border rounded-md p-1 w-full"
+                type="text"
+                placeholder="Ingresar trailer"
+                {...register("trailer", {
+                  pattern: /^(ftp|http|https):\/\/[^ "]+$/,
+                })}
+              />
+              {errors.trailer && errors.trailer.type === "pattern" && (
+                <span className="text-red-600 dark:text-red-600 text-sm">
+                  Ingrese una URL válida para el tráiler.
+                </span>
+              )}
+            </div>
+            <div className="flex justify-around mb-6">
+              <div className="flex flex-col w-72">
+                <label className="">Actores</label>
+
+                <input
+                  className="border rounded-md p-1"
+                  type="text"
+                  placeholder="Ingresar actores"
+                  {...register("actors", {
+                    pattern: /^[\w\s.,]{1,140}$/,
+                  })}
                 />
-              ) : (
-                watch("photoUser") && (
+                {errors.actors && errors.actors.type === "pattern" && (
+                  <span className="text-red-600 dark:text-red-600 text-sm">
+                    Máx 140 caracteres.
+                  </span>
+                )}
+              </div>
+              <div className="flex flex-col w-72">
+                <label className="">Director</label>
+
+                <input
+                  className="border rounded-md p-1"
+                  type="text"
+                  placeholder="Ingresar director"
+                  {...register("director", {
+                    pattern: /^[\w\s.,]{1,18}$/,
+                  })}
+                />
+                {errors.director && errors.director.type === "pattern" && (
+                  <span className="text-red-600 dark:text-red-600 text-sm">
+                    Máx 18 caracteres.
+                  </span>
+                )}
+              </div>
+            </div>
+            <div className="flex justify-around mb-6">
+              <div className="flex flex-col w-72">
+                <label className="">Duración</label>
+                <input
+                  className="border rounded-md p-1"
+                  type="text"
+                  placeholder="Ingresar duracion"
+                  {...register("duration", {
+                    pattern: /^[0-9]+$/,
+                  })}
+                />
+
+                {errors.duration && errors.duration.type === "pattern" && (
+                  <span className="text-red-600 dark:text-red-600 text-sm">
+                    Solo números.
+                  </span>
+                )}
+              </div>
+              <div className="flex flex-col w-72">
+                <label className="">Estreno</label>
+
+                <input
+                  className="border rounded-md p-1"
+                  type="text"
+                  placeholder="Ingresar fecha de estreno"
+                  {...register("release_date", {
+                    pattern: /^\d{4}[-\/]\d{2}[-\/]\d{2}$/,
+                  })}
+                />
+
+                {errors.release_date &&
+                  errors.release_date.type === "pattern" && (
+                    <span className="text-red-600 dark:text-red-600 text-sm">
+                      El formato: aaaa/mm/dd
+                    </span>
+                  )}
+              </div>
+            </div>
+            <div className="flex justify-around mb-6">
+              <div className="flex flex-col w-72">
+                <select
+                  className="border rounded-md p-1"
+                  name="clasification"
+                  value={watch("clasification")}
+                  {...register("clasification")}
+                >
+                  <option value="clasification" disabled>
+                    Clasificación
+                  </option>
+                  <option className="dark:text-black" value="ATP">
+                    ATP
+                  </option>
+                  <option className="dark:text-black" value="+13">
+                    +13
+                  </option>
+                  <option className="dark:text-black" value="+16">
+                    +16
+                  </option>
+                </select>
+                {errors.clasification && (
+                  <span className="mt-2 text-red-600 dark:text-red-600 text-base">
+                    {errors.clasification.message}
+                  </span>
+                )}
+              </div>
+
+              <div className="flex flex-col w-72">
+                <div className="relative">
+                  <select
+                    {...register("genres")}
+                    className="border rounded-sm p-1 w-72 mb-2 flex flex-col"
+                    onChange={(e) => handleSelect(e)}
+                    value={selectedGenres}
+                  >
+                    <option value="genres">Géneros</option>
+                    {genres.map((genre) => (
+                      <option key={genre.id} value={genre.name}>
+                        {genre.name}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <div>
+                  <div className="">
+                    {selectedGenres.map((genre) => (
+                      <span
+                        key={genre}
+                        className="bg-gray-200 text-gray-700 font-semibold py-1 px-1 ml-1 rounded-md mr-2 dark:text-gray-700 text-xs"
+                      >
+                        {genre}
+                        <button
+                          className="text-red-500 hover:text-red-700 ml-2 "
+                          onClick={() => handleDelete(genre)}
+                        >
+                          X
+                        </button>
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="w-full justify-center my-6 flex flex-row items-center">
+              <div className="w-[100px] h-[100px] flex justify-center items-start rounded-md border-[3px] border-gray-500">
+                {uploadedPhoto ? (
                   <img
-                    src={photoUser}
+                    src={uploadedPhoto}
                     alt="Movie Poster"
                     className="w-full h-full object-cover rounded-md"
                   />
-                )
-              )}
+                ) : (
+                  watch("photoUser") && (
+                    <img
+                      src={photoUser}
+                      alt="Movie Poster"
+                      className="w-full h-full object-cover rounded-md"
+                    />
+                  )
+                )}
+              </div>
+              <button
+                className="bg-primary-600 hover:bg-primary-500 py-2 px-6 w-92 ml-12 text-white font-semibold rounded-md"
+                type="button"
+                id="btn-photo-edit"
+              >
+                Cambiar foto
+              </button>
             </div>
-            <button
-              className="bg-primary-600 hover:bg-primary-500 py-2 px-6 w-92 ml-12 text-white font-semibold rounded-md"
-              type="button"
-              id="btn-photo-edit"
-            >
-              Cambiar foto
-            </button>
           </div>
 
           <button

@@ -4,7 +4,7 @@ import cloudinary from "cloudinary-core";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { getCandy, postCandy } from "../../../redux/actions";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 
 const CreateCandy = ({ setActiveForm }) => {
@@ -18,16 +18,16 @@ const CreateCandy = ({ setActiveForm }) => {
     handleSubmit,
     formState: { errors },
     reset,
-		watch
+    watch,
   } = useForm({
     defaultValues: {
       name: "",
       price: null,
       description: "",
       image: "",
-      category: ""
+      category: "",
     },
-		resolver: yupResolver(schema),
+    resolver: yupResolver(schema),
   });
 
   const handleUploadPhoto = () => {
@@ -65,7 +65,7 @@ const CreateCandy = ({ setActiveForm }) => {
       const handleReset = () => {
         setUploadedPhoto("");
         reset();
-      }
+      };
 
       dispatch(postCandy(candyData));
       handleReset();
@@ -73,7 +73,7 @@ const CreateCandy = ({ setActiveForm }) => {
         dispatch(getCandy());
       }, 1000);
       setActiveForm(false);
-      toast.success("Producto creado")
+      toast.success("Producto creado");
     } catch (error) {
       toast.error(error);
     }
@@ -92,7 +92,7 @@ const CreateCandy = ({ setActiveForm }) => {
       ></div>
       <div className="w-full h-full flex justify-center p-8">
         <form
-          className="w-[40%] fixed top-0 left-0 bottom-0 right-0 z-20 flex flex-col bg-light-300 dark:bg-slate-900 p-6 mx-auto my-10 rounded-md"
+          className="w-[40%] fixed top-0 left-0 bottom-0 right-0 z-20 flex flex-col  bg-slate-600 p-6 mx-auto my-10 rounded-md"
           ref={form}
           onSubmit={handleSubmit(onSubmit)}
         >
@@ -114,17 +114,24 @@ const CreateCandy = ({ setActiveForm }) => {
             </svg>
           </button>
           <h3 className="pb-4 ml-3">Agregar producto</h3>
-					<div className="flex flex-col mb-4 items-center">
-						<select className="border rounded-md p-1 w-96" name="Categoría" defaultValue="none" {...register("category")}>
-							<option value='none' disabled>Categoría</option>
-							<option value='combos'>Combos</option>
-							<option value='pochoclos'>Pochoclos</option>
-							<option value='bebidas'>Bebidas</option>
-							<option value='snacks'>Snacks</option>
-							<option value='cafeteria'>Cafetería</option>
-							<option value='golosinas'>Golosinas</option>
-						</select>
-					</div>
+          <div className="flex flex-col mb-4 items-center">
+            <select
+              className="border rounded-md p-1 w-96"
+              name="Categoría"
+              defaultValue="none"
+              {...register("category")}
+            >
+              <option value="none" disabled>
+                Categoría
+              </option>
+              <option value="combos">Combos</option>
+              <option value="pochoclos">Pochoclos</option>
+              <option value="bebidas">Bebidas</option>
+              <option value="snacks">Snacks</option>
+              <option value="cafeteria">Cafetería</option>
+              <option value="golosinas">Golosinas</option>
+            </select>
+          </div>
           <div className="flex flex-col mb-4 items-center">
             <input
               className="border rounded-md p-1 w-96"
@@ -165,32 +172,32 @@ const CreateCandy = ({ setActiveForm }) => {
               </span>
             )}
           </div>
-          <div className="w-full justify-center my-6 flex flex-row items-center">
-						<div className="w-[100px] h-[100px] flex justify-center items-start rounded-md border-[3px] border-gray-500">
-							{uploadedPhoto ? (
-								<img
-									src={uploadedPhoto}
-									alt="User Photo"
-									className="w-full h-full object-cover rounded-md"
-								/>
-							) : (
-								watch("photoUser") && (
-									<img
-										src={photoUser}
-										alt="User Photo"
-										className="w-full h-full object-cover rounded-md"
-									/>
-								)
-							)}
-						</div>
-						<button
-							className="bg-primary-600 hover:bg-primary-500 py-2 px-6 w-92 ml-12 text-white font-semibold rounded-md"
-							type="button"
-							id="btn-photo"
-						>
-							Subir foto
-						</button>
-					</div>
+          <div className="w-full flex justify-center my-6  flex-row items-center">
+            <div className="w-[100px] h-[100px] flex justify-center items-start rounded-md border-[3px] border-gray-500">
+              {uploadedPhoto ? (
+                <img
+                  src={uploadedPhoto}
+                  alt="User Photo"
+                  className="w-full h-full object-cover rounded-md"
+                />
+              ) : (
+                watch("photoUser") && (
+                  <img
+                    src={photoUser}
+                    alt="User Photo"
+                    className="w-full h-full object-cover rounded-md"
+                  />
+                )
+              )}
+            </div>
+            <button
+              className="bg-primary-600 hover:bg-primary-500 py-2 px-6 w-92 ml-12 text-white font-semibold rounded-md"
+              type="button"
+              id="btn-photo"
+            >
+              Subir foto
+            </button>
+          </div>
 
           <button
             className=" bg-primary-600 hover:bg-primary-500 p-4 mt-2 text-white font-semibold rounded-md"
@@ -202,21 +209,21 @@ const CreateCandy = ({ setActiveForm }) => {
       </div>
     </>
   );
-}
+};
 
 const schema = yup.object().shape({
   name: yup
     .string()
-    .matches(/^[A-Za-z\s]+$/, 'Solo letras máx 18 caracteres')
-    .required('El nombre es requerido'),
+    .matches(/^[A-Za-z\s]+$/, "Solo letras máx 18 caracteres")
+    .required("El nombre es requerido"),
   price: yup
     .string()
-    .matches(/^[0-9]{1,18}$/, 'Solo numeros')
-    .required('El precio es requerido'),
+    .matches(/^[0-9]{1,18}$/, "Solo numeros")
+    .required("El precio es requerido"),
   description: yup
     .string()
     // .matches(/^([A-Za-z0-9,:;.]+\s?){1,140}$/, 'máx 140 caracteres')
-    .required('La descripción es requerida'),
+    .required("La descripción es requerida"),
 });
 
 export default CreateCandy;
