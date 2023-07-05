@@ -22,7 +22,7 @@ const DataCandy = () => {
   const handleToggle = (candyId, activeCandy) => {
     setTimeout(() => {
       dispatch(getCandy());
-    }, 100);
+    }, 300);
     dispatch(putCandy(candyId, { activeCandy: `${!activeCandy}` }));
   };
 
