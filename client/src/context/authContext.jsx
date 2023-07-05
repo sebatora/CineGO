@@ -9,6 +9,8 @@ import {
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../redux/actions";
+import Swal from "sweetalert2";
+
 
 export const authContext = createContext();
 
@@ -56,6 +58,13 @@ export const AuthProvider = ({ children }) => {
         setUser(userData);
         dispatch(loginUser(userData));
         navigate("/");
+        Swal.fire({
+          position: "top",
+          icon: 'success',
+          title: 'Iniciaste sesión exitosamente',
+          showConfirmButton: false,
+          timer: 1500
+        })
       }
     });
   }, []);
