@@ -97,7 +97,7 @@ const EditMovie = ({ setActiveEdit, movieFound }) => {
       ></div>
       <div className="w-full h-full flex justify-center p-8">
         <form
-          className="w-[40%] fixed top-0 left-0 bottom-0 right-0 z-20 flex flex-col bg-slate-600 p-6 mx-auto my-10 rounded-md"
+          className="w-[35%] fixed top-0 left-0 bottom-0 right-0 z-20 flex flex-col bg-slate-600 p-6 mx-auto my-10 rounded-md"
           ref={form}
           onSubmit={handleSubmit(onSubmit)}
         >

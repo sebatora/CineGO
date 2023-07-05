@@ -92,7 +92,7 @@ const CreateCandy = ({ setActiveForm }) => {
       ></div>
       <div className="w-full h-full flex justify-center p-8">
         <form
-          className="w-[40%] fixed top-0 left-0 bottom-0 right-0 z-20 flex flex-col  bg-slate-600 p-6 mx-auto my-10 rounded-md"
+          className="w-[35%] fixed top-0 left-0 bottom-0 right-0 z-20 flex flex-col  bg-slate-600 p-6 mx-auto my-10 rounded-md"
           ref={form}
           onSubmit={handleSubmit(onSubmit)}
         >
@@ -114,7 +114,8 @@ const CreateCandy = ({ setActiveForm }) => {
             </svg>
           </button>
           <h3 className="pb-4 ml-3">Agregar producto</h3>
-          <div className="flex flex-col mb-4 items-center">
+          <div className="flex h-28  flex-col items-center">
+            <h4>Categoria</h4>
             <select
               className="border rounded-md p-1 w-96"
               name="Categoría"
@@ -132,7 +133,9 @@ const CreateCandy = ({ setActiveForm }) => {
               <option value="golosinas">Golosinas</option>
             </select>
           </div>
-          <div className="flex flex-col mb-4 items-center">
+          <div className="flex h-28  flex-col items-center">
+            <h4>Producto</h4>
+
             <input
               className="border rounded-md p-1 w-96"
               type="text"
@@ -145,7 +148,8 @@ const CreateCandy = ({ setActiveForm }) => {
               </span>
             )}
           </div>
-          <div className="flex flex-col mb-4 items-center">
+          <div className="flex h-28  flex-col  items-center">
+            <h4>Precio</h4>
             <input
               className="border rounded-md p-1 w-96"
               type="number"
@@ -158,7 +162,8 @@ const CreateCandy = ({ setActiveForm }) => {
               </span>
             )}
           </div>
-          <div className="flex flex-col mb-4 items-center">
+          <div className="flex h-28 flex-col  items-center">
+            <h4>Descripción</h4>
             <textarea
               className="w-96 resize-none overflow-auto p-2 rounded-md"
               name="description"

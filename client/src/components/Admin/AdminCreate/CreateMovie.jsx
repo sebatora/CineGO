@@ -179,6 +179,7 @@ const CreateMovie = ({ setActiveForm }) => {
             />
           </svg>
         </button>
+        <h1 className="pb-1 ml-3 mb-4">Crear película</h1>
 
         <div className="w-full h-28  flex justify-center py-2">
           <div className="flex flex-col mx-6">
@@ -353,8 +354,8 @@ const CreateMovie = ({ setActiveForm }) => {
           </div>
         </div>
 
-        <div className="w-full justify-center my-6 flex items-center">
-          <div className="w-[50%] h-[200px] flex justify-center items-start rounded-md border-[3px] border-gray-500 ml-12">
+        <div className="w-full justify-center my-6 flex flex-row items-center">
+          <div className="w-[100px] h-[100px] flex justify-center items-start rounded-md border-[3px] border-gray-500">
             {uploadedPhoto ? (
               <img
                 src={uploadedPhoto}
@@ -371,22 +372,20 @@ const CreateMovie = ({ setActiveForm }) => {
               )
             )}
           </div>
-          <div className="w-[50%] h-full flex flex-col justify-around items-center mt-4">
-            <button
-              className="w-[180px]  bg-primary-600 hover:bg-primary-500 py-4 px-10 text-white font-semibold rounded"
-              type="button"
-              id="btn-photo"
-            >
-              Subir foto
-            </button>
-            <button
-              className="w-[180px] bg-primary-600 hover:bg-primary-500 py-5 px-10  text-white font-semibold rounded"
-              type="submit"
-            >
-              Crear película
-            </button>
-          </div>
+          <button
+            className="bg-primary-600 hover:bg-primary-500 py-2 px-6 w-92 ml-12 text-white font-semibold rounded-md"
+            type="button"
+            id="btn-photo"
+          >
+            Subir foto
+          </button>
         </div>
+        <button
+          className="bg-primary-600 hover:bg-primary-500 p-4 text-white font-semibold rounded-md"
+          type="submit"
+        >
+          Crear película
+        </button>
       </form>
     </>
   );

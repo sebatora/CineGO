@@ -1,12 +1,12 @@
-import { useEffect, useRef, useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
+import { useEffect, useRef, useState } from "react";
+import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
 import cloudinary from "cloudinary-core";
-import { toast } from 'react-toastify';
-import { getCandy, putCandy } from '../../../redux/actions';
+import { toast } from "react-toastify";
+import { getCandy, putCandy } from "../../../redux/actions";
 
 const EditCandy = ({ setActiveEdit, candyFound }) => {
-	const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const [uploadedPhoto, setUploadedPhoto] = useState(candyFound.image);
   const cl = new cloudinary.Cloudinary({ cloud_name: "dhyqgl7ie" });
   const form = useRef();
@@ -16,18 +16,18 @@ const EditCandy = ({ setActiveEdit, candyFound }) => {
     handleSubmit,
     formState: { errors },
     reset,
-		watch
+    watch,
   } = useForm({
     defaultValues: {
       name: candyFound.name,
       price: candyFound.price,
       description: candyFound.description,
       image: candyFound.image,
-      category: candyFound.category
+      category: candyFound.category,
     },
   });
 
-	const handleUploadPhoto = () => {
+  const handleUploadPhoto = () => {
     const widget_cloudinary = window.cloudinary.createUploadWidget(
       {
         cloudName: "dhyqgl7ie",
@@ -48,32 +48,32 @@ const EditCandy = ({ setActiveEdit, candyFound }) => {
     widget_cloudinary.open();
   };
 
-	const onSubmit = data => {
-		try {
-			dispatch(putCandy(candyFound.id, data));
-			setTimeout(() => {
-				dispatch(getCandy());
-			}, 500);
-			setActiveEdit(false);
-		} catch (error) {
-			toast.error(error)
-		}
-	}
+  const onSubmit = (data) => {
+    try {
+      dispatch(putCandy(candyFound.id, data));
+      setTimeout(() => {
+        dispatch(getCandy());
+      }, 500);
+      setActiveEdit(false);
+    } catch (error) {
+      toast.error(error);
+    }
+  };
 
-	useEffect(() => {
+  useEffect(() => {
     const boton_photo = document.querySelector("#btn-photo-edit");
     boton_photo.addEventListener("click", handleUploadPhoto);
   }, []);
 
-	return (
-		<>
-			<div
+  return (
+    <>
+      <div
         className="w-full fixed top-0 left-0 bottom-0 right-0 z-10 bg-black/80"
         onClick={() => setActiveEdit(false)}
       ></div>
-			<div className="w-full h-full flex justify-center p-8">
+      <div className="w-full h-full flex justify-center p-8">
         <form
-          className="w-[40%] fixed top-0 left-0 bottom-0 right-0 z-20 flex flex-col bg-light-300 dark:bg-slate-900 p-6 mx-auto my-10 rounded-md"
+          className="w-[35%] fixed top-0 left-0 bottom-0 right-0 z-20 flex flex-col bg-slate-600 p-6 mx-auto my-10 rounded-md"
           ref={form}
           onSubmit={handleSubmit(onSubmit)}
         >
@@ -95,18 +95,26 @@ const EditCandy = ({ setActiveEdit, candyFound }) => {
             </svg>
           </button>
           <h1 className="pb-4 ml-3">Editar producto</h1>
-					<div className="flex flex-col mb-4 items-center">
-						<select className="border rounded-md p-1 w-96" name='category' {...register("category")}>
-							<option value='category' disabled>Categoría</option>
-							<option value='combos'>Combos</option>
-							<option value='pochoclos'>Pochoclos</option>
-							<option value='bebidas'>Bebidas</option>
-							<option value='snacks'>Snacks</option>
-							<option value='cafeteria'>Cafetería</option>
-							<option value='golosinas'>Golosinas</option>
-						</select>
-					</div>
-          <div className="flex flex-col mb-4 items-center">
+          <div className="flex flex-col my-2 items-center">
+            <h3>Categoria</h3>
+            <select
+              className="border rounded-md p-1 w-96"
+              name="category"
+              {...register("category")}
+            >
+              <option value="category" disabled>
+                Categoría
+              </option>
+              <option value="combos">Combos</option>
+              <option value="pochoclos">Pochoclos</option>
+              <option value="bebidas">Bebidas</option>
+              <option value="snacks">Snacks</option>
+              <option value="cafeteria">Cafetería</option>
+              <option value="golosinas">Golosinas</option>
+            </select>
+          </div>
+          <div className="flex flex-col my-2 items-center">
+            <h3>Producto</h3>
             <input
               className="border rounded-md p-1 w-96"
               type="text"
@@ -119,7 +127,8 @@ const EditCandy = ({ setActiveEdit, candyFound }) => {
               </span>
             )}
           </div>
-          <div className="flex flex-col mb-4 items-center">
+          <div className="flex flex-col my-2 items-center">
+            <h3>Precio</h3>
             <input
               className="border rounded-md p-1 w-96"
               type="number"
@@ -132,7 +141,8 @@ const EditCandy = ({ setActiveEdit, candyFound }) => {
               </span>
             )}
           </div>
-          <div className="flex flex-col mb-4 items-center">
+          <div className="flex flex-col my-2 items-center">
+            <h3>Descripción</h3>
             <textarea
               className="w-96 resize-none overflow-auto p-2 rounded-md"
               name="description"
@@ -147,42 +157,42 @@ const EditCandy = ({ setActiveEdit, candyFound }) => {
             )}
           </div>
           <div className="w-full justify-center my-6 flex flex-row items-center">
-						<div className="w-[100px] h-[100px] flex justify-center items-start rounded-md border-[3px] border-gray-500">
-							{uploadedPhoto ? (
-								<img
-									src={uploadedPhoto}
-									alt="User Photo"
-									className="w-full h-full object-cover rounded-md"
-								/>
-							) : (
-								watch("photoUser") && (
-									<img
-										src={photoUser}
-										alt="User Photo"
-										className="w-full h-full object-cover rounded-md"
-									/>
-								)
-							)}
-						</div>
-						<button
-							className="bg-primary-600 hover:bg-primary-500 py-2 px-6 w-92 ml-12 text-white font-semibold rounded-md"
-							type="button"
-							id="btn-photo-edit"
-						>
-							Cambiar foto
-						</button>
-					</div>
+            <div className="w-[100px] h-[100px] flex justify-center items-start rounded-md border-[3px] border-gray-500">
+              {uploadedPhoto ? (
+                <img
+                  src={uploadedPhoto}
+                  alt="User Photo"
+                  className="w-full h-full object-cover rounded-md"
+                />
+              ) : (
+                watch("photoUser") && (
+                  <img
+                    src={photoUser}
+                    alt="User Photo"
+                    className="w-full h-full object-cover rounded-md"
+                  />
+                )
+              )}
+            </div>
+            <button
+              className="bg-primary-600 hover:bg-primary-500 py-2 px-6 w-92 ml-12 text-white font-semibold rounded-md"
+              type="button"
+              id="btn-photo-edit"
+            >
+              Cambiar foto
+            </button>
+          </div>
 
           <button
-            className="bg-primary-600 hover:bg-primary-500 p-4 mt-2 text-white font-semibold rounded-md"
+            className="bg-primary-600 hover:bg-primary-500 p-4 my-6 text-white font-semibold rounded-md"
             type="submit"
           >
             Guardar
           </button>
         </form>
       </div>
-		</>
-	)
-}
+    </>
+  );
+};
 
-export default EditCandy
+export default EditCandy;
