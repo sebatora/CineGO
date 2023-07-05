@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { postMovie, getGenres } from "../../../redux/actions";
+import { postMovie, getGenres, getMovies } from "../../../redux/actions";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useDispatch } from "react-redux";
@@ -12,7 +12,7 @@ import { faTimes } from "@fortawesome/free-solid-svg-icons";
 const schema = yup.object().shape({
   title: yup
     .string()
-    .matches(/^([A-Za-z]+\s?){1,30}$/, "Solo letras máx 30 caracteres")
+    .matches(/^([A-Za-z]+\s?){1,50}$/, "Solo letras máx 50 caracteres")
     .required("El título es requerido"),
   description: yup
     .string()
@@ -122,6 +122,10 @@ const CreateMovie = ({ setActiveForm }) => {
 
       dispatch(postMovie(movieData));
       handleReset();
+      setTimeout(() => {
+        dispatch(getMovies());
+      }, 1000);
+      setActiveForm(false);
       toast.success("Película creada");
     } catch (error) {
       toast.error(error);
@@ -266,11 +270,11 @@ const CreateMovie = ({ setActiveForm }) => {
               placeholder="Duración"
               {...register("duration")}
             />
-            {errors.duration && (
-              <span className="mt-2 text-red-600 dark:text-red-600 text-xs">
-                {errors.duration.message}
-              </span>
-            )}
+             {errors.duration && errors.duration.type === "pattern" && (
+                  <span className="text-red-600 dark:text-red-600 text-sm">
+                    Solo números.
+                  </span>
+                )}
           </div>
           <div className="flex flex-col mx-6">
             <label className="pb-1">Fecha de estreno</label>

@@ -21,11 +21,11 @@ function CinePlusGold() {
       navigate("/login");
     } else if (userData.cinePlus === "Gold") {
       toast.dismiss();
-      toast.error("Ya estas suscripto a este plan");
+      toast.error("Ya estás suscripto a un plan");
       return;
     } else if (userData.cinePlus !== "Estandar") {
       toast.dismiss();
-      toast.error("Ya estas suscripto a un plan. Chekea tu perfil!");
+      toast.error("Ya estás suscripto a un plan");
       return;
     } else {
       const { data } = await axios.post("/subscription", {
@@ -39,6 +39,7 @@ function CinePlusGold() {
             cinePlus: "Gold",
             quantity: 1,
             type: "subscription",
+            price: 499
           },
         ],
         totalPrice: subGold.price,

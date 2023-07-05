@@ -28,7 +28,7 @@ const DataMovies = () => {
   const handleToggle = (movieId, activeMovie) => {
     setTimeout(() => {
       dispatch(getMovies());
-    }, 100);
+    }, 300);
     dispatch(putMovie(movieId, { activeMovie: `${!activeMovie}` }));
   };
 

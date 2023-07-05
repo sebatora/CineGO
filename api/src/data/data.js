@@ -888,7 +888,7 @@ const dataAllUsers = [
     lastName: "MONZON",
     email: "mmonzon@mail.com",
     password: "abc123",
-    image: "",
+    image: "https://res.cloudinary.com/dhyqgl7ie/image/upload/v1688586114/About/Mauri_ktgxsq.jpg",
   },
   {
     firstName: "PERCY",

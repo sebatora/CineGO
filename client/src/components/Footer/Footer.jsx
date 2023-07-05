@@ -8,9 +8,9 @@ import "@fortawesome/fontawesome-free/css/all.css";
 
 function Footer({ theme }) {
   return (
-    <footer className="w-full border-t border-t-light-200 dark:border-t-light-900 bg-slate-300">
-      <div className="w-full flex lg:justify-evenly">
-        <div className="w-1/4 hidden lg:flex pl-12">
+    <footer className="w-full border-t border-t-light-200 dark:border-t-light-900 bg-slate-300 dark:bg-black">
+      <div className="w-full flex lg:justify-evenly relative">
+        <div className="w-1/4 hidden lg:flex pl-12 absolute left-0">
           <Link className="w-40" to="/">
             {theme === "dark" ? (
               <img src={cinego_blanco} alt="CineGO" />
@@ -19,7 +19,7 @@ function Footer({ theme }) {
             )}
           </Link>
         </div>
-        <div className="w-full flex-wrap lg:w-3/4 flex items-center justify-center lg:justify-start py-2 md:p-0">
+        <div className="w-full lg:w-3/5 flex items-center justify-around py-2">
           <span className="p-2 md:p-4 lg:p-6 text-sm">
             <Link className="hover:text-light-400" to="/">
               Cartelera
