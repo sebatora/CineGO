@@ -76,7 +76,7 @@ function CandyContainer() {
             {combos.length ? (
               <>
                 <h2>Combos</h2>
-                <div className="flex flex-wrap justify-center">
+                <div className="w-full flex flex-wrap justify-center">
                   {combos.map(({ id, name, description, price, image }) => (
                     <CandyCard
                       key={id}
@@ -95,7 +95,7 @@ function CandyContainer() {
             {pochoclos.length ? (
               <>
                 <h2 className="mt-4">Pochoclos</h2>
-                <div className="flex flex-wrap justify-center">
+                <div className="w-full flex flex-wrap justify-center">
                   {pochoclos.map(({ id, name, description, price, image }) => (
                     <CandyCard
                       key={id}
@@ -114,7 +114,7 @@ function CandyContainer() {
             {bebidas.length ? (
               <>
                 <h2 className="mt-4">Bebidas</h2>
-                <div className="flex flex-wrap justify-center">
+                <div className="w-full flex flex-wrap justify-center">
                   {bebidas.map(({ id, name, description, price, image }) => (
                     <CandyCard
                       key={id}
@@ -133,7 +133,7 @@ function CandyContainer() {
             {snacks.length ? (
               <>
                 <h2 className="mt-4">Snacks</h2>
-                <div className="flex flex-wrap justify-center">
+                <div className="w-full flex flex-wrap justify-center">
                   {snacks.map(({ id, name, description, price, image }) => (
                     <CandyCard
                       key={id}
@@ -152,7 +152,7 @@ function CandyContainer() {
             {cafeteria.length ? (
               <>
                 <h2 className="mt-4">Cafeteria</h2>
-                <div className="flex flex-wrap justify-center">
+                <div className="w-full flex flex-wrap justify-center">
                   {cafeteria.map(({ id, name, description, price, image }) => (
                     <CandyCard
                       key={id}
@@ -171,7 +171,7 @@ function CandyContainer() {
             {golosinas.length ? (
               <>
                 <h2 className="mt-4">Golosinas</h2>
-                <div className="flex flex-wrap justify-center mb-12">
+                <div className="w-full flex flex-wrap justify-center mb-12">
                   {golosinas.map(({ id, name, description, price, image }) => (
                     <CandyCard
                       key={id}
