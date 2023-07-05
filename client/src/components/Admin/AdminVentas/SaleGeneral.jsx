@@ -37,9 +37,9 @@ function SaleGeneral() {
   }, [dispatch]);
 
   return (
-    <>
-       <div className='w-full justify-center items-center px-4'>
-        <Card className="bg-primary-300 mt-3 ">
+    <div className="w-full p-4">
+       <div className='w-full justify-center items-center'>
+        <Card className="w-full bg-primary-300">
           <Title className="text-2xl font-bold text-center mb-2">
             Lista de ventas
           </Title>
@@ -82,8 +82,8 @@ function SaleGeneral() {
           </Table>
         </Card>
       </div>
-      <div className="flex h-screen overflow-y-auto justify-center item-center">
-        <Card className="bg-primary-300 max-w-xs mt-6 h-40 ">
+      <div className="w-full flex min-h-40 h-full justify-center item-center">
+        <Card className="bg-primary-300 mt-4">
           <Title className="text-center">Total recaudado</Title>
           <Table className="h-8 mt-5">
             <TableBody>
@@ -109,8 +109,8 @@ function SaleGeneral() {
             </TableBody>
           </Table>
         </Card>
-        <Card className="bg-blue-200 max-w-xs m-5">
-          <Title>Total recaudado en entradas</Title>
+        <Card className="bg-primary-300 mt-4 mx-4">
+          <Title className="text-center">Total recaudado en entradas</Title>
           <Table className="h-8 mt-5">
             <TableBody>
               <TableRow>
@@ -126,8 +126,8 @@ function SaleGeneral() {
             </TableBody>
           </Table>
         </Card>
-        <Card className="bg-blue-200 max-w-xs m-5">
-          <Title>Total recaudado en candy</Title>
+        <Card className="bg-primary-300 mt-4">
+          <Title className="text-center">Total recaudado en candy</Title>
           <Table className="h-8 mt-5">
             <TableBody>
               <TableRow>
@@ -144,7 +144,7 @@ function SaleGeneral() {
           </Table>
         </Card>
       </div>
-    </>
+    </div>
   );
 }
 

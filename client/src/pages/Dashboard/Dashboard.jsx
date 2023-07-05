@@ -51,7 +51,7 @@ const Dashboard = () => {
   return (
     <div className="w-full h-full flex">
       <Toaster />
-      <div className="w-1/5 lg:w-1/6 fixed h-screen bg-slate-900 dark:bg-slate-900 px-8">
+      <div className="w-1/5 lg:w-1/6 fixed h-screen bg-slate-900 dark:bg-slate-900 px-3">
         {/* Profile */}
         {userData && (
           <div className="h-1/5 flex flex-col items-center justify-center pt-4">
@@ -216,7 +216,7 @@ const Dashboard = () => {
           <div>
             <Link
               to="/"
-              className="flex m-1 w-20"
+              className="flex m-1 mx-2 w-20"
             >
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" className="w-5 h-5 stroke-white">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
