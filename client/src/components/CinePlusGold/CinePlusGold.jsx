@@ -1,15 +1,14 @@
 import axios from "axios";
 import React from "react";
-import { FaCheck } from "react-icons/fa";
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { putUserSubscription } from "../../redux/actions";
 import toast, { Toaster } from "react-hot-toast";
+import { FaCheck } from "react-icons/fa";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function CinePlusGold() {
   const userData = JSON.parse(window.localStorage.getItem("user"));
-  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
+  const pathname = location.pathname;
 
   const subGold = {
     type: "Gold",
@@ -24,9 +23,9 @@ function CinePlusGold() {
       toast.dismiss();
       toast.error("Ya estas suscripto a este plan");
       return;
-    } else if (userData.cinePlus === "Black") {
+    } else if (userData.cinePlus !== "Estandar") {
       toast.dismiss();
-      toast.error("Ya estas suscripto a un plan");
+      toast.error("Ya estas suscripto a un plan. Chekea tu perfil!");
       return;
     } else {
       const { data } = await axios.post("/subscription", {
@@ -60,9 +59,13 @@ function CinePlusGold() {
         <div className="">
           <div className="h-20 grid items-center bg-yellow-300 border-2 border-yellow-300 rounded-t-xl">
             <h2 className="font-bold mx-auto">Cine Plus Gold</h2>
-            <span className="font-bold mx-auto text-black dark:text-white">
-              ${subGold.price} por mes
-            </span>
+            {pathname !== "/profile" ? (
+              <span className="font-bold mx-auto text-black dark:text-white">
+                ${subGold.price} por mes
+              </span>
+            ) : (
+              ""
+            )}
           </div>
           <div className="h-80 flex flex-col justify-between p-4 border-2 border-yellow-300 rounded-b-xl">
             <ul className="m-0 p-0">
@@ -71,7 +74,9 @@ function CinePlusGold() {
                   <h3 className="m-0 text-sm font-bold">
                     2 Entradas Mensuales
                   </h3>
-                  <p className="m-0 text-xs font-normal">*Se retira en mesa de entrada</p>
+                  <p className="m-0 text-xs font-normal">
+                    *Se retira en mesa de entrada
+                  </p>
                 </div>
                 <FaCheck className="dark:text-white" />
               </li>
@@ -81,7 +86,9 @@ function CinePlusGold() {
                     Regalo de bienvenida
                   </h3>
                   <p className="m-0 text-xs font-normal">*Por única vez.</p>
-                  <p className="m-0 text-xs font-normal">*Se retira en mesa de entrada.</p>
+                  <p className="m-0 text-xs font-normal">
+                    *Se retira en mesa de entrada.
+                  </p>
                 </div>
                 <FaCheck className="dark:text-white" />
               </li>
@@ -103,12 +110,18 @@ function CinePlusGold() {
                 <FaCheck className="dark:text-white" />
               </li>
             </ul>
-            <button
-              onClick={handleSubmit}
-              className="w-7/12 mx-auto bg-yellow-300 hover:bg-yellow-200 p-2 -mb-10 rounded-xl"
-            >
-              <span className="text-base font-bold">¡Quiero suscribirme!</span>
-            </button>
+            {pathname !== "/profile" ? (
+              <button
+                onClick={handleSubmit}
+                className="w-7/12 h-1/4 mx-auto bg-yellow-300 hover:bg-yellow-200 p-2 -mb-10 rounded-xl"
+              >
+                <span className="text-base font-bold">
+                  ¡Quiero suscribirme!
+                </span>
+              </button>
+            ) : (
+              ""
+            )}
           </div>
         </div>
       </div>

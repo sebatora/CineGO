@@ -76,7 +76,7 @@ function ProfileSubscription() {
             </div>
           </div>
           <div className="flex">
-            <CinePlusBlack />
+            <CinePlusGold />
           </div>
         </div>
       ) : (
@@ -93,7 +93,7 @@ function ProfileSubscription() {
             </div>
           </div>
           <div className="flex">
-              <CinePlusGold />
+            <CinePlusBlack />
           </div>
         </div>
       )}

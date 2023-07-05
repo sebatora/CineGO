@@ -8,8 +8,7 @@ function CinePlusBlack() {
   const userData = JSON.parse(window.localStorage.getItem("user"));
   const navigate = useNavigate();
   const location = useLocation();
-
-  console.log(location);
+  const pathname = location.pathname;
 
   const subBlack = {
     type: "Black",
@@ -20,9 +19,9 @@ function CinePlusBlack() {
     event.preventDefault();
     if (!userData) {
       navigate("/login");
-    } else if (userData.cinePlus === "Black") {
+    } else if (userData.cinePlus !== "Estandar") {
       toast.dismiss();
-      toast.error("Ya estas suscripto al plan");
+      toast.error("Ya estas suscripto a un plan. Chekea tu perfil!");
       return;
     } else {
       const { data } = await axios.post("/subscription", {
@@ -57,9 +56,13 @@ function CinePlusBlack() {
             <h2 className="font-bold mx-auto text-white dark:text-black">
               Cine Plus Black
             </h2>
-            <span className="font-bold mx-auto text-white dark:text-black">
-              ${subBlack.price} por mes
-            </span>
+            {pathname !== "/profile" ? (
+              <span className="font-bold mx-auto text-white dark:text-black">
+                ${subBlack.price} por mes
+              </span>
+            ) : (
+              ""
+            )}
           </div>
           <div className="h-80 flex flex-col justify-between p-4 border-2 border-black dark:border-white rounded-b-xl">
             <ul className="m-0 p-0">
@@ -104,12 +107,16 @@ function CinePlusBlack() {
                 <FaCheck className="dark:text-white" />
               </li>
             </ul>
-            <button
-              onClick={handleSubmit}
-              className="bg-black hover:bg-black/80 dark:bg-white dark:hover:bg-white/80 text-white dark:text-black w-7/12 mx-auto -mb-10 p-2 rounded-xl text-base font-bold"
-            >
-              ¡Quiero suscribirme!
-            </button>
+            {pathname !== "/profile" ? (
+              <button
+                onClick={handleSubmit}
+                className="h-1/4 bg-black hover:bg-black/80 dark:bg-white dark:hover:bg-white/80 text-white dark:text-black w-7/12 mx-auto -mb-10 p-2 rounded-xl text-base font-bold"
+              >
+                ¡Quiero suscribirme!
+              </button>
+            ) : (
+              ""
+            )}
           </div>
         </div>
       </div>
