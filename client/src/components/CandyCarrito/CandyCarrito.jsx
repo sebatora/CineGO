@@ -68,33 +68,25 @@ function CandyCarrito({ addCart, productCount, setProductCount }) {
         items,
         totalPrice: descuento,
       };
-      // Swal.fire({
-      //   title: "¿Estás seguro de continuar?",
-      //   showDenyButton: true,
-      //   cancelButtonColor: "#ef233c",
-      //   confirmButtonColor: "#38b000",
-      //   confirmButtonText: "¡Si, estoy seguro!",
-      //   denyButtonText: `Cancelar`,
-      // }).then((result) => {
-      //   if (result.isConfirmed) {
-      //     window.localStorage.setItem(
-      //       "orderPurchase",
-      //       JSON.stringify(orderPurchase)
-      //     );
-      //     window.localStorage.removeItem("productCount");
-      //     window.localStorage.removeItem("cart");
-      //     window.localStorage.removeItem("movie");
-      //     window.location.href = data.init_point;
-      //   }
-      // });
-      window.localStorage.setItem(
-        "orderPurchase",
-        JSON.stringify(orderPurchase)
-      );
-      window.localStorage.removeItem("productCount");
-      window.localStorage.removeItem("cart");
-      window.localStorage.removeItem("movie");
-      window.location.href = data.init_point;
+      Swal.fire({
+        title: "<h2 style='color: black;'>¿Estás seguro de continuar?</h2>",
+        showDenyButton: true,
+        cancelButtonColor: "#ef233c",
+        confirmButtonColor: "#38b000",
+        confirmButtonText: "¡Si, estoy seguro!",
+        denyButtonText: `Cancelar`,
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.localStorage.setItem(
+            "orderPurchase",
+            JSON.stringify(orderPurchase)
+          );
+          window.localStorage.removeItem("productCount");
+          window.localStorage.removeItem("cart");
+          window.localStorage.removeItem("movie");
+          window.location.href = data.init_point;
+        }
+      });
     } catch (error) {
       console.error(error);
       toast.error("Debes ingresar a tu cuenta primero", {
