@@ -8,10 +8,11 @@ import { useDispatch } from "react-redux";
 import { logoutUser } from "../../redux/actions";
 import { useAuth } from "../../context/authContext";
 import { Link, useNavigate } from "react-router-dom";
-import { Toaster, toast } from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
 import DataMovies from "../../components/Admin/AdminData/DataMovies";
 import DataCandy from "../../components/Admin/AdminData/DataCandy";
 import DataUsers from "../../components/Admin/AdminData/DataUsers";
+import Swal from "sweetalert2";
 
 const Dashboard = () => {
   const [activeComponent, setActiveComponent] = useState("saleGeneral");
@@ -33,6 +34,13 @@ const Dashboard = () => {
       window.localStorage.removeItem("cart");
       window.localStorage.removeItem("productCount");
       navigate("/login");
+      Swal.fire({
+        position: "top",
+        icon: 'success',
+        title: 'Cerraste sesión exitosamente',
+        showConfirmButton: false,
+        timer: 1500
+      })
     } catch (error) {
       console.error(error);
     }

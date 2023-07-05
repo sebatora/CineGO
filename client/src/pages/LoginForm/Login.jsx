@@ -45,8 +45,13 @@ const Login = () => {
     setLoading(true);
     try {
       await loginWithGoogle();
-      toast.dismiss();
-      toast.success("Inicio de sesión exitoso");
+      Swal.fire({
+        position: "top",
+        icon: 'success',
+        title: 'Iniciaste sesión exitosamente',
+        showConfirmButton: false,
+        timer: 1500
+      })
       window.localStorage.removeItem("movie");
       window.localStorage.removeItem("cart");
       window.localStorage.removeItem("productCount");
