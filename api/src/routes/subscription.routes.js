@@ -1,7 +1,7 @@
 const routerSubscription = require("express").Router();
 
 const handlerPostSubscription = require("../handlers/subscription/handlerPostSubscription");
-const handlerPutUserSubscription = require("../handlers/subscription/handlerPutSubscription");
+const handlerPutUserSubscription = require("../handlers/subscription/handlerPutUserSubscription");
 const handlerDeleteSubscriptions = require("../handlers/subscription/handlerDeleteSubscriptions");
 
 routerSubscription.post("/", handlerPostSubscription);

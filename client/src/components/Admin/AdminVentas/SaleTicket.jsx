@@ -28,8 +28,8 @@ const SaleCandy = () => {
 
   return (
     <>
-      <div className="bg-gradient-to-r from-blue-400 via-pink-400 to-red-400 overflow-y-auto justify-center items-center">
-        <Card className="bg-blue-200 overflow-y-auto max-w-7xl ml-32 mt-8 mb-1 ">
+      <div className="w-full justify-center items-center p-4">
+        <Card className="bg-primary-300">
           <Title className="text-2xl font-bold text-center mb-2">
             Listado de entradas vendidas
           </Title>
@@ -81,9 +81,9 @@ const SaleCandy = () => {
         </Card>
       </div>
 
-      <div className="flex h-screen bg-gradient-to-r from-blue-400 via-pink-400 to-red-400 overflow-y-auto">
-        <div>
-          <Card className="bg-blue-200 max-w-4xl mx-1 ml-36 mt-5 max-h-96">
+      <div className="w-full flex min-h-screen space-x-4 px-4">
+        <div className="w-2/3">
+          <Card className="bg-primary-300">
             <Title className="font-bold">Grafico de ventas de entradas</Title>
             <AreaChart
               className="h-56 mt-5"
@@ -97,8 +97,8 @@ const SaleCandy = () => {
             />
           </Card>
         </div>
-        <div>
-          <Card className="bg-blue-200 max-w-xs m-5">
+        <div className="w-1/3">
+          <Card className="bg-primary-300">
             <Title>Total recaudado en entradas</Title>
             <Table className="h-8 mt-5">
               <TableBody>

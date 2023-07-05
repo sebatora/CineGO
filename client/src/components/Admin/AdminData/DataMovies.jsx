@@ -15,11 +15,12 @@ const DataMovies = () => {
   const [movieFound, setMovieFound] = useState({});
   const [countPage, setCountPage] = useState(1);
   const allMovies = useSelector((state) => state.allMovies);
+  const orderAllMovies = allMovies.sort((a, b) => b.id - a.id);
 
   const dispatch = useDispatch();
 
   const handleEdit = (movieId) => {
-    const searchMovie = allMovies.find((movie) => movie.id === movieId);
+    const searchMovie = orderAllMovies.find((movie) => movie.id === movieId);
     setMovieFound(searchMovie);
     setActiveEdit(true);
   };
@@ -32,11 +33,11 @@ const DataMovies = () => {
   };
 
   const pagination = () => {
-    return allMovies.slice(currentPage, currentPage + 8);
+    return orderAllMovies.slice(currentPage, currentPage + 8);
   };
 
   const nextPage = () => {
-    if (allMovies.length > currentPage + 8) {
+    if (orderAllMovies.length > currentPage + 8) {
       setCurrentPage(currentPage + 8);
       setCountPage(countPage + 1);
     }
@@ -63,15 +64,15 @@ const DataMovies = () => {
   }, [dispatch, movieName]);
 
   return (
-    <div className="h-screen flex justify-center items-center">
+    <div className="min-h-screen flex justify-center">
       {loading ? (
         <Spinner />
       ) : (
         <div className="w-full">
-          <h3 className="dark:text-black p-4">Películas</h3>
-          <div className="absolute right-0 top-0 m-4">
+          <div className="w-full flex justify-between items-center">
+            <h3 className="dark:text-black p-4">Películas</h3>
             <button
-              className="flex items-center bg-light-200 rounded-md p-2"
+              className="flex items-center bg-light-200 rounded-md p-2 m-2"
               onClick={() => setActiveForm(true)}
             >
               <svg
@@ -89,10 +90,10 @@ const DataMovies = () => {
               <p className="text-sm dark:text-black">Añadir</p>
             </button>
           </div>
-          <div className="w-full p-2 border">
+          <div className="w-full p-2">
             <div className="w-full flex items-center mb-2">
               <input
-                className="w-full rounded appearance-none bg-slate-100 py-1 px-2 focus:outline-slate-400"
+                className="w-full rounded appearance-none bg-slate-200 py-1 px-2 focus:outline-slate-400"
                 type="text"
                 onChange={handleChangeName}
                 placeholder="Buscar película"
@@ -186,7 +187,8 @@ const DataMovies = () => {
                 ))}
               </tbody>
             </table>
-            <div className="w-full flex justify-center items-center pt-4">
+            {allMovies.length ? (
+              <div className="w-full flex justify-center items-center pt-4">
               <button
                 onClick={prevPage}
                 className="bg-light-200 rounded-md p-1 mx-2"
@@ -227,6 +229,11 @@ const DataMovies = () => {
                 </svg>
               </button>
             </div>
+            ): (
+              <div className="w-full flex justify-center items-center pt-4">
+                <h2 className="">No hay resultados encontrados</h2>
+              </div>
+            )}
           </div>
           {activeForm && <CreateMovie setActiveForm={setActiveForm} />}
           {activeEdit && (

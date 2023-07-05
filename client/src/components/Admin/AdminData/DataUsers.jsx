@@ -43,7 +43,7 @@ const DataUsers = () => {
   }, []);
 
 	return (
-		<div className='h-screen flex justify-center items-center'>
+		<div className='min-h-screen flex justify-center'>
 			{loading ? (
 				<Spinner />
 			) : (
@@ -57,7 +57,7 @@ const DataUsers = () => {
 							<p className='text-sm dark:text-black'>Añadir</p>
 						</button>
 					</div> */}
-					<div className='w-full p-2 border'>
+					<div className='w-full p-2'>
 						<table className="w-full text-center bg-slate-400 rounded-sm">
 							<thead>
 								<tr className="h-10 font-bold text-md">

@@ -21,13 +21,14 @@ function ProfileSubscription() {
   const handleSubmit = (e) => {
     e.preventDefault();
     Swal.fire({
-      title: "Vas a eliminar tu suscripción. Estas seguro?",
+      title: "Vas a eliminar tu suscripción. ¿Estas seguro?",
       text: "Perderas todos tus beneficios",
       icon: "warning",
-      showCancelButton: true,
+      showDenyButton: true,
       confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Si!",
+      denyButtonColor: "#d33",
+      denyButtonText: "Cancelar",
+      confirmButtonText: "¡Sí!",
     }).then((result) => {
       if (result.isConfirmed) {
         dispatch(putUserSubscription(userCinePlus));
@@ -36,7 +37,7 @@ function ProfileSubscription() {
 
         window.localStorage.removeItem("user");
         Swal.fire(
-          "Listo!",
+          "¡Listo!",
           "Eliminaste tu suscripción. Volve a iniciar sesion",
           "success"
         );
@@ -75,13 +76,12 @@ function ProfileSubscription() {
             </div>
           </div>
           <div className="flex">
-            <CinePlusBlack />
+            <CinePlusGold />
           </div>
         </div>
       ) : (
         <div className="">
           <div className="flex flex-col items-center mt-2">
-            <h3 className="mb-4 font-bold">Tenes el plan mas tocho de todos</h3>
             <div className="flex">
               <TextAnimation word={userData.cinePlus.toUpperCase()} />
               <button
@@ -93,32 +93,10 @@ function ProfileSubscription() {
             </div>
           </div>
           <div className="flex">
-              <CinePlusGold />
+            <CinePlusBlack />
           </div>
         </div>
       )}
-      {/* <h2 className="w-full flex items-center justify-center h-16 bg-light-200 dark:bg-slate-800">Suscripción actual: {userData.cinePlus} </h2>
-      {userData.cinePlus === "Estandar" ? (
-          
-      ) : userData.cinePlus === "Gold" ? (
-        <div className="flex items-center">
-          <h2>Pasate a: </h2>
-            <CinePlusBlack />
-        </div>
-      ) : ( */}
-      {/*       <div className="w-full h-screen flex flex-col justify-center items-center">
-        <h3 className="mb-4 font-bold">Tenes el plan mas tocho de todos</h3>
-        <TextAnimation word={userData.cinePlus.toUpperCase()} />
-        <button
-          className="w-80 p-4 rounded-lg bg-black hover:bg-black/80 dark:bg-white dark:hover:bg-white/80"
-          onClick={handleSubmit}
-        >
-          <span className="text-white dark:text-black">
-            Cancelar suscripción
-          </span>
-        </button>
-      </div> */}
-      {/* )} */}
     </div>
   );
 }

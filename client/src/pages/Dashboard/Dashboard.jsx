@@ -51,7 +51,7 @@ const Dashboard = () => {
   return (
     <div className="w-full h-full flex">
       <Toaster />
-      <div className="w-1/5 fixed h-screen bg-slate-900 dark:bg-slate-900">
+      <div className="w-1/5 lg:w-1/6 fixed h-screen bg-slate-900 dark:bg-slate-900 px-3">
         {/* Profile */}
         {userData && (
           <div className="h-1/5 flex flex-col items-center justify-center pt-4">
@@ -67,13 +67,6 @@ const Dashboard = () => {
         )}
 
         <div className="h-4/5 flex flex-col justify-between pt-4 relative">
-          {/* Home */}
-          <Link
-            to="/"
-            className="mx-2 p-1 mb-1 rounded-sm text-start absolute top-[-120px] left-[10px] w-[100px] h-[50px] bg-blue-400 flex items-center font-bold "
-          >
-            <h6 className="text-black">🎬 Home</h6>
-          </Link>
           {/* Ventas */}
           <div className="flex flex-col">
             <div className="flex items-center p-2">
@@ -93,9 +86,9 @@ const Dashboard = () => {
               <span className="text-white uppercase text-xs ml-1">Ventas</span>
             </div>
             <button
-              className={`mx-2 p-1 mb-1 rounded-sm text-start ${
+              className={`mx-2 p-1 pl-3 mb-1 rounded-sm text-start ${
                 activeComponent === "saleGeneral" &&
-                "bg-slate-800 font-bold text-white"
+                "font-extrabold"
               }`}
               onClick={() => handleButtonClick("saleGeneral")}
               disabled={activeComponent === "saleGeneral"}
@@ -103,9 +96,9 @@ const Dashboard = () => {
               <h6 className={`text-white`}>General</h6>
             </button>
             <button
-              className={`mx-2 p-1 mb-1 rounded-sm text-start ${
+              className={`mx-2 p-1 pl-3 mb-1 rounded-sm text-start ${
                 activeComponent === "saleTicket" &&
-                "bg-slate-800 font-bold text-white"
+                "font-extrabold"
               }`}
               onClick={() => handleButtonClick("saleTicket")}
               disabled={activeComponent === "saleTicket"}
@@ -113,9 +106,9 @@ const Dashboard = () => {
               <h6 className={`text-white`}>Entradas</h6>
             </button>
             <button
-              className={`mx-2 p-1 mb-1 rounded-sm text-start ${
+              className={`mx-2 p-1 pl-3 mb-1 rounded-sm text-start ${
                 activeComponent === "saleCandy" &&
-                "bg-slate-800 font-bold text-white"
+                "font-extrabold"
               }`}
               onClick={() => handleButtonClick("saleCandy")}
               disabled={activeComponent === "saleCandy"}
@@ -123,9 +116,9 @@ const Dashboard = () => {
               <h6 className={`text-white`}>Candy</h6>
             </button>
             <button
-              className={`mx-2 p-1 mb-1 rounded-sm text-start ${
+              className={`mx-2 p-1 pl-3 mb-1 rounded-sm text-start ${
                 activeComponent === "saleSubscription" &&
-                "bg-slate-800 font-bold text-white"
+                "font-extrabold"
               }`}
               onClick={() => handleButtonClick("saleSubscription")}
               disabled={activeComponent === "saleSubscription"}
@@ -155,9 +148,9 @@ const Dashboard = () => {
               </span>
             </div>
             <button
-              className={`mx-2 p-1 mb-1 rounded-sm text-start ${
+              className={`mx-2 p-1 pl-3 mb-1 rounded-sm text-start ${
                 activeComponent === "dataMovies" &&
-                "bg-slate-800 font-bold text-white"
+                "font-extrabold"
               }`}
               onClick={() => handleButtonClick("dataMovies")}
               disabled={activeComponent === "dataMovies"}
@@ -166,9 +159,9 @@ const Dashboard = () => {
             </button>
 
             <button
-              className={`mx-2 p-1 mb-1 rounded-sm text-start ${
+              className={`mx-2 p-1 pl-3 mb-1 rounded-sm text-start ${
                 activeComponent === "dataCandy" &&
-                "bg-slate-800 font-bold text-white"
+                "font-extrabold"
               }`}
               onClick={() => handleButtonClick("dataCandy")}
               disabled={activeComponent === "dataCandy"}
@@ -177,9 +170,9 @@ const Dashboard = () => {
             </button>
 
             <button
-              className={`mx-2 p-1 mb-1 rounded-sm text-start ${
+              className={`mx-2 p-1 pl-3 mb-1 rounded-sm text-start ${
                 activeComponent === "dataUsers" &&
-                "bg-slate-800 font-bold text-white"
+                "font-extrabold"
               }`}
               onClick={() => handleButtonClick("dataUsers")}
               disabled={activeComponent === "dataUsers"}
@@ -209,9 +202,9 @@ const Dashboard = () => {
               </span>
             </div>
             <button
-              className={`mx-2 p-1 mb-1 rounded-sm text-start ${
+              className={`mx-2 p-1 pl-3 mb-1 rounded-sm text-start ${
                 activeComponent === "webVisits" &&
-                "bg-slate-800 font-bold text-white"
+                "font-extrabold"
               }`}
               onClick={() => handleButtonClick("webVisits")}
               disabled={activeComponent === "webVisits"}
@@ -220,9 +213,21 @@ const Dashboard = () => {
             </button>
           </div>
 
+          <div>
+            <Link
+              to="/"
+              className="flex m-1 mx-2 w-20"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" className="w-5 h-5 stroke-white">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+              </svg>
+              <span className="text-white text-sm ml-1">Home</span>
+            </Link>
+          </div>
+
           <button
             onClick={handleLogout}
-            className="flex items-center justify-center gap-1 pb-4"
+            className="flex items-center justify-center gap-1 pl-3 pb-4"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -243,7 +248,7 @@ const Dashboard = () => {
           </button>
         </div>
       </div>
-      <div className="w-4/5 min-h-screen ml-auto bg-light-100 dark:bg-light-100">
+      <div className="w-4/5 lg:w-5/6 min-h-screen ml-auto bg-light-50 dark:bg-light-50">
         {activeComponent === "saleGeneral" && <SaleGeneral />}
         {activeComponent === "saleTicket" && <SaleTicket />}
         {activeComponent === "saleCandy" && <SaleCandy />}

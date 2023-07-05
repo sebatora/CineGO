@@ -30,6 +30,9 @@ const Login = () => {
     setLoading(true);
     try {
       dispatch(loginUser(data));
+      window.localStorage.removeItem("movie");
+      window.localStorage.removeItem("cart");
+      window.localStorage.removeItem("productCount");
     } catch (error) {
       toast.error(error)
     } finally {
@@ -42,6 +45,9 @@ const Login = () => {
     try {
       await loginWithGoogle();
       toast.success("Inicio de sesión exitoso");
+      window.localStorage.removeItem("movie");
+      window.localStorage.removeItem("cart");
+      window.localStorage.removeItem("productCount");
     } catch (error) {
       console.error(error);
     } finally {

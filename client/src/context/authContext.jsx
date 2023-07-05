@@ -3,7 +3,6 @@ import { auth } from "../firebase/firebaseConfig";
 import {
   GoogleAuthProvider,
   getRedirectResult,
-  onAuthStateChanged,
   signInWithRedirect,
   signOut,
 } from "firebase/auth";

@@ -14,14 +14,20 @@ import Swal from "sweetalert2";
 
 function CandyCarrito({ addCart, productCount, setProductCount }) {
   const userData = JSON.parse(window.localStorage.getItem("user"));
+  const storedCart = window.localStorage.getItem("cart");
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 
   const subtotal = cart.reduce((acc, el) => acc + parseFloat(el.price), 0);
   const servicio = subtotal * 0.1;
   const total = subtotal + servicio;
-  const valueFormatter = (number) =>
-    number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  // const descuento =
+  //   userData?.cinePlus === "Gold"
+  //     ? Math.floor(total * 0.8)
+  //     : userData?.cinePlus === "Black"
+  //     ? Math.floor(total * 0.65)
+  //     : total;
+  const valueFormatter = (number) => number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
   const delRemoveCart = (name, all = false) => {
     if (all) {
@@ -62,7 +68,7 @@ function CandyCarrito({ addCart, productCount, setProductCount }) {
         totalPrice: total,
       };
       Swal.fire({
-        title: "¿Estás seguro de continuar?",
+        title: "<h2 style='color: black;'>¿Estás seguro de continuar?</h2>",
         showDenyButton: true,
         cancelButtonColor: "#ef233c",
         confirmButtonColor: "#38b000",
@@ -89,7 +95,6 @@ function CandyCarrito({ addCart, productCount, setProductCount }) {
   };
 
   useEffect(() => {
-    const storedCart = window.localStorage.getItem("cart");
     if (storedCart) {
       dispatch(saveCart(JSON.parse(storedCart)));
     }
@@ -151,11 +156,19 @@ function CandyCarrito({ addCart, productCount, setProductCount }) {
           Subtotal: $ {valueFormatter(subtotal)}
         </div>
         <div className="px-2 font-bold text-sm mb-1 text-gray-700 dark:text-white">
-          Cargo por servicio candy: $ {valueFormatter(servicio)}
+          Cargo por servicio: $ {valueFormatter(servicio)}
         </div>
         <div className="px-2 font-bold text-lg mb-1 text-gray-700 dark:text-white">
-          <p>TOTAL: $ {valueFormatter(total)} </p>
+          {/* {userData && userData?.cinePlus !== "Estandar" ? (
+            <p>TOTAL: <span className="line-through italic">$ {valueFormatter(total)}</span> </p>
+          ) : <p>TOTAL: <span>$ {valueFormatter(total)}</span> </p>} */}
+          <p>TOTAL: <span>$ {valueFormatter(total)}</span></p>
         </div>
+        {/* {userData && userData?.cinePlus !== "Estandar" ? (
+          <div className="px-2 font-bold text-base mb-1 text-gray-700 dark:text-white">
+            Con descuento: $ {valueFormatter(descuento)}
+          </div>
+        ) : null} */}
         <div className="px-4 py-3 mb-2 flex justify-center items-center">
           <Link to={`${!userData ? "/login" : "/candy"}`}>
             <button

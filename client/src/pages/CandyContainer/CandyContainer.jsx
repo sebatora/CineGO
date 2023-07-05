@@ -2,29 +2,43 @@ import React, { useEffect, useState } from "react";
 import CandyCard from "../../components/CandyCard/CandyCard";
 import Spinner from "../../components/Spinner/Spinner";
 import { useDispatch, useSelector } from "react-redux";
-import { addCartCandy, getCandy } from "../../redux/actions";
+import { addCartCandy, getCandy, getUserById } from "../../redux/actions";
 import CandyCarrito from "../../components/CandyCarrito/CandyCarrito";
 import { Toaster, toast } from "react-hot-toast";
 
 function CandyContainer() {
+  const storeProductCount = window.localStorage.getItem("productCount");
+  const userData = JSON.parse(window.localStorage.getItem("user"));
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
   const products = useSelector((state) => state.allCandy);
   const [productCount, setProductCount] = useState(0);
 
-  const candyProduct = products.filter((active) => active.activeCandy === true)
+  const candyProduct = products.filter((active) => active.activeCandy === true);
 
-  const combos = candyProduct.filter((product) => product.category === "combos");
-  const pochoclos = candyProduct.filter((product) => product.category === "pochoclos");
-  const bebidas = candyProduct.filter((product) => product.category === "bebidas");
-  const snacks = candyProduct.filter((product) => product.category === "snacks");
-  const cafeteria = candyProduct.filter((product) => product.category === "cafeteria");
-  const golosinas = candyProduct.filter((product) => product.category === "golosinas");
+  const combos = candyProduct.filter(
+    (product) => product.category === "combos"
+  );
+  const pochoclos = candyProduct.filter(
+    (product) => product.category === "pochoclos"
+  );
+  const bebidas = candyProduct.filter(
+    (product) => product.category === "bebidas"
+  );
+  const snacks = candyProduct.filter(
+    (product) => product.category === "snacks"
+  );
+  const cafeteria = candyProduct.filter(
+    (product) => product.category === "cafeteria"
+  );
+  const golosinas = candyProduct.filter(
+    (product) => product.category === "golosinas"
+  );
 
   const addCart = (name) => {
-    if (productCount >= 5) {
+    if (productCount >= 10) {
       toast.dismiss(); // Limpiar la alerta existente si hay alguna
-      toast.error("Has alcanzado el límite de 5 productos en tu carrito.", {
+      toast.error("Has alcanzado el límite de 10 productos en tu carrito.", {
         duration: 3000,
       });
       return;
@@ -37,21 +51,18 @@ function CandyContainer() {
 
     localStorage.setItem("productCount", productCount + 1);
     setProductCount(productCount + 1);
-  }; 
-  
-  useEffect(() => {
-    const storeProductCount = localStorage.getItem("productCount");
-  
-    if (storeProductCount) {
-      setProductCount(Number(storeProductCount));
-    }
-  }, []);
-  
+  };
 
   useEffect(() => {
+    if (userData?.id) {
+      dispatch(getUserById(userData.id));
+    }
     dispatch(getCandy()).then(() => {
       setLoading(false);
     });
+    if (storeProductCount) {
+      setProductCount(Number(storeProductCount));
+    }
   }, []);
 
   return (
@@ -62,7 +73,7 @@ function CandyContainer() {
         <div className="w-full flex">
           <Toaster />
           <div className="w-2/3 mt-20 flex flex-col items-center px-14 pb-14">
-            {combos.length ? ( 
+            {combos.length ? (
               <>
                 <h2>Combos</h2>
                 <div className="flex flex-wrap justify-center">
@@ -78,9 +89,9 @@ function CandyContainer() {
                     />
                   ))}
                 </div>
-              </> )
-            : null }
-  
+              </>
+            ) : null}
+
             {pochoclos.length ? (
               <>
                 <h2 className="mt-4">Pochoclos</h2>
@@ -98,8 +109,8 @@ function CandyContainer() {
                   ))}
                 </div>
               </>
-            ): null }
-           
+            ) : null}
+
             {bebidas.length ? (
               <>
                 <h2 className="mt-4">Bebidas</h2>
@@ -117,9 +128,9 @@ function CandyContainer() {
                   ))}
                 </div>
               </>
-            ) : null }
+            ) : null}
 
-            {snacks.length ? ( 
+            {snacks.length ? (
               <>
                 <h2 className="mt-4">Snacks</h2>
                 <div className="flex flex-wrap justify-center">
@@ -136,9 +147,9 @@ function CandyContainer() {
                   ))}
                 </div>
               </>
-            ) : null }
+            ) : null}
 
-            { cafeteria.length ? (
+            {cafeteria.length ? (
               <>
                 <h2 className="mt-4">Cafeteria</h2>
                 <div className="flex flex-wrap justify-center">
@@ -155,8 +166,8 @@ function CandyContainer() {
                   ))}
                 </div>
               </>
-            ) : null }
-            
+            ) : null}
+
             {golosinas.length ? (
               <>
                 <h2 className="mt-4">Golosinas</h2>
@@ -174,7 +185,7 @@ function CandyContainer() {
                   ))}
                 </div>
               </>
-            ): null }  
+            ) : null}
           </div>
 
           <CandyCarrito

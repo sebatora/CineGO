@@ -11,7 +11,7 @@ export default {
       keyframes: {
         tambaleo: {
           "0%": { transform: "translateX(0) rotate(-2deg)" },
-          "50%": { transform: "translateX(10px) rotate(10deg)" },
+          "50%": { transform: "translateX(10px) rotate(2deg)" },
           "100%": { transform: "translateX(0) rotate(-2deg)" },
         },
         colorAnimation: {
@@ -94,8 +94,17 @@ export default {
           900: "#370617",
           950: "#03071c",
         },
+      },
+    },
+  },
+  plugins: [
+    require("tailwindcss-animated"),
+    require("@headlessui/tailwindcss"),
+  ],
+};
 
-        tremor: {
+/*
+tremor: {
           brand: {
             faint: "#eff6ff", // blue-50
             muted: "#bfdbfe", // blue-200
@@ -211,9 +220,5 @@ export default {
       pattern:
         /^(fill-(?:slate|gray|zinc|neutral|stone|red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose)-(?:50|100|200|300|400|500|600|700|800|900|950))$/,
     },
-  ],
-  plugins: [
-    require("tailwindcss-animated"),
-    require("@headlessui/tailwindcss"),
-  ],
-};
+  ]
+*/

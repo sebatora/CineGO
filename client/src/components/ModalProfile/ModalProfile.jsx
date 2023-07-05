@@ -17,20 +17,20 @@ const ModalProfile = ({ setActiveModal, userData }) => {
       window.localStorage.removeItem("movie");
       window.localStorage.removeItem("cart");
       window.localStorage.removeItem("productCount");
-      navigate("/login");
+      navigate("/");
+    } catch (error) {
+      console.error(error);
+    } finally {
       toast("Se cerró sesión", {
-        duration: 3000,
         style: {
           color: "red",
         },
       });
-    } catch (error) {
-      console.error(error);
     }
   };
 
   return (
-    <div className="w-64 h-40 flex flex-col top-12 right-0 bg-light-100 dark:bg-dark-950 absolute border border-t-0 border-black dark:border-white dark:border-opacity-70 border-opacity-10 rounded-bl-md">
+    <div className="w-64 h-40 flex flex-col top-12 right-0  bg-slate-300 dark:bg-dark-950 absolute border border-t-0 border-black dark:border-white dark:border-opacity-70 border-opacity-10 rounded-bl-md">
       <h3 className="my-4 flex justify-center select-none uppercase">
         ¡Bienvenido!
       </h3>

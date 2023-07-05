@@ -15,15 +15,6 @@ import { getMetrics } from "../../../redux/actions";
 
 const valueFormatter = (number) => `$ ${number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}`;
 
-
-const valueFormatter2 = (number, category) => {
-  if (category === "totalPrice") {
-    return `$ ${number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}`;
-  }
-  return number;
-};
-
-
 const SaleCandy = () => {
   
   const dispatch = useDispatch();
@@ -38,8 +29,8 @@ const SaleCandy = () => {
 
   return (
     <>
-        <div className="bg-gradient-to-r from-blue-400 via-pink-400 to-red-400 overflow-y-auto justify-center items-center">
-        <Card className="bg-blue-200 overflow-y-auto max-w-7xl ml-32 mt-8 mb-1 ">
+        <div className="w-full justify-center items-center p-4">
+        <Card className="bg-primary-300">
           <Title className="text-2xl font-bold text-center mb-2">
             Listado de productos vendidos
           </Title>
@@ -91,9 +82,9 @@ const SaleCandy = () => {
         </Card>
       </div>
 
-      <div className="flex flex-wrap h-screen bg-gradient-to-r from-blue-400 via-pink-400 to-red-400 overflow-y-auto">
-        <div >
-          <Card className="bg-blue-200 max-w-4xl mx-1 ml-36 mt-5 max-h-96">
+      <div className="w-full flex min-h-screen px-4 space-x-4">
+        <div className="w-2/3">
+          <Card className="bg-primary-300">
             <Title className="font-bold">Grafico de ventas de Candy</Title>
             <AreaChart
               className="h-56 mt-5"
@@ -106,8 +97,8 @@ const SaleCandy = () => {
             />
           </Card>
         </div>
-        <div>
-          <Card className="bg-blue-200 max-w-xs m-5">
+        <div className="w-1/3">
+          <Card className="bg-primary-300">
             <Title>Total recaudado en candy</Title>
             <Table className="h-8 mt-5">
               <TableBody>
