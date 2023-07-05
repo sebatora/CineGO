@@ -7,6 +7,7 @@ import LogoGoogle from "../../assets/google_logo.png";
 import { useAuth } from "../../context/authContext";
 import { loginUser } from "../../redux/actions";
 import Spinner from "../../components/Spinner/Spinner";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const userData = JSON.parse(window.localStorage.getItem("user"));
@@ -44,7 +45,13 @@ const Login = () => {
     setLoading(true);
     try {
       await loginWithGoogle();
-      toast.success("Inicio de sesión exitoso");
+      Swal.fire({
+        position: "top",
+        icon: 'success',
+        title: 'Iniciaste sesión exitosamente',
+        showConfirmButton: false,
+        timer: 1500
+      })
       window.localStorage.removeItem("movie");
       window.localStorage.removeItem("cart");
       window.localStorage.removeItem("productCount");
@@ -57,7 +64,13 @@ const Login = () => {
 
   useEffect(() => {
     if(userData?.email){
-      toast.success("Inicio de sesión exitoso");
+      Swal.fire({
+        position: "top",
+        icon: 'success',
+        title: 'Iniciaste sesión exitosamente',
+        showConfirmButton: false,
+        timer: 1500
+      })
       navigate("/");
     }
   }, [userData]);
