@@ -50,9 +50,9 @@ const TicketContainer = () => {
   const general = tickets.filter((ticket) => ticket.name === "Entrada General");
 
   const addToCard = (name) => {
-    if (productCount >= 5) {
+    if (productCount >= 10) {
       toast.dismiss();
-      toast.error("Has alcanzado el límite de 5 productos en tu carrito.", {
+      toast.error("Has alcanzado el límite de 10 productos en tu carrito.", {
         duration: 3000,
       });
       return;

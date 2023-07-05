@@ -21,7 +21,7 @@ function MovieCard({ id, title, image, clasification, duration, ratings }) {
   };
 
   return (
-    <div className="w-52 h-72 m-4">
+    <div className="w-52 h-72 m-4 animate-fade animate-once animate-delay-500">
       <div
         className={`w-full h-full relative group transition duration-500 ease-in 
     ${

@@ -64,15 +64,15 @@ const DataCandy = () => {
   }, [dispatch, candyName]);
 
   return (
-    <div className="h-screen flex justify-center items-center">
+    <div className="min-h-screen flex justify-center">
       {loading ? (
         <Spinner />
       ) : (
         <div className="w-full">
-          <h3 className="dark:text-black p-4">Candy</h3>
-          <div className="absolute right-0 top-0 m-4">
+          <div className="w-full flex justify-between items-center">
+            <h3 className="dark:text-black p-4">Candy</h3>
             <button
-              className="flex items-center bg-light-200 rounded-md p-2"
+              className="flex items-center bg-light-200 rounded-md p-2 m-2"
               onClick={() => setActiveForm(true)}
             >
               <svg
@@ -91,10 +91,10 @@ const DataCandy = () => {
             </button>
           </div>
 
-          <div className="w-full p-2 border">
+          <div className="w-full p-2">
             <div className="w-full flex items-center mb-2">
               <input
-                className="w-full rounded appearance-none bg-slate-100 py-1 px-2 focus:outline-slate-400"
+                className="w-full rounded appearance-none bg-slate-200 py-1 px-2 focus:outline-slate-400"
                 type="text"
                 onChange={handleChangeName}
                 placeholder="Buscar candy"
@@ -187,7 +187,8 @@ const DataCandy = () => {
                 ))}
               </tbody>
             </table>
-            <div className="w-full flex justify-center items-center pt-4">
+            {orderAllCandy.length ? (
+              <div className="w-full flex justify-center items-center pt-4">
               <button
                 onClick={prevPage}
                 className="bg-light-200 rounded-md p-1 mx-2"
@@ -228,6 +229,11 @@ const DataCandy = () => {
                 </svg>
               </button>
             </div>
+            ) : (
+              <div className="w-full flex justify-center items-center pt-4">
+                <h2 className="">No hay resultados encontrados</h2>
+              </div>
+            )}
           </div>
           {activeForm && <CreateCandy setActiveForm={setActiveForm} />}
           {activeEdit && (
@@ -240,5 +246,3 @@ const DataCandy = () => {
 };
 
 export default DataCandy;
-
-
