@@ -15,7 +15,7 @@ const DataUsers = () => {
 	const handleToggle = (userId, activeUser) => {
 		setTimeout(() => {
 			dispatch(getUsers());
-		}, 100);
+		}, 300);
 		dispatch(putUser({ id: userId, activeUser: `${!activeUser}` }));
 	};
 
