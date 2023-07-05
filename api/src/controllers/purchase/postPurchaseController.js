@@ -123,19 +123,6 @@ const postPurchaseController = async (
             </div>
             <h1 class="message">¡Hola ${firstName}!</h1>
             <p class="message"> Tu compra ha sido procesada con éxito y estamos trabajando arduamente para garantizar que disfrutes de una experiencia inolvidable en tu próxima visita al cine. Nos complace ofrecerte una amplia selección de películas y candy para que puedas disfrutar al máximo de tus momentos de entretenimiento. Si tienes alguna pregunta o necesitas asistencia adicional, nuestro equipo de atención al cliente estará encantado de ayudarte. Puedes ponerte en contacto con nosotros a través de nuestro sitio web o por correo electrónico. Una vez más, te agradecemos sinceramente por elegir CineGo como tu destino para comprar entradas de cine en línea. Estamos comprometidos a brindarte la mejor experiencia cinefila y esperamos verte pronto en nuestras salas. </p>
-            <td valign="middle" align="center" style="text-align: center; justify-content: center; align-items: center ; padding: 0px 20px 40px 415px;">
-              <!-- Button : BEGIN -->
-              <table role="presentation" align="center" cellspacing="0" cellpadding="0" border="0" class="center-on-narrow">
-                <tr>
-                  <td style="border-radius: 50px; background: #2420ff; text-align: center;" class="button-td">
-                    <a href="https://cine-go-ten.vercel.app" style="background: #2420ff; border: 15px solid #2420ff; font-family: 'Montserrat', sans-serif; font-size: 14px; line-height: 1.1; text-align: center; text-decoration: none; display: block; border-radius: 50px; font-weight: bold;" class="button-a">
-                      <span style="color:white;" class="button-link">&nbsp;&nbsp;&nbsp;&nbsp;Empezar&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                    </a>
-                  </td>
-                </tr>
-              </table>
-              <!-- Button : END -->
-            </td>
           </body>
         </html>
       `,

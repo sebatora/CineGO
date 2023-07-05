@@ -89,20 +89,6 @@ const postUser = async ({ firstName, lastName, email, password, image, isAdmin, 
           </div>
           <h1 class="message">Bienvenido ${firstName}!</h1>
           <p class="message"> En nombre de todo el equipo de CineGo, nos complace darte la más cálida bienvenida a nuestra plataforma de venta de entradas en línea. Estamos encantados de tenerte como parte de nuestra comunidad cinéfila y estamos seguros de que disfrutarás de una experiencia inolvidable con nosotros. </p>
-          <td valign="middle" align="center" style="text-align: center; justify-content: center; align-items: center ; padding: 0px 20px 40px 415px;">
-
-                <!-- Button : BEGIN -->
-                <table role="presentation" align="center" cellspacing="0" cellpadding="0" border="0" class="center-on-narrow">
-                    <tr>
-                        <td style="border-radius: 50px; background: #2420ff; text-align: center;" class="button-td">
-                            <a href="https://cine-go-ten.vercel.app" style="background: #2420ff; border: 15px solid #2420ff; font-family: 'Montserrat', sans-serif; font-size: 14px; line-height: 1.1; text-align: center; text-decoration: none; display: block; border-radius: 50px; font-weight: bold;" class="button-a">
-                                <span style="color:white;" class="button-link">&nbsp;&nbsp;&nbsp;&nbsp;Empezar&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                            </a>
-                        </td>
-                    </tr>
-                </table>
-                <!-- Button : END -->
-          </td>
         </body>
       </html>
     `,
