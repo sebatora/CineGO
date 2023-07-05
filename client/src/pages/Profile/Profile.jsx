@@ -13,7 +13,7 @@ function Profile() {
   };
 
   return (
-    <div className="w-full h-[90vh] flex mt-12">
+    <div className="w-full h-full min-h-screen flex mt-12">
       <div className="w-1/5 flex flex-col bg-light-300 dark:bg-slate-900">
         <h1 className="w-full mt-5 ml-5">Bienvenido</h1>
         <div className="w-full flex flex-col p-4">
