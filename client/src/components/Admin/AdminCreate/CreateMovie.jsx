@@ -30,9 +30,7 @@ const schema = yup.object().shape({
     .string()
     .matches(/^[0-9]+$/, "Solo números")
     .required("Duración requerida"),
-  release_date: yup
-  .string()
-  .required("Fecha de estreno requerida"),
+  release_date: yup.string().required("Fecha de estreno requerida"),
   trailer: yup
     .string()
     .url("Ingrese una URL válida para el tráiler")
@@ -156,11 +154,11 @@ const CreateMovie = ({ setActiveForm }) => {
   return (
     <>
       <div
-        className="w-full fixed top-0 left-0 bottom-0 right-0 z-10 bg-black/80"
+        className="w-full h-full fixed top-0 left-0 bottom-0 right-0 z-10 bg-black/80"
         onClick={() => setActiveForm(false)}
       ></div>
       <form
-        className="w-[720px] fixed top-0 left-0 bottom-0 right-0 z-20 flex flex-col justify-center items-center p-10 mx-auto my-10 bg-light-300 dark:bg-light-300 rounded"
+        className="w-[35%] fixed top-0 left-0 bottom-0 right-0 z-20 flex flex-col  p-10 mx-auto my-10 bg-slate-600 rounded"
         onSubmit={handleSubmit(onSubmit)}
         encType="multipart/form-data"
       >
@@ -181,9 +179,11 @@ const CreateMovie = ({ setActiveForm }) => {
             />
           </svg>
         </button>
+        <h1 className="pb-1 ml-3 mb-4">Crear película</h1>
 
-        <div className="w-full flex justify-center py-2">
+        <div className="w-full h-28  flex justify-center py-2">
           <div className="flex flex-col mx-6">
+            <label className="pb-1">Título</label>
             <input
               className="border rounded-sm p-1 w-60"
               type="text"
@@ -198,6 +198,7 @@ const CreateMovie = ({ setActiveForm }) => {
           </div>
 
           <div className="flex flex-col mx-6">
+            <label className="pb-1">Actores</label>
             <input
               className="border rounded-sm p-1 w-60"
               type="text"
@@ -212,14 +213,9 @@ const CreateMovie = ({ setActiveForm }) => {
           </div>
         </div>
 
-        <div className="w-full flex justify-center py-2">
+        <div className="w-full h-28 flex justify-center py-2">
           <div className="flex flex-col mx-6">
-            {/* <input
-              className="border rounded-sm p-1 w-60"
-              type="text"
-              placeholder="Clasificación"
-              {...register("clasification")}
-            /> */}
+            <label className="pb-1">Clasificación</label>
             <select
               className="border rounded-sm p-1 w-60 flex flex-col"
               name="clasification"
@@ -246,6 +242,7 @@ const CreateMovie = ({ setActiveForm }) => {
             )}
           </div>
           <div className="flex flex-col mx-6">
+            <label className="pb-1">Director</label>
             <input
               className="border rounded-sm p-1 w-60"
               type="text"
@@ -260,8 +257,9 @@ const CreateMovie = ({ setActiveForm }) => {
           </div>
         </div>
 
-        <div className="w-full flex justify-center py-2">
+        <div className="w-full h-28 flex justify-center py-2">
           <div className="flex flex-col mx-6">
+            <label className="pb-1">Duración</label>
             <input
               className="border rounded-sm p-1 w-60"
               type="text"
@@ -275,6 +273,7 @@ const CreateMovie = ({ setActiveForm }) => {
             )}
           </div>
           <div className="flex flex-col mx-6">
+            <label className="pb-1">Fecha de estreno</label>
             <input
               className="border rounded-sm p-1 w-60"
               type="text"
@@ -289,8 +288,9 @@ const CreateMovie = ({ setActiveForm }) => {
           </div>
         </div>
 
-        <div className="w-full flex justify-center py-2">
+        <div className="w-full h-[250px] flex justify-center py-2">
           <div className="flex flex-col mx-6">
+            <label className="pb-1">Trailer</label>
             <input
               className="border rounded-sm p-1 w-60"
               type="text"
@@ -303,15 +303,13 @@ const CreateMovie = ({ setActiveForm }) => {
               </span>
             )}
             <div className="flex flex-col mt-2">
+              <label className="pb-1">Géneros</label>
               <select
                 className="border rounded-sm p-1 w-60 flex flex-col"
                 onChange={(e) => handleSelect(e)}
                 name="genres"
                 value={watch("genres")}
               >
-                <option className="flex flex-col" value="">
-                  Géneros
-                </option>
                 {genres?.map((t) => (
                   <option
                     className="flex flex-col "
@@ -324,7 +322,6 @@ const CreateMovie = ({ setActiveForm }) => {
                 ))}
               </select>
               <div className="flex flex-wrap mt-2">
-               
                 {selectedGenres.map((genre) => (
                   <div className="flex items-center" key={genre}>
                     <h6 className="flex flex-col">{genre}</h6>
@@ -336,11 +333,12 @@ const CreateMovie = ({ setActiveForm }) => {
                     </button>
                   </div>
                 ))}
-                </div>
+              </div>
             </div>
           </div>
 
           <div className="flex flex-col mx-6">
+            <label className="pb-1">Descripción</label>
             <textarea
               className="border rounded-sm p-1 w-60 resize-none"
               rows={5}
@@ -356,7 +354,7 @@ const CreateMovie = ({ setActiveForm }) => {
           </div>
         </div>
 
-        <div className="w-full justify-center my-6 flex items-center">
+        <div className="w-full justify-center my-6 flex flex-row items-center">
           <div className="w-[100px] h-[100px] flex justify-center items-start rounded-md border-[3px] border-gray-500">
             {uploadedPhoto ? (
               <img
@@ -374,25 +372,20 @@ const CreateMovie = ({ setActiveForm }) => {
               )
             )}
           </div>
-          <div className="flex justify-center m-6">
-            <button
-              className="bg-primary-600 hover:bg-primary-500 py-4 px-10 w-92 text-white font-semibold"
-              type="button"
-              id="btn-photo"
-            >
-              {" "}
-              Subir foto
-            </button>
-          </div>
-        </div>
-        <div className="w-full flex justify-center mt-4">
           <button
-            className="bg-primary-600 hover:bg-primary-500 py-5 px-10 w-96 text-white font-semibold"
-            type="submit"
+            className="bg-primary-600 hover:bg-primary-500 py-2 px-6 w-92 ml-12 text-white font-semibold rounded-md"
+            type="button"
+            id="btn-photo"
           >
-            Crear película
+            Subir foto
           </button>
         </div>
+        <button
+          className="bg-primary-600 hover:bg-primary-500 p-4 text-white font-semibold rounded-md"
+          type="submit"
+        >
+          Crear película
+        </button>
       </form>
     </>
   );
