@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 import CandyCard from "../../components/CandyCard/CandyCard";
 import Spinner from "../../components/Spinner/Spinner";
 import { useDispatch, useSelector } from "react-redux";
-import { addCartCandy, getCandy } from "../../redux/actions";
+import { addCartCandy, getCandy, getUserById } from "../../redux/actions";
 import CandyCarrito from "../../components/CandyCarrito/CandyCarrito";
 import { Toaster, toast } from "react-hot-toast";
 
 function CandyContainer() {
+  const storeProductCount = window.localStorage.getItem("productCount");
+  const userData = JSON.parse(window.localStorage.getItem("user"));
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
   const products = useSelector((state) => state.allCandy);
@@ -40,18 +42,15 @@ function CandyContainer() {
   }; 
   
   useEffect(() => {
-    const storeProductCount = localStorage.getItem("productCount");
-  
-    if (storeProductCount) {
-      setProductCount(Number(storeProductCount));
+    if(userData?.id){
+      dispatch(getUserById(userData.id));
     }
-  }, []);
-  
-
-  useEffect(() => {
     dispatch(getCandy()).then(() => {
       setLoading(false);
     });
+    if (storeProductCount) {
+      setProductCount(Number(storeProductCount));
+    }
   }, []);
 
   return (

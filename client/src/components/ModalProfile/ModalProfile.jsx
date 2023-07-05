@@ -17,9 +17,8 @@ const ModalProfile = ({ setActiveModal, userData }) => {
       window.localStorage.removeItem("movie");
       window.localStorage.removeItem("cart");
       window.localStorage.removeItem("productCount");
-      navigate("/login");
+      navigate("/");
       toast("Se cerró sesión", {
-        duration: 3000,
         style: {
           color: "red",
         },
