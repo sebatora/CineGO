@@ -18,13 +18,14 @@ const ModalProfile = ({ setActiveModal, userData }) => {
       window.localStorage.removeItem("cart");
       window.localStorage.removeItem("productCount");
       navigate("/");
+    } catch (error) {
+      console.error(error);
+    } finally {
       toast("Se cerró sesión", {
         style: {
           color: "red",
         },
       });
-    } catch (error) {
-      console.error(error);
     }
   };
 
