@@ -160,14 +160,14 @@ function Detail() {
                         (date, index, array) => array.indexOf(date) === index
                       )
                       .map((date) => (
-                        <div className="w-[150px] h-[50px] flex items-center justify-center">
+                        <div className="w-[150px] h-[80px] flex items-center justify-center">
                           <button
                             key={date}
                             onClick={() => handleClickDate(date)}
                             className={
                               selectedDay === date
-                                ? "selected  bg-black p-2 m-1 mr-3 border-2  border-gray-600 rounded-lg text-white text-xl font-bold"
-                                : "bg-slate-300 p-2 m-1 mr-3 border-2 border-gray-600 rounded-lg text-xl font-bold"
+                                ? "w-full h-full selected  bg-black p-2 m-1 mr-3 border-2  border-gray-600 rounded-lg text-white text-xl font-bold"
+                                : "w-full h-full bg-slate-300 p-2 m-1 mr-3 border-2 border-gray-600 rounded-lg text-xl font-bold"
                             }
                           >
                             {date}
@@ -188,8 +188,8 @@ function Detail() {
                             onClick={() => handleClickShow(show)}
                             className={
                               selectedShow === show
-                                ? "w-[100px] h-[50px] flex items-center justify-center bg-black p-2 m-1 mr-3 border-2   border-gray-600 rounded-lg text-white text-xl font-bold cursor-pointer"
-                                : "w-[100px] h-[50px] flex items-center justify-center  bg-slate-300 p-2 m-1 mr-3 border-2  border-gray-600 rounded-lg text-xl font-bold cursor-pointer"
+                                ? "w-[150px] h-[80px] flex items-center justify-center bg-black p-2 m-1 mr-3 border-2   border-gray-600 rounded-lg text-white text-xl font-bold cursor-pointer"
+                                : "w-[150px] h-[80px] flex items-center justify-center  bg-slate-300 p-2 m-1 mr-3 border-2  border-gray-600 rounded-lg text-xl font-bold cursor-pointer"
                             }
                           >
                             <button>{show.hour}</button>
@@ -205,8 +205,8 @@ function Detail() {
                   onClick={handleSubmit}
                   className={
                     selectedShow
-                      ? "bg-primary-600 hover:bg-primary-500  text-white border-none px-4 py-2 text-center text-base rounded cursor-pointer animate-colorAnimation font-bold"
-                      : "bg-primary-100  text-black border  border-gray-600 px-4 py-2 text-center text-base rounded"
+                      ? "w-[250px] h-[80px] bg-primary-600 hover:bg-primary-500  text-white border-none px-4 py-2 text-center text-2xl rounded cursor-pointer animate-tambaleo font-bold"
+                      : "w-[250px] h-[80px]  bg-primary-100  text-black border  border-gray-600 px-4 py-2 text-center text-2xl rounded "
                   }
                   type="submit"
                   disabled={!selectedShow}
