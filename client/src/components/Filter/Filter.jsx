@@ -17,27 +17,19 @@ const Filter = () => {
 
   const handleChangeOrder = (event) => {
     const { name, value } = event.target;
-    if (value === "order") {
-      setOrderData({
-        order: "",
-        filterGenre: "",
-        filterClasification: "",
-      });
-      dispatch(getMovies());
-    } else {
-      setOrderData({ ...orderData, [name]: value });
-    }
+    setOrderData({ ...orderData, [name]: value });
   };
 
   const handleChangeClasification = (event) => {
     const { name, value } = event.target;
-    if (value === "clasification") {
+    if (value === "allClasifications") {
       setOrderData({
         order: "",
         filterGenre: "",
         filterClasification: "",
       });
       dispatch(getMovies());
+      classificationSelectRef.current.value = "clasification";
     } else {
       setOrderData({ ...orderData, [name]: value });
     }
@@ -45,13 +37,14 @@ const Filter = () => {
 
   const handleChangeGenre = (event) => {
     const { name, value } = event.target;
-    if (value === "genre") {
+    if (value === "allGenres") {
       setOrderData({
         order: "",
         filterGenre: "",
         filterClasification: "",
       });
-      dispatch(getMovies())
+      dispatch(getMovies());
+      genreSelectRef.current.value = "genre";
     } else {
       setOrderData({ ...orderData, [name]: value });
     };
@@ -92,7 +85,7 @@ const Filter = () => {
         onChange={handleChangeOrder}
         defaultValue="order"
       >
-        <option value="order">Orden</option>
+        <option value="order" disabled>Orden</option>
         <option className="dark:text-black" value="ascending">
           A to Z
         </option>
@@ -113,8 +106,11 @@ const Filter = () => {
         onChange={handleChangeClasification}
         defaultValue="clasification"
       >
-        <option value="clasification">
+        <option value="clasification" disabled>
           Clasificación
+        </option>
+        <option value="allClasifications">
+          Todas las clasificaciones
         </option>
         <option className="dark:text-black" value="ATP">
           ATP
@@ -133,8 +129,11 @@ const Filter = () => {
         onChange={handleChangeGenre}
         defaultValue="genre"
       >
-        <option value="genre">
+        <option value="genre" disabled>
           Género
+        </option>
+        <option value="allGenres">
+          Todos los géneros
         </option>
         {allGenres.map((genre) => (
           <option className="dark:text-black" key={genre.id} value={genre.name}>

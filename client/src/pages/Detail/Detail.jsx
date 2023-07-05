@@ -186,7 +186,7 @@ function Detail() {
                   onClick={handleSubmit}
                   className={
                     selectedShow
-                      ? "bg-primary-600 hover:bg-primary-500  text-white border-none px-4 py-2 text-center text-base rounded cursor-pointer animate-colorAnimation font-bold"
+                      ? "bg-primary-600 hover:bg-primary-500 text-white border-none px-4 py-2 text-center text-base rounded cursor-pointer animate-colorAnimation font-bold"
                       : "bg-primary-100  text-black border  border-gray-600 px-4 py-2 text-center text-base rounded"
                   }
                   type="submit"

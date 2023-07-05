@@ -187,7 +187,8 @@ const DataCandy = () => {
                 ))}
               </tbody>
             </table>
-            <div className="w-full flex justify-center items-center pt-4">
+            {orderAllCandy.length ? (
+              <div className="w-full flex justify-center items-center pt-4">
               <button
                 onClick={prevPage}
                 className="bg-light-200 rounded-md p-1 mx-2"
@@ -228,6 +229,11 @@ const DataCandy = () => {
                 </svg>
               </button>
             </div>
+            ) : (
+              <div className="w-full flex justify-center items-center pt-4">
+                <h2 className="">No hay resultados encontrados</h2>
+              </div>
+            )}
           </div>
           {activeForm && <CreateCandy setActiveForm={setActiveForm} />}
           {activeEdit && (

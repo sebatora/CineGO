@@ -86,7 +86,7 @@ const Dashboard = () => {
               <span className="text-white uppercase text-xs ml-1">Ventas</span>
             </div>
             <button
-              className={`mx-2 p-1 mb-1 rounded-sm text-start ${
+              className={`mx-2 pt-1 pl-3 mb-1 rounded-sm text-start ${
                 activeComponent === "saleGeneral" &&
                 "bg-slate-800 font-bold text-white"
               }`}
@@ -96,7 +96,7 @@ const Dashboard = () => {
               <h6 className={`text-white`}>General</h6>
             </button>
             <button
-              className={`mx-2 p-1 mb-1 rounded-sm text-start ${
+              className={`mx-2 pt-1 pl-3 mb-1 rounded-sm text-start ${
                 activeComponent === "saleTicket" &&
                 "bg-slate-800 font-bold text-white"
               }`}
@@ -106,7 +106,7 @@ const Dashboard = () => {
               <h6 className={`text-white`}>Entradas</h6>
             </button>
             <button
-              className={`mx-2 p-1 mb-1 rounded-sm text-start ${
+              className={`mx-2 pt-1 pl-3 mb-1 rounded-sm text-start ${
                 activeComponent === "saleCandy" &&
                 "bg-slate-800 font-bold text-white"
               }`}
@@ -116,7 +116,7 @@ const Dashboard = () => {
               <h6 className={`text-white`}>Candy</h6>
             </button>
             <button
-              className={`mx-2 p-1 mb-1 rounded-sm text-start ${
+              className={`mx-2 pt-1 pl-3 mb-1 rounded-sm text-start ${
                 activeComponent === "saleSubscription" &&
                 "bg-slate-800 font-bold text-white"
               }`}
@@ -148,7 +148,7 @@ const Dashboard = () => {
               </span>
             </div>
             <button
-              className={`mx-2 p-1 mb-1 rounded-sm text-start ${
+              className={`mx-2 pt-1 pl-3 mb-1 rounded-sm text-start ${
                 activeComponent === "dataMovies" &&
                 "bg-slate-800 font-bold text-white"
               }`}
@@ -159,7 +159,7 @@ const Dashboard = () => {
             </button>
 
             <button
-              className={`mx-2 p-1 mb-1 rounded-sm text-start ${
+              className={`mx-2 pt-1 pl-3 mb-1 rounded-sm text-start ${
                 activeComponent === "dataCandy" &&
                 "bg-slate-800 font-bold text-white"
               }`}
@@ -170,7 +170,7 @@ const Dashboard = () => {
             </button>
 
             <button
-              className={`mx-2 p-1 mb-1 rounded-sm text-start ${
+              className={`mx-2 pt-1 pl-3 mb-1 rounded-sm text-start ${
                 activeComponent === "dataUsers" &&
                 "bg-slate-800 font-bold text-white"
               }`}
@@ -202,7 +202,7 @@ const Dashboard = () => {
               </span>
             </div>
             <button
-              className={`mx-2 p-1 mb-1 rounded-sm text-start ${
+              className={`mx-2 pt-1 pl-3 mb-1 rounded-sm text-start ${
                 activeComponent === "webVisits" &&
                 "bg-slate-800 font-bold text-white"
               }`}

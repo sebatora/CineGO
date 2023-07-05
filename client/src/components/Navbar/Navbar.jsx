@@ -93,7 +93,7 @@ function Navbar({ theme, setTheme }) {
         )}
       </div>
 
-      <div className="w-full lg:w-32 h-full flex justify-end items-center mr-8 mt-2 order-2">
+      <div className="w-full lg:w-96 h-full flex justify-end items-center mr-8 mt-2 order-2">
         <div className="mx-4 hidden lg:flex justify-center">
           {!userData || Object.entries(userData).length === 0 ? (
             <Link to="/login">
