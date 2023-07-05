@@ -38,8 +38,8 @@ function SaleGeneral() {
 
   return (
     <>
-      <div className=" overflow-y-auto bg-gradient-to-r from-blue-400 via-pink-400 to-red-400 justify-center item-center">
-        <Card className="bg-blue-200 overflow-y-auto max-w-7xl ml-32 mt-3 ">
+       <div className='w-full justify-center items-center px-4'>
+        <Card className="bg-primary-300 mt-3 ">
           <Title className="text-2xl font-bold text-center mb-2">
             Lista de ventas
           </Title>
@@ -82,8 +82,8 @@ function SaleGeneral() {
           </Table>
         </Card>
       </div>
-      <div className="flex h-screen bg-gradient-to-r from-blue-400 via-pink-400 to-red-400 overflow-y-auto justify-center item-center">
-        <Card className="bg-blue-200 max-w-xs m-5 ">
+      <div className="flex h-screen overflow-y-auto justify-center item-center">
+        <Card className="bg-primary-300 max-w-xs mt-6 h-40 ">
           <Title className="text-center">Total recaudado</Title>
           <Table className="h-8 mt-5">
             <TableBody>

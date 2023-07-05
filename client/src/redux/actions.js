@@ -243,6 +243,7 @@ export const loginUser = (user) => {
     try {
       const { data } = await axios.post(`/users/login`, user);
       window.localStorage.setItem("user", JSON.stringify(data));
+      toast.success("Inicio de sesión exitoso")
       return dispatch({ type: LOGIN_USER, payload: data });
     } catch (error) {
       toast.error("Los datos ingresados son incorrectos")
