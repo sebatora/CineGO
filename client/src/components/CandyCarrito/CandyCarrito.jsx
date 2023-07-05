@@ -159,7 +159,7 @@ function CandyCarrito({ addCart, productCount, setProductCount }) {
           Subtotal: $ {valueFormatter(subtotal)}
         </div>
         <div className="px-2 font-bold text-sm mb-1 text-gray-700 dark:text-white">
-          Cargo por servicio candy: $ {valueFormatter(servicio)}
+          Cargo por servicio: $ {valueFormatter(servicio)}
         </div>
         <div className="px-2 font-bold text-lg mb-1 text-gray-700 dark:text-white">
           <p>TOTAL: $ {valueFormatter(total)} </p>
