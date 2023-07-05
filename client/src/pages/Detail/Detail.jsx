@@ -188,8 +188,8 @@ function Detail() {
                             onClick={() => handleClickShow(show)}
                             className={
                               selectedShow === show
-                                ? "w-[100px] h-[50px] flex items-center justify-center bg-black p-2 m-1 mr-3 border-2   border-gray-600 rounded-lg text-white text-xl font-bold"
-                                : "w-[100px] h-[50px] flex items-center justify-center  bg-slate-300 p-2 m-1 mr-3 border-2  border-gray-600 rounded-lg text-xl font-bold"
+                                ? "w-[100px] h-[50px] flex items-center justify-center bg-black p-2 m-1 mr-3 border-2   border-gray-600 rounded-lg text-white text-xl font-bold cursor-pointer"
+                                : "w-[100px] h-[50px] flex items-center justify-center  bg-slate-300 p-2 m-1 mr-3 border-2  border-gray-600 rounded-lg text-xl font-bold cursor-pointer"
                             }
                           >
                             <button>{show.hour}</button>
