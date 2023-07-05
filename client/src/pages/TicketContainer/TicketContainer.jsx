@@ -202,7 +202,7 @@ const TicketContainer = () => {
               Cargo por servicio: $ {servicio.toLocaleString("en-US")}
             </div>
             <div className="px-2 font-bold text-lg mb-1 text-gray-700 dark:text-white">
-              {userData && userData?.cinePlus !== "Estandar" ? (
+              {/* {userData && userData?.cinePlus !== "Estandar" ? (
                 <p>
                   TOTAL:{" "}
                   <span className="line-through italic">
@@ -211,15 +211,18 @@ const TicketContainer = () => {
                 </p>
               ) : (
                 <p>
-                  TOTAL: <span>$ {total.toLocaleString("en-US")}</span>{" "}
+                  TOTAL: <span>$ {total.toLocaleString("en-US")}</span>
                 </p>
-              )}
+              )} */}
+              <p>
+                TOTAL: <span>$ {total.toLocaleString("en-US")}</span>
+              </p>
             </div>
-            {userData && userData?.cinePlus !== "Estandar" ? (
+            {/* {userData && userData?.cinePlus !== "Estandar" ? (
               <div className="px-2 font-bold text-base mb-1 text-gray-700 dark:text-white">
                 Con descuento: $ {descuento.toLocaleString("en-US")}
               </div>
-            ) : null}
+            ) : null} */}
           </div>
           <div className="px-4 py-3 mb-2 flex justify-center items-center">
             <button

@@ -20,9 +20,9 @@ function CinePlusBlack() {
     event.preventDefault();
     if (!userData) {
       navigate("/login");
-    } else if (userData.cinePlus === "Black" || userData.cinePlus === "Gold") {
+    } else if (userData.cinePlus === "Black") {
       toast.dismiss();
-      toast.error("Ya estas suscripto a un plan");
+      toast.error("Ya estas suscripto al plan");
       return;
     } else {
       const { data } = await axios.post("/subscription", {
@@ -98,7 +98,7 @@ function CinePlusBlack() {
                 <div className="w-4/5">
                   <h3 className="m-0 text-sm font-bold">35% Off</h3>
                   <p className="m-0 text-xs font-normal">
-                    *En todas tus compras
+                    *En todas tus compras en los locales
                   </p>
                 </div>
                 <FaCheck className="dark:text-white" />

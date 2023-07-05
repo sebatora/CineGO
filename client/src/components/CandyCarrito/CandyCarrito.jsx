@@ -21,14 +21,13 @@ function CandyCarrito({ addCart, productCount, setProductCount }) {
   const subtotal = cart.reduce((acc, el) => acc + parseFloat(el.price), 0);
   const servicio = subtotal * 0.1;
   const total = subtotal + servicio;
-  const descuento =
-    userData?.cinePlus === "Gold"
-      ? Math.round(total * 0.8)
-      : userData?.cinePlus === "Black"
-      ? Math.round(total * 0.65)
-      : total;
-  const valueFormatter = (number) =>
-    number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  // const descuento =
+  //   userData?.cinePlus === "Gold"
+  //     ? Math.floor(total * 0.8)
+  //     : userData?.cinePlus === "Black"
+  //     ? Math.floor(total * 0.65)
+  //     : total;
+  const valueFormatter = (number) => number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
   const delRemoveCart = (name, all = false) => {
     if (all) {
@@ -68,33 +67,25 @@ function CandyCarrito({ addCart, productCount, setProductCount }) {
         items,
         totalPrice: descuento,
       };
-      // Swal.fire({
-      //   title: "¿Estás seguro de continuar?",
-      //   showDenyButton: true,
-      //   cancelButtonColor: "#ef233c",
-      //   confirmButtonColor: "#38b000",
-      //   confirmButtonText: "¡Si, estoy seguro!",
-      //   denyButtonText: `Cancelar`,
-      // }).then((result) => {
-      //   if (result.isConfirmed) {
-      //     window.localStorage.setItem(
-      //       "orderPurchase",
-      //       JSON.stringify(orderPurchase)
-      //     );
-      //     window.localStorage.removeItem("productCount");
-      //     window.localStorage.removeItem("cart");
-      //     window.localStorage.removeItem("movie");
-      //     window.location.href = data.init_point;
-      //   }
-      // });
-      window.localStorage.setItem(
-        "orderPurchase",
-        JSON.stringify(orderPurchase)
-      );
-      window.localStorage.removeItem("productCount");
-      window.localStorage.removeItem("cart");
-      window.localStorage.removeItem("movie");
-      window.location.href = data.init_point;
+      Swal.fire({
+        title: "<h2 style='color: black;'>¿Estás seguro de continuar?</h2>",
+        showDenyButton: true,
+        cancelButtonColor: "#ef233c",
+        confirmButtonColor: "#38b000",
+        confirmButtonText: "¡Si, estoy seguro!",
+        denyButtonText: `Cancelar`,
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.localStorage.setItem(
+            "orderPurchase",
+            JSON.stringify(orderPurchase)
+          );
+          window.localStorage.removeItem("productCount");
+          window.localStorage.removeItem("cart");
+          window.localStorage.removeItem("movie");
+          window.location.href = data.init_point;
+        }
+      });
     } catch (error) {
       console.error(error);
       toast.error("Debes ingresar a tu cuenta primero", {
@@ -168,15 +159,16 @@ function CandyCarrito({ addCart, productCount, setProductCount }) {
           Cargo por servicio: $ {valueFormatter(servicio)}
         </div>
         <div className="px-2 font-bold text-lg mb-1 text-gray-700 dark:text-white">
-          {userData && userData?.cinePlus !== "Estandar" ? (
+          {/* {userData && userData?.cinePlus !== "Estandar" ? (
             <p>TOTAL: <span className="line-through italic">$ {valueFormatter(total)}</span> </p>
-          ) : <p>TOTAL: <span>$ {valueFormatter(total)}</span> </p>}
+          ) : <p>TOTAL: <span>$ {valueFormatter(total)}</span> </p>} */}
+          <p>TOTAL: <span>$ {valueFormatter(total)}</span></p>
         </div>
-        {userData && userData?.cinePlus !== "Estandar" ? (
+        {/* {userData && userData?.cinePlus !== "Estandar" ? (
           <div className="px-2 font-bold text-base mb-1 text-gray-700 dark:text-white">
             Con descuento: $ {valueFormatter(descuento)}
           </div>
-        ) : null}
+        ) : null} */}
         <div className="px-4 py-3 mb-2 flex justify-center items-center">
           <Link to={`${!userData ? "/login" : "/candy"}`}>
             <button
