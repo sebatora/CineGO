@@ -97,28 +97,6 @@ function ProfileSubscription() {
           </div>
         </div>
       )}
-      {/* <h2 className="w-full flex items-center justify-center h-16 bg-light-200 dark:bg-slate-800">Suscripción actual: {userData.cinePlus} </h2>
-      {userData.cinePlus === "Estandar" ? (
-          
-      ) : userData.cinePlus === "Gold" ? (
-        <div className="flex items-center">
-          <h2>Pasate a: </h2>
-            <CinePlusBlack />
-        </div>
-      ) : ( */}
-      {/*       <div className="w-full h-screen flex flex-col justify-center items-center">
-        <h3 className="mb-4 font-bold">Tenes el plan mas tocho de todos</h3>
-        <TextAnimation word={userData.cinePlus.toUpperCase()} />
-        <button
-          className="w-80 p-4 rounded-lg bg-black hover:bg-black/80 dark:bg-white dark:hover:bg-white/80"
-          onClick={handleSubmit}
-        >
-          <span className="text-white dark:text-black">
-            Cancelar suscripción
-          </span>
-        </button>
-      </div> */}
-      {/* )} */}
     </div>
   );
 }
