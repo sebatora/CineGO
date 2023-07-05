@@ -122,22 +122,22 @@ function Detail() {
               />
               <ul className="w-full">
                 <li className="p-2">
-                  <h4>Género:</h4>
-                  <p className="text-sm">
+                  <h4 className="text-2xl">Género:</h4>
+                  <p className="text-sm my-1">
                     {detail.genres?.map((genre) => genre.name).join(" - ")}
                   </p>
                 </li>
                 <li className="p-2">
-                  <h4>Director:</h4>
-                  <p className="text-sm">{detail.director}</p>
+                  <h4 className="text-2xl">Director:</h4>
+                  <p className="text-sm my-1">{detail.director}</p>
                 </li>
                 <li className="p-2">
-                  <h4>Actores:</h4>
-                  <p className="text-sm">{detail.actors}</p>
+                  <h4 className="text-2xl">Actores:</h4>
+                  <p className="text-sm my-1">{detail.actors}</p>
                 </li>
                 <li className="p-2">
-                  <h4>Duración:</h4>
-                  <p className="text-sm">{detail.duration} min</p>
+                  <h4 className="text-2xl">Duración:</h4>
+                  <p className="text-sm my-1">{detail.duration} min</p>
                 </li>
               </ul>
             </div>
@@ -160,14 +160,14 @@ function Detail() {
                         (date, index, array) => array.indexOf(date) === index
                       )
                       .map((date) => (
-                        <div className="w-[150px] h-[80px] flex items-center justify-center">
+                        <div className="w-[150px] h-[80px] mx-4 my-4 flex items-center justify-center">
                           <button
                             key={date}
                             onClick={() => handleClickDate(date)}
                             className={
                               selectedDay === date
                                 ? "w-full h-full selected  bg-black p-2 m-1 mr-3 border-2  border-gray-600 rounded-lg text-white text-xl font-bold"
-                                : "w-full h-full bg-slate-300 p-2 m-1 mr-3 border-2 border-gray-600 rounded-lg text-xl font-bold"
+                                : "w-full h-full bg-slate-200 p-2 m-1 mr-3 border-2 border-gray-600 rounded-lg text-xl font-bold"
                             }
                           >
                             {date}
@@ -188,8 +188,8 @@ function Detail() {
                             onClick={() => handleClickShow(show)}
                             className={
                               selectedShow === show
-                                ? "w-[150px] h-[80px] flex items-center justify-center bg-black p-2 m-1 mr-3 border-2   border-gray-600 rounded-lg text-white text-xl font-bold cursor-pointer"
-                                : "w-[150px] h-[80px] flex items-center justify-center  bg-slate-300 p-2 m-1 mr-3 border-2  border-gray-600 rounded-lg text-xl font-bold cursor-pointer"
+                                ? "w-[150px] h-[80px] mx-4 my-4 flex items-center justify-center bg-black p-2 m-1 mr-3 border-2   border-gray-600 rounded-lg text-white text-xl font-bold cursor-pointer"
+                                : "w-[150px] h-[80px] mx-4 my-4 flex items-center justify-center  bg-slate-300 p-2 m-1 mr-3 border-2  border-gray-600 rounded-lg text-xl font-bold cursor-pointer"
                             }
                           >
                             <button>{show.hour}</button>
@@ -205,8 +205,8 @@ function Detail() {
                   onClick={handleSubmit}
                   className={
                     selectedShow
-                      ? "w-[250px] h-[80px] bg-primary-600 hover:bg-primary-500  text-white border-none px-4 py-2 text-center text-2xl rounded cursor-pointer animate-tambaleo font-bold"
-                      : "w-[250px] h-[80px]  bg-primary-100  text-black border  border-gray-600 px-4 py-2 text-center text-2xl rounded "
+                      ? "w-[250px] h-[80px] bg-primary-600 hover:bg-primary-500  text-white border-none px-4 py-2 text-center text-2xl rounded cursor-pointer animate-tambaleo font-bold dark:shadow-xl shadow-xl shadow-light-600  dark:shadow-red-600 dark:bg-red-700"
+                      : "w-[250px] h-[80px]  bg-primary-100  text-black border  border-gray-600 px-4 py-2 text-center text-2xl rounded font-bold"
                   }
                   type="submit"
                   disabled={!selectedShow}
