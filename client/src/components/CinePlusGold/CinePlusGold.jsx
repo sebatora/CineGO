@@ -119,6 +119,15 @@ function CinePlusGold() {
                   ¡Quiero suscribirme!
                 </span>
               </button>
+            ) : userData.cinePlus === "Estandar" ? (
+              <button
+                onClick={handleSubmit}
+                className="w-7/12 h-1/4 mx-auto bg-yellow-300 hover:bg-yellow-200 p-2 -mb-10 rounded-xl"
+              >
+                <span className="text-base font-bold">
+                  ¡Quiero suscribirme!
+                </span>
+              </button>
             ) : (
               ""
             )}

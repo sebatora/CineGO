@@ -114,6 +114,13 @@ function CinePlusBlack() {
               >
                 ¡Quiero suscribirme!
               </button>
+            ) : userData.cinePlus === "Estandar" ? (
+              <button
+                onClick={handleSubmit}
+                className="h-1/4 bg-black hover:bg-black/80 dark:bg-white dark:hover:bg-white/80 text-white dark:text-black w-7/12 mx-auto -mb-10 p-2 rounded-xl text-base font-bold"
+              >
+                ¡Quiero suscribirme!
+              </button>
             ) : (
               ""
             )}
