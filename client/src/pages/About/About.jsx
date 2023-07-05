@@ -69,7 +69,8 @@ const About = () => {
     },
     {
       name: "Mauricio Monzón",
-      photoUrl: "https://avatars.githubusercontent.com/u/104470486?v=4",
+      photoUrl: 
+        "https://res.cloudinary.com/dhyqgl7ie/image/upload/v1688586114/About/Mauri_ktgxsq.jpg",
       description: "Full Stack web developer.",
       contacto: "Contáctame:",
       linkedinUrl: "https://www.linkedin.com/in/mauricio-monzon/",
@@ -129,6 +130,7 @@ const About = () => {
       linkedinIcon: iconoIn,
       githubIcon: iconoGit,
       iconoCv: iconoCv,
+      cvUrl: "https://drive.google.com/file/d/1oocYZ4IPkDyPo50tAf2W1_Qxdi3HPn-x/view?usp=sharing"
     },
   ];
 

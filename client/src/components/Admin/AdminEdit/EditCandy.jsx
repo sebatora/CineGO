@@ -3,7 +3,14 @@ import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import cloudinary from "cloudinary-core";
 import { toast } from "react-toastify";
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
 import { getCandy, putCandy } from "../../../redux/actions";
+
+const schema = yup.object().shape({
+  name: yup.string().required("El nombre del producto es requerido"),
+  description: yup.string().required("La descripción es requerida"),
+});
 
 const EditCandy = ({ setActiveEdit, candyFound }) => {
   const dispatch = useDispatch();
@@ -25,6 +32,7 @@ const EditCandy = ({ setActiveEdit, candyFound }) => {
       image: candyFound.image,
       category: candyFound.category,
     },
+    resolver: yupResolver(schema), 
   });
 
   const handleUploadPhoto = () => {
@@ -48,15 +56,16 @@ const EditCandy = ({ setActiveEdit, candyFound }) => {
     widget_cloudinary.open();
   };
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     try {
+      await schema.validate(data); 
       dispatch(putCandy(candyFound.id, data));
       setTimeout(() => {
         dispatch(getCandy());
       }, 500);
       setActiveEdit(false);
     } catch (error) {
-      toast.error(error);
+      toast.error(error.message);
     }
   };
 
