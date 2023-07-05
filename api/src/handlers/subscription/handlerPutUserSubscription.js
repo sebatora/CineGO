@@ -1,6 +1,7 @@
-const putUserSubscription = require('../controllers/putUserSubscriptionController');
+const putUserSubscription = require('../../controllers/subscription/putUserSubscriptionController');
 
 const handlerPutUserSubscription = async (req, res) => {
+    console.log(req.body);
     try {
         const { id, cinePlus } = req.body;
         // Llamamos al controlador para modificar el estado 

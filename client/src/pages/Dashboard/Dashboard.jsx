@@ -51,7 +51,7 @@ const Dashboard = () => {
   return (
     <div className="w-full h-full flex">
       <Toaster />
-      <div className="w-1/5 fixed h-screen bg-slate-900 dark:bg-slate-900">
+      <div className="w-1/5 lg:w-1/6 fixed h-screen bg-slate-900 dark:bg-slate-900 px-8">
         {/* Profile */}
         {userData && (
           <div className="h-1/5 flex flex-col items-center justify-center pt-4">
@@ -86,9 +86,9 @@ const Dashboard = () => {
               <span className="text-white uppercase text-xs ml-1">Ventas</span>
             </div>
             <button
-              className={`mx-2 pt-1 pl-3 mb-1 rounded-sm text-start ${
+              className={`mx-2 p-1 pl-3 mb-1 rounded-sm text-start ${
                 activeComponent === "saleGeneral" &&
-                "bg-slate-800 font-bold text-white"
+                "font-extrabold"
               }`}
               onClick={() => handleButtonClick("saleGeneral")}
               disabled={activeComponent === "saleGeneral"}
@@ -96,9 +96,9 @@ const Dashboard = () => {
               <h6 className={`text-white`}>General</h6>
             </button>
             <button
-              className={`mx-2 pt-1 pl-3 mb-1 rounded-sm text-start ${
+              className={`mx-2 p-1 pl-3 mb-1 rounded-sm text-start ${
                 activeComponent === "saleTicket" &&
-                "bg-slate-800 font-bold text-white"
+                "font-extrabold"
               }`}
               onClick={() => handleButtonClick("saleTicket")}
               disabled={activeComponent === "saleTicket"}
@@ -106,9 +106,9 @@ const Dashboard = () => {
               <h6 className={`text-white`}>Entradas</h6>
             </button>
             <button
-              className={`mx-2 pt-1 pl-3 mb-1 rounded-sm text-start ${
+              className={`mx-2 p-1 pl-3 mb-1 rounded-sm text-start ${
                 activeComponent === "saleCandy" &&
-                "bg-slate-800 font-bold text-white"
+                "font-extrabold"
               }`}
               onClick={() => handleButtonClick("saleCandy")}
               disabled={activeComponent === "saleCandy"}
@@ -116,9 +116,9 @@ const Dashboard = () => {
               <h6 className={`text-white`}>Candy</h6>
             </button>
             <button
-              className={`mx-2 pt-1 pl-3 mb-1 rounded-sm text-start ${
+              className={`mx-2 p-1 pl-3 mb-1 rounded-sm text-start ${
                 activeComponent === "saleSubscription" &&
-                "bg-slate-800 font-bold text-white"
+                "font-extrabold"
               }`}
               onClick={() => handleButtonClick("saleSubscription")}
               disabled={activeComponent === "saleSubscription"}
@@ -148,9 +148,9 @@ const Dashboard = () => {
               </span>
             </div>
             <button
-              className={`mx-2 pt-1 pl-3 mb-1 rounded-sm text-start ${
+              className={`mx-2 p-1 pl-3 mb-1 rounded-sm text-start ${
                 activeComponent === "dataMovies" &&
-                "bg-slate-800 font-bold text-white"
+                "font-extrabold"
               }`}
               onClick={() => handleButtonClick("dataMovies")}
               disabled={activeComponent === "dataMovies"}
@@ -159,9 +159,9 @@ const Dashboard = () => {
             </button>
 
             <button
-              className={`mx-2 pt-1 pl-3 mb-1 rounded-sm text-start ${
+              className={`mx-2 p-1 pl-3 mb-1 rounded-sm text-start ${
                 activeComponent === "dataCandy" &&
-                "bg-slate-800 font-bold text-white"
+                "font-extrabold"
               }`}
               onClick={() => handleButtonClick("dataCandy")}
               disabled={activeComponent === "dataCandy"}
@@ -170,9 +170,9 @@ const Dashboard = () => {
             </button>
 
             <button
-              className={`mx-2 pt-1 pl-3 mb-1 rounded-sm text-start ${
+              className={`mx-2 p-1 pl-3 mb-1 rounded-sm text-start ${
                 activeComponent === "dataUsers" &&
-                "bg-slate-800 font-bold text-white"
+                "font-extrabold"
               }`}
               onClick={() => handleButtonClick("dataUsers")}
               disabled={activeComponent === "dataUsers"}
@@ -202,9 +202,9 @@ const Dashboard = () => {
               </span>
             </div>
             <button
-              className={`mx-2 pt-1 pl-3 mb-1 rounded-sm text-start ${
+              className={`mx-2 p-1 pl-3 mb-1 rounded-sm text-start ${
                 activeComponent === "webVisits" &&
-                "bg-slate-800 font-bold text-white"
+                "font-extrabold"
               }`}
               onClick={() => handleButtonClick("webVisits")}
               disabled={activeComponent === "webVisits"}
@@ -227,7 +227,7 @@ const Dashboard = () => {
 
           <button
             onClick={handleLogout}
-            className="flex items-center justify-center gap-1 pb-4"
+            className="flex items-center justify-center gap-1 pl-3 pb-4"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -248,7 +248,7 @@ const Dashboard = () => {
           </button>
         </div>
       </div>
-      <div className="w-4/5 min-h-screen ml-auto bg-light-50 dark:bg-light-50">
+      <div className="w-4/5 lg:w-5/6 min-h-screen ml-auto bg-light-50 dark:bg-light-50">
         {activeComponent === "saleGeneral" && <SaleGeneral />}
         {activeComponent === "saleTicket" && <SaleTicket />}
         {activeComponent === "saleCandy" && <SaleCandy />}

@@ -9,7 +9,7 @@ function CinePlusBlack() {
   const navigate = useNavigate();
 
   const subBlack = {
-    type: "Cine Plus Black",
+    type: "Black",
     price: 1199,
   };
 
@@ -17,8 +17,10 @@ function CinePlusBlack() {
     event.preventDefault();
     if (!userData) {
       navigate("/login");
-    } else if (userData.cinePlus === "Black") {
-      toast.error("Ya estas suscripto a esta plan");
+    } else if (userData.cinePlus === "Black" || userData.cinePlus === "Gold") {
+      toast.dismiss();
+      toast.error("Ya estas suscripto a un plan");
+      return;
     } else {
       const { data } = await axios.post("/subscription", {
         subscription: subBlack,
@@ -56,14 +58,14 @@ function CinePlusBlack() {
               ${subBlack.price} por mes
             </span>
           </div>
-          <div className="h-[280px] flex flex-col justify-between p-4 border-2 border-black dark:border-white rounded-b-xl">
+          <div className="h-80 flex flex-col justify-between p-4 border-2 border-black dark:border-white rounded-b-xl">
             <ul className="m-0 p-0">
               <li className="flex justify-around m-2">
                 <div className="w-4/5">
                   <h3 className="m-0 text-sm font-bold">
                     4 Entradas Mensuales
                   </h3>
-                  <p className="m-0 text-xs font-normal">GRATIS</p>
+                  <p className="m-0 text-xs font-normal">*Se retira en mesa de entrada.</p>
                 </div>
                 <FaCheck className="dark:text-white" />
               </li>
@@ -73,6 +75,7 @@ function CinePlusBlack() {
                     Regalo de bienvenida
                   </h3>
                   <p className="m-0 text-xs font-normal">*Por única vez.</p>
+                  <p className="m-0 text-xs font-normal">*Se retira en mesa de entrada.</p>
                 </div>
                 <FaCheck className="dark:text-white" />
               </li>
@@ -96,7 +99,7 @@ function CinePlusBlack() {
             </ul>
             <button
               onClick={handleSubmit}
-              className="bg-black hover:bg-black/80 dark:bg-white dark:hover:bg-white/80 text-white dark:text-black w-7/12 mx-auto my-8 p-2 rounded-xl text-base font-bold"
+              className="bg-black hover:bg-black/80 dark:bg-white dark:hover:bg-white/80 text-white dark:text-black w-7/12 mx-auto -mb-10 p-2 rounded-xl text-base font-bold"
             >
               ¡Quiero suscribirme!
             </button>
