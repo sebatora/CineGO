@@ -45,13 +45,6 @@ const Login = () => {
     setLoading(true);
     try {
       await loginWithGoogle();
-      Swal.fire({
-        position: "top",
-        icon: 'success',
-        title: 'Iniciaste sesión exitosamente',
-        showConfirmButton: false,
-        timer: 1500
-      })
       window.localStorage.removeItem("movie");
       window.localStorage.removeItem("cart");
       window.localStorage.removeItem("productCount");
