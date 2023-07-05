@@ -3,8 +3,20 @@ const nodemailer = require("nodemailer");
 const path = require("path");
 const bcrypt = require("bcryptjs");
 
-const putUserData = async (id, firstName, lastName, email, password, image, activeUser) => {
+const putUserData = async (
+  id,
+  firstName,
+  lastName,
+  email,
+  password,
+  image,
+  activeUser
+) => {
   if (!id) throw new Error("Faltan datos");
+
+  firstName = firstName.toUpperCase();
+  lastName = lastName.toUpperCase();
+  email = email.toLowerCase();
 
   // Verificamos que el usuario exista
   const user = await User.findOne({ where: { id } });
