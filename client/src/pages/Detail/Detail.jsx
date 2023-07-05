@@ -20,10 +20,10 @@ function Detail() {
   const handleClickDate = (day) => {
     if (selectedDay === day) {
       setSelectedDay(null);
+      setSelectedShow(null);
     } else {
       setSelectedDay(day);
       setSelectedShow(null);
-      console.log(day);
     }
   };
 
