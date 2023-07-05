@@ -4,6 +4,7 @@ import Ticket from "../../components/Ticket/Ticket";
 import Cart from "../../components/Cart/Cart";
 import {
   addCart,
+  getUserById,
   postAllTickets,
   removeAllCart,
   removeOneCart,
@@ -15,6 +16,11 @@ import { Toaster, toast } from "react-hot-toast";
 const TicketContainer = () => {
   const userData = JSON.parse(window.localStorage.getItem("user"));
   const storedMovie = JSON.parse(window.localStorage.getItem("movie"));
+  const cart = useSelector((state) => state.cart);
+  const storeProductCount = localStorage.getItem("productCount");
+  const dispatch = useDispatch();
+  const [productCount, setProductCount] = useState(0);
+  const navigate = useNavigate();
   const tickets = [
     {
       id: storedMovie.id,
@@ -40,11 +46,6 @@ const TicketContainer = () => {
       type: "show",
     },
   ];
-
-  const dispatch = useDispatch();
-  const cart = useSelector((state) => state.cart);
-  const [productCount, setProductCount] = useState(0);
-  const navigate = useNavigate();
 
   const cinefan = tickets.filter((ticket) => ticket.name === "Entrada CineFan");
   const general = tickets.filter((ticket) => ticket.name === "Entrada General");
@@ -96,6 +97,12 @@ const TicketContainer = () => {
   const subtotal = cart.reduce((acc, el) => acc + parseFloat(el.price), 0);
   const servicio = subtotal * 0.1;
   const total = subtotal + servicio;
+  const descuento =
+    userData?.cinePlus === "Gold"
+      ? Math.round(total * 0.8)
+      : userData?.cinePlus === "Black"
+      ? Math.round(total * 0.65)
+      : total;
 
   useEffect(() => {
     dispatch(postAllTickets(tickets));
@@ -106,12 +113,14 @@ const TicketContainer = () => {
   }, []);
 
   useEffect(() => {
-    const storeProductCount = localStorage.getItem("productCount");
-
+    if (userData?.id) {
+      dispatch(getUserById(userData.id));
+    }
     if (storeProductCount) {
       setProductCount(Number(storeProductCount));
     }
   }, []);
+
   useEffect(() => {
     if (cart.length) {
       window.localStorage.setItem("cart", JSON.stringify(cart));
@@ -193,8 +202,24 @@ const TicketContainer = () => {
               Cargo por servicio candy: $ {servicio.toLocaleString("en-US")}
             </div>
             <div className="px-2 font-bold text-lg mb-1 text-gray-700 dark:text-white">
-              <p>TOTAL: $ {total.toLocaleString("en-US")}</p>
+              {userData && userData?.cinePlus !== "Estandar" ? (
+                <p>
+                  TOTAL:{" "}
+                  <span className="line-through italic">
+                    $ {total.toLocaleString("en-US")}
+                  </span>{" "}
+                </p>
+              ) : (
+                <p>
+                  TOTAL: <span>$ {total.toLocaleString("en-US")}</span>{" "}
+                </p>
+              )}
             </div>
+            {userData && userData?.cinePlus !== "Estandar" ? (
+              <div className="px-2 font-bold text-base mb-1 text-gray-700 dark:text-white">
+                Con descuento: $ {descuento.toLocaleString("en-US")}
+              </div>
+            ) : null}
           </div>
           <div className="px-4 py-3 mb-2 flex justify-center items-center">
             <button
