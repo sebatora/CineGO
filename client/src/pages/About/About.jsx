@@ -118,6 +118,7 @@ const About = () => {
       linkedinIcon: iconoIn,
       githubIcon: iconoGit,
       iconoCv: iconoCv,
+      cvUrl: "https://docs.google.com/document/d/1EmwObDhXs2_pZ9yEVOvLhGVb3OJ0l3nX/edit?usp=sharing&ouid=116476905909793949320&rtpof=true&sd=truegia"
     },
     {
       name: "Matías Medina",
