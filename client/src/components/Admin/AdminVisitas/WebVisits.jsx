@@ -37,7 +37,7 @@ const WebVisits = () => {
             />
           </Helmet>
           <h1 className="heading text-3xl font-bold text-gray-800 mb-4 dark:text-gray-800">
-            Contador de visitas CineGo
+            Contador de visitas CineGO
           </h1>
           <button
             className="w-full flex justify-center items-center mb-6"
