@@ -57,6 +57,7 @@ const Login = () => {
 
   useEffect(() => {
     if(userData?.email){
+
       Swal.fire({
         position: "top",
         icon: 'success',
@@ -64,6 +65,7 @@ const Login = () => {
         showConfirmButton: false,
         timer: 1500
       })
+
       navigate("/");
     }
   }, [userData]);
