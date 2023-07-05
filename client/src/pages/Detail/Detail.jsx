@@ -4,10 +4,10 @@ import { useNavigate, useParams } from "react-router-dom";
 import ReactStars from "react-stars";
 import Error404 from "../../pages/Error404/Error404";
 import { cleanDetail, getMovieById, postRating } from "../../redux/actions";
+import { Toaster, toast } from "react-hot-toast";
 
 function Detail() {
   const detail = useSelector((state) => state.movieById);
-  const storedMovie = JSON.parse(window.localStorage.getItem("movie"));
   const userData = JSON.parse(window.localStorage.getItem("user"));
   const [activeTrailer, setActiveTrailer] = useState(false);
   const dispatch = useDispatch();
@@ -20,6 +20,7 @@ function Detail() {
   const handleClickDate = (day) => {
     if (selectedDay === day) {
       setSelectedDay(null);
+      setSelectedShow(null);
     } else {
       setSelectedDay(day);
       setSelectedShow(null);
@@ -43,7 +44,13 @@ function Detail() {
   };
 
   const handleChangeRating = (count) => {
-    if (userData.email) {
+    if (!userData) {
+      toast.dismiss(); // Limpiar la alerta existente si hay alguna
+      toast.error("Inicia sesión para poder valorar", {
+        duration: 3000,
+      });
+      return;
+    } else {
       dispatch(postRating({ movieId: detail.id, count }));
       setRating(count);
     }
@@ -53,6 +60,13 @@ function Detail() {
     dispatch(getMovieById(id));
     return () => dispatch(cleanDetail());
   }, [id, dispatch]);
+
+  useEffect(() => {
+    if (detail.shows && detail.shows.length > 0) {
+      const firstDay = detail.shows[0].date;
+      handleClickDate(firstDay);
+    }
+  }, [detail.shows]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -69,6 +83,7 @@ function Detail() {
         <Error404 />
       ) : (
         <div className="w-full flex flex-col mt-20 p-10">
+          <Toaster />
           <div className="w-full flex">
             <div className="w-96 h-fit flex flex-col items-center">
               <div className="w-full relative">
@@ -107,37 +122,37 @@ function Detail() {
               />
               <ul className="w-full">
                 <li className="p-2">
-                  <h4>Género:</h4>
-                  <p className="text-sm">
+                  <h4 className="text-2xl">Género:</h4>
+                  <p className="text-base my-1">
                     {detail.genres?.map((genre) => genre.name).join(" - ")}
                   </p>
                 </li>
                 <li className="p-2">
-                  <h4>Director:</h4>
-                  <p className="text-sm">{detail.director}</p>
+                  <h4 className="text-2xl">Director:</h4>
+                  <p className="text-base my-1">{detail.director}</p>
                 </li>
                 <li className="p-2">
-                  <h4>Actores:</h4>
-                  <p className="text-sm">{detail.actors}</p>
+                  <h4 className="text-2xl">Actores:</h4>
+                  <p className="text-base my-1">{detail.actors}</p>
                 </li>
                 <li className="p-2">
-                  <h4>Duración:</h4>
-                  <p className="text-sm">{detail.duration} min</p>
+                  <h4 className="text-2xl">Duración:</h4>
+                  <p className="text-base my-1">{detail.duration} min</p>
                 </li>
               </ul>
             </div>
 
             <div className="w-full flex flex-col ml-20">
-              <h2 className="w-4/5 pb-4 border-b-4 border-b-light-300 dark:border-b-dark-700">
+              <h2 className="w-4/5 pb-4 border-b-4 border-b-light-300 dark:border-b-dark-700 text-5xl">
                 {detail.title}
               </h2>
               <div className="w-4/5 mb-6">
-                <h3 className="my-4">Sinopsis</h3>
-                <p className="text-base">{detail.description}</p>
+                <h3 className="my-4 text-4xl">Sinopsis</h3>
+                <p className="text-xl">{detail.description}</p>
               </div>
               <div className="w-4/5 mb-6 flex flex-col">
-                <div>
-                  <h4 className="mb-1">Funciones</h4>
+                <div className="my-2">
+                  <h3 className="text-3xl">Funciones</h3>
                   <div className="flex items-center justify-start">
                     {detail.shows
                       ?.map((show) => show.date)
@@ -145,13 +160,15 @@ function Detail() {
                         (date, index, array) => array.indexOf(date) === index
                       )
                       .map((date) => (
-                        <div className="flex items-center justify-center">
+                        <div className="w-[150px] h-[80px] mx-4 my-4 flex items-center justify-center">
                           <button
                             key={date}
                             onClick={() => handleClickDate(date)}
-                            className={`px-3 py-2 m-1 mr-3 font-bold rounded-lg dark:text-white hover:scale-105 shadow hover:shadow-light-500 hover:dark:bg-slate-600 ${
-                              selectedDay === date ? "bg-blue-600 hover:bg-blue-500 dark:bg-dark-700 hover:dark:bg-dark-600" : "bg-light-200 dark:bg-slate-800"
-                            }`}
+                            className={
+                              selectedDay === date
+                                ? "w-full h-full selected  bg-black p-2 m-1 mr-3 border-2  border-gray-600 rounded-lg text-white text-xl font-bold"
+                                : "w-full h-full bg-slate-200 p-2 m-1 mr-3 border-2 border-gray-600 rounded-lg text-xl font-bold"
+                            }
                           >
                             {date}
                           </button>
@@ -160,8 +177,8 @@ function Detail() {
                   </div>
                 </div>
                 {selectedDay && (
-                  <div>
-                    <h4 className="my-1">Horarios:</h4>
+                  <div className="my-2">
+                    <h4 className="text-3xl">Horarios:</h4>
                     <div className="flex items-start">
                       {detail.shows
                         ?.filter((show) => show.date === selectedDay)
@@ -169,9 +186,11 @@ function Detail() {
                           <div
                             key={show.id}
                             onClick={() => handleClickShow(show)}
-                            className={`flex items-center justify-center px-3 py-2 m-1 mr-3 font-bold rounded-lg dark:text-white hover:scale-105 shadow hover:shadow-light-500 hover:dark:bg-slate-600 ${
-                              selectedShow === show ? "bg-blue-600 hover:bg-blue-500 dark:bg-dark-700 hover:dark:bg-dark-600" : "bg-light-200 dark:bg-slate-800"
-                            }`}
+                            className={
+                              selectedShow === show
+                                ? "w-[150px] h-[80px] mx-4 my-4 flex items-center justify-center bg-black p-2 m-1 mr-3 border-2   border-gray-600 rounded-lg text-white text-xl font-bold cursor-pointer"
+                                : "w-[150px] h-[80px] mx-4 my-4 flex items-center justify-center  bg-slate-200 p-2 m-1 mr-3 border-2  border-gray-600 rounded-lg text-xl font-bold cursor-pointer"
+                            }
                           >
                             <button>{show.hour}</button>
                           </div>
@@ -181,13 +200,13 @@ function Detail() {
                 )}
               </div>
 
-              <div className="mt-8 mb-10 flex justify-center">
+              <div className="mt-16 mb-10 flex justify-center">
                 <button
                   onClick={handleSubmit}
                   className={
                     selectedShow
-                      ? "bg-primary-600 hover:bg-primary-500 text-white border-none px-4 py-2 text-center text-base rounded cursor-pointer animate-colorAnimation font-bold"
-                      : "bg-primary-100  text-black border  border-gray-600 px-4 py-2 text-center text-base rounded"
+                      ? "w-[250px] h-[80px] bg-primary-600 hover:bg-primary-500  text-white border-none px-4 py-2 text-center text-2xl rounded cursor-pointer animate-tambaleo font-bold dark:shadow-xl shadow-xl shadow-light-600  dark:shadow-red-600 dark:bg-red-700"
+                      : "w-[250px] h-[80px] bg-slate-200 text-black border  border-gray-600 px-4 py-2 text-center text-2xl rounded font-bold"
                   }
                   type="submit"
                   disabled={!selectedShow}

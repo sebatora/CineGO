@@ -5,7 +5,6 @@ import { getMoviesByName } from "../../redux/actions";
 const SearchBar = () => {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
-  const [activeSearch, setActiveSearch] = useState(false);
 
   const handleChange = (event) => {
     const { value } = event.target;
