@@ -8,7 +8,7 @@ import "@fortawesome/fontawesome-free/css/all.css";
 
 function Footer({ theme }) {
   return (
-    <footer className="w-full border-t border-t-light-200 dark:border-t-light-900">
+    <footer className="w-full border-t border-t-light-200 dark:border-t-light-900 bg-slate-300">
       <div className="w-full flex lg:justify-evenly">
         <div className="w-1/4 hidden lg:flex pl-12">
           <Link className="w-40" to="/">

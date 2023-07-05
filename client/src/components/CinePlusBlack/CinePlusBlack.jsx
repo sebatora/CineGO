@@ -2,11 +2,14 @@ import axios from "axios";
 import React from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { FaCheck } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function CinePlusBlack() {
   const userData = JSON.parse(window.localStorage.getItem("user"));
   const navigate = useNavigate();
+  const location = useLocation();
+
+  console.log(location);
 
   const subBlack = {
     type: "Black",
@@ -65,7 +68,9 @@ function CinePlusBlack() {
                   <h3 className="m-0 text-sm font-bold">
                     4 Entradas Mensuales
                   </h3>
-                  <p className="m-0 text-xs font-normal">*Se retira en mesa de entrada.</p>
+                  <p className="m-0 text-xs font-normal">
+                    *Se retira en mesa de entrada.
+                  </p>
                 </div>
                 <FaCheck className="dark:text-white" />
               </li>
@@ -75,7 +80,9 @@ function CinePlusBlack() {
                     Regalo de bienvenida
                   </h3>
                   <p className="m-0 text-xs font-normal">*Por única vez.</p>
-                  <p className="m-0 text-xs font-normal">*Se retira en mesa de entrada.</p>
+                  <p className="m-0 text-xs font-normal">
+                    *Se retira en mesa de entrada.
+                  </p>
                 </div>
                 <FaCheck className="dark:text-white" />
               </li>
