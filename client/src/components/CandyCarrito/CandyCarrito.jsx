@@ -65,7 +65,7 @@ function CandyCarrito({ addCart, productCount, setProductCount }) {
       const orderPurchase = {
         userId: userData.id,
         items,
-        totalPrice: descuento,
+        totalPrice: total,
       };
       Swal.fire({
         title: "<h2 style='color: black;'>¿Estás seguro de continuar?</h2>",

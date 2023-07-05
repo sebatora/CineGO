@@ -50,8 +50,7 @@ const About = () => {
       linkedinIcon: iconoIn,
       githubIcon: iconoGit,
       iconoCv: iconoCv,
-      cvUrl:
-        "https://drive.google.com/file/d/1H23Dudi37WgtFNYB8i46EBxWJ0J-TKDR/view?usp=sharing",
+      cvUrl: "https://drive.google.com/file/d/1TiElcIJXrdAOWVrMgrImwQM_Or8KZXMZ/view?usp=sharing"
     },
     {
       name: "Camila Manita",
