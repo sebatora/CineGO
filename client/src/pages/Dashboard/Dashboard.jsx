@@ -33,12 +33,6 @@ const Dashboard = () => {
       window.localStorage.removeItem("cart");
       window.localStorage.removeItem("productCount");
       navigate("/login");
-      toast("Se cerró sesión", {
-        duration: 3000,
-        style: {
-          color: "red",
-        },
-      });
     } catch (error) {
       console.error(error);
     }

@@ -1,4 +1,4 @@
-import toast from "react-hot-toast";
+import Swal from "sweetalert2";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/authContext";
@@ -21,13 +21,15 @@ const ModalProfile = ({ setActiveModal, userData }) => {
     } catch (error) {
       console.error(error);
     } finally {
-      toast("Se cerró sesión", {
-        style: {
-          color: "red",
-        },
-      });
+      Swal.fire({
+        position: "top",
+        icon: 'success',
+        title: 'Cerraste sesión exitosamente',
+        showConfirmButton: false,
+        timer: 1500
+      })
+      }
     }
-  };
 
   return (
     <div className="w-80 h-40 flex flex-col top-12 right-0 bg-slate-300 dark:bg-dark-950 absolute border border-t-0 border-black dark:border-white dark:border-opacity-70 border-opacity-10 rounded-bl-md">
