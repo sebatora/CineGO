@@ -21,7 +21,7 @@ function CinePlusBlack() {
       navigate("/login");
     } else if (userData.cinePlus !== "Estandar") {
       toast.dismiss();
-      toast.error("Ya estas suscripto a un plan. Chekea tu perfil!");
+      toast.error("Ya estás suscripto a un plan!");
       return;
     } else {
       const { data } = await axios.post("/subscription", {
