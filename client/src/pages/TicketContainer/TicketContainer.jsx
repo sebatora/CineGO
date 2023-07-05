@@ -97,12 +97,12 @@ const TicketContainer = () => {
   const subtotal = cart.reduce((acc, el) => acc + parseFloat(el.price), 0);
   const servicio = subtotal * 0.1;
   const total = subtotal + servicio;
-  const descuento =
-    userData?.cinePlus === "Gold"
-      ? Math.round(total * 0.8)
-      : userData?.cinePlus === "Black"
-      ? Math.round(total * 0.65)
-      : total;
+  // const descuento =
+  //   userData?.cinePlus === "Gold"
+  //     ? Math.round(total * 0.8)
+  //     : userData?.cinePlus === "Black"
+  //     ? Math.round(total * 0.65)
+  //     : total;
 
   useEffect(() => {
     dispatch(postAllTickets(tickets));
