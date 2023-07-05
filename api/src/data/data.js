@@ -850,7 +850,6 @@ const dataAllUsers = [
     email: "admin@admin.com",
     password: "admin",
     image: "",
-    cinePlus: "",
     isAdmin: "true",
   },
   {
@@ -859,7 +858,6 @@ const dataAllUsers = [
     email: "jdaza@mail.com",
     password: "abc123",
     image: "https://res.cloudinary.com/dhyqgl7ie/image/upload/v1688397486/About/Jor_uv77yc.jpg",
-    cinePlus: "",
   },
   {
     firstName: "CAMILA",
@@ -891,7 +889,6 @@ const dataAllUsers = [
     email: "mmonzon@mail.com",
     password: "abc123",
     image: "",
-    cinePlus: "",
   },
   {
     firstName: "PERCY",
@@ -899,7 +896,6 @@ const dataAllUsers = [
     email: "phuanca@mail.com",
     password: "abc123",
     image: "https://res.cloudinary.com/dhyqgl7ie/image/upload/v1688397486/About/Percy_q1mxxn.jpg",
-    cinePlus: "",
   },
   {
     firstName: "MATIAS",
@@ -928,9 +924,231 @@ const dataAllUsers = [
   },
 ]
 
+const dataAllPurchases = [
+  {
+    "userId": 5,
+    "items": [
+      {
+        "itemId": null,
+        "cinePlus": "Black",
+        "price": 1199,
+        "quantity": 1,
+        "type": "subscription"
+      }
+    ],
+    "totalPrice": 1199
+  },
+  {
+    "userId": 5,
+    "items": [
+      {
+        "itemId": 4,
+        "price": 200,
+        "quantity": 2,
+        "type": "show"
+      },
+      {
+        "itemId": 9,
+        "price": 40,
+        "quantity": 3,
+        "type": "candy"
+      }
+    ],
+    "totalPrice": 520
+  },
+  {
+    "userId": 6,
+    "items": [
+      {
+        "itemId": 1,
+        "price": 200,
+        "quantity": 2,
+        "type": "show"
+      },
+      {
+        "itemId": 1,
+        "price": 250,
+        "quantity": 3,
+        "type": "candy"
+      }
+    ],
+    "totalPrice": 1150
+  },
+  {
+    "userId": 2,
+    "items": [
+      {
+        "itemId": 8,
+        "price": 200,
+        "quantity": 2,
+        "type": "show"
+      },
+      {
+        "itemId": 2,
+        "price": 450,
+        "quantity": 1,
+        "type": "candy"
+      }
+    ],
+    "totalPrice": 850
+  },
+  {
+    "userId":9,
+    "items": [
+      {
+        "itemId": 11,
+        "price": 200,
+        "quantity": 2,
+        "type": "show"
+      }
+    ],
+    "totalPrice": 400
+  },
+  {
+    "userId": 8,
+    "items": [
+      {
+        "itemId": 12,
+        "price": 200,
+        "quantity": 2,
+        "type": "show"
+      },
+      {
+        "itemId": 4,
+        "price": 120,
+        "quantity": 3,
+        "type": "candy"
+      }
+    ],
+    "totalPrice": 760
+  },
+  {
+    "userId": 8,
+    "items": [
+      {
+        "itemId": 12,
+        "price": 200,
+        "quantity": 1,
+        "type": "show"
+      }
+    ],
+    "totalPrice": 200
+  },
+  {
+    "userId": 7,
+    "items": [
+      {
+        "itemId": null,
+        "cinePlus": "Gold",
+        "price": 499,
+        "quantity": 1,
+        "type": "subscription"
+      }
+    ],
+    "totalPrice": 499
+  },
+  {
+    "userId": 7,
+    "items": [
+      {
+        "itemId": 12,
+        "price": 200,
+        "quantity": 2,
+        "type": "show"
+      },
+      {
+        "itemId": 4,
+        "price": 120,
+        "quantity": 3,
+        "type": "candy"
+      }
+    ],
+    "totalPrice": 760
+  },
+  {
+    "userId": 3,
+    "items": [
+      {
+        "itemId": 4,
+        "price": 200,
+        "quantity": 2,
+        "type": "show"
+      },
+      {
+        "itemId": 9,
+        "price": 40,
+        "quantity": 2,
+        "type": "candy"
+      }
+    ],
+    "totalPrice": 480
+  },
+  {
+    "userId": 4,
+    "items": [
+      {
+        "itemId": 1,
+        "price": 200,
+        "quantity": 2,
+        "type": "show"
+      },
+      {
+        "itemId": 3,
+        "price": 150,
+        "quantity": 1,
+        "type": "candy"
+      },
+      {
+        "itemId": 4,
+        "price": 120,
+        "quantity": 1,
+        "type": "candy"
+      }
+    ],
+    "totalPrice": 670
+  },
+  {
+    "userId": 6,
+    "items": [
+      {
+        "itemId": 8,
+        "price": 200,
+        "quantity": 4,
+        "type": "show"
+      },
+      {
+        "itemId": 2,
+        "price": 450,
+        "quantity": 1,
+        "type": "candy"
+      }
+    ],
+    "totalPrice": 1250
+  },
+  {
+    "userId": 10,
+    "items": [
+      {
+        "itemId": 5,
+        "price": 200,
+        "quantity": 4,
+        "type": "show"
+      },
+      {
+        "itemId": 2,
+        "price": 450,
+        "quantity": 1,
+        "type": "candy"
+      }
+    ],
+    "totalPrice": 1250
+  }
+]
+
 module.exports = {
   dataAllMovies,
   dataAllGenres,
   dataAllCandy,
-  dataAllUsers
+  dataAllUsers,
+  dataAllPurchases
 };

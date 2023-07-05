@@ -18,6 +18,7 @@ const About = () => {
       linkedinIcon: iconoIn,
       githubIcon: iconoGit,
       iconoCv: iconoCv,
+      cvUrl: "https://drive.google.com/file/d/1aBjnWrBTE30FTKUf5oeiYvKdEXXWdzXW/view?usp=sharing",
     },
     {
       name: "Sebastian Toranzo",
@@ -29,6 +30,7 @@ const About = () => {
       linkedinIcon: iconoIn,
       githubIcon: iconoGit,
       iconoCv: iconoCv,
+      cvUrl: "https://drive.google.com/file/d/1H23Dudi37WgtFNYB8i46EBxWJ0J-TKDR/view?usp=sharing"
     },
     {
       name: "Camila Manita",
@@ -40,6 +42,7 @@ const About = () => {
       linkedinIcon: iconoIn,
       githubIcon: iconoGit,
       iconoCv: iconoCv,
+      cvUrl: "https://drive.google.com/file/d/1ZCl3oNQsj58jGxK7l_IKeLtlLESpi0zZ/view?usp=drive_link"
     },
     {
       name: "Mauricio Monzón",
@@ -62,6 +65,7 @@ const About = () => {
       linkedinIcon: iconoIn,
       githubIcon: iconoGit,
       iconoCv: iconoCv,
+      cvUrl: "https://drive.google.com/file/d/1zG1rLWFJ1G6n02Sj5m3gDDdWeTsRKR9w/view?usp=drivesdk"
     },
     {
       name: "Percy Huanca",
@@ -98,6 +102,7 @@ const About = () => {
     },
   ];
 
+
   const shuffledTeamMembers = [...teamMembers].sort(() => Math.random() - 0.5);
   const teamMemberCards = shuffledTeamMembers.map((member) => (
     <div key={member.name} className="w-1/2 sm:w-2/4 md:w-1/3 lg:w-1/4 p-2 ">
@@ -118,9 +123,11 @@ const About = () => {
           <a className="hover:scale-110" href={member.githubUrl} target="_blank">
             <img src={member.githubIcon} alt="Github" className="w-6 h-6" />
           </a>
-          <a className="hover:scale-110" href={member} target="_blank">
-            <img src={member.iconoCv} alt="Curriculum Vitae" className="w-6 h-6" />
-          </a>
+          {member.cvUrl && (
+              <a className="hover:scale-110" href={member.cvUrl} target="_blank" download>
+                <img src={member.iconoCv} alt="Curriculum Vitae" className="w-6 h-6" />
+              </a>
+            )}
         </div>
       </div>
     </div>

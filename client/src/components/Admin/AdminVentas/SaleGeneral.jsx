@@ -19,18 +19,26 @@ function SaleGeneral() {
   const allPurchases = useSelector((state) => state.allPurchases);
   const dispatch = useDispatch();
 
+  function calculateTotalPrice(items) {
+    let totalPrice = 0;
+    for (let i = 0; i < items.length; i++) {
+      totalPrice += items[i].quantity * items[i].price;
+    }
+    return totalPrice;
+  }
+
   useEffect(() => {
     dispatch(getPurchases());
   }, [dispatch]);
 
   return (
     <>
-       <div className=' overflow-y-auto bg-gradient-to-r from-blue-400 via-pink-400 to-red-400'>
-        <Card className="bg-blue-200 overflow-y-auto max-w-4xl ml-7 mt-3 ">
+       <div className=' overflow-y-auto bg-gradient-to-r from-blue-400 via-pink-400 to-red-400 justify-center item-center'>
+        <Card className="bg-blue-200 overflow-y-auto max-w-7xl ml-32 mt-3 ">
           <Title className="text-2xl font-bold text-center mb-2">
             Lista de ventas
           </Title>
-          <Table className="w-full border-collapse border border-gray-300 min-w-full max-h-64 dark:border-gray-500">
+          <Table className="w-full border-collapse border border-gray-300 min-w-full max-h-96 dark:border-gray-500">
             <TableHead className="bg-gray-100 sticky top-0 dark:bg-dark-tremor-brand-faint ">
               <TableRow>
                 <TableHeaderCell className="py-2 px-16 font-semibold text-center border-b dark:text-gray-400">
@@ -39,24 +47,6 @@ function SaleGeneral() {
                 <TableHeaderCell className="py-2 px-16 font-semibold text-center border-b dark:text-gray-400">
                   Numero de compra
                 </TableHeaderCell>
-                {/* <TableHeaderCell className="py-2 px-14 font-semibold text-left border-b dark:text-gray-400">
-                  Nombre de la pelicula
-                </TableHeaderCell>
-                <TableHeaderCell className="py-2 px-4 font-semibold text-left border-b dark:text-gray-400">
-                  Cantidad
-                </TableHeaderCell>
-                <TableHeaderCell className="py-2 px-2 font-semibold text-left border-b dark:text-gray-400">
-                  Total en entradas
-                </TableHeaderCell>
-                <TableHeaderCell className="py-2 px-8 font-semibold text-left border-b dark:text-gray-400">
-                  Nombre del producto
-                </TableHeaderCell>
-                <TableHeaderCell className="py-2 px-4 font-semibold text-left border-b dark:text-gray-400">
-                  Cantidad
-                </TableHeaderCell>
-                <TableHeaderCell className="py-2 px-2 font-semibold text-left border-b dark:text-gray-400">
-                  Total en producto
-                </TableHeaderCell> */}
                 <TableHeaderCell className="py-2 px-16 font-semibold text-center border-b dark:text-gray-400">
                   Total final
                 </TableHeaderCell>
@@ -75,7 +65,7 @@ function SaleGeneral() {
                   {item.id}
                 </TableCell>
                 <TableCell className="py-2 px-16 border-b text-center dark:border-gray-500 dark:text-gray-400">
-                  {valueFormatter(item.items.length > 0 ? item.items[0].quantity * item.items[0].price + item.items[1].quantity * item.items[1].price : '')}
+                  {valueFormatter(item.items.length > 0 ? calculateTotalPrice(item.items) : '')}
                 </TableCell>
               </TableRow>
             ))}
@@ -83,8 +73,8 @@ function SaleGeneral() {
           </Table>
         </Card>
       </div>
-      <div className="flex h-screen bg-gradient-to-r from-blue-400 via-pink-400 to-red-400 overflow-y-auto">
-        <Card className="bg-blue-200 max-w-xs m-5 h-40">
+      <div className="flex h-screen bg-gradient-to-r from-blue-400 via-pink-400 to-red-400 overflow-y-auto justify-center item-center">
+        <Card className="bg-blue-200 max-w-xs mt-6 h-40 ">
           <Title className="text-center">Total recaudado</Title>
           <Table className="h-8 mt-5">
             <TableBody>
