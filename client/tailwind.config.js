@@ -11,7 +11,7 @@ export default {
       keyframes: {
         tambaleo: {
           "0%": { transform: "translateX(0) rotate(-2deg)" },
-          "50%": { transform: "translateX(10px) rotate(10deg)" },
+          "50%": { transform: "translateX(10px) rotate(2deg)" },
           "100%": { transform: "translateX(0) rotate(-2deg)" },
         },
         colorAnimation: {
