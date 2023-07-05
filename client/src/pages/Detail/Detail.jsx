@@ -189,7 +189,7 @@ function Detail() {
                             className={
                               selectedShow === show
                                 ? "w-[150px] h-[80px] mx-4 my-4 flex items-center justify-center bg-black p-2 m-1 mr-3 border-2   border-gray-600 rounded-lg text-white text-xl font-bold cursor-pointer"
-                                : "w-[150px] h-[80px] mx-4 my-4 flex items-center justify-center  bg-slate-300 p-2 m-1 mr-3 border-2  border-gray-600 rounded-lg text-xl font-bold cursor-pointer"
+                                : "w-[150px] h-[80px] mx-4 my-4 flex items-center justify-center  bg-slate-200 p-2 m-1 mr-3 border-2  border-gray-600 rounded-lg text-xl font-bold cursor-pointer"
                             }
                           >
                             <button>{show.hour}</button>
@@ -206,7 +206,7 @@ function Detail() {
                   className={
                     selectedShow
                       ? "w-[250px] h-[80px] bg-primary-600 hover:bg-primary-500  text-white border-none px-4 py-2 text-center text-2xl rounded cursor-pointer animate-tambaleo font-bold dark:shadow-xl shadow-xl shadow-light-600  dark:shadow-red-600 dark:bg-red-700"
-                      : "w-[250px] h-[80px]  bg-primary-100  text-black border  border-gray-600 px-4 py-2 text-center text-2xl rounded font-bold"
+                      : "w-[250px] h-[80px] bg-slate-200 text-black border  border-gray-600 px-4 py-2 text-center text-2xl rounded font-bold"
                   }
                   type="submit"
                   disabled={!selectedShow}
