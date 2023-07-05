@@ -3,8 +3,20 @@ const nodemailer = require("nodemailer");
 const path = require("path");
 const bcrypt = require("bcryptjs");
 
-const putUserData = async (id, firstName, lastName, email, password, image, activeUser) => {
+const putUserData = async (
+  id,
+  firstName,
+  lastName,
+  email,
+  password,
+  image,
+  activeUser
+) => {
   if (!id) throw new Error("Faltan datos");
+
+  firstName = firstName.toUpperCase();
+  lastName = lastName.toUpperCase();
+  email = email.toLowerCase();
 
   // Verificamos que el usuario exista
   const user = await User.findOne({ where: { id } });
@@ -84,21 +96,6 @@ const sendEmailNotification = (user) => {
           </div>
           <h1 class="message">¡Hola, ${user.firstName}!</h1>
           <p class="message">¡Confirmamos que los datos de su cuenta en Cinego han sido actualizados con éxito! Ahora, su información refleja los cambios solicitados. ¡Gracias por su confianza!</p>
-          <td valign="middle" align="center" style="text-align: center; padding: 0px 20px 40px 415px;">
-            <!-- Button : BEGIN -->
-            <table role="presentation" align="center" cellspacing="0" cellpadding="0" border="0" class="center-on-narrow">
-              <tr>
-                <td style="text-align: center;">
-                  <div class="center" style="border-radius: 50px; background: #2420ff; text-align: center;" class="button-td">
-                    <a href="https://cine-go-ten.vercel.app" style="background: #2420ff; border: 15px solid #2420ff; font-family: 'Montserrat', sans-serif; font-size: 14px; line-height: 1.1; text-align: center; text-decoration: none; display: block; border-radius: 50px; font-weight: bold;" class="button-a">
-                      <span style="color:white;" class="button-link">&nbsp;&nbsp;&nbsp;&nbsp;Ir a CineGo&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                    </a>
-                  </div>
-                </td>
-              </tr>
-            </table>
-            <!-- Button : END -->
-          </td>
         </body>
       </html>
     `,

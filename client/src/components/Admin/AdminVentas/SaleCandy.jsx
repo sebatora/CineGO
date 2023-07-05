@@ -15,15 +15,6 @@ import { getMetrics } from "../../../redux/actions";
 
 const valueFormatter = (number) => `$ ${number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}`;
 
-
-const valueFormatter2 = (number, category) => {
-  if (category === "totalPrice") {
-    return `$ ${number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}`;
-  }
-  return number;
-};
-
-
 const SaleCandy = () => {
   
   const dispatch = useDispatch();

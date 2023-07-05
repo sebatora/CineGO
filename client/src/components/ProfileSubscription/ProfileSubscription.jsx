@@ -46,7 +46,7 @@ function ProfileSubscription() {
   };
 
   return (
-    <div className="h-screen">
+    <div className="w-full  h-[90vh]">
       <h2 className="w-full flex items-center justify-center h-16 bg-light-200 dark:bg-slate-800">
         Suscripción
       </h2>
@@ -62,38 +62,39 @@ function ProfileSubscription() {
           </div>
         </div>
       ) : userData.cinePlus === "Gold" ? (
-        <div className="">
+        <div className="w-full h-full flex flex-col justify-center">
           <div className="flex flex-col items-center mt-2">
             <h3 className="mb-4 font-bold">Tu plan: </h3>
-            <div className="flex">
-              <TextAnimation word={userData.cinePlus.toUpperCase()} />
-              <button
-                onClick={handleSubmit}
-                className="w-96 h-20 flex justify-center items-center bg-dark-400 mb-6 rounded-md text-3xl mx-2 font-bold"
-              >
-                Cancelar suscripción
-              </button>
-            </div>
+            <TextAnimation word={userData.cinePlus.toUpperCase()} />
           </div>
-          <div className="flex">
+          <div className="w-full py-8">
             <CinePlusGold />
+          </div>
+          <div className="w-full flex justify-center">
+            <button
+              onClick={handleSubmit}
+              className="p-4 bg-dark-500 mb-6 rounded-md text-xl mx-2 font-bold"
+            >
+              Cancelar suscripción
+            </button>
           </div>
         </div>
       ) : (
-        <div className="">
+        <div className="w-full h-full flex flex-col justify-center">
           <div className="flex flex-col items-center mt-2">
-            <div className="flex">
-              <TextAnimation word={userData.cinePlus.toUpperCase()} />
-              <button
-                onClick={handleSubmit}
-                className="w-96 h-20 flex justify-center items-center bg-dark-400 mb-6 rounded-md text-3xl mx-2 font-bold"
-              >
-                Cancelar suscripción
-              </button>
-            </div>
+            <h3 className="mb-4 font-bold">Tu plan: </h3>
+            <TextAnimation word={userData.cinePlus.toUpperCase()} />
           </div>
-          <div className="flex">
+          <div className="w-full py-8">
             <CinePlusBlack />
+          </div>
+          <div className="w-full flex justify-center">
+            <button
+              onClick={handleSubmit}
+              className="p-4 bg-dark-500 mb-6 rounded-md text-xl mx-2 font-bold"
+            >
+              Cancelar suscripción
+            </button>
           </div>
         </div>
       )}

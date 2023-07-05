@@ -21,7 +21,7 @@ function CinePlusBlack() {
       navigate("/login");
     } else if (userData.cinePlus !== "Estandar") {
       toast.dismiss();
-      toast.error("Ya estas suscripto a un plan. Chekea tu perfil!");
+      toast.error("Ya estás suscripto a un plan");
       return;
     } else {
       const { data } = await axios.post("/subscription", {
@@ -35,6 +35,7 @@ function CinePlusBlack() {
             cinePlus: "Black",
             quantity: 1,
             type: "subscription",
+            price: 1199
           },
         ],
         totalPrice: subBlack.price,
@@ -57,6 +58,10 @@ function CinePlusBlack() {
               Cine Plus Black
             </h2>
             {pathname !== "/profile" ? (
+              <span className="font-bold mx-auto text-white dark:text-black">
+                ${subBlack.price} por mes
+              </span>
+            ) : userData.cinePlus === "Estandar" ? (
               <span className="font-bold mx-auto text-white dark:text-black">
                 ${subBlack.price} por mes
               </span>
