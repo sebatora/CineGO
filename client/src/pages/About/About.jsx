@@ -69,7 +69,7 @@ const About = () => {
     },
     {
       name: "Mauricio Monzón",
-      photoUrl: 
+      photoUrl:
         "https://res.cloudinary.com/dhyqgl7ie/image/upload/v1688586114/About/Mauri_ktgxsq.jpg",
       description: "Full Stack web developer.",
       contacto: "Contáctame:",
@@ -79,7 +79,7 @@ const About = () => {
       githubIcon: iconoGit,
       iconoCv: iconoCv,
       cvUrl:
-        "https://drive.google.com/file/d/1aQQ20ewT9ZKu_QXS_degz-WUldPYmNEf/view?usp=sharing",
+        "https://docs.google.com/document/d/1O0pTiSyaPxHDL86wrXmFrj7SwdvqZUEHhNj2pLZMXRo/edit?usp=sharing",
     },
     {
       name: "Franco Bogado",
@@ -118,7 +118,8 @@ const About = () => {
       linkedinIcon: iconoIn,
       githubIcon: iconoGit,
       iconoCv: iconoCv,
-      cvUrl: "https://docs.google.com/document/d/1EmwObDhXs2_pZ9yEVOvLhGVb3OJ0l3nX/edit?usp=sharing&ouid=116476905909793949320&rtpof=true&sd=truegia"
+      cvUrl:
+        "https://docs.google.com/document/d/1EmwObDhXs2_pZ9yEVOvLhGVb3OJ0l3nX/edit?usp=sharing&ouid=116476905909793949320&rtpof=true&sd=truegia",
     },
     {
       name: "Matías Medina",
@@ -131,7 +132,8 @@ const About = () => {
       linkedinIcon: iconoIn,
       githubIcon: iconoGit,
       iconoCv: iconoCv,
-      cvUrl: "https://drive.google.com/file/d/1oocYZ4IPkDyPo50tAf2W1_Qxdi3HPn-x/view?usp=sharing"
+      cvUrl:
+        "https://drive.google.com/file/d/1oocYZ4IPkDyPo50tAf2W1_Qxdi3HPn-x/view?usp=sharing",
     },
   ];
 
